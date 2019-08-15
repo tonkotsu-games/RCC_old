@@ -26,7 +26,7 @@ REQUIREMENTS
 
 This project requires the following software & hardware to be opened/run:
 
- * Unity 2017.2.0f3 or higher (https://unity3d.com/de/get-unity/download)
+ * Unity 2018.3.9f1 or higher (https://unity3d.com/de/get-unity/download)
  * A machine running windows 7, Mac OsX El Capitan, (Linux) or higher (older operating systems MIGHT work, they were not tested though)
 
 

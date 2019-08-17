@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     private PlayerController life;
+    [SerializeField] EnemyController attack;
 
     private bool hit = false;
 
@@ -16,15 +17,17 @@ public class EnemyAttack : MonoBehaviour
     public void Start()
     {
         life = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !hit && EnemyController.attack)
+        Debug.Log("Hit: " + hit);
+        Debug.Log("Gameobject: " + other.gameObject.tag);
+        Debug.Log("Attack: " + attack.attack);
+        if (other.gameObject.tag == "Player" && !hit && attack.attack)
         {
             enemySoundSource.clip = playerHitSound; 
-            enemySoundSource.Play(); 
+            enemySoundSource.Play();
             hit = true;
             life.life -= damage;
         }

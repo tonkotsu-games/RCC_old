@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour
 	public float lr = 3f;
 
 	private Transform target;
-    private EnemyMeleeAttack _Melee;
     private Animator enemyAnim;
 
 
@@ -28,7 +27,7 @@ public class EnemyController : MonoBehaviour
     public bool canAttack = false;
     public bool hit = false;
 
-    public static bool attack = false;
+    public bool attack = false;
 
     private void Start()
 	{
@@ -40,7 +39,6 @@ public class EnemyController : MonoBehaviour
         enemyAttack = transform.GetComponentInChildren<EnemyAttack>();
         target = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        _Melee = GetComponent<EnemyMeleeAttack>();
         enemyAnim = gameObject.GetComponent<Animator>();
         enemyAnim.SetBool("attack", false);
         enemyAnim.SetBool("disturbed", false);
@@ -145,9 +143,7 @@ public class EnemyController : MonoBehaviour
         attack = true;
         enemyAnim.SetBool("attack", true);
         //Debug.Log("HAS ATTACKED");
-        _Melee.AttackTarget();
         canAttack = false;
-        startAttackbreak = true;
     }
 
     private void WindUP()
@@ -164,8 +160,6 @@ public class EnemyController : MonoBehaviour
         enemyAnim.SetBool("windUp", false);
         //Debug.Log("easded");
         enemyAnim.SetBool("windUpAttack", true);
-        _Melee.AttackTarget();
-        startAttackbreak = true;
     }
 
     IEnumerator ChangeAttackBool()
@@ -182,6 +176,8 @@ public class EnemyController : MonoBehaviour
         enemyAnim.SetBool("attack", false);
         enemyAnim.SetBool("windUpAttack", false);
         enemyAttack.EndAttackAnimation();
+        startAttackbreak = true;
+
     }
     public void EndWindUp()
     {

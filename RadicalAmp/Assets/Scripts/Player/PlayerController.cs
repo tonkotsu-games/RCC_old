@@ -5,12 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    float horizontalMove;
-    float verticalMove;
+    private float horizontalMove;
+    private float verticalMove;
+    private float actuellSpeedHorizontal;
+    private float actuellSpeedVertical;
+    private float accelerationHorizonatl;
+    private float accelerationVertical;
+
+
     public static float dashTime;
 
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
+    [SerializeField] float acceleration;
+
 
     [Header("Settings for the dash")]
     [SerializeField] float dashSpeed;
@@ -187,16 +195,38 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Move()
     {
-        rigi.velocity = new Vector3(horizontalMove * movementSpeed,
+
+        actuellSpeedHorizontal = acceleration * horizontalMove;
+        actuellSpeedVertical = acceleration * verticalMove;
+
+
+        if (actuellSpeedHorizontal >= movementSpeed)
+        {
+            actuellSpeedHorizontal = movementSpeed;
+        }
+        else if (actuellSpeedHorizontal <= -movementSpeed)
+        {
+            actuellSpeedHorizontal = -movementSpeed;
+        }
+        if (actuellSpeedVertical >= movementSpeed)
+        {
+            actuellSpeedVertical = movementSpeed;
+        }
+        else if (actuellSpeedVertical <= -movementSpeed)
+        {
+            actuellSpeedVertical = -movementSpeed;
+        }
+
+        rigi.velocity = new Vector3(actuellSpeedHorizontal,
                                     0,
-                                    verticalMove * movementSpeed);
+                                    actuellSpeedVertical);
         
     }
     void Gravity()
     {
-        rigi.velocity = new Vector3(horizontalMove * movementSpeed,
-                                    -5,
-                                    verticalMove * movementSpeed);
+        rigi.velocity = new Vector3(actuellSpeedHorizontal,
+                                    -10,
+                                    actuellSpeedVertical);
     }
     /// <summary>
     /// Function for dashing in the direction you are facing
@@ -253,14 +283,12 @@ public class PlayerController : MonoBehaviour
     public void AfterDash()
     {
         dash = false;
-
     }
     public void afterdeath()
     {
         respawn.RespawnPlayer();
         life = 3;
-        anim.Play("respawn");
-        
+        anim.Play("respawn");        
     }
     public void afterrespawn()
     {

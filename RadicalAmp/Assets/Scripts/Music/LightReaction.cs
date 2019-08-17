@@ -99,14 +99,18 @@ public class LightReaction : MonoBehaviour
             {
                 for(int j = 0;j<lightTest[i].Length;j++)
                 {
-                    lightTest[i][j].intensity = onBeat;
+                    lightTest[i][j].intensity += onBeat;
                 }
             }
             else if(i != count)
             {
                 for(int j = 0;j<lightTest[i].Length;j++)
                 {
-                    lightTest[i][j].intensity = offBeat;
+                    lightTest[i][j].intensity -= offBeat;
+                    if(lightTest[i][j].intensity <= 0)
+                    {
+                        lightTest[i][j].intensity = 0;
+                    }
                 }
             }
         }

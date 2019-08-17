@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
 
 public class Tutorial : MonoBehaviour
 {
-
 
     [SerializeField] Animator anim;
     [SerializeField] Image image;
@@ -55,7 +51,9 @@ public class Tutorial : MonoBehaviour
         }
         if(currentStep == TutorialSteps.MovementTest)
         {
-            if((Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0) && !tutorialPlay)
+            if((Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0 || 
+                Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0) && 
+                !tutorialPlay)
             {
                 tutorialTimer = 2;
                 tutorialPlay = true;

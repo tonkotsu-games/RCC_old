@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.VFX;
 
@@ -13,15 +11,12 @@ public class VFXIntensity : MonoBehaviour
 
     ParticleSystem.MainModule ps;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         Juicemeter = GameObject.FindGameObjectWithTag("JuiceMeter").GetComponent<Slider>();
         ps = Trail.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Juicemeter.value >= 0 && Juicemeter.value <= 25)

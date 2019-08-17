@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class PlayerController : MonoBehaviour
     private float actuellSpeedVertical;
     private float accelerationHorizonatl;
     private float accelerationVertical;
-
 
     public static float dashTime;
 
@@ -54,8 +51,6 @@ public class PlayerController : MonoBehaviour
     //gibt an, welcher Dancemove abgespielt werden soll
     private int dancemove;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         respawn = GameObject.FindWithTag("Respawn").GetComponent<Respawn>();
@@ -81,10 +76,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log(dancemove);
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
@@ -95,7 +88,6 @@ public class PlayerController : MonoBehaviour
         {
             if (attack1DONE == false)
             {
-                //Debug.Log("attack1");
                 anim.Play("Attack", 0, 0);
                 attack = true;
                 my_audioSource.clip = slashClip;
@@ -104,7 +96,6 @@ public class PlayerController : MonoBehaviour
             }
             else 
             {
-                //Debug.Log("Attack2");
                 anim.Play("Attack2", 0, 0);
                 attack = true;
                 my_audioSource.clip = slashClip;
@@ -237,7 +228,6 @@ public class PlayerController : MonoBehaviour
         {
             if (dash)
             {
-                //Debug.Log("Dashing");
                 dashdirection = heading;
                 dashing = true;
                 attack = false;
@@ -278,7 +268,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("dance", false);
         anim.SetBool("dance2", false);
         anim.SetBool("dance3", false);
-        //Debug.Log("Dancing End");
     }
     public void AfterDash()
     {

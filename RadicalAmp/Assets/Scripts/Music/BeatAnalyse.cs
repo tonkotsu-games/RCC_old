@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BeatAnalyse : MonoBehaviour
@@ -7,17 +6,13 @@ public class BeatAnalyse : MonoBehaviour
     float[] spectrum;
     public static List<int> beatStarts = new List<int>();
 
-
     [SerializeField] float drawWidth;
     [SerializeField] float limit, waitSamples;
     [SerializeField] AudioClip wave;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         int amount = wave.samples;
-        //Debug.Log("Samples: " + amount);
         spectrum = new float[amount];
         wave.GetData(spectrum, 0);
 
@@ -33,13 +28,10 @@ public class BeatAnalyse : MonoBehaviour
                 if(spectrum[i] <= spectrum[i-1] && spectrum[i] >= spectrum[i+1])
                 {                    
                     beatStarts.Add(i);
-                    //Debug.Log(i);
                     i += (int)waitSamples;
                 }
             }
         }
-
-        //Debug.Log("Beats Found: " + beatStarts.Count);
     }
 
     private void OnDrawGizmos()
@@ -62,5 +54,4 @@ public class BeatAnalyse : MonoBehaviour
             }
         }
     }
-
 }

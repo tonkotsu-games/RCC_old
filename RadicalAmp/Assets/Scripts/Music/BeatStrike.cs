@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.VFX;
-
 
 public class BeatStrike : MonoBehaviour
 {
@@ -34,17 +31,14 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] int dancePunish;
     [SerializeField] int idlePunish;
 
-    // Start is called before the first frame update
     void Start()
     {
-
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
         juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
         particleLeft.Stop();
         particleRight.Stop();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -117,7 +111,6 @@ public class BeatStrike : MonoBehaviour
         timeSample = wave.timeSamples - reactionTime;
         for (int i = 0; i < BeatAnalyse.beatStarts.Count; i++)
         {
-            //Debug.Log(beat.beatStarts[i]);
             if (timeSample >= (BeatAnalyse.beatStarts[i] - windowTrigger) &&
                 timeSample <= (BeatAnalyse.beatStarts[i] + windowTrigger))
             {

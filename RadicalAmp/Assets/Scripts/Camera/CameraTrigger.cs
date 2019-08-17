@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
@@ -11,17 +9,10 @@ public class CameraTrigger : MonoBehaviour
     [SerializeField] float height;
     [SerializeField] float posZminus;
 
-    // Start is called before the first frame update
     void Start()
     {
         mainCamera = GameObject.FindWithTag("MainCamera");
         mainCameraScript = GameObject.FindWithTag("MainCamera").GetComponent<CameraDrive>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -4765,6 +4765,12 @@ MonoBehaviour:
   m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &1208979102 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5591283974780079420, guid: 9f74825a87fe78c4b8982dd814fffedd,
+    type: 3}
+  m_PrefabInstance: {fileID: 4180775942456388065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1248011645
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,12 +7730,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f74825a87fe78c4b8982dd814fffedd, type: 3}
---- !u!198 &2123145675 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6579551793364365782, guid: 9f74825a87fe78c4b8982dd814fffedd,
-    type: 3}
-  m_PrefabInstance: {fileID: 4180775942456388065}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &97226835880294482
 Transform:
   m_ObjectHideFlags: 0
@@ -11608,6 +11608,11 @@ PrefabInstance:
       propertyPath: TrailModule.colorOverTrail.maxGradient.key2.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6579551793364365782, guid: 9f74825a87fe78c4b8982dd814fffedd,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6579551793364365779, guid: 9f74825a87fe78c4b8982dd814fffedd,
         type: 3}
       propertyPath: m_Layer
@@ -11658,6 +11663,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: e4a701d43533db54c9b292a8c831136c, type: 3}
+    - target: {fileID: 1582112516234226929, guid: 9f74825a87fe78c4b8982dd814fffedd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5569762882930788393, guid: 9f74825a87fe78c4b8982dd814fffedd,
+        type: 3}
+      propertyPath: m_Name
+      value: EQ Trail_test
+      objectReference: {fileID: 0}
     - target: {fileID: 5591283974780079420, guid: 9f74825a87fe78c4b8982dd814fffedd,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -12217,7 +12232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Left: {fileID: 6921003417279041945}
   Right: {fileID: 156108497067096269}
-  Trail: {fileID: 2123145675}
+  Trail: {fileID: 1208979102}
 --- !u!82 &8164343552919023592
 AudioSource:
   m_ObjectHideFlags: 0

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CameraDrive : Singleton
+public class CameraDrive : MonoBehaviour
 {
+    public static CameraDrive instance;
 
     public float smooth = 0.3f;
     [Range(2, 10)]
@@ -15,75 +16,98 @@ public class CameraDrive : Singleton
     private Vector3 velocity = Vector3.zero;
 
     [SerializeField] float zoomInDelay = 5;
-    public bool zoomInReady = false;
 
-    public bool setZoomedOut;
-    public bool setZoomedIn;
+    public bool readyToZoomIn = false;
 
+    public enum ZoomMode { None,In,Out}
+
+    public ZoomMode ZoomState = ZoomMode.None;
+
+    public enum CameraStates { ZoomedIn,ZoomedOut}
+    public CameraStates currentState = CameraStates.ZoomedIn;
+
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        ZoomIn();
+        ChangeCameraState(CameraStates.ZoomedOut);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<CameraRangeAdjust>().CheckForEnemiesInRange())
+        UpdateCameraPos();
+
+        if (ZoomState == ZoomMode.In)
         {
-            ZoomOut();
+            ChangeCameraState(CameraStates.ZoomedIn);
+            return;
         }
-        else if(gameObject.GetComponent<CameraRangeAdjust>().CheckForEnemiesInRange() == false && zoomInReady)
+
+        else if (ZoomState == ZoomMode.Out)
         {
-            ZoomIn();
+            ChangeCameraState(CameraStates.ZoomedOut);
+            return;
         }
-        
+    }
+
+    private void UpdateCameraPos()
+    {
         Vector3 pos = new Vector3();
         pos.x = player.position.x;
         pos.z = player.position.z - posZminus;
         pos.y = player.position.y + height;
         transform.position = Vector3.SmoothDamp(transform.position, pos, ref velocity, smooth);
-
-        if (setZoomedIn)
+    }
+    public void ChangeCameraState(CameraStates requestedState)
+    {
+        if (currentState == requestedState)
         {
-            ZoomIn();
+            Debug.Log("Already in Camerastate: " + requestedState);
             return;
         }
 
-        else if (setZoomedOut)
+        else
         {
-            ZoomOut();
-            return;
+            switch (requestedState)
+            {
+                case CameraStates.ZoomedIn:
+                    Debug.Log("Zooming In");
+
+                    currentState = CameraStates.ZoomedIn;
+                    height = 7;
+                    posZminus = 6;
+                    
+                    break;
+
+                case CameraStates.ZoomedOut:
+                    Debug.Log("Zooming Out");
+
+                    currentState = CameraStates.ZoomedOut;
+                    height = 12;
+                    posZminus = 11;
+                    readyToZoomIn = false;
+                    StartCoroutine(ZoomInDelay());
+                    break;
+            }
         }
     }
 
-    public void ZoomOut()
+    IEnumerator ZoomInDelay()
     {
-        Debug.Log("ZoomingOut");
-
-       
-        height = 8;
-        posZminus = 11;
-        zoomInReady = false;
-
-        if (!setZoomedOut)
-        {
-            StartCoroutine(ZoomInDelay(zoomInDelay));
-        }
-    }
-
-    public void ZoomIn()
-    {
-     
-        height = 5;
-        posZminus = 6;
-    }
-
-    IEnumerator ZoomInDelay(float waittime)
-    {
-        yield return new WaitForSeconds(waittime);
-
-
-        zoomInReady = true;
+        yield return new WaitForSeconds(zoomInDelay);
+        readyToZoomIn = true;
     }
 }

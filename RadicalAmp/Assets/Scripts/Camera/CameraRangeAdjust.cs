@@ -8,7 +8,7 @@ public class CameraRangeAdjust : MonoBehaviour
     [Range(0,10)]
     [SerializeField] float innerRange = 5;
     [Range(5,20)]
-    [SerializeField] float outerRange = 10;
+    [SerializeField] float outerRange = 12;
     [SerializeField] int layerID = 13;
 
     private int layerMask;
@@ -21,15 +21,21 @@ public class CameraRangeAdjust : MonoBehaviour
 
     [SerializeField] int zoomTriggerAmount = 3; // enemies Needed to zoom out
 
+    public bool enoughEnemiesInRange = false;
+
 
     private void Start()
     {
          layerMask = 1 << layerID;
     }
 
-    public void FixedUpdate()
+    private void Update()
     {
-        CheckForEnemiesInRange();
+      //  innerEnemies = Physics.OverlapSphere(player.transform.position, innerRange, layerMask);
+
+        //outerEnemies = Physics.OverlapSphere(player.transform.position, outerRange, layerMask);
+
+        //CheckForEnemiesInRange();
     }
 
     /// <summary>
@@ -55,20 +61,22 @@ public class CameraRangeAdjust : MonoBehaviour
     /// Comparing inner cirlce vs outer circle
     /// </summary>
     /// <returns></returns>
-    public bool CheckForEnemiesInRange()
+    public void CheckForEnemiesInRange()
     {
-        innerEnemies = Physics.OverlapSphere(player.transform.position, innerRange, layerMask);
 
-        outerEnemies = Physics.OverlapSphere(player.transform.position, outerRange, layerMask);
-
-        if (outerEnemies.Length - innerEnemies.Length > zoomTriggerAmount)
+        if (outerEnemies.Length >= zoomTriggerAmount)
         {
-            return true;
+            Debug.Log("ENEMIES IN RANGE");
+            CameraDrive.instance.ChangeCameraState(CameraDrive.CameraStates.ZoomedOut);
         }
 
         else
         {
-            return false;
+            Debug.Log("RANGE CLEAR AGAIN");
+            if (CameraDrive.instance.readyToZoomIn)
+            {
+                CameraDrive.instance.ChangeCameraState(CameraDrive.CameraStates.ZoomedIn);
+            }
         }
     }
 

@@ -7,9 +7,10 @@ using UnityEngine.Experimental.VFX;
 
 public class BeatStrike : MonoBehaviour
 {
+    public static BeatStrike instance;
     private Slider juiceMeter;
 
-    private AudioSource wave;
+    public AudioSource wave;
 
     [SerializeField] VisualEffect particleLeft;
     [SerializeField] VisualEffect particleRight;
@@ -34,6 +35,17 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] int dancePunish;
     [SerializeField] int idlePunish;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2415412595958308866}
+  - component: {fileID: 9072979977233615184}
   m_Layer: 0
   m_Name: Afterimage_Spawn
   m_TagString: Untagged
@@ -31,6 +32,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &9072979977233615184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415412595958308877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ea3310b56cb774f8953f640c8f7aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTarget: {fileID: 0}
+  offset: {x: 0, y: 0.748, z: 0}
 --- !u!1 &2415412596248214378
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,14 +86,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2415412596248214378}
   serializedVersion: 6
-  lengthInSec: 10
+  lengthInSec: 0.1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
-  prewarm: 1
+  looping: 0
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 1
   autoRandomSeed: 1
@@ -146,7 +161,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1292,7 +1307,7 @@ ParticleSystem:
       repeatInterval: 5
       probability: 1
     - serializedVersion: 2
-      time: 0.1
+      time: 0.01
       countCurve:
         serializedVersion: 2
         minMaxState: 0

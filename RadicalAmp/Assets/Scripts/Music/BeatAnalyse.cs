@@ -6,15 +6,21 @@ public class BeatAnalyse : MonoBehaviour
     float[] spectrum;
     public static List<int> beatStarts = new List<int>();
 
+    [SerializeField] int windowTrigger;
     [SerializeField] float drawWidth;
     [SerializeField] float limit, waitSamples;
     [SerializeField] AudioClip wave;
-    
+    [SerializeField] AudioSource sourceWave;
+
+    private float timeSample;
+
+
     void Start()
     {
         int amount = wave.samples;
         spectrum = new float[amount];
         wave.GetData(spectrum, 0);
+        
 
         for (int i = 0; i < spectrum.Length; i++)
         {
@@ -32,6 +38,20 @@ public class BeatAnalyse : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool IsOnBeat(int preStart)
+    {
+        timeSample = sourceWave.timeSamples - preStart;
+        for (int i = 0; i < BeatAnalyse.beatStarts.Count; i++)
+        {
+            if (timeSample >= (BeatAnalyse.beatStarts[i] - windowTrigger) &&
+                timeSample <= (BeatAnalyse.beatStarts[i] + windowTrigger))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void OnDrawGizmos()

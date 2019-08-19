@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(dashTimer.timeCurrent);
 
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");

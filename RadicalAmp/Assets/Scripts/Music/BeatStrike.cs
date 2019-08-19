@@ -5,8 +5,9 @@ using UnityEngine.Experimental.VFX;
 public class BeatStrike : MonoBehaviour
 {
     private Slider juiceMeter;
-
     private AudioSource wave;
+
+    private PlayerController player;
 
     [SerializeField] VisualEffect particleLeft;
     [SerializeField] VisualEffect particleRight;
@@ -37,6 +38,7 @@ public class BeatStrike : MonoBehaviour
         juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
         particleLeft.Stop();
         particleRight.Stop();
+        player = GetComponent<PlayerController>();
     }
 
     void Update()
@@ -98,7 +100,7 @@ public class BeatStrike : MonoBehaviour
             punish = false;
         }
 
-        if (PlayerController.dashTime <= 0)
+        if (player.dashTimer.timeCurrent <= 0)
         {
             particleLeft.Stop();
             particleRight.Stop();

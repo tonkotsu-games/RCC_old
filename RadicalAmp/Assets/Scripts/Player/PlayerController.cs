@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     private float accelerationHorizonatl;
     private float accelerationVertical;
 
-    public static float dashTime;
-
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float acceleration;
@@ -19,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Settings for the dash")]
     [SerializeField] float dashSpeed;
-    [SerializeField] float dashStartTime;
+    [SerializeField] float dashTime;
 
     Vector3 heading;
     Vector3 dashdirection;
@@ -38,6 +36,7 @@ public class PlayerController : MonoBehaviour
     
     Animator anim;
     Rigidbody rigi;
+    public Timer dashTimer = new Timer();
 
     [Header("Life setting")]
     public int life = 3;
@@ -62,7 +61,7 @@ public class PlayerController : MonoBehaviour
         dancing = false;
         attack1DONE = false;
 
-        dashTime = dashStartTime;
+        dashTimer.Start(dashTime);
 
         dancemove = 0;
 
@@ -78,6 +77,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(dashTimer.timeCurrent);
+
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
@@ -235,16 +236,16 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if(dashTime <= 0)
+            if(dashTimer.timeCurrent <= 0)
             {
                 dashing = false;
                 rigi.velocity = Vector3.zero;
-                dashTime = dashStartTime;
+                dashTimer.ResetTimer();
                 dash = false;
             }
             else
             {
-                dashTime -= Time.deltaTime;
+                dashTimer.Tick();
                 rigi.velocity += dashdirection * dashSpeed;
             }
         }

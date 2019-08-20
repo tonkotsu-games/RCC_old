@@ -8,7 +8,16 @@ public class SpotlightGroup : MonoBehaviour
 
     [SerializeField] Vector3 offset;
     [SerializeField] List<GameObject> lights;
+    public float maxRangeToPlayer = 5;
 
+    public void Update()
+    {
+        if (Vector3.Distance(player.position, gameObject.transform.position) >= maxRangeToPlayer)
+        {
+            DisableAllActiveLights();
+            EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+        }
+    }
     public void EnableLights(int lightNumber)
     {
         transform.position = player.position + offset;

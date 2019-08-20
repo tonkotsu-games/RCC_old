@@ -7,9 +7,11 @@ public class SpotlightIndividual : MonoBehaviour
     [SerializeField] Transform target;
     public bool isActive;
 
+
     void Update()
     {
         transform.LookAt(target);
+
     }
 
     void TurnMeOff()

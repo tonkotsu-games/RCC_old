@@ -105,11 +105,24 @@ public class BeatStrike : MonoBehaviour
         }
         else if(Input.GetButtonDown("Dance"))
         {
-            if(IsOnBeat())
+            if (IsOnBeat())
             {
                 juiceMeter.value += danceReward;
                 action = true;
-                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Active);
+
+                switch (EnhancedSkills.instance.currentEnhancedState) {
+                    case EnhancedSkills.EnhancedState.Inactive:
+                            EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.First);
+                        break;
+                    case EnhancedSkills.EnhancedState.First:
+                        EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Second);
+                        break;
+                    case EnhancedSkills.EnhancedState.Second:
+                        EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Active);
+                        break;
+
+
+                }
             }
             else
             {

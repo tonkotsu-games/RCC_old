@@ -7,11 +7,13 @@ public class EnhancedSkills : MonoBehaviour
     public static EnhancedSkills instance;
 
     [HideInInspector]
-    public enum EnhancedState { Active,Inactive}
+    public enum EnhancedState { First, Second, Active ,Inactive}
     [HideInInspector]
     public enum ActionsToEnhance { Attack,Dash}
 
     public EnhancedState currentEnhancedState;
+
+    [SerializeField] GameObject spotlights;
 
     private void Awake()
     {
@@ -41,22 +43,35 @@ public class EnhancedSkills : MonoBehaviour
 
         else
         {
-            if(requestedState == EnhancedState.Active)
+            switch (requestedState)
             {
-                currentEnhancedState = EnhancedState.Active;
-                Debug.Log("Enhanced State now " + currentEnhancedState);
-            }
+                case EnhancedState.First:
+                    currentEnhancedState = EnhancedState.First;
+                    spotlights.GetComponent<SpotlightGroup>().EnableLights(0);
+                    break;
+                case EnhancedState.Second:
+                    currentEnhancedState = EnhancedState.Second;
+                    spotlights.GetComponent<SpotlightGroup>().EnableLights(1);
+                    break;
+                case EnhancedState.Active:
 
-            else if(requestedState == EnhancedState.Inactive)
-            {
-                currentEnhancedState = EnhancedState.Inactive;
-                Debug.Log("Enhanced State now " + currentEnhancedState);
+                    currentEnhancedState = EnhancedState.Active;
+                    Debug.Log("Enhanced State now " + currentEnhancedState);
+                    spotlights.GetComponent<SpotlightGroup>().EnableLights(2);
+                    break;
+                case EnhancedState.Inactive:
+
+                    currentEnhancedState = EnhancedState.Inactive;
+                    spotlights.GetComponent<SpotlightGroup>().DisableAllActiveLights();
+                    Debug.Log("Enhanced State now " + currentEnhancedState);
+                    break;
             }
         }
     }
 
     public void UseEnhancedSkill (ActionsToEnhance baseSkill)
     {
+        ChangeEnhancedState(EnhancedState.Inactive);
         Debug.Log("Using Enhanced " + baseSkill);
     }
 

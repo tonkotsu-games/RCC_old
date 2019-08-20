@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Idle : IState
 {
-    [SerializeField]
-    float idleDuration = 0;
-
-    float timerStart = 10;
-    float timerCurrent = 0;
+    float idleDuration;
     Actor actor;
     Timer idleTimer = new Timer();
     
@@ -20,8 +16,9 @@ public class Idle : IState
 
     public void Enter()
     {
+        idleDuration = actor.ActorData.idleDuration;
         Debug.Log("Now in Idle");
-        idleDuration = idleDuration + Random.Range(0,1);
+        idleDuration += Random.Range(0,2);
         Debug.Log("Timer: " + idleDuration);
         idleTimer.Start(idleDuration);
     }
@@ -32,6 +29,7 @@ public class Idle : IState
         
         if(idleTimer.timeCurrent <= 0)
         {
+            idleTimer.ResetTimer();
             ChooseBehaviour();
         }
     }
@@ -39,7 +37,7 @@ public class Idle : IState
     private void ChooseBehaviour()
     {
         Debug.Log("Choosing");
-        //actor.StateMachine.ChangeState(new State1_SearchFor(actor.playerLayer, actor.gameObject, actor.viewRange, actor.playerTag, actor.ChooseBehaviourAfterIdle));
+        actor.ChooseBehaviour();
     }
 
     public void Exit()

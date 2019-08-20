@@ -11,10 +11,15 @@ public class Actor : MonoBehaviour
     [SerializeField]
     private CharacterScriptableObject actorData;
 
-    public CharacterScriptableObject ActorData { get => actorData; private set => actorData = value; }
+    public virtual CharacterScriptableObject ActorData { get => actorData; private set => actorData = value; }
 
     private void Update()
     {
         StateMachine.StateExecuteTick();
+    }
+
+    public virtual void ChooseBehaviour()
+    {
+
     }
 }

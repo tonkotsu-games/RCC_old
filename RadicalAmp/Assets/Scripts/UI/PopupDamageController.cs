@@ -2,10 +2,20 @@
 
 public class PopupDamageController : MonoBehaviour
 {
+    public static PopupDamageController instance;
+
     [SerializeField] GameObject popupPrefab;
     private static PopupDamage popupDamageText;
     private static GameObject canvas;
 
+    private void Awake()
+    {
+      if(instance == null)
+        {
+            instance = this;
+        }
+        else { Destroy(gameObject); }
+    }
     public void Start()
     {
 

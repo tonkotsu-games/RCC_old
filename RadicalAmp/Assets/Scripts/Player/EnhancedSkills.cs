@@ -85,4 +85,10 @@ public class EnhancedSkills : MonoBehaviour
     { 
         enhancedDashHitbox.SetActive(true);
     }
+
+    // Called through AnimEvent at the end of the dash
+    public void DisableDashHit()
+    {
+        enhancedDashHitbox.SetActive(false);
+    }
 }

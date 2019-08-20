@@ -61,26 +61,46 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
-                juiceMeter.value += dashReward;
-                particleLeft.Play();
-                particleRight.Play();
-                action = true;
-            }else
+                if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
+                {
+                    EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Dash);
+                }
+
+                else
+                {
+                    juiceMeter.value += dashReward;
+                    particleLeft.Play();
+                    particleRight.Play();
+                    action = true;
+                }
+            }
+
+            else
             {
                 juiceMeter.value -= dashPunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         else if (Input.GetButtonDown("Attack"))
         {
             if(IsOnBeat())
             {
-                juiceMeter.value += attackReward;
-                beatAttack = true;
-                action = true;
+                if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
+                {
+                    EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
+                }
+
+                else
+                {
+                    juiceMeter.value += attackReward;
+                    beatAttack = true;
+                    action = true;
+                }
             }
             else
             {
                 juiceMeter.value -= attackPunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         else if(Input.GetButtonDown("Dance"))
@@ -89,10 +109,12 @@ public class BeatStrike : MonoBehaviour
             {
                 juiceMeter.value += danceReward;
                 action = true;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Active);
             }
             else
             {
                 juiceMeter.value -= dancePunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         Punishing();

@@ -96,15 +96,15 @@ public class CameraDrive : MonoBehaviour
                     height = 12;
                     posZminus = 11;
                     readyToZoomIn = false;
-                    StartCoroutine(ZoomInDelay());
+                   // StartCoroutine(ZoomInDelay());
                     break;
             }
         }
     }
 
-    IEnumerator ZoomInDelay()
-    {
-        yield return new WaitForSeconds(zoomInDelay);
-        readyToZoomIn = true;
-    }
+  // IEnumerator ZoomInDelay()
+  // {
+  //     yield return new WaitForSeconds(zoomInDelay);
+  //     readyToZoomIn = true;
+  // }
 }

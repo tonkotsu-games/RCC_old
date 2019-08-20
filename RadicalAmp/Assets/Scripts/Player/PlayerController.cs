@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("Settings for the dash")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashTime;
+    [SerializeField] GameObject dashParticlesPrefab;
 
     Vector3 heading;
     Vector3 dashdirection;
@@ -231,6 +232,7 @@ public class PlayerController : MonoBehaviour
                 dashdirection = heading;
                 dashing = true;
                 attack = false;
+                SpawnDashParticles();
             }
         }
         else
@@ -283,5 +285,16 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("backtoidle", true);
         DeadDisable.enabled = true;
+    }
+
+    private void SpawnDashParticles()
+    {
+        Debug.Log("Spawning Dash Particles");
+        GameObject particlesInstance = Instantiate(dashParticlesPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+        particlesInstance.GetComponent<FollowPosition>().followTarget = gameObject.transform;
+        particlesInstance.gameObject.transform.Rotate(-90,0,0);
+        ParticleSystem parts = particlesInstance.GetComponentInChildren<ParticleSystem>();
+        float totalDuration = parts.main.duration + parts.main.startLifetime.constant + parts.main.startDelay.constant;
+        Destroy(particlesInstance, totalDuration);
     }
 }

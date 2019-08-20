@@ -11,6 +11,8 @@ public class EnhancedSkills : MonoBehaviour
     [HideInInspector]
     public enum ActionsToEnhance { Attack,Dash}
     [SerializeField] GameObject enhancedDashHitbox;
+    [SerializeField] GameObject projectileSpawn;
+    [SerializeField] GameObject projectilePrefab;
 
     public EnhancedState currentEnhancedState;
 
@@ -76,6 +78,11 @@ public class EnhancedSkills : MonoBehaviour
         {
             EnhanceDash();
         }
+
+        else if(baseSkill == ActionsToEnhance.Attack)
+        {
+            EnhanceHit();
+        }
         ChangeEnhancedState(EnhancedState.Inactive);
         Debug.Log("Using Enhanced " + baseSkill);
     }
@@ -84,6 +91,12 @@ public class EnhancedSkills : MonoBehaviour
     public void EnhanceDash()
     { 
         enhancedDashHitbox.SetActive(true);
+    }
+
+    public void EnhanceHit()
+    {
+        Debug.Log("SpawningProjectile");
+        Instantiate(projectilePrefab, projectileSpawn.transform.position,projectileSpawn. transform.rotation);
     }
 
     // Called through AnimEvent at the end of the dash

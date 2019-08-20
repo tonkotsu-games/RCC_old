@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03764126, g: 0.047973316, b: 0.061335944, a: 1}
+  m_IndirectSpecularColor: {r: 0.059242457, g: 0.08332283, b: 0.13011163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -31511,6 +31511,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 12.2776165, y: 4.081746, z: 1}
   m_Center: {x: 0.12091767, y: 0, z: -0.0000012713824}
+--- !u!1 &800100412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 800100413}
+  m_Layer: 9
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &800100413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800100412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.491, z: 0.919}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 910915142}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &802146244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58857,33 +58887,44 @@ PrefabInstance:
     - target: {fileID: 837846167584537662, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: -0.0000004172325
+      value: -0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 837846167584537662, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: m_AABB.m_Center.z
-      value: 0.00067281723
+      value: 0.0006723404
       objectReference: {fileID: 0}
     - target: {fileID: 837846167584537662, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: m_AABB.m_Extent.x
-      value: 0.8255332
+      value: 0.49480197
       objectReference: {fileID: 0}
     - target: {fileID: 837846167584537662, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: m_AABB.m_Extent.y
-      value: 1.2035109
+      value: 0.8878147
       objectReference: {fileID: 0}
     - target: {fileID: 837846167584537662, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: m_AABB.m_Extent.z
-      value: 1.0735416
+      value: 0.30694878
       objectReference: {fileID: 0}
     - target: {fileID: 4596637615529372823, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: spotlights
       value: 
       objectReference: {fileID: 64171220}
+    - target: {fileID: 4596637615529372823, guid: f12dcb6fa918fa24db161e0655b9a15c,
+        type: 3}
+      propertyPath: projectileSpawn
+      value: 
+      objectReference: {fileID: 800100412}
+    - target: {fileID: 4596637615529372823, guid: f12dcb6fa918fa24db161e0655b9a15c,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 5193359897459052727, guid: a69b72910879c8c46b280267f5403792,
+        type: 3}
     - target: {fileID: 837846167589711200, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

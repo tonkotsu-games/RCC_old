@@ -5,8 +5,12 @@ using UnityEngine;
 public class Feedback : MonoBehaviour
 {
     private CharacterScriptableObject actorData;
+    private Animator animator;
 
-    private void Start()
+    [SerializeField] 
+    private AnimationClip awakeAnimation;
+
+    private void Awake()
     {
         actorData = this.gameObject.GetComponent<Actor>().ActorData;
 
@@ -18,5 +22,13 @@ public class Feedback : MonoBehaviour
         {
             Debug.LogError("Data on Feedback NOT found on " + this.gameObject.name);
         }
+
+        animator = this.gameObject.GetComponentInChildren<Animator>();
     }
+
+    public void PlayAwake()
+    {
+
+    }
+
 }

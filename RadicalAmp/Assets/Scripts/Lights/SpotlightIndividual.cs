@@ -11,7 +11,6 @@ public class SpotlightIndividual : MonoBehaviour
     void Update()
     {
         transform.LookAt(target);
-
     }
 
     void TurnMeOff()

@@ -5,10 +5,11 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalMove;
     private float verticalMove;
-    private float actuellSpeedHorizontal;
-    private float actuellSpeedVertical;
     private float accelerationHorizonatl;
     private float accelerationVertical;
+    private float actuellSpeedHorizontal;
+    private float actuellSpeedVertical;
+
 
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
@@ -20,9 +21,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] GameObject dashParticlesPrefab;
 
-    Vector3 heading;
-    Vector3 dashdirection;
-    Vector3 moveDirection;
+    private Vector3 moveDirection;
+    private Vector3 heading;
+    private Vector3 dashdirection;
+    private Vector3 moveVector;
+
 
     bool dashing = false;
     bool dash = false;
@@ -172,6 +175,8 @@ public class PlayerController : MonoBehaviour
             heading = new Vector3(Input.GetAxisRaw("Horizontal"),
                                   0,
                                   Input.GetAxisRaw("Vertical"));
+            heading = heading.normalized;
+
             anim.SetBool("running", true);
             Turn();
         }
@@ -191,34 +196,20 @@ public class PlayerController : MonoBehaviour
         actuellSpeedHorizontal = acceleration * horizontalMove;
         actuellSpeedVertical = acceleration * verticalMove;
 
+        moveVector = new Vector3(actuellSpeedHorizontal, 0f, actuellSpeedVertical);
 
-        if (actuellSpeedHorizontal >= movementSpeed)
-        {
-            actuellSpeedHorizontal = movementSpeed;
-        }
-        else if (actuellSpeedHorizontal <= -movementSpeed)
-        {
-            actuellSpeedHorizontal = -movementSpeed;
-        }
-        if (actuellSpeedVertical >= movementSpeed)
-        {
-            actuellSpeedVertical = movementSpeed;
-        }
-        else if (actuellSpeedVertical <= -movementSpeed)
-        {
-            actuellSpeedVertical = -movementSpeed;
-        }
+        moveVector = moveVector.normalized * movementSpeed;
 
-        rigi.velocity = new Vector3(actuellSpeedHorizontal,
+        rigi.velocity = new Vector3(moveVector.x,
                                     0,
-                                    actuellSpeedVertical);
+                                    moveVector.z);
         
     }
     void Gravity()
     {
-        rigi.velocity = new Vector3(actuellSpeedHorizontal,
+        rigi.velocity = new Vector3(moveVector.x,
                                     -10,
-                                    actuellSpeedVertical);
+                                    moveVector.z);
     }
     /// <summary>
     /// Function for dashing in the direction you are facing

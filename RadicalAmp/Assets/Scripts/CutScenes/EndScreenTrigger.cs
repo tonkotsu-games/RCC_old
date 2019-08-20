@@ -1,18 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
 
 public class EndScreenTrigger : MonoBehaviour
 {
-
     [SerializeField] private Animator myAnimator;
     [SerializeField] BoxCollider EndTriggerZone;
     [SerializeField] AnimationClip EndSceneAnimation;
     [SerializeField] GameObject EndSceneGameObject; 
 
-    // Start is called before the first frame update
     public void TriggerEndEvent()
     {
         EndSceneGameObject.SetActive(true); 

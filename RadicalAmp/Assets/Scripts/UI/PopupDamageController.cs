@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Experimental.VFX;
+﻿using UnityEngine;
 
 public class PopupDamageController : MonoBehaviour
 {
@@ -16,7 +13,6 @@ public class PopupDamageController : MonoBehaviour
 
         canvas = GameObject.FindWithTag("Canvas");
     }
-
 
     public void CreatePopupText(string text, Transform location)
     {

@@ -15,7 +15,7 @@ CONTENTS OF THIS FILE
 INTRODUCTION
 ------------
 
-Rave Cage Carnage is arhythm-based ability slasher set in an absurd fighting competition in the Metrodome.
+Rave Cage Carnage is a rhythm-based ability slasher set in an absurd fighting competition in the Metrodome.
 
  * To track changes or view our Project Branches:
    https://github.com/tonkotsu-games/RaveCageCarnage/

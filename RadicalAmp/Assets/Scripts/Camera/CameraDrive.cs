@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class CameraDrive : MonoBehaviour
@@ -45,7 +43,6 @@ public class CameraDrive : MonoBehaviour
         ChangeCameraState(CameraStates.ZoomedOut);
     }
 
-    // Update is called once per frame
     void Update()
     {
         UpdateCameraPos();

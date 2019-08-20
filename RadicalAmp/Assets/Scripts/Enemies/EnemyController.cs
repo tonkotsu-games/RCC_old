@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] int preStart;
+
     public static bool movementLocked = false;
     private NavMeshAgent agent;
     private TestFight testFight;
     private EnemyAttack enemyAttack;
-    private BeatStrike beatStrike;
+    [SerializeField] private BeatAnalyse beat;
 
     private bool startAttackbreak = true;
 
@@ -35,7 +37,6 @@ public class EnemyController : MonoBehaviour
         {
             testFight = GameObject.FindWithTag("TestFight").GetComponent<TestFight>();
         }
-        beatStrike = GameObject.FindWithTag("Player").GetComponent<BeatStrike>();
         enemyAttack = transform.GetComponentInChildren<EnemyAttack>();
         target = GameObject.FindWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -74,14 +75,14 @@ public class EnemyController : MonoBehaviour
                 enemyAnim.SetBool("cruising", false);
                 if (testFight.windUp)
                 {
-                    if (canAttack && beatStrike.IsOnBeat())
+                    if (canAttack && beat.IsOnBeat(preStart))
                     {
                         WindUP();
                     }
                 }
                 else
                 {
-                    if (canAttack && beatStrike.IsOnBeat())
+                    if (canAttack && beat.IsOnBeat(preStart))
                     {
                         Attack();
                     }

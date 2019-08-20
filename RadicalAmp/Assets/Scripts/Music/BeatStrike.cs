@@ -4,6 +4,7 @@ using UnityEngine.Experimental.VFX;
 
 public class BeatStrike : MonoBehaviour
 {
+    public static BeatStrike instance;
     private Slider juiceMeter;
     private AudioSource wave;
 
@@ -32,6 +33,18 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] int dancePunish;
     [SerializeField] int idlePunish;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    // Start is called before the first frame update
     void Start()
     {
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
@@ -48,38 +61,73 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
-                juiceMeter.value += dashReward;
-                particleLeft.Play();
-                particleRight.Play();
-                action = true;
-            }else
+                if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
+                {
+                    EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Dash);
+                }
+
+                else
+                {
+                    juiceMeter.value += dashReward;
+                    particleLeft.Play();
+                    particleRight.Play();
+                    action = true;
+                }
+            }
+
+            else
             {
                 juiceMeter.value -= dashPunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         else if (Input.GetButtonDown("Attack"))
         {
             if(IsOnBeat())
             {
-                juiceMeter.value += attackReward;
-                beatAttack = true;
-                action = true;
+                if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
+                {
+                    EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
+                }
+
+                else
+                {
+                    juiceMeter.value += attackReward;
+                    beatAttack = true;
+                    action = true;
+                }
             }
             else
             {
                 juiceMeter.value -= attackPunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         else if(Input.GetButtonDown("Dance"))
         {
-            if(IsOnBeat())
+            if (IsOnBeat())
             {
                 juiceMeter.value += danceReward;
                 action = true;
+
+                switch (EnhancedSkills.instance.currentEnhancedState) {
+                    case EnhancedSkills.EnhancedState.Inactive:
+                            EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.First);
+                        break;
+                    case EnhancedSkills.EnhancedState.First:
+                        EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Second);
+                        break;
+                    case EnhancedSkills.EnhancedState.Second:
+                        EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Active);
+                        break;
+
+
+                }
             }
             else
             {
                 juiceMeter.value -= dancePunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         Punishing();

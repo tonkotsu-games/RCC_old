@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2376197077615582356}
   - component: {fileID: 4802563326353244761}
   - component: {fileID: 4802563326353244760}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Slash_Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4747,7 +4747,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: a5834335544f671418c2adb1939ebd92, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4786,7 +4786,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 4300000, guid: 3222721ddfff0634bb3479d21aa76540, type: 3}
+  m_Mesh: {fileID: 4300000, guid: e4a701d43533db54c9b292a8c831136c, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4906,7 +4906,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 0.8
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -5075,7 +5075,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9500,7 +9500,7 @@ GameObject:
   - component: {fileID: 6579551793364365776}
   - component: {fileID: 6579551793364365782}
   - component: {fileID: 6579551793364365777}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Weapon Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9603,9 +9603,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 1
-      minScalar: 0.1
+      minMaxState: 0
+      scalar: 3
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9772,9 +9772,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.1
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.3
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9825,7 +9825,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -9878,7 +9878,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -10354,7 +10354,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 2
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10479,13 +10479,22 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 1
-          value: 0
-          inSlope: 0
-          outSlope: 0
+          time: 0.86121714
+          value: 0.77376854
+          inSlope: -0.9522813
+          outSlope: -0.9522813
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0
+          inWeight: 0.33333334
+          outWeight: 0.6675891
+        - serializedVersion: 3
+          time: 0.99653983
+          value: 0.3869456
+          inSlope: -5.076344
+          outSlope: -5.076344
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.15342076
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -13368,23 +13377,23 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.01
+    minVertexDistance: 0.001
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 1
     dieWithParticles: 1
     sizeAffectsWidth: 1
-    sizeAffectsLifetime: 0
+    sizeAffectsLifetime: 1
     inheritParticleColor: 0
-    generateLightingData: 1
+    generateLightingData: 0
     splitSubEmitterRibbons: 0
     attachRibbonsToTransform: 0
     colorOverLifetime:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 0.81237173, b: 1, a: 1}
+      maxColor: {r: 0, g: 0.723927, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0.903517, b: 1, a: 1}
@@ -13500,7 +13509,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 1
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.509434, g: 0, b: 0.35210875, a: 1}
+      maxColor: {r: 0.8426008, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 0, g: 0.58837676, b: 1, a: 1}
@@ -14196,7 +14205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6579551794411739295}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WTrail_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14229,7 +14238,7 @@ GameObject:
   - component: {fileID: 8230936541771322937}
   - component: {fileID: 8230936541774190105}
   - component: {fileID: 8230936541773092057}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14310,7 +14319,7 @@ GameObject:
   - component: {fileID: 8230936541771322939}
   - component: {fileID: 8230936541774190107}
   - component: {fileID: 8230936541773092059}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pPlane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14387,7 +14396,7 @@ GameObject:
   - component: {fileID: 8230936541771322941}
   - component: {fileID: 8230936541774190109}
   - component: {fileID: 8230936541773092061}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pPlane2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14465,7 +14474,7 @@ GameObject:
   - component: {fileID: 4415609467691805946}
   - component: {fileID: 772310762404310398}
   - component: {fileID: 1242325213478896755}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Protagonist_Sword
   m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
@@ -14481,7 +14490,7 @@ Transform:
   m_GameObject: {fileID: 8230936541770828319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.154027, y: -1.787767, z: -34.512352}
-  m_LocalScale: {x: 3.2276998, y: 3.2276998, z: 3.2276998}
+  m_LocalScale: {x: 1.8798784, y: 1.8798794, z: 1.8798789}
   m_Children:
   - {fileID: 8230936541771322937}
   - {fileID: 4802563326353244758}
@@ -14518,7 +14527,6 @@ MonoBehaviour:
   enemyHitSound:
   - {fileID: 8300000, guid: bb09aceafa6f3464ba6fc2c9c68aff75, type: 3}
   - {fileID: 8300000, guid: 944d0e69cdbd2fa40946a86dd4cbcf06, type: 3}
-  - {fileID: 8300000, guid: 2129790a5f831d64b8117e6f4a6a8447, type: 3}
   damage: 0
 --- !u!82 &1242325213478896755
 AudioSource:

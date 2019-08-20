@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
 
 public class EndSceneScript : MonoBehaviour
@@ -20,7 +18,5 @@ public class EndSceneScript : MonoBehaviour
     {
         yield return new WaitForSeconds(EndSceneAnimation.length);
         SceneManager.LoadScene("Start_Menu", LoadSceneMode.Single);
-    }
-
-   
+    }  
 }

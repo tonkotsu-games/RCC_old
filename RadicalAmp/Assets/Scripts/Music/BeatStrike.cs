@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.VFX;
 
-
 public class BeatStrike : MonoBehaviour
 {
+    public static BeatStrike instance;
     private Slider juiceMeter;
-
     private AudioSource wave;
+
+    private PlayerController player;
 
     [SerializeField] VisualEffect particleLeft;
     [SerializeField] VisualEffect particleRight;
@@ -34,17 +33,27 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] int dancePunish;
     [SerializeField] int idlePunish;
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
         juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
         particleLeft.Stop();
         particleRight.Stop();
+        player = GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -52,38 +61,73 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
-                juiceMeter.value += dashReward;
-                particleLeft.Play();
-                particleRight.Play();
-                action = true;
-            }else
+                if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
+                {
+                    EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Dash);
+                }
+
+                else
+                {
+                    juiceMeter.value += dashReward;
+                    particleLeft.Play();
+                    particleRight.Play();
+                    action = true;
+                }
+            }
+
+            else
             {
                 juiceMeter.value -= dashPunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         else if (Input.GetButtonDown("Attack"))
         {
             if(IsOnBeat())
             {
-                juiceMeter.value += attackReward;
-                beatAttack = true;
-                action = true;
+                if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
+                {
+                    EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
+                }
+
+                else
+                {
+                    juiceMeter.value += attackReward;
+                    beatAttack = true;
+                    action = true;
+                }
             }
             else
             {
                 juiceMeter.value -= attackPunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         else if(Input.GetButtonDown("Dance"))
         {
-            if(IsOnBeat())
+            if (IsOnBeat())
             {
                 juiceMeter.value += danceReward;
                 action = true;
+
+                switch (EnhancedSkills.instance.currentEnhancedState) {
+                    case EnhancedSkills.EnhancedState.Inactive:
+                            EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.First);
+                        break;
+                    case EnhancedSkills.EnhancedState.First:
+                        EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Second);
+                        break;
+                    case EnhancedSkills.EnhancedState.Second:
+                        EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Active);
+                        break;
+
+
+                }
             }
             else
             {
                 juiceMeter.value -= dancePunish;
+                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
             }
         }
         Punishing();
@@ -104,7 +148,7 @@ public class BeatStrike : MonoBehaviour
             punish = false;
         }
 
-        if (PlayerController.dashTime <= 0)
+        if (player.dashTimer.timeCurrent <= 0)
         {
             particleLeft.Stop();
             particleRight.Stop();
@@ -117,7 +161,6 @@ public class BeatStrike : MonoBehaviour
         timeSample = wave.timeSamples - reactionTime;
         for (int i = 0; i < BeatAnalyse.beatStarts.Count; i++)
         {
-            //Debug.Log(beat.beatStarts[i]);
             if (timeSample >= (BeatAnalyse.beatStarts[i] - windowTrigger) &&
                 timeSample <= (BeatAnalyse.beatStarts[i] + windowTrigger))
             {

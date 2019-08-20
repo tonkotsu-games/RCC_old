@@ -1,19 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
 
     private float horizontalMove;
     private float verticalMove;
-    private float actuellSpeedHorizontal;
-    private float actuellSpeedVertical;
     private float accelerationHorizonatl;
     private float accelerationVertical;
+    private float actuellSpeedHorizontal;
+    private float actuellSpeedVertical;
 
-
-    public static float dashTime;
 
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
@@ -22,11 +18,14 @@ public class PlayerController : MonoBehaviour
 
     [Header("Settings for the dash")]
     [SerializeField] float dashSpeed;
-    [SerializeField] float dashStartTime;
+    [SerializeField] float dashTime;
+    [SerializeField] GameObject dashParticlesPrefab;
 
-    Vector3 heading;
-    Vector3 dashdirection;
-    Vector3 moveDirection;
+    private Vector3 moveDirection;
+    private Vector3 heading;
+    private Vector3 dashdirection;
+    private Vector3 moveVector;
+
 
     bool dashing = false;
     bool dash = false;
@@ -41,6 +40,7 @@ public class PlayerController : MonoBehaviour
     
     Animator anim;
     Rigidbody rigi;
+    public Timer dashTimer = new Timer();
 
     [Header("Life setting")]
     public int life = 3;
@@ -54,8 +54,6 @@ public class PlayerController : MonoBehaviour
     //gibt an, welcher Dancemove abgespielt werden soll
     private int dancemove;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         respawn = GameObject.FindWithTag("Respawn").GetComponent<Respawn>();
@@ -67,7 +65,7 @@ public class PlayerController : MonoBehaviour
         dancing = false;
         attack1DONE = false;
 
-        dashTime = dashStartTime;
+        dashTimer.Start(dashTime);
 
         dancemove = 0;
 
@@ -81,10 +79,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Debug.Log(dancemove);
+
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
 
@@ -95,7 +92,6 @@ public class PlayerController : MonoBehaviour
         {
             if (attack1DONE == false)
             {
-                //Debug.Log("attack1");
                 anim.Play("Attack", 0, 0);
                 attack = true;
                 my_audioSource.clip = slashClip;
@@ -104,7 +100,6 @@ public class PlayerController : MonoBehaviour
             }
             else 
             {
-                //Debug.Log("Attack2");
                 anim.Play("Attack2", 0, 0);
                 attack = true;
                 my_audioSource.clip = slashClip;
@@ -180,6 +175,8 @@ public class PlayerController : MonoBehaviour
             heading = new Vector3(Input.GetAxisRaw("Horizontal"),
                                   0,
                                   Input.GetAxisRaw("Vertical"));
+            heading = heading.normalized;
+
             anim.SetBool("running", true);
             Turn();
         }
@@ -199,34 +196,20 @@ public class PlayerController : MonoBehaviour
         actuellSpeedHorizontal = acceleration * horizontalMove;
         actuellSpeedVertical = acceleration * verticalMove;
 
+        moveVector = new Vector3(actuellSpeedHorizontal, 0f, actuellSpeedVertical);
 
-        if (actuellSpeedHorizontal >= movementSpeed)
-        {
-            actuellSpeedHorizontal = movementSpeed;
-        }
-        else if (actuellSpeedHorizontal <= -movementSpeed)
-        {
-            actuellSpeedHorizontal = -movementSpeed;
-        }
-        if (actuellSpeedVertical >= movementSpeed)
-        {
-            actuellSpeedVertical = movementSpeed;
-        }
-        else if (actuellSpeedVertical <= -movementSpeed)
-        {
-            actuellSpeedVertical = -movementSpeed;
-        }
+        moveVector = moveVector.normalized * movementSpeed;
 
-        rigi.velocity = new Vector3(actuellSpeedHorizontal,
+        rigi.velocity = new Vector3(moveVector.x,
                                     0,
-                                    actuellSpeedVertical);
+                                    moveVector.z);
         
     }
     void Gravity()
     {
-        rigi.velocity = new Vector3(actuellSpeedHorizontal,
+        rigi.velocity = new Vector3(moveVector.x,
                                     -10,
-                                    actuellSpeedVertical);
+                                    moveVector.z);
     }
     /// <summary>
     /// Function for dashing in the direction you are facing
@@ -237,24 +220,24 @@ public class PlayerController : MonoBehaviour
         {
             if (dash)
             {
-                //Debug.Log("Dashing");
                 dashdirection = heading;
                 dashing = true;
                 attack = false;
+                SpawnDashParticles();
             }
         }
         else
         {
-            if(dashTime <= 0)
+            if(dashTimer.timeCurrent <= 0)
             {
                 dashing = false;
                 rigi.velocity = Vector3.zero;
-                dashTime = dashStartTime;
+                dashTimer.ResetTimer();
                 dash = false;
             }
             else
             {
-                dashTime -= Time.deltaTime;
+                dashTimer.Tick();
                 rigi.velocity += dashdirection * dashSpeed;
             }
         }
@@ -278,7 +261,6 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("dance", false);
         anim.SetBool("dance2", false);
         anim.SetBool("dance3", false);
-        //Debug.Log("Dancing End");
     }
     public void AfterDash()
     {
@@ -294,5 +276,16 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("backtoidle", true);
         DeadDisable.enabled = true;
+    }
+
+    private void SpawnDashParticles()
+    {
+        Debug.Log("Spawning Dash Particles");
+        GameObject particlesInstance = Instantiate(dashParticlesPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+        particlesInstance.GetComponent<FollowPosition>().followTarget = gameObject.transform;
+        particlesInstance.gameObject.transform.Rotate(-90,0,0);
+        ParticleSystem parts = particlesInstance.GetComponentInChildren<ParticleSystem>();
+        float totalDuration = parts.main.duration + parts.main.startLifetime.constant + parts.main.startDelay.constant;
+        Destroy(particlesInstance, totalDuration);
     }
 }

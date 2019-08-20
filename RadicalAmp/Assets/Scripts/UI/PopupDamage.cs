@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PopupDamage : MonoBehaviour
@@ -8,7 +6,6 @@ public class PopupDamage : MonoBehaviour
     Animator anim;
     Text popupText;
 
-    // Start is called before the first frame update
     void OnEnable()
     {
         anim = GameObject.FindWithTag("PopupDamage").GetComponent<Animator>();

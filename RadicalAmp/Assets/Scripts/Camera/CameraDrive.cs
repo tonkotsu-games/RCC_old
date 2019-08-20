@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class CameraDrive : MonoBehaviour
@@ -17,7 +15,6 @@ public class CameraDrive : MonoBehaviour
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 pos = new Vector3();

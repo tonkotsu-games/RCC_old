@@ -2239,7 +2239,6 @@ GameObject:
   - component: {fileID: 7863820156969122713}
   - component: {fileID: 3687477414548164296}
   - component: {fileID: 4742717119297278421}
-  - component: {fileID: 4099326297106252747}
   - component: {fileID: 1061071853413140663}
   m_Layer: 0
   m_Name: SpeedBunny
@@ -2277,7 +2276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52136f93fcfe4422493b295d7772bd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lr: 15
+  preStart: 1000
+  beat: {fileID: 0}
+  lr: 8
   distance: 0
   AttackBreak: 2
   canAttack: 1
@@ -2310,7 +2311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dc779c8e611a343ab0a925945fc5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ar: 5
+  ar: 1.92
   agent: {fileID: 0}
 --- !u!136 &7863820156969122713
 CapsuleCollider:
@@ -2367,21 +2368,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4099326297106252747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2886441635680219449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23746e01f8a51e4438c2c0339ce44e5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!54 &1061071853413140663
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2544,11 +2530,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 23.480001
-      objectReference: {fileID: 0}
-    - target: {fileID: 3590074663386793804, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350a954e4722165498ee6058a3b41cfb, type: 3}

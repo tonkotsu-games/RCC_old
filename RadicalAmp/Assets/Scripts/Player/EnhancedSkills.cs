@@ -10,6 +10,7 @@ public class EnhancedSkills : MonoBehaviour
     public enum EnhancedState { First, Second, Active ,Inactive}
     [HideInInspector]
     public enum ActionsToEnhance { Attack,Dash}
+    [SerializeField] GameObject enhancedDashHitbox;
 
     public EnhancedState currentEnhancedState;
 
@@ -71,8 +72,17 @@ public class EnhancedSkills : MonoBehaviour
 
     public void UseEnhancedSkill (ActionsToEnhance baseSkill)
     {
+        if(baseSkill == ActionsToEnhance.Dash)
+        {
+            EnhanceDash();
+        }
         ChangeEnhancedState(EnhancedState.Inactive);
         Debug.Log("Using Enhanced " + baseSkill);
     }
 
+
+    public void EnhanceDash()
+    { 
+        enhancedDashHitbox.SetActive(true);
+    }
 }

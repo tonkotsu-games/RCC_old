@@ -20,10 +20,11 @@ public class SpotlightGroup : MonoBehaviour
     }
     public void EnableLights(int lightNumber)
     {
+        lights[lightNumber].SetActive(true);
+
         transform.position = player.position + offset;
         lights[lightNumber].GetComponent<SpotlightIndividual>().GetComponent<Animator>().SetBool("isActive", true);
-        lights[lightNumber].SetActive(true);
-        lights[lightNumber].GetComponent<SpotlightIndividual>().GetComponent<Animator>().SetBool("isActive", true);
+        lights[lightNumber].GetComponent<SpotlightIndividual>().isActive = true;
 
     }
 
@@ -31,8 +32,10 @@ public class SpotlightGroup : MonoBehaviour
     {
         foreach (GameObject g in lights)
         {
-            g.GetComponent<SpotlightIndividual>().isActive = false;
-            g.GetComponent<SpotlightIndividual>().GetComponent<Animator>().SetBool("isActive", false);
+            if (g.GetComponent<SpotlightIndividual>().isActive)
+            {
+                g.GetComponent<SpotlightIndividual>().GetComponent<Animator>().SetBool("isActive", false);
+            }
         }
     }
 }

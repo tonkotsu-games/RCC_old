@@ -6,16 +6,18 @@ using UnityEngine;
 public class CharacterScriptableObject : ScriptableObject
 {
     [Header("---Info-------")]
-    public string characterName;
-    [Header("---Stats-------")]
-    [Tooltip("Maximum HP of the character.")]
-    public int healthMax;
+    public string characterName;    
 
     [Tooltip("Current HP of the chracter.")]
     public int healthCurrent;
 
     [Header("---Prefab-------")]
     public GameObject characterPrefab;
+
+    [Header("---Stats-------")]
+    [Tooltip("Maximum HP of the character.")]
+    public int healthMax;
+    public float idleDuration;
 
     void Init()
     {

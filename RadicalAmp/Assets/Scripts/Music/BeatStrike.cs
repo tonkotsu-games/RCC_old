@@ -59,7 +59,9 @@ public class BeatStrike : MonoBehaviour
 
         if (Input.GetButtonDown("Dash"))
         {
-            if(IsOnBeat())
+            //Reenable collision through Animation Event after Dash
+            Physics.IgnoreLayerCollision(9, 13, true);
+            if (IsOnBeat())
             {
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
@@ -222,5 +224,15 @@ public class BeatStrike : MonoBehaviour
             Gizmos.DrawLine(displacement + new Vector3(wave.timeSamples * widthMulti, 0, 0), displacement + new Vector3(wave.timeSamples * widthMulti, heightMulti, 0));
         }
 
+
+
     }
+
+    //Reenable Player collision with enemies - called through animation event at the end of dash
+    public void EnableColliders()
+    {
+        Physics.IgnoreLayerCollision(9, 13, false);
+
+    }
+
 }

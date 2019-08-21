@@ -59,13 +59,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6245090826272512444}
-  m_LocalRotation: {x: -0.102517635, y: 0.0034148763, z: -0.019736864, w: 0.9945295}
-  m_LocalPosition: {x: 0.0004, y: 0.512, z: 0.0182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6245090826272212378}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -11.758, y: 0.634, z: -2.3390002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6245090826275636664
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -137,10 +137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1c94ff478678945bee2d58d0ebd0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: {fileID: 0}
   attack: {fileID: 0}
-  damage: 1
   playerHitSound: {fileID: 8300000, guid: bb09aceafa6f3464ba6fc2c9c68aff75, type: 3}
   enemySoundSource: {fileID: 7655730288245362682}
+  damage: 1
 --- !u!82 &7655730288245362682
 AudioSource:
   m_ObjectHideFlags: 0

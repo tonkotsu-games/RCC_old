@@ -7,7 +7,6 @@ public class BeatStrike : MonoBehaviour
     public static BeatStrike instance;
     private Slider juiceMeter;
     private AudioSource wave;
-
     private PlayerController player;
 
     [SerializeField] VisualEffect particleLeft;

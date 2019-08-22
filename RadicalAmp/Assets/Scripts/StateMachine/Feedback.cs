@@ -5,10 +5,13 @@ using UnityEngine;
 public class Feedback : MonoBehaviour
 {
     private CharacterScriptableObject actorData;
-    private Animator animator;
+    protected Animator animator;
 
     [SerializeField] 
     private AnimationClip awakeAnimation;
+    
+    public AnimationClip attackAnimation;
+
 
     private void Awake()
     {
@@ -24,11 +27,21 @@ public class Feedback : MonoBehaviour
         }
 
         animator = this.gameObject.GetComponentInChildren<Animator>();
+
+        if(attackAnimation == null)
+        {
+            Debug.LogError("Attack Animation not setup in " + this.gameObject.name);
+        }
     }
 
     public void PlayAwake()
     {
 
+    }
+
+    public virtual void PlayAnimationForState(string state)
+    {
+        
     }
 
 }

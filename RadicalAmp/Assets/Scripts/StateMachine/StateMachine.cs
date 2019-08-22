@@ -7,31 +7,33 @@ public class StateMachine
     private IState stateCurrent;
     private IState statePrevious;
 
+    public IState StateCurrent { get => stateCurrent; private set => stateCurrent = value; }
+
     public void ChangeState(IState newState)
     {
         Debug.Log("Changing State");
 
-        if(stateCurrent != null)
+        if(StateCurrent != null)
         {
-            stateCurrent.Exit();
+            StateCurrent.Exit();
         }
 
-        statePrevious = stateCurrent;
-        stateCurrent = newState;
-        stateCurrent.Enter();
+        statePrevious = StateCurrent;
+        StateCurrent = newState;
+        StateCurrent.Enter();
     }
 
     public void StateExecuteTick()
     {
         //Debug.Log("StateExecuteTick");
-        if(stateCurrent != null)
+        if(StateCurrent != null)
         {
-            stateCurrent.Execute();
+            StateCurrent.Execute();
         }
     }
 
     public void ReturnToPreviousState()
     {
-        stateCurrent = statePrevious;
+        StateCurrent = statePrevious;
     }
 }

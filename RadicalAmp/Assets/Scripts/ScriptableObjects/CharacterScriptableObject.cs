@@ -18,6 +18,8 @@ public class CharacterScriptableObject : ScriptableObject
     [Tooltip("Maximum HP of the character.")]
     public int healthMax;
     public float idleDuration;
+    [Range(.5f, 5f)]
+    public float meleeAttackRange = 3.65f;
 
     void Init()
     {

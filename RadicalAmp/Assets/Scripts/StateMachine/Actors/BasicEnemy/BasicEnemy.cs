@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(BeathovenFeedback))]
-public class Beathoven : Actor
+[RequireComponent(typeof(BasicEnemyFeedback))]
+public class BasicEnemy : Actor
 {
+    public int healthCurrent;
+    
     public NavMeshAgent navMeshAgent = null;
 
-    public BossScriptableObject bossData = null;
+    public BasicEnemyScriptableObject basicEnemyData = null;
 
     private Transform player;
 
@@ -20,13 +22,13 @@ public class Beathoven : Actor
 
     private void Awake()
     {
-        if(bossData == null)
+        if(basicEnemyData == null)
         {
-            Debug.LogError("bossData not set up!");
+            Debug.LogError("basicEnemyData not set up!");
             return;
         }
 
-        bossData.healthCurrent = bossData.healthMax;
+        healthCurrent = basicEnemyData.healthMax;
 
         if(beatanalyse == null)
         {
@@ -52,12 +54,12 @@ public class Beathoven : Actor
 
     public void OnDrawGizmosSelected()
     {
-        if(bossData!=null)
+        if(basicEnemyData!=null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, bossData.aggroRange);
+            Gizmos.DrawWireSphere(transform.position, basicEnemyData.aggroRange);
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, bossData.meleeAttackRange);
+            Gizmos.DrawWireSphere(transform.position, basicEnemyData.meleeAttackRange);
         }
     }
 
@@ -81,14 +83,14 @@ public class Beathoven : Actor
         {
             Debug.Log("player " + player.position + " beathoven " + this.gameObject.transform.position );
             //Attack Player in Melee AttackRange
-            if (Vector3.Distance(player.position, this.gameObject.transform.position) < bossData.meleeAttackRange)
+            if (Vector3.Distance(player.position, this.gameObject.transform.position) < basicEnemyData.meleeAttackRange)
             {
                 StateMachine.ChangeState(new Attack(this, player));
             }
             //Walk to Player in AggroRange
-            else if(Vector3.Distance(player.position, this.gameObject.transform.position) < bossData.aggroRange)
+            else if(Vector3.Distance(player.position, this.gameObject.transform.position) < basicEnemyData.aggroRange)
             {
-                StateMachine.ChangeState(new WalkTo(this, player, navMeshAgent, bossData.aggroRange, ActorData.meleeAttackRange));
+                StateMachine.ChangeState(new WalkTo(this, player, navMeshAgent, basicEnemyData.aggroRange, ActorData.meleeAttackRange));
             }
         }
         else
@@ -102,7 +104,7 @@ public class Beathoven : Actor
         if(StateMachine.StateCurrent is Idle)
         {
             Debug.Log("Choosing to Search");
-            StateMachine.ChangeState(new SearchFor(gameObject, bossData.aggroRange, "Player", ChooseBehaviourAfterIdle));
+            StateMachine.ChangeState(new SearchFor(gameObject, basicEnemyData.aggroRange, "Player", ChooseBehaviourAfterIdle));
         }
         else if(StateMachine.StateCurrent is WalkTo)
         {

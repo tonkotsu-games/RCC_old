@@ -13,6 +13,9 @@ public class Actor : MonoBehaviour
 
     public virtual CharacterScriptableObject ActorData { get => actorData; private set => actorData = value; }
 
+    public bool windupFinished;
+    public bool attacking = false;
+
     private void Update()
     {
         StateMachine.StateExecuteTick();
@@ -21,5 +24,15 @@ public class Actor : MonoBehaviour
     public virtual void ChooseBehaviour()
     {
 
+    }
+
+    public virtual void FaceTarget()
+    {
+
+    }
+
+    public virtual bool CheckBeat(IState state)
+    {
+        return false;
     }
 }

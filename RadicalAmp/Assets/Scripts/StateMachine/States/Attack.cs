@@ -6,29 +6,56 @@ public class Attack : IState
 {
     private Actor actor;
     private bool animationFinished;
-    public Attack(Actor actor)
+    private Transform target;
+    private bool hasToCheck;
+    
+    public Attack(Actor actor, Transform target)
     {
         this.actor = actor;
+        this.target = target;
     }
 
     public void Enter()
     {
         Debug.Log("now Attacking");
         animationFinished = false;
-        actor.StartCoroutine(PlayAttack());
+        hasToCheck = true;
     }
 
     public IEnumerator PlayAttack()
     {
        //actor.gameObject.GetComponent<Feedback>().NewStateAnimation("attack");
        animationFinished = false;
-       yield return new WaitForSeconds(5);
+       actor.attacking = true;
+       yield return new WaitForSeconds(actor.GetComponent<Feedback>().attackAnimation.length);
        animationFinished = true;
+       actor.attacking = false;
        yield break;
     }
 
     public void Execute()
     {
+        if(hasToCheck)
+        {
+            if(actor.CheckBeat(this))
+            {
+                actor.GetComponent<Feedback>().PlayAnimationForState("windUp");
+                hasToCheck = false;
+            }
+        }
+
+        if(!actor.windupFinished)
+        {
+            actor.FaceTarget();
+        }
+
+        if(actor.windupFinished)
+        {
+            actor.StartCoroutine(PlayAttack());
+            actor.windupFinished = false;
+            Debug.Log("Start Coroutine in Attack");
+        }
+
         if(animationFinished)
         {
             Debug.Log("Attack Finished");
@@ -39,6 +66,6 @@ public class Attack : IState
 
     public void Exit()
     {
-
+        
     }
 }

@@ -166,8 +166,8 @@ public class TiffanyController : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(1, 1, 500, 500), "Current TiffTarget: " + target.name);
-        GUI.Label(new Rect(1,10, 500, 500), "Current TiffState: " + currentTiffState);
+        //GUI.Label(new Rect(1, 1, 500, 500), "Current TiffTarget: " + target.name);
+        //GUI.Label(new Rect(1,10, 500, 500), "Current TiffState: " + currentTiffState);
 
     }
 }

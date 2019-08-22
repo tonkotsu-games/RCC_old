@@ -30,4 +30,9 @@ public class Actor : MonoBehaviour
     {
 
     }
+
+    public virtual bool CheckBeat(IState state)
+    {
+        return false;
+    }
 }

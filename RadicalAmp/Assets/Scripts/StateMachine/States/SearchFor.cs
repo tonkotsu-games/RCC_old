@@ -37,7 +37,7 @@ public class SearchFor : IState
 
         for (int i = 0; i < hitObjects.Length; i++)
         {
-            Debug.Log("Searching " + i);
+            //Debug.Log("Searching " + i);
 
             if(hitObjects[i].CompareTag(this.tagToLookFor))
             {

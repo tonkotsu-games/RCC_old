@@ -107,13 +107,12 @@ public class TiffanyController : MonoBehaviour
                     target = allEnemies[Random.Range(0, allEnemies.Length)];               
                     Debug.Log("New Target found: " + target.name);
                     CalculateNextPos();
-                    ChangeTiffState(TiffStates.MoveToNewTarget);
                     break;
 
                 case TiffStates.MoveToNewTarget:                
                     currentTiffState = TiffStates.MoveToNewTarget;
                     agent.isStopped = false;
-                    agent.destination = newPos;
+                   
                     break;
 
                 case TiffStates.Streaming:
@@ -128,7 +127,6 @@ public class TiffanyController : MonoBehaviour
                     CalculateNextPos();
                     StopCoroutine("TiffChangeCooldown");
                     Debug.Log("ATTENTIONWHORE!!!");
-                    ChangeTiffState(TiffStates.MoveToNewTarget);
 
                     break;
             }
@@ -143,6 +141,8 @@ public class TiffanyController : MonoBehaviour
         newPos.y = target.transform.position.y;
         newPos.z = target.transform.position.z + distanceFromPlayer * Mathf.Sin(Angle);
         newPos = new Vector3(newPos.x, newPos.y, newPos.z);
+        agent.destination = newPos;
+        ChangeTiffState(TiffStates.MoveToNewTarget);
     }  
 
     IEnumerator TiffChangeCooldown()

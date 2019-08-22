@@ -416,12 +416,12 @@ PrefabInstance:
     - target: {fileID: 2886441635679989017, guid: fd9067e68d35d014ea4f0809eee2e242,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.64
+      value: 28.45
       objectReference: {fileID: 0}
     - target: {fileID: 2886441635679989017, guid: fd9067e68d35d014ea4f0809eee2e242,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.673
+      value: 21.704
       objectReference: {fileID: 0}
     - target: {fileID: 2886441635679989017, guid: fd9067e68d35d014ea4f0809eee2e242,
         type: 3}
@@ -910,12 +910,12 @@ PrefabInstance:
     - target: {fileID: 7373087229006544454, guid: 0b6cbb5430773514c8aff7295574d27a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.21
+      value: 27.19
       objectReference: {fileID: 0}
     - target: {fileID: 7373087229006544454, guid: 0b6cbb5430773514c8aff7295574d27a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.8
+      value: -12.56
       objectReference: {fileID: 0}
     - target: {fileID: 7373087229006544454, guid: 0b6cbb5430773514c8aff7295574d27a,
         type: 3}
@@ -962,6 +962,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1270862826}
+    - target: {fileID: 7373087229006544462, guid: 0b6cbb5430773514c8aff7295574d27a,
+        type: 3}
+      propertyPath: distanceFromPlayer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b6cbb5430773514c8aff7295574d27a, type: 3}
 --- !u!224 &3434047117960580141 stripped
@@ -1182,7 +1187,7 @@ PrefabInstance:
     - target: {fileID: 837846167589711004, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.59
+      value: 21.699
       objectReference: {fileID: 0}
     - target: {fileID: 837846167589711004, guid: f12dcb6fa918fa24db161e0655b9a15c,
         type: 3}
@@ -1244,6 +1249,16 @@ PrefabInstance:
       propertyPath: spotlights
       value: 
       objectReference: {fileID: 1740398177}
+    - target: {fileID: 837846167584537662, guid: f12dcb6fa918fa24db161e0655b9a15c,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.9900956
+      objectReference: {fileID: 0}
+    - target: {fileID: 837846167584537662, guid: f12dcb6fa918fa24db161e0655b9a15c,
+        type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f12dcb6fa918fa24db161e0655b9a15c, type: 3}
 --- !u!1001 &8999327345771175845

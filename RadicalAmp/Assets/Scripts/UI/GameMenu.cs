@@ -27,6 +27,7 @@ public class GameMenu : MonoBehaviour
             menuOpen = true;
             menu.SetActive(true);
             Time.timeScale = 0;
+            GameState.TryChangeState(GameState.State.Pause);
         }
         else if(Input.GetButtonDown("Start") && menuOpen)
         {
@@ -38,6 +39,7 @@ public class GameMenu : MonoBehaviour
             menuOpen = false;
             menu.SetActive(false);
             Time.timeScale = 1;
+            GameState.TryChangeState(GameState.State.Play);
         }
     }
     public void Exit()
@@ -45,7 +47,7 @@ public class GameMenu : MonoBehaviour
         menuOpen = false;
         menu.SetActive(false);
         Time.timeScale = 1;
-        SceneManager.LoadScene("Start_Menu");
+        GameState.TryChangeState(GameState.State.Menue);
     }
     public void Resume()
     {
@@ -57,5 +59,6 @@ public class GameMenu : MonoBehaviour
         menuOpen = false;
         menu.SetActive(false);
         Time.timeScale = 1;
+        GameState.TryChangeState(GameState.State.Play);
     }
 }

@@ -10,8 +10,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-		SceneManager.LoadScene("Metrodome", LoadSceneMode.Additive);
+        GameState.TryChangeState(GameState.State.Play);
     }
 
     public void Options()
@@ -34,8 +33,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame ()
     {
-        Application.Quit();
-        Debug.Log("Quit Game"); 
+        GameState.TryChangeState(GameState.State.Exit);
     }
 
     public void Credits()

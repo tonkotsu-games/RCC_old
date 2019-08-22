@@ -10,32 +10,34 @@ public class CameraShake : MonoBehaviour
     private Camera mainCam;
 
     [SerializeField] Slider juiceMeter;
+    [SerializeField] BeatAnalyse beat;
 
-    private bool shakeScreen = false;
+    private bool screenShake = false;
     private bool endPoint = false;
     private bool bufferPoint = false;
 
+
+
     private float shakeStart;
-    private float shakeSpeed;
     private float shakeEndCalculated;
     private float shakeBufferCalculated;
-
-    [SerializeField] float shakeEnd;
-    [SerializeField] float shakeBuffer;
+    private float shakeSpeed;
 
 
     private void Start()
     {
         mainCam = GetComponent<Camera>();
         shakeStart = mainCam.fieldOfView;
-        shakeEndCalculated = shakeStart - shakeEnd;
-        shakeBufferCalculated = shakeStart + shakeBuffer;
     }
 
     private void Update()
     {
+        if (!screenShake && beat.IsOnBeat(0))
+        {
+            SpeedCalculation();
+        }
 
-        if(shakeScreen)
+        if (screenShake)
         {
             ScreenShake();
         }
@@ -65,22 +67,21 @@ public class CameraShake : MonoBehaviour
             if(mainCam.fieldOfView <= shakeStart)
             {
                 mainCam.fieldOfView = shakeStart;
-                shakeScreen = false;
                 endPoint = false;
                 bufferPoint = false;
+                screenShake = false;
             }
         }
     }
 
     public void SpeedCalculation()
     {
-        if (!shakeScreen)
+        if (!screenShake)
         {
-            shakeSpeed = juiceMeter.value;
-            if(shakeSpeed > 0)
-            {
-                shakeScreen = true;
-            }
+            shakeEndCalculated = shakeStart + (-0.00005f * Mathf.Pow(juiceMeter.value, 2f));
+            shakeBufferCalculated = shakeStart - (0.000025f * Mathf.Pow(juiceMeter.value, 2f));
+            shakeSpeed = (0.00175f * Mathf.Pow(juiceMeter.value, 2f));
+            screenShake = true;
         }
     }
 }

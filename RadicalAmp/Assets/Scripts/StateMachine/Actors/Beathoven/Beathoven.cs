@@ -13,6 +13,9 @@ public class Beathoven : Actor
 
     private Transform player;
 
+    [SerializeField] BeatAnalyse beatanalyse;
+    [SerializeField] int preStartAttack = 1000;
+
     
 
     private void Awake()
@@ -21,6 +24,13 @@ public class Beathoven : Actor
         {
             Debug.LogError("bossData not set up!");
             return;
+        }
+
+        bossData.healthCurrent = bossData.healthMax;
+
+        if(beatanalyse == null)
+        {
+            Debug.LogError("MusicBox in Beathoven not set up!");
         }
 
         navMeshAgent = this.GetComponent<NavMeshAgent>();
@@ -105,5 +115,18 @@ public class Beathoven : Actor
         Vector3 direction = (player.position - this.gameObject.transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2.5f);
+    }
+
+    public override bool CheckBeat(IState state)
+    {
+        if(state is Attack)
+        {
+            if(beatanalyse.IsOnBeat(preStartAttack))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

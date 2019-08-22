@@ -19,7 +19,7 @@ public class Idle : IState
         actor.GetComponent<Feedback>().PlayAnimationForState("Idle");
         idleDuration = actor.ActorData.idleDuration;
         Debug.Log("Now in Idle");
-        idleDuration += Random.Range(0,1);
+        //idleDuration += Random.Range(0,1);
         Debug.Log("Timer: " + idleDuration);
         idleTimer.Start(idleDuration);
     }

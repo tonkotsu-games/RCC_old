@@ -7,6 +7,7 @@ public class Attack : IState
     private Actor actor;
     private bool animationFinished;
     private Transform target;
+    private bool hasToCheck;
     
     public Attack(Actor actor, Transform target)
     {
@@ -18,7 +19,7 @@ public class Attack : IState
     {
         Debug.Log("now Attacking");
         animationFinished = false;
-        actor.GetComponent<Feedback>().PlayAnimationForState("windUp");
+        hasToCheck = true;
     }
 
     public IEnumerator PlayAttack()
@@ -34,6 +35,15 @@ public class Attack : IState
 
     public void Execute()
     {
+        if(hasToCheck)
+        {
+            if(actor.CheckBeat(this))
+            {
+                actor.GetComponent<Feedback>().PlayAnimationForState("windUp");
+                hasToCheck = false;
+            }
+        }
+
         if(!actor.windupFinished)
         {
             actor.FaceTarget();

@@ -8,6 +8,7 @@ public class TiffanyController : MonoBehaviour
     public static TiffanyController instance;
     private NavMeshAgent agent;
     private GameObject target;
+    Vector3 newPos;
 
     private GameObject[] allEnemies;
     [SerializeField] GameObject player;
@@ -18,9 +19,8 @@ public class TiffanyController : MonoBehaviour
     [SerializeField] float heightOffset;
 
     [Header("FollowTarget Properties")]
-    [SerializeField] float smoothSpeed;
-    [SerializeField] float tiffWaitTime = 5;
-    [SerializeField] float maxRadius = 20;
+    [SerializeField] float distanceFromPlayer = 5;
+    [SerializeField] float tiffWaitTime = 3;
     [SerializeField] bool debugRange = false;
     [SerializeField] float acceleration = 20;
     [SerializeField] float deceleration = 60;
@@ -28,13 +28,10 @@ public class TiffanyController : MonoBehaviour
 
     int layerMask = 1 << 13;
 
-    private Vector3 offset;
-
-
     public enum TiffStates { Streaming,MoveToNewTarget, FindNewTarget, AttentionWhore }
 
     [HideInInspector]
-    public TiffStates currentTiffState;
+    public TiffStates currentTiffState = TiffStates.MoveToNewTarget;
 
     private void Awake()
     {
@@ -51,8 +48,7 @@ public class TiffanyController : MonoBehaviour
     }
     private void Start()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        offset = new Vector3(xOffset, yOffset, 0);
+        agent = gameObject.GetComponent<NavMeshAgent>();   
         ChangeTiffState(TiffStates.FindNewTarget);
     }
 
@@ -69,9 +65,10 @@ public class TiffanyController : MonoBehaviour
         if(currentTiffState == TiffStates.MoveToNewTarget)
         {
             float dist = agent.remainingDistance;
-            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete)
+            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && dist == 0)
             {
-
+                Debug.Log(agent.destination);
+                Debug.Log("target reached");
                 agent.isStopped = true;
                 ChangeTiffState(TiffStates.Streaming);
             }
@@ -79,11 +76,11 @@ public class TiffanyController : MonoBehaviour
 
         else if (currentTiffState == TiffStates.Streaming)
         {
-           // agent.Warp(target.transform.position + offset);
+          
         }
 
-        
-        tiffCam.transform.LookAt(target.transform.position);
+        Transform lookAtTarget = target.GetComponent<TiffTarget>().tiffTarget;
+        tiffCam.transform.LookAt(lookAtTarget);
 
         if(target == null)
         {
@@ -107,21 +104,18 @@ public class TiffanyController : MonoBehaviour
                     currentTiffState = TiffStates.FindNewTarget;
 
                     Debug.Log("Looking for new Target");
-                    //allEnemies = Physics.OverlapSphere(transform.position, maxRadius, layerMask);
-                    target = allEnemies[Random.Range(0, allEnemies.Length)];
-                    
+                    target = allEnemies[Random.Range(0, allEnemies.Length)];               
                     Debug.Log("New Target found: " + target.name);
-                    
+                    CalculateNextPos();
                     ChangeTiffState(TiffStates.MoveToNewTarget);
                     break;
-                case TiffStates.MoveToNewTarget:
-                    
+
+                case TiffStates.MoveToNewTarget:                
                     currentTiffState = TiffStates.MoveToNewTarget;
                     agent.isStopped = false;
-                    agent.destination = target.transform.position;
-                   
-
+                    agent.destination = newPos;
                     break;
+
                 case TiffStates.Streaming:
                     currentTiffState = TiffStates.Streaming;
                     Debug.Log("Starting Timer ");
@@ -131,6 +125,7 @@ public class TiffanyController : MonoBehaviour
                 case TiffStates.AttentionWhore:
                     currentTiffState = TiffStates.AttentionWhore;
                     target = player;
+                    CalculateNextPos();
                     StopCoroutine("TiffChangeCooldown");
                     Debug.Log("ATTENTIONWHORE!!!");
                     ChangeTiffState(TiffStates.MoveToNewTarget);
@@ -141,13 +136,14 @@ public class TiffanyController : MonoBehaviour
         }
     }
 
-   // public void FollowTarget()
-   // {
-   //     Vector3 desiredPosition = target.transform.position;
-   //     Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-   //     agent.SetDestination(smoothedPosition);
-   //     Debug.Log("FollowDone");
-   // }
+     void CalculateNextPos()
+    {
+        float Angle = Random.Range(0,360);
+        newPos.x = target.transform.position.x + distanceFromPlayer * Mathf.Cos(Angle);
+        newPos.y = target.transform.position.y;
+        newPos.z = target.transform.position.z + distanceFromPlayer * Mathf.Sin(Angle);
+        newPos = new Vector3(newPos.x, newPos.y, newPos.z);
+    }  
 
     IEnumerator TiffChangeCooldown()
     {
@@ -159,14 +155,14 @@ public class TiffanyController : MonoBehaviour
     {
         if (debugRange)
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(player.transform.position, maxRadius);
+           // Gizmos.color = Color.yellow;
+           // Gizmos.DrawSphere(player.transform.position, maxRadius);
         }
     }
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(1, 1, 500, 500), "Current TiffTarget: " + target.name);
+        GUI.Label(new Rect(1, 1, 500, 500), "Current TiffTarget: " + target.gameObject.name);
         GUI.Label(new Rect(1,10, 500, 500), "Current TiffState: " + currentTiffState);
 
     }

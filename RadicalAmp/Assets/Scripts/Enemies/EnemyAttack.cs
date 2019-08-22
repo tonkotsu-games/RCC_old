@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
     {
         Debug.Log("Hit: " + hit);
         Debug.Log("Gameobject: " + other.gameObject.tag);
-        Debug.Log("Attack: " + attack.attack);
+        //Debug.Log("Attack: " + attack.attack);
         if (other.gameObject.tag == "Player" && !hit && attack.attack)
         {
             enemySoundSource.clip = playerHitSound; 

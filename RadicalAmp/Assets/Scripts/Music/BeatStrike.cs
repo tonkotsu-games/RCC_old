@@ -7,8 +7,8 @@ public class BeatStrike : MonoBehaviour
     public static BeatStrike instance;
     private Slider juiceMeter;
     private AudioSource wave;
-
     private PlayerController player;
+    [SerializeField] CameraShake camShake;
 
     [SerializeField] VisualEffect particleLeft;
     [SerializeField] VisualEffect particleRight;
@@ -75,6 +75,7 @@ public class BeatStrike : MonoBehaviour
                     particleRight.Play();
                     action = true;
                 }
+                camShake.SpeedCalculation();
             }
 
             else
@@ -98,6 +99,8 @@ public class BeatStrike : MonoBehaviour
                     beatAttack = true;
                     action = true;
                 }
+                camShake.SpeedCalculation();
+
             }
             else
             {
@@ -111,6 +114,7 @@ public class BeatStrike : MonoBehaviour
             {
                 juiceMeter.value += danceReward;
                 action = true;
+                camShake.SpeedCalculation();
 
                 switch (EnhancedSkills.instance.currentEnhancedState) {
                     case EnhancedSkills.EnhancedState.Inactive:

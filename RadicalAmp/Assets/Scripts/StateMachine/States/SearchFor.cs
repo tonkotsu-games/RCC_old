@@ -21,7 +21,7 @@ public class SearchFor : IState
 
     public void Enter()
     {
-        Debug.Log("Now in Searching");
+        //Debug.Log("Now in Searching");
     }
 
     public void Execute()
@@ -31,7 +31,7 @@ public class SearchFor : IState
             return;
         }
 
-        Debug.Log("Executing SearchFor");
+        //Debug.Log("Executing SearchFor");
         var hitObjects = Physics.OverlapSphere(this.actorGameObject.transform.position, searchRadius);
         var allHitObjectsWithRequiredTag = new List<Collider>();
 

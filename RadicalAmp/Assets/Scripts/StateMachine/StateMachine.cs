@@ -11,7 +11,7 @@ public class StateMachine
 
     public void ChangeState(IState newState)
     {
-        Debug.Log("Changing State");
+        //Debug.Log("Changing State");
 
         if(StateCurrent != null)
         {

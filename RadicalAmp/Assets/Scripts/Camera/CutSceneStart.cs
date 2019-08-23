@@ -9,7 +9,7 @@ public class CutSceneStart : MonoBehaviour
    
     void Start()
     {        
-        GameObject.Find("Protagonist_Final").GetComponent<PlayerController>().enabled = false;
+        GameObject.Find("Protagonist_SM").GetComponent<PlayerController>().enabled = false;
         GameObject.Find("UI_Manager").GetComponent<Tutorial>().enabled = false;
         tutorialText.SetActive(false); 
         StartCoroutine(StartAnim());       
@@ -19,7 +19,7 @@ public class CutSceneStart : MonoBehaviour
     {
         yield return new WaitForSeconds(cameraDrive.length);
        
-        GameObject.Find("Protagonist_Final").GetComponent<PlayerController>().enabled = true;
+        GameObject.Find("Protagonist_SM").GetComponent<PlayerController>().enabled = true;
         GameObject.Find("UI_Manager").GetComponent<Tutorial>().enabled = true;
         tutorialText.SetActive(true);
         this.gameObject.SetActive(false); 

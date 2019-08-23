@@ -48,7 +48,8 @@ public class EnemyHP : MonoBehaviour
     private void EnemyDeath()
     {
         EnemyAnim.SetBool("dead", true);
-        Debug.LogError("Beathoven death!");
+        Debug.Log(EnemyNav.gameObject.name + " died!");
+        EnemyNav.gameObject.GetComponent<Actor>().Death();
         //Debug.Log("Deregister Boss from list");
 
 

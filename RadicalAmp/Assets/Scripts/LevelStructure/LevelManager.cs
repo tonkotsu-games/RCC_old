@@ -26,25 +26,36 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Round: " + i + " -> starting countdown");
             yield return new WaitForSeconds(10);
-            Debug.Log("setting " + rings[i].gameObject.name + "'s isMoving to true");
 
             switch (i)
             {
-                case 1:
+                case 0:
                     //Move only Ring4
+                    rings[i].isMoving = true;
+                    break;
+                case 1:
+                    //Move Ring 4 & 3
+                    for (int round = 0; i <= 1; round++)
+                    {
+                        rings[i - round].isMoving = true;
+                    }
                     break;
                 case 2:
-                    //Move Ring 4 & 3
+                    //Move Ring 4 & 3 & 2
+                    for (int round = 0; i <= 2; round++)
+                    {
+                        rings[i - round].isMoving = true;
+                    }
                     break;
                 case 3:
-                    //Move Ring 4 & 3 & 2
-                    break;
-                case 4:
-                    //Move all rings
+                    //Move Ring 4 & 3 & 2 & 1
+                    for (int round = 0; i <= 3; round++)
+                    {
+                        rings[i - round].isMoving = true;
+                    }
                     break;
             }
 
-            rings[i].isMoving = true;
             i++;
         }
     }

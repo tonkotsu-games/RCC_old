@@ -129,13 +129,13 @@ public class BasicEnemy : Actor
 
     public override bool CheckBeat(IState state)
     {
-        Debug.Log("CheckingBeat");
+        //Debug.Log("CheckingBeat");
         if(state is Attack)
         {
-            Debug.Log("IsAttack");
+            //Debug.Log("IsAttack");
             if(beatanalyse.IsOnBeat(preStartAttack))
             {
-                Debug.Log("HitBeat");
+                //Debug.Log("HitBeat");
                 return true;
             }
         }

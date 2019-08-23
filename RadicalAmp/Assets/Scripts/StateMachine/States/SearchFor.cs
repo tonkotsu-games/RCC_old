@@ -42,7 +42,7 @@ public class SearchFor : IState
             if(hitObjects[i].CompareTag(this.tagToLookFor))
             {
                 //this.navMeshAgent.SetDestination(HitObjects[i].transform.position);
-                Debug.Log("Found Object");
+                //Debug.Log("Found Object");
                 allHitObjectsWithRequiredTag.Add(hitObjects[i]);
             }      
         }

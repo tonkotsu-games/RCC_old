@@ -17,7 +17,7 @@ public class Attack : IState
 
     public void Enter()
     {
-        Debug.Log("now Attacking");
+        //Debug.Log("now Attacking");
         animationFinished = false;
         hasToCheck = true;
     }
@@ -40,7 +40,7 @@ public class Attack : IState
             if(actor.CheckBeat(this))
             {
                 actor.GetComponent<Feedback>().PlayAnimationForState("windUp");
-                Debug.Log("SetWindup");
+                //Debug.Log("SetWindup");
                 hasToCheck = false;
             }
         }
@@ -54,12 +54,12 @@ public class Attack : IState
         {
             actor.StartCoroutine(PlayAttack());
             actor.windupFinished = false;
-            Debug.Log("Start Coroutine in Attack");
+            //Debug.Log("Start Coroutine in Attack");
         }
 
         if(animationFinished)
         {
-            Debug.Log("Attack Finished");
+            //Debug.Log("Attack Finished");
             //Go back to Idle
             actor.StateMachine.ChangeState(new Idle(actor));
         }

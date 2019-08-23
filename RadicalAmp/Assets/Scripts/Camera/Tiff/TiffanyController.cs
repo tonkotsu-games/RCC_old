@@ -14,17 +14,16 @@ public class TiffanyController : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject tiffCam;
     [Header("Offset Properties")]
-    [SerializeField] float xOffset;
-    [SerializeField] float yOffset;
-    [SerializeField] float heightOffset;
+    [SerializeField] float heightOffset = 5;
 
     [Header("FollowTarget Properties")]
     [SerializeField] float distanceFromPlayer = 5;
     [SerializeField] float tiffWaitTime = 3;
     [SerializeField] bool debugRange = false;
-    [SerializeField] float acceleration = 20;
-    [SerializeField] float deceleration = 60;
+    float acceleration = 20;
+    float deceleration = 60;
     [SerializeField] float brakeDistance = 2;
+    [SerializeField] float smoothSpd = 0.5f;
 
     private float currentCameraAngle;
 
@@ -46,11 +45,13 @@ public class TiffanyController : MonoBehaviour
             Destroy(gameObject);
         }
 
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        //transform.position += new Vector3(0, heightOffset, 0);
+        //agent.baseOffset = heightOffset;
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
     private void Start()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();   
         ChangeTiffState(TiffStates.FindNewTarget);
     }
 
@@ -65,6 +66,7 @@ public class TiffanyController : MonoBehaviour
             float dist = agent.remainingDistance;
             if (agent.pathStatus == NavMeshPathStatus.PathComplete && dist == 0 && !agent.pathPending)
             {
+                Debug.LogError("AIPos: " + transform.position);
                 agent.isStopped = true;
                 ChangeTiffState(TiffStates.Streaming);
             }
@@ -73,7 +75,7 @@ public class TiffanyController : MonoBehaviour
         else if (currentTiffState == TiffStates.Streaming)
         {
             agent.enabled = false;
-            gameObject.transform.parent = target.transform;
+           // TiffFollow();
         }
 
         Transform lookAtTarget = target.GetComponent<TiffTarget>().tiffTarget;
@@ -99,7 +101,7 @@ public class TiffanyController : MonoBehaviour
             if (currentTiffState == TiffStates.Streaming)
             {
                 agent.enabled = true;
-                gameObject.transform.parent = null;
+                
             }
             switch (requestedState)
             {
@@ -143,7 +145,7 @@ public class TiffanyController : MonoBehaviour
         newPos.y = target.transform.position.y;
         newPos.z = target.transform.position.z + distanceFromPlayer * Mathf.Sin(currentCameraAngle);
         newPos = new Vector3(newPos.x, newPos.y, newPos.z);
-        agent.SetDestination(newPos);       
+        agent.SetDestination(newPos);
         ChangeTiffState(TiffStates.MoveToNewTarget);
     }  
 
@@ -151,6 +153,16 @@ public class TiffanyController : MonoBehaviour
     {
         yield return new WaitForSeconds(tiffWaitTime);
         ChangeTiffState(TiffStates.FindNewTarget);
+    }
+
+    void TiffFollow()
+    {
+        Vector3 desiredPos = target.transform.position + (target.transform.position - newPos);
+        Vector3 equalizedHeightPos = new Vector3(transform.position.x, target.transform.position.y, transform.position.z);
+        Vector3 smoothedPos = Vector3.Lerp(equalizedHeightPos, desiredPos, smoothSpd);
+        Debug.Log("desiredPos: " + desiredPos + " smoothedPos: " + smoothedPos);
+        transform.position = smoothedPos + new Vector3(0, heightOffset, 0);
+        Debug.Log("New TP: " + transform.position);
     }
 
     private void OnGUI()

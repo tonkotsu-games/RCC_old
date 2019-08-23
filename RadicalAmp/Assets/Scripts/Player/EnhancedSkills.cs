@@ -55,7 +55,14 @@ public class EnhancedSkills : MonoBehaviour
                 case EnhancedState.Second:
                     currentEnhancedState = EnhancedState.Second;
                     spotlights.GetComponent<SpotlightGroup>().EnableLights(1);
-                    TiffanyController.instance.ChangeTiffState(TiffanyController.TiffStates.AttentionWhore);
+                    if (TiffanyController.instance == null)
+                    {
+                        Debug.Log("NO TIFFANY IN SCENE");
+                    }
+                    else
+                    {
+                        TiffanyController.instance.ChangeTiffState(TiffanyController.TiffStates.AttentionWhore);
+                    }
                     break;
                 case EnhancedState.Active:
 

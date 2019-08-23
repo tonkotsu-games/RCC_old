@@ -24,6 +24,9 @@ public class BasicEnemyFeedback : Feedback
             case "Attack":
             PlayAttack();
             break;
+            case "specialAttack":
+            PlayAttack();
+            break;
             case null:
             Debug.Log("no State");
             return;

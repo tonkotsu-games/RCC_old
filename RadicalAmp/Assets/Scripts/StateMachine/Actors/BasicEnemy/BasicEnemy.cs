@@ -17,6 +17,7 @@ public class BasicEnemy : Actor
 
     [SerializeField] BeatAnalyse beatanalyse;
     [SerializeField] int preStartAttack = 1000;
+    [SerializeField] int preStartSpecialAttack = 1000;
 
     [SerializeField] string specialAttackState;
 
@@ -149,6 +150,15 @@ public class BasicEnemy : Actor
         {
             //Debug.Log("IsAttack");
             if(beatanalyse.IsOnBeat(preStartAttack))
+            {
+                //Debug.Log("HitBeat");
+                return true;
+            }
+        }
+        else if(state is SpecialAttack)
+        {
+            //Debug.Log("IsAttack");
+            if(beatanalyse.IsOnBeat(preStartSpecialAttack))
             {
                 //Debug.Log("HitBeat");
                 return true;

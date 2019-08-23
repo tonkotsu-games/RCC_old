@@ -33,14 +33,14 @@ public class EnhancedSkills : MonoBehaviour
 
     private void Start()
     {
-        currentEnhancedState = EnhancedState.Inactive;
+        //currentEnhancedState = EnhancedState.Inactive;
     }
 
     public void ChangeEnhancedState(EnhancedState requestedState)
     {
         if(requestedState == currentEnhancedState)
         {
-            Debug.Log("Already in Enhanced State: " + requestedState);
+            //Debug.Log("Already in Enhanced State: " + requestedState);
             return;
         }
 

@@ -18,6 +18,8 @@ public class BasicEnemy : Actor
     [SerializeField] BeatAnalyse beatanalyse;
     [SerializeField] int preStartAttack = 1000;
 
+    [SerializeField] string specialAttackState;
+
     
 
     private void Awake()
@@ -66,27 +68,19 @@ public class BasicEnemy : Actor
     public void ChooseBehaviourAfterIdle(SearchResult searchResult)
     {
         var foundPlayers = searchResult.allHitObjectsWithRequiredTag;
-        
-        //Search Results
-        //Debug.Log("Choosing After Idle");
+
+        //Choose what to do by using info provided by the Search
         if(foundPlayers.Count > 0)
         {
             //Debug.Log("not empty " + foundPlayers.Count);
             player = foundPlayers[0].gameObject.transform;
             //Debug.Log(player.gameObject.name);
-        }
-        //else Debug.Log("Empty");
-
-
-        //Choose what to do by using info provided by the Search
-        if(foundPlayers.Count > 0)
-        {
             //Debug.Log("player " + player.position + " BasicEnemy " + this.gameObject.transform.position );
+
             //Attack Player in Melee AttackRange
             if (Vector3.Distance(player.position, this.gameObject.transform.position) < basicEnemyData.meleeAttackRange)
             {
-                //Debug.Log("Went to Attack");
-                StateMachine.ChangeState(new Attack(this, player));
+              ChooseAttack();
             }
             //Walk to Player in AggroRange
             else if(Vector3.Distance(player.position, this.gameObject.transform.position) < (basicEnemyData.aggroRange + 0.5f))
@@ -102,6 +96,7 @@ public class BasicEnemy : Actor
         }
         else
         {
+            //else Debug.Log("No Player found");
             //Debug.Log("returned to previous");
             StateMachine.ReturnToPreviousState();
         }
@@ -116,7 +111,27 @@ public class BasicEnemy : Actor
         }
         else if(StateMachine.StateCurrent is WalkTo)
         {
+            ChooseAttack();
+        }
+    }
+
+    private void ChooseAttack()
+    {
+        int randomNumber = Random.Range(0, 5);
+        Debug.Log("RandomNumber " + randomNumber);
+
+        if (randomNumber < 4)
+        {
             StateMachine.ChangeState(new Attack(this, player));
+        }
+        else
+        {
+            Debug.Log("SpecialAttack!");
+
+            if (specialAttackState == "specialAttack")
+            {
+                StateMachine.ChangeState(new SpecialAttack(this, player));
+            }
         }
     }
 

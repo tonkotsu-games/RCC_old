@@ -40,7 +40,7 @@ public class EnhancedSkills : MonoBehaviour
     {
         if(requestedState == currentEnhancedState)
         {
-            Debug.Log("Enhancement already " + requestedState);
+            Debug.Log("Already in Enhanced State: " + requestedState);
             return;
         }
 

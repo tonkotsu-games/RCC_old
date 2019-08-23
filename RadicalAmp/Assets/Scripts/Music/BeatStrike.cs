@@ -80,7 +80,10 @@ public class BeatStrike : MonoBehaviour
             else
             {
                 juiceMeter.value -= dashPunish;
-                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                if (EnhancedSkills.instance.currentEnhancedState != EnhancedSkills.EnhancedState.Inactive)
+                {
+                    EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                }
             }
         }
         else if (Input.GetButtonDown("Attack"))
@@ -102,7 +105,10 @@ public class BeatStrike : MonoBehaviour
             else
             {
                 juiceMeter.value -= attackPunish;
-                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                if (EnhancedSkills.instance.currentEnhancedState != EnhancedSkills.EnhancedState.Inactive)
+                {
+                    EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                }
             }
         }
         else if(Input.GetButtonDown("Dance"))
@@ -129,7 +135,10 @@ public class BeatStrike : MonoBehaviour
             else
             {
                 juiceMeter.value -= dancePunish;
-                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                if (EnhancedSkills.instance.currentEnhancedState != EnhancedSkills.EnhancedState.Inactive)
+                {
+                    EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                }
             }
         }
         Punishing();

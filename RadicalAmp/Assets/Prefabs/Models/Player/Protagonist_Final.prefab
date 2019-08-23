@@ -145,7 +145,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8076353255901240799}
   - component: {fileID: 1389990032}
-  - component: {fileID: 4066707747888852304}
   m_Layer: 9
   m_Name: Dash
   m_TagString: Untagged
@@ -184,21 +183,6 @@ MonoBehaviour:
   Left: {fileID: 1243491319665996820}
   Right: {fileID: 8315625054986378560}
   Trail: {fileID: 1155113770042752442}
---- !u!114 &4066707747888852304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509372618821086434}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8c64529b1454047990d9b35552043f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Left: {fileID: 1243491319665996820}
-  Right: {fileID: 0}
-  Trail: {fileID: 0}
 --- !u!1 &837846166764641805
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +406,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 837846167589711108}
   m_AABB:
-    m_Center: {x: -0.00000017881393, y: 0.99009603, z: 0.0006722212}
+    m_Center: {x: -0.00000011920929, y: 0.9900961, z: 0.0006723404}
     m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &8584420643505841614
@@ -3853,6 +3837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d48b141a2fc9b4d83edb2582a38d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camShake: {fileID: 0}
   particleLeft: {fileID: 1243491319665996820}
   particleRight: {fileID: 8315625054986378560}
   reactionTime: 4000
@@ -6271,16 +6256,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.2869873
       objectReference: {fileID: 0}
-    - target: {fileID: 8230936541773092061, guid: 9f74825a87fe78c4b8982dd814fffedd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3d24158938026d6499602b8e2642797a, type: 2}
-    - target: {fileID: 8230936541773092059, guid: 9f74825a87fe78c4b8982dd814fffedd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3d24158938026d6499602b8e2642797a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f74825a87fe78c4b8982dd814fffedd, type: 3}
 --- !u!198 &1155113770042752442 stripped

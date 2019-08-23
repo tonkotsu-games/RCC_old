@@ -40,6 +40,7 @@ public class Attack : IState
             if(actor.CheckBeat(this))
             {
                 actor.GetComponent<Feedback>().PlayAnimationForState("windUp");
+                Debug.Log("SetWindup");
                 hasToCheck = false;
             }
         }

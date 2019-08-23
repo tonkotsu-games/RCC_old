@@ -81,7 +81,7 @@ public class CameraDrive : MonoBehaviour
             switch (requestedState)
             {
                 case CameraStates.ZoomedIn:
-                    Debug.Log("Zooming In");
+                    //Debug.Log("Zooming In");
 
                     currentState = CameraStates.ZoomedIn;
                     height = 7;
@@ -90,7 +90,7 @@ public class CameraDrive : MonoBehaviour
                     break;
 
                 case CameraStates.ZoomedOut:
-                    Debug.Log("Zooming Out");
+                    //Debug.Log("Zooming Out");
 
                     currentState = CameraStates.ZoomedOut;
                     height = 12;

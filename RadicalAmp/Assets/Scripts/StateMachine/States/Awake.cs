@@ -14,7 +14,7 @@ public class Awake : IState
 
     public void Enter()
     {
-        Debug.Log(actor.gameObject.name + " Awakening");
+        //Debug.Log(actor.gameObject.name + " Awakening");
         actor.StartCoroutine(PlayAwake());
     }
 

@@ -19,7 +19,7 @@ public class Feedback : MonoBehaviour
 
         if(actorData != null)
         {
-            Debug.Log("Data on Feedback found on " + this.gameObject.name); 
+            //Debug.Log("Data on Feedback found on " + this.gameObject.name); 
         }
         else
         {

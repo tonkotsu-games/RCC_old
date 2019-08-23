@@ -23,7 +23,7 @@ public class WalkTo : IState
 
     public void Enter()
     {
-        Debug.Log("Now in WalkTo");
+        //Debug.Log("Now in WalkTo");
         actor.GetComponent<Feedback>().PlayAnimationForState("WalkTo");
     }
 
@@ -32,7 +32,7 @@ public class WalkTo : IState
         distanceToTarget = Vector3.Distance(target.position, actor.gameObject.transform.position);
         if(distanceToTarget > searchRange)
         {
-            Debug.Log("Out of Range");
+            //Debug.Log("Out of Range");
             actor.StateMachine.ChangeState(new Idle(actor));
         }
         else if(distanceToTarget < interactRange)
@@ -48,7 +48,7 @@ public class WalkTo : IState
 
     public void Exit()
     {
-        Debug.Log("Exiting WalkTo");
+        //Debug.Log("Exiting WalkTo");
         navMeshAgent.SetDestination(actor.gameObject.transform.position);
     }
 }

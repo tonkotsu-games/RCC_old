@@ -68,41 +68,41 @@ public class BasicEnemy : Actor
         var foundPlayers = searchResult.allHitObjectsWithRequiredTag;
         
         //Search Results
-        Debug.Log("Choosing After Idle");
+        //Debug.Log("Choosing After Idle");
         if(foundPlayers.Count > 0)
         {
-            Debug.Log("not empty " + foundPlayers.Count);
+            //Debug.Log("not empty " + foundPlayers.Count);
             player = foundPlayers[0].gameObject.transform;
-            Debug.Log(player.gameObject.name);
+            //Debug.Log(player.gameObject.name);
         }
-        else Debug.Log("Empty");
+        //else Debug.Log("Empty");
 
 
         //Choose what to do by using info provided by the Search
         if(foundPlayers.Count > 0)
         {
-            Debug.Log("player " + player.position + " BasicEnemy " + this.gameObject.transform.position );
+            //Debug.Log("player " + player.position + " BasicEnemy " + this.gameObject.transform.position );
             //Attack Player in Melee AttackRange
             if (Vector3.Distance(player.position, this.gameObject.transform.position) < basicEnemyData.meleeAttackRange)
             {
-                Debug.Log("Went to Attack");
+                //Debug.Log("Went to Attack");
                 StateMachine.ChangeState(new Attack(this, player));
             }
             //Walk to Player in AggroRange
             else if(Vector3.Distance(player.position, this.gameObject.transform.position) < (basicEnemyData.aggroRange + 0.5f))
             {
-                Debug.Log("went to walkTo");
+                //Debug.Log("went to walkTo");
                 StateMachine.ChangeState(new WalkTo(this, player, navMeshAgent, basicEnemyData.aggroRange, ActorData.meleeAttackRange));
             }
             else
             {
                 StateMachine.ReturnToPreviousState();
-                Debug.Log("Did nothing");
+                //Debug.Log("Did nothing");
             }
         }
         else
         {
-            Debug.Log("returned to previous");
+            //Debug.Log("returned to previous");
             StateMachine.ReturnToPreviousState();
         }
     }
@@ -111,7 +111,7 @@ public class BasicEnemy : Actor
     {
         if(StateMachine.StateCurrent is Idle)
         {
-            Debug.Log("Choosing to Search");
+            //Debug.Log("Choosing to Search");
             StateMachine.ChangeState(new SearchFor(gameObject, basicEnemyData.aggroRange, "Player", ChooseBehaviourAfterIdle));
         }
         else if(StateMachine.StateCurrent is WalkTo)
@@ -129,13 +129,13 @@ public class BasicEnemy : Actor
 
     public override bool CheckBeat(IState state)
     {
-        Debug.Log("CheckingBeat");
+        //Debug.Log("CheckingBeat");
         if(state is Attack)
         {
-            Debug.Log("IsAttack");
+            //Debug.Log("IsAttack");
             if(beatanalyse.IsOnBeat(preStartAttack))
             {
-                Debug.Log("HitBeat");
+                //Debug.Log("HitBeat");
                 return true;
             }
         }

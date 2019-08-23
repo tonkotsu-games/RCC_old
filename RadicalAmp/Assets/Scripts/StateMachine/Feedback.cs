@@ -11,6 +11,7 @@ public class Feedback : MonoBehaviour
     private AnimationClip awakeAnimation;
     
     public AnimationClip attackAnimation;
+    public AnimationClip specialAttackAnimation;
 
 
     private void Awake()

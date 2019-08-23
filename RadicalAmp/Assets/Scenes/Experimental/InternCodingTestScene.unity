@@ -1520,7 +1520,7 @@ PrefabInstance:
     - target: {fileID: 8039797987730609339, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8039797987730609343, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
@@ -1591,7 +1591,7 @@ PrefabInstance:
         type: 3}
       propertyPath: blood
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2126123340}
     - target: {fileID: 1970682981189013565, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
       propertyPath: life
@@ -2356,6 +2356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678132594620600862, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 368d1bcd9f5212d4cb987b2f63181bf7, type: 3}
@@ -8569,6 +8574,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ded5659a429549e4997118db1bbfc7a9, type: 3}
+--- !u!2083052967 &2126123340 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 8185679992818592287, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 598390084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!2083052967 &357308734272034032 stripped
 VisualEffect:
   m_CorrespondingSourceObject: {fileID: 357308734272034032, guid: b0c0494730e53d146b284520a936371f,
@@ -8684,7 +8695,7 @@ PrefabInstance:
     - target: {fileID: 929156508222087969, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
@@ -8746,6 +8757,11 @@ PrefabInstance:
       propertyPath: beatanalyse
       value: 
       objectReference: {fileID: 1515737921}
+    - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: specialAttackState
+      value: specialAttack
+      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
@@ -9709,8 +9725,13 @@ PrefabInstance:
     - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6295204804687845032, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: specialAttackAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: 871fc9ff335631041bceb72d6ff29201, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!1001 &1474549622870696896

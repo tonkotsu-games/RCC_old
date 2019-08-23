@@ -15,6 +15,6 @@ public class BeathovenAnimationEvents : MonoBehaviour
     {
         actor.GetComponent<Feedback>().PlayAnimationForState("Attack");
         actor.windupFinished = true;
-        Debug.Log("EndWindup");
+        //Debug.Log("EndWindup");
     }
 }

@@ -1110,8 +1110,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1780832421274329056}
-  - component: {fileID: 1780832421274329058}
   - component: {fileID: 1780832421274329059}
+  - component: {fileID: 8628839759814103076}
   m_Layer: 5
   m_Name: JuiceMeter
   m_TagString: JuiceMeter
@@ -1142,18 +1142,6 @@ RectTransform:
   m_AnchoredPosition: {x: 374, y: 0}
   m_SizeDelta: {x: 20, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1780832421274329058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780832421274329057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07d3ceade685d544b90377929a5b165c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1780832421274329059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1203,6 +1191,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8628839759814103076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780832421274329057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56be5f140a30b0a4aaf1e529396fdc70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1780832421408647404
 GameObject:
   m_ObjectHideFlags: 0

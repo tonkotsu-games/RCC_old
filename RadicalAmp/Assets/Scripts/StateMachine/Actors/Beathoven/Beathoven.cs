@@ -66,14 +66,14 @@ public class Beathoven : Actor
         var foundPlayers = searchResult.allHitObjectsWithRequiredTag;
         
         //Search Results
-        Debug.Log("Choosing After Idle");
+        //Debug.Log("Choosing After Idle");
         if(foundPlayers.Count > 0)
         {
-            Debug.Log("not empty " + foundPlayers.Count);
+            //Debug.Log("not empty " + foundPlayers.Count);
             player = foundPlayers[0].gameObject.transform;
-            Debug.Log(player.gameObject.name);
+            //Debug.Log(player.gameObject.name);
         }
-        else Debug.Log("Empty");
+        //else Debug.Log("Empty");
 
 
         //Choose what to do by using info provided by the Search
@@ -101,7 +101,7 @@ public class Beathoven : Actor
     {
         if(StateMachine.StateCurrent is Idle)
         {
-            Debug.Log("Choosing to Search");
+            //Debug.Log("Choosing to Search");
             StateMachine.ChangeState(new SearchFor(gameObject, bossData.aggroRange, "Player", ChooseBehaviourAfterIdle));
         }
         else if(StateMachine.StateCurrent is WalkTo)

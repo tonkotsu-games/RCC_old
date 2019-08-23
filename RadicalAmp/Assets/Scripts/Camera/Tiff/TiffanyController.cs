@@ -66,7 +66,6 @@ public class TiffanyController : MonoBehaviour
             float dist = agent.remainingDistance;
             if (agent.pathStatus == NavMeshPathStatus.PathComplete && dist == 0 && !agent.pathPending)
             {
-                Debug.LogError("AIPos: " + transform.position);
                 agent.isStopped = true;
                 ChangeTiffState(TiffStates.Streaming);
             }
@@ -78,6 +77,10 @@ public class TiffanyController : MonoBehaviour
            // TiffFollow();
         }
 
+        if (target.GetComponent<TiffTarget>() == null)
+        {
+            Debug.Log(target.name + "has no tiffTarget");
+        }
         Transform lookAtTarget = target.GetComponent<TiffTarget>().tiffTarget;
         tiffCam.transform.LookAt(lookAtTarget);
 
@@ -108,7 +111,11 @@ public class TiffanyController : MonoBehaviour
                 case TiffStates.FindNewTarget:
                     Debug.Log("Changing from state: " + currentTiffState + " to state: " + requestedState);
                     currentTiffState = TiffStates.FindNewTarget;
-                    target = allEnemies[Random.Range(0, allEnemies.Length)];               
+                    target = allEnemies[Random.Range(0, allEnemies.Length)];
+                    if (target.GetComponent<Beathoven>() != null)
+                    {
+                        ChangeTiffState(TiffStates.FindNewTarget);
+                    }
                     CalculateNextPos();
                     break;
 
@@ -160,9 +167,7 @@ public class TiffanyController : MonoBehaviour
         Vector3 desiredPos = target.transform.position + (target.transform.position - newPos);
         Vector3 equalizedHeightPos = new Vector3(transform.position.x, target.transform.position.y, transform.position.z);
         Vector3 smoothedPos = Vector3.Lerp(equalizedHeightPos, desiredPos, smoothSpd);
-        Debug.Log("desiredPos: " + desiredPos + " smoothedPos: " + smoothedPos);
         transform.position = smoothedPos + new Vector3(0, heightOffset, 0);
-        Debug.Log("New TP: " + transform.position);
     }
 
     private void OnGUI()

@@ -6,8 +6,10 @@ public class CameraDrive : MonoBehaviour
     public static CameraDrive instance;
 
     public float smooth = 0.3f;
-    [Range(2, 10)]
-    public float height, posZminus;
+    [Range(2, 15)]
+    public float height = 6, posZminus = 8;
+    [Range(0,60)]
+    public float camRotation = 32;
 
     private Transform player;
 
@@ -46,7 +48,6 @@ public class CameraDrive : MonoBehaviour
     void Update()
     {
         UpdateCameraPos();
-
         if (ZoomState == ZoomMode.In)
         {
             ChangeCameraState(CameraStates.ZoomedIn);
@@ -66,6 +67,7 @@ public class CameraDrive : MonoBehaviour
         pos.x = player.position.x;
         pos.z = player.position.z - posZminus;
         pos.y = player.position.y + height;
+        transform.rotation = Quaternion.Euler(camRotation, 0, 0);
         transform.position = Vector3.SmoothDamp(transform.position, pos, ref velocity, smooth);
     }
     public void ChangeCameraState(CameraStates requestedState)
@@ -93,8 +95,8 @@ public class CameraDrive : MonoBehaviour
                     //Debug.Log("Zooming Out");
 
                     currentState = CameraStates.ZoomedOut;
-                    height = 12;
-                    posZminus = 11;
+                   // height = 12;
+                   // posZminus = 11;
                     readyToZoomIn = false;
                    // StartCoroutine(ZoomInDelay());
                     break;

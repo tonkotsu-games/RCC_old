@@ -260,19 +260,16 @@ public class PlayerController : MonoBehaviour
         {
             if(enemiesInScene[i] == null)
             {
-                Debug.Log("Enemy is null");
                 enemiesInScene.Remove(enemiesInScene[i]);
                 i--;
             }
             else if(Vector3.Distance(enemiesInScene[i].position, gameObject.transform.position) <= snappRange)
             {
-                Debug.Log("Snapp check");
                 enemiesInRange.Add(enemiesInScene[i]);
             }
         }
         for(int i = 0;i < enemiesInRange.Count; i++)
         {
-            Debug.Log("Snapp start");
             if (Vector3.Angle((enemiesInRange[i].position - transform.position), transform.forward) <= closestAngle)
             {
                 closest = enemiesInRange[i];
@@ -281,7 +278,6 @@ public class PlayerController : MonoBehaviour
         }
         if (closest != null)
         {
-            Debug.Log("Snapped" + closest);
             transform.rotation = Quaternion.LookRotation(closest.position - transform.position);
             closest = null;
         }
@@ -329,7 +325,6 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnDashParticles()
     {
-        Debug.Log("Spawning Dash Particles");
         GameObject particlesInstance = Instantiate(dashParticlesPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
         particlesInstance.GetComponent<FollowPosition>().followTarget = gameObject.transform;
         particlesInstance.gameObject.transform.Rotate(-90,0,0);

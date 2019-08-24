@@ -24,6 +24,7 @@ public class SpecialAttack : IState
 
     public IEnumerator PlaySpecialAttack()
     {
+        Debug.Log("in Coroutine");
        //actor.gameObject.GetComponent<Feedback>().NewStateAnimation("specialAttack");
        animationFinished = false;
        actor.attacking = true;
@@ -37,10 +38,11 @@ public class SpecialAttack : IState
     {
         if(hasToCheck)
         {
+            Debug.Log("CheckingBeat");
             if(actor.CheckBeat(this))
             {
-                actor.GetComponent<Feedback>().PlayAnimationForState("specialAttack");
-                //Debug.Log("SetWindup");
+                actor.GetComponent<Feedback>().PlayAnimationForState("specialWindup");
+                Debug.Log("SetSpecialWindup");
                 hasToCheck = false;
             }
         }
@@ -54,12 +56,12 @@ public class SpecialAttack : IState
         {
             actor.StartCoroutine(PlaySpecialAttack());
             actor.windupFinished = false;
-            //Debug.Log("Start Coroutine in SpecialAttack");
+            Debug.Log("Start Coroutine in SpecialAttack");
         }
 
         if(animationFinished)
         {
-            //Debug.Log("Special Attack Finished");
+            Debug.Log("Special Attack Finished");
             //Go back to Idle
             actor.StateMachine.ChangeState(new Idle(actor));
         }

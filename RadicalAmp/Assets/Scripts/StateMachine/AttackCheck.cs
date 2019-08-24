@@ -36,4 +36,9 @@ public class AttackCheck : MonoBehaviour
     {
         hit = false;
     }
+
+    public void EndSpecialAttackAnimation()
+    {
+        hit = false;
+    }
 }

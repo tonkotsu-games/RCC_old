@@ -24,8 +24,11 @@ public class BasicEnemyFeedback : Feedback
             case "Attack":
             PlayAttack();
             break;
+            case "specialWindup":
+            PlaySpecialWindup();
+            break;
             case "specialAttack":
-            PlayAttack();
+            PlaySpecialAttack();
             break;
             case null:
             Debug.Log("no State");
@@ -47,6 +50,7 @@ public class BasicEnemyFeedback : Feedback
     {
         animator.SetBool("windUp", true);
         animator.SetBool("windUpAttack", false);
+        animator.SetBool("specialAttack", false);
         animator.SetBool("cruising", false);
         attackCheck.EndAttackAnimation();
     }
@@ -55,5 +59,20 @@ public class BasicEnemyFeedback : Feedback
     {
         animator.SetBool("windUpAttack", true);
         animator.SetBool("windUp", false);
+    }
+
+    private void PlaySpecialWindup()
+    {
+        animator.SetBool("specialWindUp", true);
+        animator.SetBool("windUpAttack", false);
+        animator.SetBool("specialAttack", false);
+        animator.SetBool("cruising", false);
+        attackCheck.EndSpecialAttackAnimation();
+    }
+
+    private void PlaySpecialAttack()
+    {
+        animator.SetBool("specialAttack", true);
+        animator.SetBool("specialWindUp", false);
     }
 }

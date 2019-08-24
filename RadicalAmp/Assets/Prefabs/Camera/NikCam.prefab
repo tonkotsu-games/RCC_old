@@ -7,7 +7,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7309687070487315677}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 870f4e571b626f9478a41eb6deef6f34, type: 3}
   m_Name: 
@@ -48,13 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b365810af91636341afe378ae1770bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 0.3
-  height: 7
+  smooth: 0.15
+  height: 8.25
   posZminus: 10
+  camRotation: 26.2
   zoomInDelay: 5
   readyToZoomIn: 0
   ZoomState: 0
-  currentState: 0
+  currentState: 1
 --- !u!1001 &7188839945844756922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,50 +63,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 482688345598498151, guid: 7e837590a0eafe44c9a0bc8c57be0604,
-        type: 3}
-      propertyPath: m_Name
-      value: NikCam
-      objectReference: {fileID: 0}
-    - target: {fileID: 482688345598498151, guid: 7e837590a0eafe44c9a0bc8c57be0604,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.3976974
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 16.789043
+      value: 32.2
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -206.2506
+      value: -25.8
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3420201
+      value: 0.21973927
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9396927
+      value: 0.97555864
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
@@ -115,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 40
+      value: 25.387001
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
@@ -126,6 +117,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482688345598498151, guid: 7e837590a0eafe44c9a0bc8c57be0604,
+        type: 3}
+      propertyPath: m_Name
+      value: NikCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 482688345598498151, guid: 7e837590a0eafe44c9a0bc8c57be0604,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e837590a0eafe44c9a0bc8c57be0604, type: 3}

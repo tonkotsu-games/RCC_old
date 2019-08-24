@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &108983612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 108983613}
+  m_Layer: 9
+  m_Name: TiffTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &108983613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108983612}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.731, z: 0.32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 837846167589711004}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &800100412
 GameObject:
   m_ObjectHideFlags: 0
@@ -3748,6 +3778,7 @@ GameObject:
   - component: {fileID: 837846166017632308}
   - component: {fileID: 1512737381}
   - component: {fileID: 4596637615529372823}
+  - component: {fileID: 1270862836}
   m_Layer: 9
   m_Name: Protagonist_Final
   m_TagString: Player
@@ -3773,6 +3804,7 @@ Transform:
   - {fileID: 8076353255901240799}
   - {fileID: 2100648685}
   - {fileID: 800100413}
+  - {fileID: 108983613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3998,6 +4030,19 @@ MonoBehaviour:
     type: 3}
   currentEnhancedState: 0
   spotlights: {fileID: 0}
+--- !u!114 &1270862836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837846167589810364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c6ab771c47cf346b373ec9d9133898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tiffTarget: {fileID: 108983613}
 --- !u!1 &837846167589810366
 GameObject:
   m_ObjectHideFlags: 0
@@ -6258,15 +6303,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f74825a87fe78c4b8982dd814fffedd, type: 3}
---- !u!198 &1155113770042752442 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6579551793364365782, guid: 9f74825a87fe78c4b8982dd814fffedd,
-    type: 3}
-  m_PrefabInstance: {fileID: 5424738194896391276}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4139550818313755219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8230936541771322943, guid: 9f74825a87fe78c4b8982dd814fffedd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5424738194896391276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1155113770042752442 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6579551793364365782, guid: 9f74825a87fe78c4b8982dd814fffedd,
     type: 3}
   m_PrefabInstance: {fileID: 5424738194896391276}
   m_PrefabAsset: {fileID: 0}

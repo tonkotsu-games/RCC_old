@@ -35,4 +35,9 @@ public class Actor : MonoBehaviour
     {
         return false;
     }
+
+    public virtual void Death()
+    {
+        StateMachine.ChangeState(new Death(this));
+    }
 }

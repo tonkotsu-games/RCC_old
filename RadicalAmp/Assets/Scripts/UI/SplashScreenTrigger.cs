@@ -12,7 +12,7 @@ public class SplashScreenTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameObject.Find("Protagonist_Final").GetComponent<PlayerController>().enabled = false;
+            GameObject.Find("Protagonist_SM").GetComponent<PlayerController>().enabled = false;
 
             splashScreen.SetActive(true);
 
@@ -32,7 +32,7 @@ public class SplashScreenTrigger : MonoBehaviour
 
         splashScreen.SetActive(false);
         
-        GameObject.Find("Protagonist_Final").GetComponent<PlayerController>().enabled = true;
+        GameObject.Find("Protagonist_SM").GetComponent<PlayerController>().enabled = true;
         EnemyController.movementLocked = false;
     }
 }

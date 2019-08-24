@@ -11,6 +11,7 @@ public class Feedback : MonoBehaviour
     private AnimationClip awakeAnimation;
     
     public AnimationClip attackAnimation;
+    public AnimationClip specialAttackAnimation;
 
 
     private void Awake()
@@ -19,7 +20,7 @@ public class Feedback : MonoBehaviour
 
         if(actorData != null)
         {
-            Debug.Log("Data on Feedback found on " + this.gameObject.name); 
+            //Debug.Log("Data on Feedback found on " + this.gameObject.name); 
         }
         else
         {

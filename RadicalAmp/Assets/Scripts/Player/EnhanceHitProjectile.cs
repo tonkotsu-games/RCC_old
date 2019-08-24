@@ -34,7 +34,7 @@ public class EnhanceHitProjectile : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            EnemyLife enemyLife = other.GetComponent<EnemyLife>();
+            EnemyHP enemyLife = other.GetComponent<EnemyHP>();
             Debug.Log("EnemyLifeAtStart: " + enemyLife);
             enemyLife.life -= projectileDamage;
             Debug.Log("EnemyLifeAtEnd: " + enemyLife);

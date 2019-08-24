@@ -11,7 +11,7 @@ public class JuiceDMGControl : MonoBehaviour
     void Start()
     {
         Juicemeter = gameObject.GetComponent<Slider>();
-        damage = GameObject.FindWithTag("PlayerWeapon").GetComponent<PlayerAttackCheck>();
+        damage = GameObject.FindWithTag("Player").GetComponent<PlayerAttackCheck>();
     }
 
     void Update()

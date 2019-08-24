@@ -47,11 +47,9 @@ public class EnemyLife : MonoBehaviour
 
     public void AfterDeath()
     {
-        StageClearedManager.instance.DeRegisterFromList(transform.parent);
+        //StageClearedManager.instance.DeRegisterFromList(transform.parent);
         //Debug.Log("Deregister Bunny from list");
-        Destroy(this.gameObject.transform.parent.gameObject);
-
-        
+        Destroy(this.gameObject.transform.parent.gameObject);      
     }
 
     private void EnemyDeath()

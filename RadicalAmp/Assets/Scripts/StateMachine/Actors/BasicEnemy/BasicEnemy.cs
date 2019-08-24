@@ -35,7 +35,7 @@ public class BasicEnemy : Actor
 
         if(beatanalyse == null)
         {
-            Debug.LogError("MusicBox in Beathoven not set up!");
+            Debug.LogError("MusicBox in " + gameObject.name + " not set up!");
         }
 
         navMeshAgent = this.GetComponent<NavMeshAgent>();

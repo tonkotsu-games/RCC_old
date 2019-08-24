@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -30,29 +31,29 @@ public class LevelManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    //Move only Ring4
-                    rings[i].isMoving = true;
+                    //Move Ring 3&2&1
+                    rings[1].gameObject.GetComponent<NavMeshSurface>().enabled = true;
+                    rings[0].gameObject.GetComponent<NavMeshSurface>().enabled = false;
+                    rings[1].isMoving = true;
                     break;
                 case 1:
-                    //Move Ring 4 & 3
-                    for (int round = 0; i <= 1; round++)
-                    {
-                        rings[i - round].isMoving = true;
-                    }
+                    //Move Ring 2&1
+                    rings[2].gameObject.GetComponent<NavMeshSurface>().enabled = true;
+                    rings[1].gameObject.GetComponent<NavMeshSurface>().enabled = false;
+
+                    rings[2].SetBasePos();
+                    rings[2].isMoving = true;
                     break;
                 case 2:
-                    //Move Ring 4 & 3 & 2
-                    for (int round = 0; i <= 2; round++)
-                    {
-                        rings[i - round].isMoving = true;
-                    }
+                    //Move Ring 1
+                    rings[3].gameObject.GetComponent<NavMeshSurface>().enabled = true;
+                    rings[2].gameObject.GetComponent<NavMeshSurface>().enabled = false;
+
+                    rings[3].SetBasePos();
+                    rings[3].isMoving = true;
                     break;
-                case 3:
-                    //Move Ring 4 & 3 & 2 & 1
-                    for (int round = 0; i <= 3; round++)
-                    {
-                        rings[i - round].isMoving = true;
-                    }
+                case 3:       
+                    //Move Boss down
                     break;
             }
 

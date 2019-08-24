@@ -170,10 +170,11 @@ public class TiffanyController : MonoBehaviour
         transform.position = smoothedPos + new Vector3(0, heightOffset, 0);
     }
 
-    private void OnGUI()
+    /*private void OnGUI()
     {
         GUI.Label(new Rect(1, 1, 500, 500), "Current TiffTarget: " + target.gameObject.name);
         GUI.Label(new Rect(1,10, 500, 500), "Current TiffState: " + currentTiffState);
 
     }
+    */
 }

@@ -128,7 +128,7 @@ MonoBehaviour:
   basicEnemyData: {fileID: 11400000, guid: 434a1c6afe24a14469229a8f504e8edd, type: 2}
   beatanalyse: {fileID: 0}
   preStartAttack: 1000
-  preStartSpecialAttack: 1000
+  preStartSpecialAttack: 2000
   specialAttackState: specialAttack
 --- !u!114 &6253442519248722353
 MonoBehaviour:
@@ -7726,6 +7726,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 23.480001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590074663386793804, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350a954e4722165498ee6058a3b41cfb, type: 3}

@@ -24,4 +24,9 @@ public class BeathovenAnimationEvents : MonoBehaviour
         actor.windupFinished = true;
         //Debug.Log("EndWindup");
     }
+
+    public void AfterDeath()
+    {
+        Destroy(this.gameObject.transform.parent.gameObject);      
+    }
 }

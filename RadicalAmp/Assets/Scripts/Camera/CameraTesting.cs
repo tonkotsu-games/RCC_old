@@ -42,9 +42,18 @@ public class CameraTesting : MonoBehaviour
 
     void Update()
     {
+        EnemyCheck();
         CalculateOffset();
         CalculateSmoothFollow();
         ChangePositionAndRotation();
+    }
+
+    private void EnemyCheck()
+    {
+        //Check for amount of Enemies near the player
+
+        //Set cameraState to that amount
+        
     }
 
     //Calculates the new offset to transition into different View/State

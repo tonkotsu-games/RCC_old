@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06744152, g: 0.08890854, b: 0.1319666, a: 1}
+  m_IndirectSpecularColor: {r: 0.06744109, g: 0.088908084, b: 0.1319659, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4597,10 +4597,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf7b0894cc3a4746b3d38154fda4f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraState: 0
   target: {fileID: 623897553}
-  offsetZero: {x: 0, y: 15, z: -10}
-  offsetOne: {x: 0, y: 20, z: -15}
-  offsetTwo: {x: 0, y: 0, z: 0}
+  offsetZero: {x: 0, y: 5, z: -6}
+  offsetOne: {x: 0, y: 7, z: -7.5}
+  offsetTwo: {x: 0, y: 8, z: -8.5}
+  offsetThree: {x: 0, y: 10, z: -10.5}
+  offsetFour: {x: 0, y: 12, z: -12}
+  followSpeedX: 20
+  followSpeedY: 15
+  followSpeedZ: 40
+  zoomSpeedX: 10
+  zoomSpeedY: 10
+  zoomSpeedZ: 10
+  turningRate: 30
 --- !u!114 &1220899678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4726,13 +4736,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220899676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.2206974, y: 0, z: 0, w: 0.9753424}
+  m_LocalPosition: {x: 0, y: 10.7, z: -13.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25.5, y: 0, z: 0}
 --- !u!1 &1248011645
 GameObject:
   m_ObjectHideFlags: 0
@@ -9071,6 +9081,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7709579163050753898, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1780832420974048043, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: audioSource.Array.data[0]
@@ -9126,11 +9141,6 @@ PrefabInstance:
       propertyPath: audioSource.Array.data[10]
       value: 
       objectReference: {fileID: 6432124485748246903}
-    - target: {fileID: 7709579163050753898, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1780832421274329058, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: damage
@@ -9231,11 +9241,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicBox
       objectReference: {fileID: 0}
-    - target: {fileID: 5991345612754962388, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: juiceMeter
-      value: 
-      objectReference: {fileID: 1190089474}
     - target: {fileID: 6432124486192694743, guid: fbcd3ce34e76cc741bce3ac5076944c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9291,6 +9296,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5991345612754962388, guid: fbcd3ce34e76cc741bce3ac5076944c2,
+        type: 3}
+      propertyPath: juiceMeter
+      value: 
+      objectReference: {fileID: 1190089474}
     m_RemovedComponents:
     - {fileID: 7525928455979649145, guid: fbcd3ce34e76cc741bce3ac5076944c2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fbcd3ce34e76cc741bce3ac5076944c2, type: 3}

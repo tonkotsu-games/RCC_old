@@ -21,29 +21,22 @@ public class Equalizer : MonoBehaviour
         {
             Slider instantSlider = Instantiate(equalizerRightPrefab);
             instantSlider.transform.SetParent(canvasParent.transform, false);
-            //instantCube.transform.position = cam.transform.position;
             instantSlider.name = "SampleCube: " + i;
             instantSlider.GetComponent<RectTransform>().localPosition = new Vector3(400 , 
                                                                                     -175 + (25f * i),
                                                                                     0);
-            //instantCube.transform.position = Vector3.forward * 100;
             equalizerRight[i] = instantSlider;
         }
         for (int i = 0; i < 16; i++)
         {
             Slider instantSlider = Instantiate(equalizerLeftPrefab);
             instantSlider.transform.SetParent(canvasParent.transform, false);
-            //instantCube.transform.position = cam.transform.position;
             instantSlider.name = "SampleCube: " + i;
             instantSlider.GetComponent<RectTransform>().localPosition = new Vector3(-400,
                                                                                     -175 + (25f * i),
                                                                                     0);
-            //instantCube.transform.position = Vector3.forward * 100;
             equalizerLeft[i] = instantSlider;
         }
-
-        //canvasParent.transform.localPosition = new Vector3(10.15f, -2f, 9.9f);
-        //canvasParent.transform.Rotate(new Vector3(0, 75, 90));
     }
 
     void Update()
@@ -62,7 +55,6 @@ public class Equalizer : MonoBehaviour
             {
                 equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
                 equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                Debug.Log("0 juice");
             }
         }
         else if (juiceMeter.value > 0 && juiceMeter.value <= 25)
@@ -73,13 +65,11 @@ public class Equalizer : MonoBehaviour
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
-                    Debug.Log("1 juice");
                 }
                 if (i > 5)
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                    Debug.Log("1 colorless juice");
                 }
             }
         }
@@ -91,14 +81,11 @@ public class Equalizer : MonoBehaviour
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
-                    Debug.Log("2 juice");
-
                 }
                 if (i > 11)
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                    Debug.Log("2 colorless juice");
                 }
             }
         }
@@ -110,8 +97,6 @@ public class Equalizer : MonoBehaviour
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
-                    Debug.Log("full juice");
-
                 }
             }
         }

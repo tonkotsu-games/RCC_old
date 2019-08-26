@@ -30,7 +30,7 @@ public class WalkTo : IState
     public void Execute()
     {
         distanceToTarget = Vector3.Distance(target.position, actor.gameObject.transform.position);
-        if(distanceToTarget > searchRange)
+        if(distanceToTarget > searchRange + 0.5f)
         {
             //Debug.Log("Out of Range");
             actor.StateMachine.ChangeState(new Idle(actor));

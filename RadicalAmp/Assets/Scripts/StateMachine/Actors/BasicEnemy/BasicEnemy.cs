@@ -19,7 +19,7 @@ public class BasicEnemy : Actor
     [SerializeField] int preStartAttack = 1000;
     [SerializeField] int preStartSpecialAttack = 1000;
 
-    [SerializeField] string specialAttackState;
+    public string specialAttackState;
 
     
 
@@ -132,6 +132,10 @@ public class BasicEnemy : Actor
             if (specialAttackState == "specialAttack")
             {
                 StateMachine.ChangeState(new SpecialAttack(this, player));
+            }
+            else if(specialAttackState == "")
+            {
+                StateMachine.ChangeState(new Attack(this, player));
             }
         }
     }

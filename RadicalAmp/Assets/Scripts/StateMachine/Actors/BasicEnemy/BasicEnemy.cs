@@ -119,7 +119,7 @@ public class BasicEnemy : Actor
     private void ChooseAttack()
     {
         int randomNumber = Random.Range(0, 5);
-        Debug.Log("RandomNumber " + randomNumber);
+
 
         if (randomNumber < 4)
         {
@@ -127,7 +127,6 @@ public class BasicEnemy : Actor
         }
         else
         {
-            Debug.Log("SpecialAttack!");
 
             if (specialAttackState == "specialAttack")
             {

@@ -4,58 +4,60 @@ using UnityEngine.Experimental.VFX;
 
 public class VFXIntensity : MonoBehaviour
 {
-    private Slider Juicemeter;
-    [SerializeField] VisualEffect Left;
-    [SerializeField] VisualEffect Right;
-    [SerializeField] ParticleSystem Trail;
+    private Slider juiceMeter;
+    [SerializeField] VisualEffect leftTrail;
+    [SerializeField] VisualEffect rightTrail;
+    [SerializeField] ParticleSystem weaponTrail;
 
-    ParticleSystem.MainModule ps;
+    [SerializeField] float weaponTrailMulti;
+    [SerializeField] float dashTrailMulti;    
+
+    ParticleSystem.MainModule weaponParticleModule;
 
     void Start()
     {
-        Juicemeter = GameObject.FindGameObjectWithTag("JuiceMeter").GetComponent<Slider>();
-        ps = Trail.main;
+        juiceMeter = GameObject.FindGameObjectWithTag("JuiceMeter").GetComponent<Slider>();
+        weaponParticleModule = weaponTrail.main;
     }
 
     void Update()
     {
-        if (Juicemeter.value >= 0 && Juicemeter.value <= 25)
-        {
-            Left.SetFloat("Particle Base Size", 0.1f);
-            Right.SetFloat("Particle Base Size", 0.1f);
-            ps.startSizeMultiplier = 0.02f;
+        weaponParticleModule.startSizeMultiplier = weaponTrailMulti * juiceMeter.value;
 
-            Left.SetFloat("Particle Velocity", 0.1f);
-            Right.SetFloat("Particle Velocity", 0.1f);
+
+        if (juiceMeter.value >= 0 && juiceMeter.value <= 25)
+        {
+            leftTrail.SetFloat("Particle Base Size", 0.1f);
+            rightTrail.SetFloat("Particle Base Size", 0.1f);
+
+            leftTrail.SetFloat("Particle Velocity", 0.1f);
+            rightTrail.SetFloat("Particle Velocity", 0.1f);
         }
-        else if (Juicemeter.value >= 26 && Juicemeter.value <= 50)
+        else if (juiceMeter.value >= 26 && juiceMeter.value <= 50)
         {
-            Left.SetFloat("Particle Base Size", 0.3f);
-            Right.SetFloat("Particle Base Size", 0.3f);
-            ps.startSizeMultiplier = 0.04f;
+            leftTrail.SetFloat("Particle Base Size", 0.3f);
+            rightTrail.SetFloat("Particle Base Size", 0.3f);
 
-            Left.SetFloat("Particle Velocity", 0.3f);
-            Right.SetFloat("Particle Velocity", 0.3f);
-        }
-
-        else if (Juicemeter.value >= 51 && Juicemeter.value <= 75)
-        {
-            Left.SetFloat("Particle Base Size", 0.5f);
-            Right.SetFloat("Particle Base Size", 0.5f);
-            ps.startSizeMultiplier = 0.09f;
-
-            Left.SetFloat("Particle Velocity", 0.5f);
-            Right.SetFloat("Particle Velocity", 0.5f);
+            leftTrail.SetFloat("Particle Velocity", 0.3f);
+            rightTrail.SetFloat("Particle Velocity", 0.3f);
         }
 
-        else if (Juicemeter.value >= 76 && Juicemeter.value <= 100)
+        else if (juiceMeter.value >= 51 && juiceMeter.value <= 75)
         {
-            Left.SetFloat("Particle Base Size", 1.0f);
-            Right.SetFloat("Particle Base Size", 1.0f);
-            ps.startSizeMultiplier = 1.5f;
+            leftTrail.SetFloat("Particle Base Size", 0.5f);
+            rightTrail.SetFloat("Particle Base Size", 0.5f);
 
-            Left.SetFloat("Particle Velocity", 1.0f);
-            Right.SetFloat("Particle Velocity", 1.0f);
+            leftTrail.SetFloat("Particle Velocity", 0.5f);
+            rightTrail.SetFloat("Particle Velocity", 0.5f);
+        }
+
+        else if (juiceMeter.value >= 76 && juiceMeter.value <= 100)
+        {
+            leftTrail.SetFloat("Particle Base Size", 1.0f);
+            rightTrail.SetFloat("Particle Base Size", 1.0f);
+
+            leftTrail.SetFloat("Particle Velocity", 1.0f);
+            rightTrail.SetFloat("Particle Velocity", 1.0f);
         }
     }
 }

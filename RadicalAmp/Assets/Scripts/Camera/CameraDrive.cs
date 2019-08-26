@@ -74,7 +74,6 @@ public class CameraDrive : MonoBehaviour
     {
         if (currentState == requestedState)
         {
-            Debug.Log("Already in Camerastate: " + requestedState);
             return;
         }
 

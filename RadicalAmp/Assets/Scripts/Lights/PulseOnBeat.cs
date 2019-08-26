@@ -9,14 +9,19 @@ public class PulseOnBeat : MonoBehaviour
     Light light;
     float baseIntensity;
 
+    float baseTemp;
+
     private void Start()
     {
         light = gameObject.GetComponent<Light>();
         baseIntensity = light.intensity;
+        baseTemp = light.colorTemperature;
+
     }
 
     private void Update()
     {
+        BasePulsing();
         PulseMe();
     }
 
@@ -27,8 +32,27 @@ public class PulseOnBeat : MonoBehaviour
         {
             if (BeatStrike.pulseBeat)
             {
+                if(light.intensity > 1000)
+                {
+                    light.colorTemperature = 1000;
+                    pulseAmount = 200;
+                }
                 light.intensity += pulseAmount;
             }
+        }
+        else
+        {
+            light.intensity = baseIntensity;
+            light.colorTemperature = baseTemp;
+
+        }
+    }
+
+    void BasePulsing()
+    {
+        if (BeatStrike.instance.IsOnBeat())
+        {
+            light.intensity += 2f;
         }
         else
         {

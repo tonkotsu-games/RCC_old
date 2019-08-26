@@ -12,23 +12,30 @@ public class CameraTesting : MonoBehaviour
     [SerializeField] Transform target;
     Vector3 offsetCurrent;
     [Header("Offsets")]
-    [SerializeField] Vector3 offsetZero;
-    [SerializeField] Vector3 offsetOne;
-    [SerializeField] Vector3 offsetTwo;
-    [SerializeField] Vector3 offsetThree;
-    [SerializeField] Vector3 offsetFour;
-    Vector3 newPosition = new Vector3(0,0,0);
+    [SerializeField] Vector3 offsetZero = new Vector3(0f,5f,-6f);
+    [SerializeField] Vector3 offsetOne = new Vector3(0f,7f,-7.5f);
+    [SerializeField] Vector3 offsetTwo = new Vector3(0f,8f,-8.5f);
+    [SerializeField] Vector3 offsetThree = new Vector3(0f,10f,-10.5f);
+    [SerializeField] Vector3 offsetFour = new Vector3(0f,12f,-12f);
+    [Header("Angles")]
+    [SerializeField] Vector3 angleZero = new Vector3(25.5f,0f,0f);
+    [SerializeField] Vector3 angleOne = new Vector3(31.5f,0f,0f);
+    [SerializeField] Vector3 angleTwo = new Vector3(33f,0f,0f);
+    [SerializeField] Vector3 angleThree = new Vector3(35.5f,0f,0f);
+    [SerializeField] Vector3 angleFour = new Vector3(37.8f,0f,0f);
     [Header("Follow Speed")]
-    [SerializeField] float followSpeedX = 25f;
-    [SerializeField] float followSpeedY = 25f;
-    [SerializeField] float followSpeedZ = 2.5f;
+    [SerializeField] float followSpeedX = 20f;
+    [SerializeField] float followSpeedY = 15f;
+    [SerializeField] float followSpeedZ = 40f;
     [Header("Zoom Speed")]
-    [SerializeField] float zoomSpeedX = 25f;
-    [SerializeField] float zoomSpeedY = 25f;
-    [SerializeField] float zoomSpeedZ = 25f;
+    [SerializeField] float zoomSpeedX = 10f;
+    [SerializeField] float zoomSpeedY = 10f;
+    [SerializeField] float zoomSpeedZ = 10f;
     [Header("Camera X Rotation Speed")]
     [Tooltip("Maximum turn rate in degrees per second..")]
-    [SerializeField] float turningRate = 25f;
+    [SerializeField] float turningRate = 30f;
+
+    Vector3 newPosition = new Vector3(0,0,0);
 
     // Rotation we should blend towards.
     private Quaternion targetRotation = Quaternion.identity;
@@ -63,27 +70,27 @@ public class CameraTesting : MonoBehaviour
         {
             case 0:
                 offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetZero, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
-                SetBlendedEulerAngles(new Vector3(25.5f,0,0));
+                SetBlendedEulerAngles(angleZero);
                 break;
             case 1:
                 offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetOne, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
-                SetBlendedEulerAngles(new Vector3(31.5f,0,0));
+                SetBlendedEulerAngles(angleOne);
                 break;
             case 2:
                 offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetTwo, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
-                SetBlendedEulerAngles(new Vector3(33f,0,0));
+                SetBlendedEulerAngles(angleTwo);
                 break;
             case 3:
                 offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetThree, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
-                SetBlendedEulerAngles(new Vector3(35.5f,0,0));
+                SetBlendedEulerAngles(angleThree);
                 break;
             case 4:
                 offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetFour, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
-                SetBlendedEulerAngles(new Vector3(37.8f,0,0));
+                SetBlendedEulerAngles(angleFour);
                 break;
             default:
                 Debug.LogError("This State doesn't exist yet");
-                cameraState = 0;
+                cameraState = 4;
                 break;
         }
     }

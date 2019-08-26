@@ -16,6 +16,9 @@ public class Beathoven : Actor
     [SerializeField] BeatAnalyse beatanalyse;
     [SerializeField] int preStartAttack = 1000;
 
+    public string specialAttackState;
+    [SerializeField] int preStartSpecialAttack = 1000;
+
     
 
     private void Awake()
@@ -64,35 +67,36 @@ public class Beathoven : Actor
     public void ChooseBehaviourAfterIdle(SearchResult searchResult)
     {
         var foundPlayers = searchResult.allHitObjectsWithRequiredTag;
-        
-        //Search Results
-        //Debug.Log("Choosing After Idle");
+
+        //Choose what to do by using info provided by the Search
         if(foundPlayers.Count > 0)
         {
             //Debug.Log("not empty " + foundPlayers.Count);
             player = foundPlayers[0].gameObject.transform;
             //Debug.Log(player.gameObject.name);
-        }
-        //else Debug.Log("Empty");
+            //Debug.Log("player " + player.position + " BasicEnemy " + this.gameObject.transform.position );
 
-
-        //Choose what to do by using info provided by the Search
-        if(foundPlayers.Count > 0)
-        {
-            Debug.Log("player " + player.position + " beathoven " + this.gameObject.transform.position );
             //Attack Player in Melee AttackRange
             if (Vector3.Distance(player.position, this.gameObject.transform.position) < bossData.meleeAttackRange)
             {
-                StateMachine.ChangeState(new Attack(this, player));
+              ChooseAttack();
             }
             //Walk to Player in AggroRange
-            else if(Vector3.Distance(player.position, this.gameObject.transform.position) < bossData.aggroRange)
+            else if(Vector3.Distance(player.position, this.gameObject.transform.position) < (bossData.aggroRange + 0.5f))
             {
+                //Debug.Log("went to walkTo");
                 StateMachine.ChangeState(new WalkTo(this, player, navMeshAgent, bossData.aggroRange, ActorData.meleeAttackRange));
+            }
+            else
+            {
+                StateMachine.ReturnToPreviousState();
+                //Debug.Log("Did nothing");
             }
         }
         else
         {
+            //else Debug.Log("No Player found");
+            //Debug.Log("returned to previous");
             StateMachine.ReturnToPreviousState();
         }
     }
@@ -106,7 +110,32 @@ public class Beathoven : Actor
         }
         else if(StateMachine.StateCurrent is WalkTo)
         {
+            ChooseAttack();
+        }
+    }
+
+    private void ChooseAttack()
+    {
+        int randomNumber = Random.Range(0, 5);
+        Debug.Log("RandomNumber " + randomNumber);
+
+        if (randomNumber < 4)
+        {
             StateMachine.ChangeState(new Attack(this, player));
+        }
+        else
+        {
+            Debug.Log("SpecialAttack!");
+
+            if (specialAttackState == "waveAttack")
+            {
+                Debug.LogError("Now in WaveAttack");
+                StateMachine.ChangeState(new WaveAttack(this, player));
+            }
+            else if(specialAttackState == "")
+            {
+                StateMachine.ChangeState(new Attack(this, player));
+            }
         }
     }
 
@@ -123,6 +152,15 @@ public class Beathoven : Actor
         {
             if(beatanalyse.IsOnBeat(preStartAttack))
             {
+                return true;
+            }
+        }
+        else if(state is WaveAttack)
+        {
+            //Debug.Log("IsAttack");
+            if(beatanalyse.IsOnBeat(preStartSpecialAttack))
+            {
+                //Debug.Log("HitBeat");
                 return true;
             }
         }

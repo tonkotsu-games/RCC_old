@@ -29,7 +29,7 @@ public class TiffanyController : MonoBehaviour
 
     int layerMask = 1 << 13;
 
-    public enum TiffStates { Streaming,MoveToNewTarget, FindNewTarget, AttentionWhore }
+    public enum TiffStates { Streaming,MoveToNewTarget, FindNewTarget, FocusAttention }
 
     [HideInInspector]
     public TiffStates currentTiffState = TiffStates.MoveToNewTarget;
@@ -139,9 +139,9 @@ public class TiffanyController : MonoBehaviour
                     StartCoroutine("TargetSwapCooldown");
                     break;
 
-                case TiffStates.AttentionWhore:
+                case TiffStates.FocusAttention:
                     Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
-                    currentTiffState = TiffStates.AttentionWhore;
+                    currentTiffState = TiffStates.FocusAttention;
                     target = player;
                     CalculateNextPos();
                     StopCoroutine("TargetSwapCooldown");

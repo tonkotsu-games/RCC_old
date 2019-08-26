@@ -29,7 +29,7 @@ public class TiffanyController : MonoBehaviour
 
     int layerMask = 1 << 13;
 
-    public enum TiffStates { Streaming,MoveToNewTarget, FindNewTarget, AttentionWhore }
+    public enum TiffStates { Streaming,MoveToNewTarget, FindNewTarget, FocusAttention }
 
     [HideInInspector]
     public TiffStates currentTiffState = TiffStates.MoveToNewTarget;
@@ -57,6 +57,14 @@ public class TiffanyController : MonoBehaviour
 
     private void Update()
     {
+        if (target == null)
+        {
+            allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log("Refilling targets");
+            ChangeTiffState(TiffStates.FindNewTarget);
+            return;
+        }
+
         if (agent.hasPath)
         {
             agent.acceleration = (agent.remainingDistance < brakeDistance) ? deceleration : acceleration;
@@ -80,15 +88,14 @@ public class TiffanyController : MonoBehaviour
         if (target.GetComponent<TiffTarget>() == null)
         {
             Debug.Log(target.name + "has no tiffTarget");
+            allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log("Refilling targets");
+            ChangeTiffState(TiffStates.FindNewTarget);
+            return;
         }
         Transform lookAtTarget = target.GetComponent<TiffTarget>().tiffTarget;
         tiffCam.transform.LookAt(lookAtTarget);
 
-        if(target == null)
-        {
-            allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            Debug.Log("Refilling targets");
-        }
     }
 
 
@@ -132,9 +139,9 @@ public class TiffanyController : MonoBehaviour
                     StartCoroutine("TargetSwapCooldown");
                     break;
 
-                case TiffStates.AttentionWhore:
+                case TiffStates.FocusAttention:
                     Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
-                    currentTiffState = TiffStates.AttentionWhore;
+                    currentTiffState = TiffStates.FocusAttention;
                     target = player;
                     CalculateNextPos();
                     StopCoroutine("TargetSwapCooldown");

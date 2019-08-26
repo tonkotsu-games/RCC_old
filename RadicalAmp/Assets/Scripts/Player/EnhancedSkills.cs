@@ -61,7 +61,7 @@ public class EnhancedSkills : MonoBehaviour
                     }
                     else
                     {
-                        TiffanyController.instance.ChangeTiffState(TiffanyController.TiffStates.AttentionWhore);
+                        TiffanyController.instance.ChangeTiffState(TiffanyController.TiffStates.FocusAttention);
                     }
                     break;
                 case EnhancedState.Active:

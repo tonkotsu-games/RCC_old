@@ -50,7 +50,10 @@ public class BasicEnemyFeedback : Feedback
     {
         animator.SetBool("windUp", true);
         animator.SetBool("windUpAttack", false);
-        animator.SetBool("specialAttack", false);
+        if(this.GetComponent<BasicEnemy>().specialAttackState != "")
+        {
+            animator.SetBool("specialAttack", false);
+        }
         animator.SetBool("cruising", false);
         attackCheck.EndAttackAnimation();
     }

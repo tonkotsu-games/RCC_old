@@ -6,39 +6,35 @@ public class PlayerAttackCheck : MonoBehaviour
 {
     private PopupDamageController popupController;
 
-    [SerializeField] private GameObject particle;
-
     AudioSource my_audioSource;
     public AudioClip[] enemyHitSound;
 
-    EnemyHP live;
+    EnemyHP life;
 
     public int damage = 2;
+
+    BoxCollider boxCol;
 
     private void Start()
     {
         my_audioSource = GetComponent<AudioSource>();
-
         popupController = GameObject.FindWithTag("Player").GetComponent<PopupDamageController>();
+        boxCol = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (PlayerController.attack == true && other.gameObject.tag == "Enemy" && !other.gameObject.GetComponent<EnemyHP>().death)
         {
-            live = other.gameObject.GetComponent<EnemyHP>();
-            live.life -= damage;
+            boxCol.enabled = false;
+            life = other.gameObject.GetComponent<EnemyHP>();
+            life.life -= damage;
             popupController.CreatePopupText(damage.ToString(), other.gameObject.GetComponent<Transform>().transform);
 
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];
             my_audioSource.Play();
 
-            live.BloodSplat();
-
-            if (BeatStrike.beatAttack && !other.gameObject.GetComponent<EnemyHP>().death)
-            {
-                GameObject particalEffect = Instantiate(particle, this.transform.position, Quaternion.identity);
-            }
+            life.BloodSplat();
         }
         else
         {

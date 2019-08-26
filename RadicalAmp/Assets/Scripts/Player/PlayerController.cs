@@ -1,34 +1,36 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public List<Transform> enemiesInScene = new List<Transform>();
+    public List<Transform> enemiesInRange = new List<Transform>();
 
-    private float horizontalMove;
-    private float verticalMove;
-    private float accelerationHorizonatl;
-    private float accelerationVertical;
-    private float actuellSpeedHorizontal;
-    private float actuellSpeedVertical;
-
+    private float moveHorizontal;
+    private float moveVertical;
 
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float acceleration;
+    [Header("Snapping setting")]
+    [Range(0f, 10f)]
+    [SerializeField] float snappRange;
+    [Range(0f, 90f)]
+    [SerializeField] float snappAngle;
 
-
-    [Header("Settings for the dash")]
+    [Header("Dash settings")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashTime;
     [SerializeField] GameObject dashParticlesPrefab;
 
-    private Vector3 moveDirection;
     private Vector3 heading;
     private Vector3 dashdirection;
     private Vector3 moveVector;
 
-
-    bool dashing = false;
-    bool dash = false;
+    private Transform closest = null;
+    
+    private bool dash = false;
+    private bool dashing = false;
 
     public static bool show = false;
     public static bool attack = false;
@@ -38,14 +40,15 @@ public class PlayerController : MonoBehaviour
     private PlayerController DeadDisable;
     private Respawn respawn;
     
-    Animator anim;
-    Rigidbody rigi;
     public Timer dashTimer = new Timer();
 
     [Header("Life setting")]
     public int life = 3;
 
-    AudioSource my_audioSource; 
+    private AudioSource my_audioSource;
+    private Animator anim;
+    private Rigidbody rigi;
+    private BoxCollider boxCol;
 
     [Header("Several Audiofiles")]
     public AudioClip dashClip;
@@ -56,6 +59,11 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        foreach(GameObject trans in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemiesInScene.Add(trans.transform);
+        }
+
         respawn = GameObject.FindWithTag("Respawn").GetComponent<Respawn>();
 
         dashing = false;
@@ -66,30 +74,30 @@ public class PlayerController : MonoBehaviour
         attack1DONE = false;
 
         dashTimer.Start(dashTime);
+        boxCol = GetComponent<BoxCollider>();
+        boxCol.enabled = false;
 
         dancemove = 0;
 
         rigi = gameObject.GetComponent<Rigidbody>();
-
         anim = gameObject.GetComponent<Animator>();
-
         DeadDisable = gameObject.GetComponent<PlayerController>();
-
         my_audioSource = GetComponent<AudioSource>(); 
-
     }
 
     void Update()
     {
+        moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveVertical = Input.GetAxisRaw("Vertical");
 
-        horizontalMove = Input.GetAxis("Horizontal");
-        verticalMove = Input.GetAxis("Vertical");
-
-        anim.SetFloat("PosX", horizontalMove);
-        anim.SetFloat("PosY", verticalMove);
+        anim.SetFloat("PosX", moveHorizontal);
+        anim.SetFloat("PosY", moveVertical);
 
         if(Input.GetButtonDown("Attack") && !attack && !dancing && life > 0)
         {
+            boxCol.enabled = true;
+            Snapping();
+
             if (attack1DONE == false)
             {
                 anim.Play("Attack", 0, 0);
@@ -157,7 +165,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!IsGrounded.isGrounded)
+        MovementCalculation();
+
+        if (!IsGrounded.isGrounded)
         {
             Gravity();
         }
@@ -187,24 +197,23 @@ public class PlayerController : MonoBehaviour
         Dashing();
     }
 
+    void MovementCalculation()
+    {
+        moveVector = new Vector3(moveHorizontal, 0f, moveVertical);
+
+        moveVector = moveVector.normalized * movementSpeed;
+    }
+
     /// <summary>
     /// Function for the Movement
     /// </summary>
     void Move()
     {
-
-        actuellSpeedHorizontal = acceleration * horizontalMove;
-        actuellSpeedVertical = acceleration * verticalMove;
-
-        moveVector = new Vector3(actuellSpeedHorizontal, 0f, actuellSpeedVertical);
-
-        moveVector = moveVector.normalized * movementSpeed;
-
         rigi.velocity = new Vector3(moveVector.x,
                                     0,
-                                    moveVector.z);
-        
+                                    moveVector.z);        
     }
+
     void Gravity()
     {
         rigi.velocity = new Vector3(moveVector.x,
@@ -242,17 +251,53 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void Snapping()
+    {
+        var closestAngle = snappAngle;
+
+        for (int i = 0; i < enemiesInScene.Count; i++)
+        {
+            if(enemiesInScene[i] == null)
+            {
+                enemiesInScene.Remove(enemiesInScene[i]);
+                i--;
+            }
+            else if(Vector3.Distance(enemiesInScene[i].position, gameObject.transform.position) <= snappRange)
+            {
+                enemiesInRange.Add(enemiesInScene[i]);
+            }
+        }
+        for(int i = 0;i < enemiesInRange.Count; i++)
+        {
+            if (Vector3.Angle((enemiesInRange[i].position - transform.position), transform.forward) <= closestAngle)
+            {
+                closest = enemiesInRange[i];
+                closestAngle = Vector3.Angle((enemiesInRange[i].position - transform.position), transform.forward);
+            }
+        }
+        if (closest != null)
+        {
+            transform.rotation = Quaternion.LookRotation(closest.position - transform.position);
+            closest = null;
+        }
+        enemiesInRange.Clear();
+    }
+
     /// <summary>
     /// Function to set you face direction
     /// </summary>
     void Turn()
     {
-        transform.rotation = Quaternion.LookRotation(heading);
+        if (!attack)
+        {
+            transform.rotation = Quaternion.LookRotation(heading);
+        }
     }
     public void AfterAttack()
     {
         attack = false;
-        
+        boxCol.enabled = false;
         BeatStrike.beatAttack = false;
     }
     public void AfterDancing()
@@ -280,12 +325,16 @@ public class PlayerController : MonoBehaviour
 
     private void SpawnDashParticles()
     {
-        Debug.Log("Spawning Dash Particles");
         GameObject particlesInstance = Instantiate(dashParticlesPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
         particlesInstance.GetComponent<FollowPosition>().followTarget = gameObject.transform;
         particlesInstance.gameObject.transform.Rotate(-90,0,0);
         ParticleSystem parts = particlesInstance.GetComponentInChildren<ParticleSystem>();
         float totalDuration = parts.main.duration + parts.main.startLifetime.constant + parts.main.startDelay.constant;
         Destroy(particlesInstance, totalDuration);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, snappRange);
     }
 }

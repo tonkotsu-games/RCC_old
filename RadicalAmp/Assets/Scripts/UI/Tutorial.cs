@@ -10,7 +10,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject tutorialContainer;
     [SerializeField] GameObject gate;
     [SerializeField] GameObject TutorialText;
-    TutorialSteps currentStep;
+    public TutorialSteps currentStep;
 
     bool tutorialPlay = false;
 
@@ -124,6 +124,11 @@ public class Tutorial : MonoBehaviour
             tutorialTimer = 1;
             tutorialContainer.SetActive(false);
         }
+    }
+
+    public void Testing()
+    {
+        currentStep = TutorialSteps.TutorialFinish;
     }
 
     public enum TutorialSteps

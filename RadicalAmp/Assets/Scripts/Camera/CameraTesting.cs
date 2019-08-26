@@ -24,17 +24,22 @@ public class CameraTesting : MonoBehaviour
     [SerializeField] Vector3 angleThree = new Vector3(35.5f,0f,0f);
     [SerializeField] Vector3 angleFour = new Vector3(37.8f,0f,0f);
     [Header("Follow Speed")]
-    [SerializeField] float followSpeedX = 20f;
-    [SerializeField] float followSpeedY = 15f;
-    [SerializeField] float followSpeedZ = 40f;
+    [SerializeField] Vector3 followSpeedZero = new Vector3(20f,15f,40f);
+    [SerializeField] Vector3 followSpeedOne = new Vector3(20f,15f,40f);
+    [SerializeField] Vector3 followSpeedTwo = new Vector3(20f,15f,40f);
+    [SerializeField] Vector3 followSpeedThree = new Vector3(20f,15f,40f);
+    [SerializeField] Vector3 followSpeedFour = new Vector3(20f,15f,40f);
     [Header("Zoom Speed")]
-    [SerializeField] float zoomSpeedX = 10f;
-    [SerializeField] float zoomSpeedY = 10f;
-    [SerializeField] float zoomSpeedZ = 10f;
+    [SerializeField] Vector3 zoomSpeedZero = new Vector3(10f,10f,10f);
+    [SerializeField] Vector3 zoomSpeedOne = new Vector3(10f,10f,10f);
+    [SerializeField] Vector3 zoomSpeedTwo = new Vector3(10f,10f,10f);
+    [SerializeField] Vector3 zoomSpeedThree = new Vector3(10f,10f,10f);
+    [SerializeField] Vector3 zoomSpeedFour = new Vector3(10f,10f,10f);
     [Header("Camera X Rotation Speed")]
     [Tooltip("Maximum turn rate in degrees per second..")]
     [SerializeField] float turningRate = 30f;
 
+    private Vector3 followSpeed = new Vector3(20f,15f,40f); 
     Vector3 newPosition = new Vector3(0,0,0);
 
     // Rotation we should blend towards.
@@ -44,13 +49,14 @@ public class CameraTesting : MonoBehaviour
     {
         this.gameObject.transform.position = target.position + offsetZero;
         offsetCurrent = offsetZero;
+        followSpeed = followSpeedZero;
     }
 
 
     void Update()
     {
         EnemyCheck();
-        CalculateOffset();
+        SetVariables();
         CalculateSmoothFollow();
         ChangePositionAndRotation();
     }
@@ -64,29 +70,34 @@ public class CameraTesting : MonoBehaviour
     }
 
     //Calculates the new offset to transition into different View/State
-    private void CalculateOffset()
+    private void SetVariables()
     {
         switch (cameraState)
         {
             case 0:
-                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetZero, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
+                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetZero, zoomSpeedZero.x, zoomSpeedZero.y, zoomSpeedZero.z);
                 SetBlendedEulerAngles(angleZero);
+                followSpeed = followSpeedZero;
                 break;
             case 1:
-                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetOne, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
+                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetOne, zoomSpeedOne.x, zoomSpeedOne.y, zoomSpeedOne.z);
                 SetBlendedEulerAngles(angleOne);
+                followSpeed = followSpeedOne;
                 break;
             case 2:
-                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetTwo, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
+                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetTwo, zoomSpeedTwo.x, zoomSpeedTwo.y, zoomSpeedTwo.z);
                 SetBlendedEulerAngles(angleTwo);
+                followSpeed = followSpeedTwo;
                 break;
             case 3:
-                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetThree, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
+                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetThree, zoomSpeedThree.x, zoomSpeedThree.y, zoomSpeedThree.z);
                 SetBlendedEulerAngles(angleThree);
+                followSpeed = followSpeedThree;
                 break;
             case 4:
-                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetFour, zoomSpeedX, zoomSpeedY, zoomSpeedZ);
+                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetFour,zoomSpeedFour.x, zoomSpeedFour.y, zoomSpeedFour.z);
                 SetBlendedEulerAngles(angleFour);
+                followSpeed = followSpeedFour;
                 break;
             default:
                 Debug.LogError("This State doesn't exist yet");
@@ -98,7 +109,7 @@ public class CameraTesting : MonoBehaviour
     //Calculates how to move camera to target
     private void CalculateSmoothFollow()
     {
-        newPosition = CalculateSmoothMovementFromTo(this.gameObject.transform.position, (target.transform.position+offsetCurrent), followSpeedX, followSpeedY, followSpeedZ);
+        newPosition = CalculateSmoothMovementFromTo(this.gameObject.transform.position, (target.transform.position+offsetCurrent), followSpeed.x, followSpeed.y, followSpeed.z);
     }
 
     private void ChangePositionAndRotation()

@@ -210,14 +210,14 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         rigi.velocity = new Vector3(moveVector.x,
-                                    0,
+                                    rigi.velocity.y,
                                     moveVector.z);        
     }
 
     void Gravity()
     {
         rigi.velocity = new Vector3(moveVector.x,
-                                    -10,
+                                    rigi.velocity.y,
                                     moveVector.z);
     }
     /// <summary>

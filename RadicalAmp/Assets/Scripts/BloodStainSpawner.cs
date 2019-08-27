@@ -7,7 +7,7 @@ public class BloodStainSpawner : MonoBehaviour
 
     public ParticleSystem part;
     public List<ParticleCollisionEvent> collisionEvents;
-    public GameObject bloodStainPrefab;
+    public GameObject[] bloodStainPrefabs;
     Vector3 pos;
 
     void Start()
@@ -38,10 +38,11 @@ public class BloodStainSpawner : MonoBehaviour
 
     private void SpawnBloodStain()
     {
-        GameObject particlesInstance = Instantiate(bloodStainPrefab, pos, Quaternion.identity) as GameObject;
+        int randomNumber = Random.Range(0, bloodStainPrefabs.Length);
+        GameObject particlesInstance = Instantiate(bloodStainPrefabs[randomNumber], pos, Quaternion.identity) as GameObject;
         
         ParticleSystem parts = particlesInstance.GetComponentInChildren<ParticleSystem>();
-        float totalDuration = parts.main.duration + parts.main.startLifetime.constant + parts.main.startDelay.constant;
+        float totalDuration = parts.main.duration;
         Destroy(particlesInstance, totalDuration);
     }
 }

@@ -14,26 +14,31 @@ public class StageRingController : MonoBehaviour
 
     private void Start()
     {
-        transform.position = basePosition;
+        SetBasePos();
     }
 
     public void Update()
     {
         if (isMoving)
         {
-            MoveDown();
+            MoveUp();
         }
         
     }
-    public void MoveDown()
+    public void MoveUp()
     {
-        if (transform.position.y >= basePosition.y - stepSize)
+        if (transform.position.y <= basePosition.y + stepSize)
         {
-            transform.Translate(0,-moveSpeed * Time.deltaTime , 0);
+            transform.Translate(0,moveSpeed * Time.deltaTime , 0);
         }
         else
         {
             isMoving = false;
         }
+    }
+
+    public void SetBasePos()
+    {
+        basePosition = transform.position;
     }
 }

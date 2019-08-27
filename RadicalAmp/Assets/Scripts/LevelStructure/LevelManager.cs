@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -26,25 +27,36 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Round: " + i + " -> starting countdown");
             yield return new WaitForSeconds(10);
-            Debug.Log("setting " + rings[i].gameObject.name + "'s isMoving to true");
 
             switch (i)
             {
+                case 0:
+                    //Move Ring 3&2&1
+                    rings[1].gameObject.GetComponent<NavMeshSurface>().enabled = true;
+                    rings[0].gameObject.GetComponent<NavMeshSurface>().enabled = false;
+                    rings[1].isMoving = true;
+                    break;
                 case 1:
-                    //Move only Ring4
+                    //Move Ring 2&1
+                    rings[2].gameObject.GetComponent<NavMeshSurface>().enabled = true;
+                    rings[1].gameObject.GetComponent<NavMeshSurface>().enabled = false;
+
+                    rings[2].SetBasePos();
+                    rings[2].isMoving = true;
                     break;
                 case 2:
-                    //Move Ring 4 & 3
+                    //Move Ring 1
+                    rings[3].gameObject.GetComponent<NavMeshSurface>().enabled = true;
+                    rings[2].gameObject.GetComponent<NavMeshSurface>().enabled = false;
+
+                    rings[3].SetBasePos();
+                    rings[3].isMoving = true;
                     break;
-                case 3:
-                    //Move Ring 4 & 3 & 2
-                    break;
-                case 4:
-                    //Move all rings
+                case 3:       
+                    //Move Boss down
                     break;
             }
 
-            rings[i].isMoving = true;
             i++;
         }
     }

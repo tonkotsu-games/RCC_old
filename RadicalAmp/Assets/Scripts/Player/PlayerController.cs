@@ -50,8 +50,6 @@ public class PlayerController : MonoBehaviour
     [Header("Life setting")]
     public int life = 3;
 
-    private int cameraRange = 0;
-
     private AudioSource my_audioSource;
     private Animator anim;
     private Rigidbody rigi;
@@ -353,13 +351,20 @@ public class PlayerController : MonoBehaviour
         {
             if(Vector3.Distance(enemiesInScene[i].position, transform.position) <= enemyDetectionRange)
             {
-                enemiesInCameraRange.Add(enemiesInScene[i]);
+                if(enemiesInCameraRange.Contains(enemiesInScene[i]))
+                {
+
+                }
+                else
+                {
+                    enemiesInCameraRange.Add(enemiesInScene[i]);
+                }
             }
             if(Vector3.Distance(enemiesInScene[i].position, transform.position) >= enemyDetectionRange)
             {
                 if (enemiesInCameraRange.Contains(enemiesInScene[i]))
                 {
-                    enemiesInCameraRange.Remove(enemiesInRange[i]);
+                    enemiesInCameraRange.Remove(enemiesInScene[i]);
                 }
             }
         }

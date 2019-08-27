@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ParticleStartSize : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class ParticleStartSize : MonoBehaviour
     [SerializeField] float particleMulti;
     ParticleSystem.MainModule particleModule;
 
+    private Slider juiceMeter;
 
     void Start()
     {
         particleModule = particleSystem.main;
+        juiceMeter = Locator.instance.GetJuiceMeter();
     }
 
     void Update()

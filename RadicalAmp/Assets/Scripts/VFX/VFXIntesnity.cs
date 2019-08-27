@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
+using UnityEngine.UI;
 
 
 public class VFXIntesnity : MonoBehaviour
@@ -13,11 +14,13 @@ public class VFXIntesnity : MonoBehaviour
     [Header("VFX emission Name")]
     [SerializeField] string vfxName;
 
+    private Slider juiceMeter;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        juiceMeter = Locator.instance.GetJuiceMeter();
+
     }
 
     // Update is called once per frame

@@ -19,6 +19,7 @@ public class BeatStrike : MonoBehaviour
 
     bool action = false;
     bool punish = false;
+    public static bool pulseBeat = false;
     public static bool beatAttack = false;
 
     [Header("Juice Reward in int")]
@@ -55,6 +56,7 @@ public class BeatStrike : MonoBehaviour
 
     void Update()
     {
+        pulseBeat = false;
 
         if (Input.GetButtonDown("Dash"))
         {
@@ -62,6 +64,7 @@ public class BeatStrike : MonoBehaviour
             Physics.IgnoreLayerCollision(9, 13, true);
             if (IsOnBeat())
             {
+                pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Dash);
@@ -89,6 +92,7 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
+                pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
@@ -114,6 +118,7 @@ public class BeatStrike : MonoBehaviour
         {
             if (IsOnBeat())
             {
+                pulseBeat = true;
                 juiceMeter.value += danceReward;
                 action = true;
 

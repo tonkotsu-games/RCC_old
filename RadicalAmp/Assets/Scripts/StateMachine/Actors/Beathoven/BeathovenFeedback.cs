@@ -7,6 +7,8 @@ public class BeathovenFeedback : Feedback
     [SerializeField]
     private AttackCheck attackCheck;
 
+    public AnimationClip waveAttackAnimation;
+
     public override void PlayAnimationForState(string state)
     {
        //NOT REUSABLE --> Array?
@@ -23,6 +25,12 @@ public class BeathovenFeedback : Feedback
             break;
             case "Attack":
             PlayAttack();
+            break;
+            case "waveWindUp":
+            PlayWaveWindUp();
+            break;
+            case "waveAttack":
+            PlayWaveAttack();
             break;
             case null:
             Debug.Log("no State");
@@ -44,6 +52,7 @@ public class BeathovenFeedback : Feedback
     {
         animator.SetBool("windUp", true);
         animator.SetBool("windUpAttack", false);
+        animator.SetBool("waveAttack", false);
         animator.SetBool("cruising", false);
         attackCheck.EndAttackAnimation();
     }
@@ -52,5 +61,21 @@ public class BeathovenFeedback : Feedback
     {
         animator.SetBool("windUpAttack", true);
         animator.SetBool("windUp", false);
+    }
+
+    public void PlayWaveWindUp()
+    {
+        Debug.Log("PlayWaveWindUp");
+        animator.SetBool("waveWindUp", true);
+        animator.SetBool("windUpAttack", false);
+        animator.SetBool("waveAttack", false);
+        animator.SetBool("cruising", false);
+        attackCheck.EndSpecialAttackAnimation();
+    }
+
+    private void PlayWaveAttack()
+    {
+        animator.SetBool("waveAttack", true);
+        animator.SetBool("waveWindUp", false);
     }
 }

@@ -31,11 +31,11 @@ public class CameraRangeAdjust : MonoBehaviour
 
     private void Update()
     {
-      //  innerEnemies = Physics.OverlapSphere(player.transform.position, innerRange, layerMask);
+       innerEnemies = Physics.OverlapSphere(player.transform.position, innerRange, layerMask);
 
-        //outerEnemies = Physics.OverlapSphere(player.transform.position, outerRange, layerMask);
+       outerEnemies = Physics.OverlapSphere(player.transform.position, outerRange, layerMask);
 
-        //CheckForEnemiesInRange();
+       CheckForEnemiesInRange();
     }
 
     /// <summary>
@@ -63,21 +63,58 @@ public class CameraRangeAdjust : MonoBehaviour
     /// <returns></returns>
     public void CheckForEnemiesInRange()
     {
+        CameraDrive camDrive = CameraDrive.instance;
 
-        if (outerEnemies.Length >= zoomTriggerAmount)
+        if(outerEnemies.Length == 0)
         {
-            Debug.Log("ENEMIES IN RANGE");
-            CameraDrive.instance.ChangeCameraState(CameraDrive.CameraStates.ZoomedOut);
+            if (camDrive.currentState != CameraDrive.CameraStates.ZoomMin)
+            {
+                Debug.Log("No Enemies in Range");
+                camDrive.ChangeCameraState(CameraDrive.CameraStates.ZoomMin);
+            }
+        }
+    
+        else if (outerEnemies.Length == 1)
+        {
+            if (camDrive.currentState != CameraDrive.CameraStates.ZoomTwo)
+            {
+                Debug.Log("One Enemy in Range");
+                camDrive.ChangeCameraState(CameraDrive.CameraStates.ZoomTwo);
+            }
         }
 
-        else
+        else if(outerEnemies.Length == 2)
         {
-            Debug.Log("RANGE CLEAR AGAIN");
-            if (CameraDrive.instance.readyToZoomIn)
+            if (camDrive.currentState != CameraDrive.CameraStates.ZoomThree)
             {
-                CameraDrive.instance.ChangeCameraState(CameraDrive.CameraStates.ZoomedIn);
+                Debug.Log("Two Enemies in Range");
+                camDrive.ChangeCameraState(CameraDrive.CameraStates.ZoomThree);
+            }
+        }
+        else if (outerEnemies.Length == 3)
+        {
+            if (camDrive.currentState != CameraDrive.CameraStates.ZoomFour)
+            {
+                Debug.Log("Three Enemies in Range");
+                camDrive.ChangeCameraState(CameraDrive.CameraStates.ZoomFour);
+            }
+        }
+        else if (outerEnemies.Length == 4)
+        {
+            if (camDrive.currentState != CameraDrive.CameraStates.ZoomFour)
+            {
+                Debug.Log("Four Enemies in Range");
+                camDrive.ChangeCameraState(CameraDrive.CameraStates.ZoomFour);
+            }
+        }
+
+        else if (outerEnemies.Length >= 5)
+        {
+            if (camDrive.currentState != CameraDrive.CameraStates.ZoomMax)
+            {
+                Debug.Log("Five or more Enemies in range");
+                camDrive.ChangeCameraState(CameraDrive.CameraStates.ZoomMax);
             }
         }
     }
-
 }

@@ -117,7 +117,6 @@ public void ChangeCameraState(CameraStates requestedState)
     {
         if (currentState == requestedState)
         {
-            Debug.Log("Already in Camerastate: " + requestedState);
             return;
         }
 

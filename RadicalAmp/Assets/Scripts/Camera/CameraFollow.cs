@@ -92,13 +92,12 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        EnemyCheck();
         SetVariables();
         CalculateSmoothFollow();
         ChangePositionAndRotation();
     }
 
-    private void EnemyCheck()
+    public static void EnemyCheck(int enemyCount)
     {
         //Check for amount of Enemies near the player
 

@@ -28,7 +28,7 @@ public class WaveAttack : IState
        //actor.gameObject.GetComponent<Feedback>().NewStateAnimation("specialAttack");
        animationFinished = false;
        actor.attacking = true;
-       yield return new WaitForSeconds(actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length + actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length);
+       yield return new WaitForSeconds(actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length + actor.GetComponent<BeathovenFeedback>().waveAttackExitAnimation.length);
        animationFinished = true;
        actor.attacking = false;
        yield break;

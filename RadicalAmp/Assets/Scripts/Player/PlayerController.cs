@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public List<Transform> enemiesInScene = new List<Transform>();
-    public List<Transform> enemiesInRange = new List<Transform>();
+    List<Transform> enemiesInScene = new List<Transform>();
+    List<Transform> enemiesInRange = new List<Transform>();
+    public List<Transform> enemiesInCameraRange = new List<Transform>();
 
     private float moveHorizontal;
     private float moveVertical;
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float snappRange;
     [Range(0f, 90f)]
     [SerializeField] float snappAngle;
+
+    [Header("Enemy detection range")]
+    [Range(0f, 15f)]
+    [SerializeField] float enemyDetectionRange;
 
     [Header("Dash settings")]
     [SerializeField] float dashSpeed;
@@ -161,6 +166,7 @@ public class PlayerController : MonoBehaviour
                 show = false;
             }
         }
+        EnemyCount();
     }
 
     private void FixedUpdate()
@@ -336,5 +342,32 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, snappRange);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
+    }
+    private void EnemyCount()
+    {
+        for (int i = 0; i < enemiesInScene.Count ;i++)
+        {
+            if(Vector3.Distance(enemiesInScene[i].position, transform.position) <= enemyDetectionRange)
+            {
+                if(enemiesInCameraRange.Contains(enemiesInScene[i]))
+                {
+
+                }
+                else
+                {
+                    enemiesInCameraRange.Add(enemiesInScene[i]);
+                }
+            }
+            if(Vector3.Distance(enemiesInScene[i].position, transform.position) >= enemyDetectionRange)
+            {
+                if (enemiesInCameraRange.Contains(enemiesInScene[i]))
+                {
+                    enemiesInCameraRange.Remove(enemiesInScene[i]);
+                }
+            }
+        }
+        CameraFollow.EnemyCheck(enemiesInCameraRange.Count);
     }
 }

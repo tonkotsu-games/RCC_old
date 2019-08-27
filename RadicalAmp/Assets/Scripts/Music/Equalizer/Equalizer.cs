@@ -22,7 +22,7 @@ public class Equalizer : MonoBehaviour
             Slider instantSlider = Instantiate(equalizerRightPrefab);
             instantSlider.transform.SetParent(canvasParent.transform, false);
             instantSlider.name = "SampleCube: " + i;
-            instantSlider.GetComponent<RectTransform>().localPosition = new Vector3(400 , 
+            instantSlider.GetComponent<RectTransform>().localPosition = new Vector3(400,
                                                                                     -175 + (25f * i),
                                                                                     0);
             equalizerRight[i] = instantSlider;
@@ -37,9 +37,26 @@ public class Equalizer : MonoBehaviour
                                                                                     0);
             equalizerLeft[i] = instantSlider;
         }
+        for (int i = 0; i < 16; i++)
+        {
+            if (i <= 5)
+            {
+                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
+                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
+            }
+            if(i > 5 && i <= 11)
+            {
+                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
+                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
+            }
+            if(i > 11)
+            {
+                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
+                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
+            }
+        }
     }
-
-    void Update()
+        void Update()
     {
         for (int i = 0; i < 16; i++)
         {

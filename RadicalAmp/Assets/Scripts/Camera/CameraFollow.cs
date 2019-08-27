@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -8,12 +9,13 @@ public class CameraFollow : MonoBehaviour
     [Tooltip("Camera state integer, dependent on the number of enemies near the player.")]
     [SerializeField] private int cameraState = 0;
 
+    [Required]
     [Header("Camera Target")]
     [Tooltip("The cameras desired target.")]
     [SerializeField] Transform target;
     
-    //[Tooltip("The offsets the camera should have from the target, dependent on the Camera State.")]
     [Header("Offsets")]
+    [InfoBox("The offsets the camera should have from the target, dependent on the Camera State.")]
     [Tooltip("The offset for CameraState 0.")]
     [SerializeField] Vector3 offsetZero = new Vector3(0f,5f,-6f);
     [Tooltip("The offset for CameraState 1.")]
@@ -24,8 +26,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 offsetThree = new Vector3(0f,10f,-10.5f);
     [Tooltip("The offset for CameraState 4 (currently the maximum, even if there are more enemies).")]
     [SerializeField] Vector3 offsetFour = new Vector3(0f,12f,-12f);
-    //[Tooltip("The angles the camera should adopt, dependent on the CameraState.")]
+    
     [Header("Angles")]
+    [InfoBox("The angles the camera should adopt, dependent on the CameraState.")]
     [Tooltip("The angle for CameraState 0.")]
     [SerializeField] Vector3 angleZero = new Vector3(25.5f,0f,0f);
     [Tooltip("The angle for CameraState 1.")]
@@ -36,8 +39,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 angleThree = new Vector3(35.5f,0f,0f);
     [Tooltip("The angle for CameraState 4.")]
     [SerializeField] Vector3 angleFour = new Vector3(37.8f,0f,0f);
-    //[Tooltip("The speed at which the camera should follow the Player, dependent on the CameraState.")]
+    
     [Header("Follow Speed")]
+    [InfoBox("The speed at which the camera should follow the Player, dependent on the CameraState.")]
     [Tooltip("The follow speed for CameraState 0.")]
     [SerializeField] Vector3 followSpeedZero = new Vector3(20f,15f,40f);
     [Tooltip("The follow speed for CameraState 1.")]
@@ -48,8 +52,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 followSpeedThree = new Vector3(20f,15f,40f);
     [Tooltip("The follow speed for CameraState 4.")]
     [SerializeField] Vector3 followSpeedFour = new Vector3(20f,15f,40f);
-    //[Tooltip("The speed at which the camera should move to the state dependent offset, also dependent on the CameraState.")]
+    
     [Header("Zoom Speed")]
+    [InfoBox("The speed at which the camera should move to the state dependent offset, also dependent on the CameraState.")]
     [Tooltip("The zoom speed for CameraState 0.")]
     [SerializeField] Vector3 zoomSpeedZero = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 1.")]
@@ -60,8 +65,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 zoomSpeedThree = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 4.")]
     [SerializeField] Vector3 zoomSpeedFour = new Vector3(10f,10f,10f);
-    //[Tooltip("The speed at which the camera should to the state dependent angle, currently only around X-Axis.")]
+    
     [Header("Camera X Rotation Speed")]
+    [InfoBox("The speed at which the camera should to the state dependent angle, currently only around X-Axis.")]
     [Tooltip("Maximum turn rate in degrees per second for State 0.")]
     [SerializeField] float turningRateZero = 30f;
     [Tooltip("Maximum turn rate in degrees per second for State 1.")]

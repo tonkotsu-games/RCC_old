@@ -149,9 +149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8c64529b1454047990d9b35552043f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Left: {fileID: 3743880460885558899}
-  Right: {fileID: 5895813726311296807}
-  Trail: {fileID: 3653231217339944925}
+  leftTrail: {fileID: 3743880460885558899}
+  rightTrail: {fileID: 5895813726311296807}
+  weaponTrail: {fileID: 3653231217339944925}
+  weaponTrailMulti: 0
+  dashTrailMulti: 0
 --- !u!114 &1935125704481660727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,9 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8c64529b1454047990d9b35552043f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Left: {fileID: 3743880460885558899}
-  Right: {fileID: 0}
-  Trail: {fileID: 0}
+  leftTrail: {fileID: 0}
+  rightTrail: {fileID: 0}
+  weaponTrail: {fileID: 0}
+  weaponTrailMulti: 0
+  dashTrailMulti: 0
 --- !u!1 &2960425245245817561
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,12 +446,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46d518224da68448aff544797d5f78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInScene: []
-  enemiesInRange: []
+  enemiesInCameraRange: []
   movementSpeed: 10
   acceleration: 10
-  snappRange: 0
-  snappAngle: 0
+  snappRange: 3
+  snappAngle: 90
+  enemyDetectionRange: 0
   dashSpeed: 50
   dashTime: 0.1
   dashParticlesPrefab: {fileID: 2415412595958308877, guid: ded5659a429549e4997118db1bbfc7a9,
@@ -819,7 +823,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: -0.00000011920929, y: 0.9900961, z: 0.0006722212}
+    m_Center: {x: -0.00000023841858, y: 0.99009705, z: 0.0006722212}
     m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041
@@ -6294,10 +6298,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.2869873
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2167808972966179888, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}
-    - {fileID: 4927131854255382369, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}
-    - {fileID: 7501436813372012520, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}
 --- !u!198 &3653231217339944925 stripped
 ParticleSystem:

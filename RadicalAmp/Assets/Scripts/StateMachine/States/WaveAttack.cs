@@ -28,7 +28,7 @@ public class WaveAttack : IState
        //actor.gameObject.GetComponent<Feedback>().NewStateAnimation("specialAttack");
        animationFinished = false;
        actor.attacking = true;
-       yield return new WaitForSeconds(actor.GetComponent<Feedback>().specialAttackAnimation.length);
+       yield return new WaitForSeconds(actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length + actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length);
        animationFinished = true;
        actor.attacking = false;
        yield break;
@@ -42,7 +42,7 @@ public class WaveAttack : IState
             if(actor.CheckBeat(this))
             {
                 Debug.Log("HitBeat");
-                actor.GetComponent<Feedback>().PlayAnimationForState("specialWindup");
+                actor.GetComponent<Feedback>().PlayAnimationForState("waveWindUp");
                 Debug.Log("SetSpecialWindup");
                 hasToCheck = false;
             }

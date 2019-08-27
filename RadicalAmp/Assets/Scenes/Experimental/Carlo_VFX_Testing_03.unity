@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.05663399, g: 0.07967138, b: 0.12591928, a: 1}
+  m_IndirectSpecularColor: {r: 0.06744152, g: 0.08890854, b: 0.1319666, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7611,11 +7611,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: m_AABB.m_Center.x
@@ -7630,6 +7625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Center.z
       value: 0.0006722212
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
@@ -7879,6 +7879,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: bloodStainPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1239469504355148163, guid: 1df057be5bc5aa643a82d42aed48c743,
         type: 3}
       propertyPath: m_Name
@@ -8127,11 +8131,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 929156508222087971, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 357308734272034032, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.size
@@ -8166,6 +8165,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Name
       value: Source Transform_scale
+      objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087971, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
@@ -8705,6 +8709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MusicBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7325125683190162064, guid: fbcd3ce34e76cc741bce3ac5076944c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5991345612754962388, guid: fbcd3ce34e76cc741bce3ac5076944c2,
         type: 3}

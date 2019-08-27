@@ -48,11 +48,6 @@ public class WaveAttack : IState
             }
         }
 
-        if(!actor.windupFinished)
-        {
-            actor.FaceTarget();
-        }
-
         if(actor.windupFinished)
         {
             actor.StartCoroutine(PlaySpecialAttack());

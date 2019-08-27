@@ -8,6 +8,7 @@ public class BeathovenFeedback : Feedback
     private AttackCheck attackCheck;
 
     public AnimationClip waveAttackAnimation;
+    public AnimationClip waveAttackExitAnimation;
 
     public override void PlayAnimationForState(string state)
     {

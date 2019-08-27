@@ -65,4 +65,10 @@ public class BeathovenAnimationEvents : MonoBehaviour
 
         parented = !parented;
     }
+
+    public void DamageEnd()
+    {
+        actor.attacking = false;
+    }
+    
 }

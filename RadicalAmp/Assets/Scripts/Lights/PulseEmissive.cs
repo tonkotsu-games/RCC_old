@@ -16,6 +16,7 @@ public class PulseEmissive : MonoBehaviour
     public float intensityIncreaseOnHit = 8;
     public bool lerping = false;
 
+    [SerializeField]
     BeatAnalyse musicBox;
 
 
@@ -23,7 +24,7 @@ public class PulseEmissive : MonoBehaviour
     void Start()
     {
         material = gameObject.GetComponent<MeshRenderer>().material;
-        musicBox = GameObject.FindWithTag("MusicBox").GetComponent<BeatAnalyse>();
+        musicBox = Locator.instance.GetBeat();
         baseIntensity = material.GetFloat("_Intensity");
         maxIntensity = baseIntensity + intensityIncrease;
         maxOnHitIntensity = baseIntensity + intensityIncreaseOnHit;

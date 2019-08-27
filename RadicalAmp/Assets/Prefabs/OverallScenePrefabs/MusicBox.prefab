@@ -1255,8 +1255,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dffcaa54e14c9a345989783e261f7f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleCube: {fileID: 0}
-  maxscale: 0
+  equalizerRightPrefab: {fileID: 1098576749157062936, guid: 52d301dcf21e2d4459776de08d65f977,
+    type: 3}
+  equalizerLeftPrefab: {fileID: 1098576749157062936, guid: 9363f3ff75c533a4b9d161d7bd0384b2,
+    type: 3}
+  juiceMeter: {fileID: 0}
+  canvasParent: {fileID: 0}
+  colorEqualizer:
+  - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.5019608}
+  - {r: 0.25478932, g: 0.8207547, b: 0.15873085, a: 0.5019608}
+  - {r: 0.84125215, g: 0.8490566, b: 0.15619439, a: 0.5019608}
+  - {r: 0.8867924, g: 0.16313636, b: 0.16313636, a: 0.5019608}
+  maxscale: 500
 --- !u!1 &7444320579810799413
 GameObject:
   m_ObjectHideFlags: 0

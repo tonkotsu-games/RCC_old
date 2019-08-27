@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     [Header("Camera State")]
     [Tooltip("Camera state integer, dependent on the number of enemies near the player.")]
-    [SerializeField] private int cameraState = 0;
+    private static int cameraState = 0;
 
     [Header("Camera Target")]
     [Tooltip("The cameras desired target.")]
@@ -92,18 +92,34 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        EnemyCheck();
         SetVariables();
         CalculateSmoothFollow();
         ChangePositionAndRotation();
     }
 
-    private void EnemyCheck()
+    public static void EnemyCheck(int enemyCount)
     {
-        //Check for amount of Enemies near the player
-
-        //Set cameraState to that amount
-        
+        switch(enemyCount)
+        {
+            case 0:
+                cameraState = 0;
+                break;
+            case 1:
+                cameraState = 1;
+                break;
+            case 2:
+                cameraState = 2;
+                break;
+            case 3:
+                cameraState = 3;
+                break;
+            case 4:
+                cameraState = 4;
+                break;
+            default:
+                cameraState = 4;
+                break;
+        }        
     }
 
     //Calculates the new offset to transition into different View/State

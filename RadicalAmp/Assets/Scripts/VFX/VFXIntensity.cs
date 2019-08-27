@@ -15,7 +15,7 @@ public class VFXIntensity : MonoBehaviour
 
     void Start()
     {
-        juiceMeter = GameObject.FindGameObjectWithTag("JuiceMeter").GetComponent<Slider>();
+        juiceMeter = Locator.instance.GetJuiceMeter();
         weaponParticleModule = weaponTrail.main;
     }
 

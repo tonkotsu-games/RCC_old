@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Locator : MonoBehaviour
 {
-    public static Locator instance;
-
-
     private BeatAnalyse musicBox;
+    public static Locator instance;
 
     private void Awake()
     {
@@ -20,9 +18,20 @@ public class Locator : MonoBehaviour
             Destroy(gameObject);
         }
 
-        #region CollectingReturnables
+        //#region CollectingReturnables
         musicBox = GameObject.FindWithTag("MusicBox").GetComponent<BeatAnalyse>();
-        #endregion
+        Debug.Log("This " + instance.gameObject.name + " musicbox" + instance.musicBox);
+        //#endregion
+    }
+
+    public BeatAnalyse GetBeat()
+    {
+        /* if(musicBox == null)
+        {
+            musicBox = GameObject.FindWithTag("MusicBox").GetComponent<BeatAnalyse>();
+        }*/
+
+        return musicBox;
     }
 
 }

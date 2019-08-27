@@ -112,8 +112,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5954273054949715896}
-  - component: {fileID: 2500953226606322423}
-  - component: {fileID: 1935125704481660727}
   m_Layer: 9
   m_Name: Dash
   m_TagString: Untagged
@@ -137,40 +135,6 @@ Transform:
   m_Father: {fileID: 2960425245246119675}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2500953226606322423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2712446839931608709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8c64529b1454047990d9b35552043f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftTrail: {fileID: 3743880460885558899}
-  rightTrail: {fileID: 5895813726311296807}
-  weaponTrail: {fileID: 3653231217339944925}
-  weaponTrailMulti: 0
-  dashTrailMulti: 0
---- !u!114 &1935125704481660727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2712446839931608709}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8c64529b1454047990d9b35552043f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftTrail: {fileID: 0}
-  rightTrail: {fileID: 0}
-  weaponTrail: {fileID: 0}
-  weaponTrailMulti: 0
-  dashTrailMulti: 0
 --- !u!1 &2960425245245817561
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +297,7 @@ GameObject:
   - component: {fileID: 5502318167038644066}
   - component: {fileID: 9065168021427870999}
   - component: {fileID: 7115225058092246107}
+  - component: {fileID: 7285390111764426699}
   m_Layer: 9
   m_Name: Protagonist_SM
   m_TagString: Player
@@ -629,6 +594,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.89666814, y: 0.6262881, z: 0.7383976}
   m_Center: {x: -0.09951687, y: 1.0976452, z: 0.6193075}
+--- !u!114 &7285390111764426699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2960425245245817563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8c64529b1454047990d9b35552043f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponTrail: {fileID: 3653231217339944925}
+  weaponTrailMulti: 0.01
 --- !u!1 &2960425245245817569
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +802,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: -0.00000023841858, y: 0.99009705, z: 0.0006722212}
+    m_Center: {x: -0.00000011920929, y: 0.99009633, z: 0.0006723404}
     m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041
@@ -6238,11 +6217,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2960425245246119787}
     m_Modifications:
-    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
-        type: 3}
-      propertyPath: m_Name
-      value: Protagonist_Sword_SM
-      objectReference: {fileID: 0}
     - target: {fileID: 2839301101805849901, guid: 111fe1801ab084b4eae3b3f123742c76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6298,17 +6272,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.2869873
       objectReference: {fileID: 0}
+    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
+        type: 3}
+      propertyPath: m_Name
+      value: Protagonist_Sword_SM
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}
---- !u!198 &3653231217339944925 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1013964249766619844, guid: 111fe1801ab084b4eae3b3f123742c76,
-    type: 3}
-  m_PrefabInstance: {fileID: 4368686747465458969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2001718352181061684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2839301101805849901, guid: 111fe1801ab084b4eae3b3f123742c76,
+    type: 3}
+  m_PrefabInstance: {fileID: 4368686747465458969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3653231217339944925 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1013964249766619844, guid: 111fe1801ab084b4eae3b3f123742c76,
     type: 3}
   m_PrefabInstance: {fileID: 4368686747465458969}
   m_PrefabAsset: {fileID: 0}

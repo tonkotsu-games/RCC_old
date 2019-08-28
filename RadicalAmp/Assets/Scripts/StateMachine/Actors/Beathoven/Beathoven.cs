@@ -71,10 +71,7 @@ public class Beathoven : Actor
         //Choose what to do by using info provided by the Search
         if(foundPlayers.Count > 0)
         {
-            //Debug.Log("not empty " + foundPlayers.Count);
             player = foundPlayers[0].gameObject.transform;
-            //Debug.Log(player.gameObject.name);
-            //Debug.Log("player " + player.position + " BasicEnemy " + this.gameObject.transform.position );
 
             //Attack Player in Melee AttackRange
             if (Vector3.Distance(player.position, this.gameObject.transform.position) < bossData.meleeAttackRange)
@@ -84,19 +81,15 @@ public class Beathoven : Actor
             //Walk to Player in AggroRange
             else if(Vector3.Distance(player.position, this.gameObject.transform.position) < (bossData.aggroRange + 0.5f))
             {
-                //Debug.Log("went to walkTo");
                 StateMachine.ChangeState(new WalkTo(this, player, navMeshAgent, bossData.aggroRange, ActorData.meleeAttackRange));
             }
             else
             {
                 StateMachine.ReturnToPreviousState();
-                //Debug.Log("Did nothing");
             }
         }
         else
         {
-            //else Debug.Log("No Player found");
-            //Debug.Log("returned to previous");
             StateMachine.ReturnToPreviousState();
         }
     }
@@ -105,7 +98,6 @@ public class Beathoven : Actor
     {
         if(StateMachine.StateCurrent is Idle)
         {
-            //Debug.Log("Choosing to Search");
             StateMachine.ChangeState(new SearchFor(gameObject, bossData.aggroRange, "Player", ChooseBehaviourAfterIdle));
         }
         else if(StateMachine.StateCurrent is WalkTo)
@@ -157,10 +149,8 @@ public class Beathoven : Actor
         }
         else if(state is WaveAttack)
         {
-            //Debug.Log("IsAttack");
             if(beatanalyse.IsOnBeat(preStartSpecialAttack))
             {
-                //Debug.Log("HitBeat");
                 return true;
             }
         }

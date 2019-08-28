@@ -231,6 +231,7 @@ public class BeatStrike : MonoBehaviour
     //Reenable Player collision with enemies - called through animation event at the end of dash
     public void EnableColliders()
     {
+        Debug.Log("enable collider again");
         Physics.IgnoreLayerCollision(9, 13, false);
 
     }

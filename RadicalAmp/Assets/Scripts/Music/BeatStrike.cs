@@ -46,7 +46,7 @@ public class BeatStrike : MonoBehaviour
     void Start()
     {
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
-        juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
+        juiceMeter = Locator.instance.GetJuiceMeter();
         player = GetComponent<PlayerController>();
     }
 
@@ -231,6 +231,7 @@ public class BeatStrike : MonoBehaviour
     //Reenable Player collision with enemies - called through animation event at the end of dash
     public void EnableColliders()
     {
+        Debug.Log("enable collider again");
         Physics.IgnoreLayerCollision(9, 13, false);
 
     }

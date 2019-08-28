@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerAttackCheck : MonoBehaviour
 {
@@ -30,15 +31,15 @@ public class PlayerAttackCheck : MonoBehaviour
             life = other.gameObject.GetComponent<EnemyHP>();
             life.life -= damage;
             popupController.CreatePopupText(damage.ToString(), other.gameObject.GetComponent<Transform>().transform);
-
+    
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];
             my_audioSource.Play();
-
+    
             life.BloodSplat();
         }
         else
         {
             return;
         }
-    }    
+    }  
 }

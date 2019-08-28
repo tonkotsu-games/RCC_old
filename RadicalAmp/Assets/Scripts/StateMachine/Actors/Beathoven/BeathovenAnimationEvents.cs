@@ -10,6 +10,7 @@ public class BeathovenAnimationEvents : MonoBehaviour
     bool parented = true;
     Vector3 startRotation;
     Vector3 startPosition;
+    [SerializeField] GameObject waveAttackPrefab;
 
     void Start()
     {
@@ -26,21 +27,18 @@ public class BeathovenAnimationEvents : MonoBehaviour
     {
         actor.GetComponent<Feedback>().PlayAnimationForState("Attack");
         actor.windupFinished = true;
-        //Debug.Log("EndWindup");
     }
 
     public void EndSpecialWindUp()
     {
         actor.GetComponent<Feedback>().PlayAnimationForState("specialAttack");
         actor.windupFinished = true;
-        //Debug.Log("EndWindup");
     }
 
     public void WaveWindUp()
     {
         actor.GetComponent<Feedback>().PlayAnimationForState("waveAttack");
         actor.windupFinished = true;
-        Debug.Log("WaveWindup Event");
     }
 
     public void AfterDeath()
@@ -69,6 +67,16 @@ public class BeathovenAnimationEvents : MonoBehaviour
     public void DamageEnd()
     {
         actor.attacking = false;
+    }
+
+    public void InstantiateWaveAttack()
+    {
+        Debug.Log("WaveAttack Spawned");
+        GameObject particlesInstance = Instantiate(waveAttackPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+        //ParticleSystem parts = particlesInstance.GetComponentInChildren<ParticleSystem>();
+        //float totalDuration = parts.main.duration + parts.main.startLifetime.constant + parts.main.startDelay.constant;
+        //Destroy(particlesInstance, totalDuration);
+        Destroy(particlesInstance, 8f);
     }
     
 }

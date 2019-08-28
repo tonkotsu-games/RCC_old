@@ -8,15 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: neon 3
-  m_Shader: {fileID: 4800000, guid: c4edd00ff2db5b24391a4fcb1762e459, type: 3}
+  m_Shader: {fileID: 4800000, guid: 96a8c4f0a18d24e4b88d465f0bd8c5ab, type: 3}
   m_ShaderKeywords: _BLENDMODE_PRE_MULTIPLY _ENABLE_FOG_ON_TRANSPARENT _NORMALMAP_TANGENT_SPACE
     _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap:
-    RenderType: Transparent
+    MotionVector: User
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
@@ -210,6 +210,7 @@ Material:
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
     - _InitialBend: 1
+    - _Intensity: 2
     - _InvTilingScale: 1
     - _Ior: 1
     - _IridescenceMask: 1

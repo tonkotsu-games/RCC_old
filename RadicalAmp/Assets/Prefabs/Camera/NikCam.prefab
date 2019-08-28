@@ -1,27 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &937094402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7309687070487315677}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870f4e571b626f9478a41eb6deef6f34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  innerRange: 5
-  outerRange: 10
-  layerID: 13
-  debugInnerSphere: 0
-  debugOuterSphere: 0
-  innerEnemies: []
-  outerEnemies: []
-  zoomTriggerAmount: 5
-  enoughEnemiesInRange: 0
 --- !u!114 &937094404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   juiceMeter: {fileID: 0}
   beat: {fileID: 0}
---- !u!114 &1543306085
+--- !u!114 &5910174478545939593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,17 +23,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 7309687070487315677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b365810af91636341afe378ae1770bda, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cf7b0894cc3a4746b3d38154fda4f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 0.15
-  height: 8.25
-  posZminus: 10
-  camRotation: 26.2
-  zoomInDelay: 5
-  readyToZoomIn: 0
-  ZoomState: 0
-  currentState: 1
+  target: {fileID: 0}
+  offsetZero: {x: 0, y: 5, z: -6}
+  offsetOne: {x: 0, y: 7, z: -7.5}
+  offsetTwo: {x: 0, y: 8, z: -8.5}
+  offsetThree: {x: 0, y: 10, z: -10.5}
+  offsetFour: {x: 0, y: 12, z: -12}
+  angleZero: {x: 29.3, y: 0, z: 0}
+  angleOne: {x: 31.5, y: 0, z: 0}
+  angleTwo: {x: 33, y: 0, z: 0}
+  angleThree: {x: 35.5, y: 0, z: 0}
+  angleFour: {x: 37.8, y: 0, z: 0}
+  followSpeedZero: {x: 80, y: 100, z: 100}
+  followSpeedOne: {x: 60, y: 80, z: 100}
+  followSpeedTwo: {x: 40, y: 60, z: 100}
+  followSpeedThree: {x: 35, y: 40, z: 100}
+  followSpeedFour: {x: 35, y: 40, z: 100}
+  zoomSpeedZero: {x: 10, y: 10, z: 10}
+  zoomSpeedOne: {x: 10, y: 10, z: 10}
+  zoomSpeedTwo: {x: 10, y: 10, z: 10}
+  zoomSpeedThree: {x: 10, y: 10, z: 10}
+  zoomSpeedFour: {x: 20, y: 20, z: 20}
+  turningRateZero: 30
+  turningRateOne: 30
+  turningRateTwo: 30
+  turningRateThree: 30
+  turningRateFour: 80
 --- !u!1001 &7188839945844756922
 PrefabInstance:
   m_ObjectHideFlags: 0

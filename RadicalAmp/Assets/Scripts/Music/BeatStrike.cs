@@ -46,7 +46,7 @@ public class BeatStrike : MonoBehaviour
     void Start()
     {
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
-        juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
+        juiceMeter = Locator.instance.GetJuiceMeter();
         player = GetComponent<PlayerController>();
     }
 

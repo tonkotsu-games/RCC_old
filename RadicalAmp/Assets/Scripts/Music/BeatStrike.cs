@@ -9,9 +9,7 @@ public class BeatStrike : MonoBehaviour
     private AudioSource wave;
     private PlayerController player;
 
-    [SerializeField] VisualEffect particleLeft;
-    [SerializeField] VisualEffect particleRight;
-
+    [Header("Reaction time for Beat hitting")]
     [SerializeField] int reactionTime;
     [Header("Time in Samples (10.000 = 0,25sec)")]
     [SerializeField] int windowTrigger;
@@ -49,8 +47,6 @@ public class BeatStrike : MonoBehaviour
     {
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
         juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
-        particleLeft.Stop();
-        particleRight.Stop();
         player = GetComponent<PlayerController>();
     }
 
@@ -73,8 +69,6 @@ public class BeatStrike : MonoBehaviour
                 else
                 {
                     juiceMeter.value += dashReward;
-                    particleLeft.Play();
-                    particleRight.Play();
                     action = true;
                 }
             }
@@ -162,13 +156,6 @@ public class BeatStrike : MonoBehaviour
         {
             punish = false;
         }
-
-        if (player.dashTimer.timeCurrent <= 0)
-        {
-            particleLeft.Stop();
-            particleRight.Stop();
-        }
-
     }
 
     public bool IsOnBeat()
@@ -247,5 +234,4 @@ public class BeatStrike : MonoBehaviour
         Physics.IgnoreLayerCollision(9, 13, false);
 
     }
-
 }

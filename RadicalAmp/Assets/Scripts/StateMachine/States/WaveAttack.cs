@@ -25,13 +25,12 @@ public class WaveAttack : IState
     public IEnumerator PlaySpecialAttack()
     {
         Debug.Log("in Coroutine");
-       //actor.gameObject.GetComponent<Feedback>().NewStateAnimation("specialAttack");
-       animationFinished = false;
-       actor.attacking = true;
-       yield return new WaitForSeconds(actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length + actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length);
-       animationFinished = true;
-       actor.attacking = false;
-       yield break;
+        animationFinished = false;
+        SpawnWave();
+        yield return new WaitForSeconds(actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length + actor.GetComponent<BeathovenFeedback>().waveAttackExitAnimation.length);
+        animationFinished = true;
+        actor.attacking = false;
+        yield break;
     }
 
     public void Execute()
@@ -46,11 +45,6 @@ public class WaveAttack : IState
                 Debug.Log("SetSpecialWindup");
                 hasToCheck = false;
             }
-        }
-
-        if(!actor.windupFinished)
-        {
-            actor.FaceTarget();
         }
 
         if(actor.windupFinished)
@@ -71,5 +65,10 @@ public class WaveAttack : IState
     public void Exit()
     {
         
+    }
+
+    private void SpawnWave()
+    {
+        Debug.Log("WaveSpawned");
     }
 }

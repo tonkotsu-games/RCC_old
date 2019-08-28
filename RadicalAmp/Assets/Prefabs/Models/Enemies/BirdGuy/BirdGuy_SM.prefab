@@ -1898,6 +1898,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb572d3232f45b84e9fc77ae215f2056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shield: {fileID: 0}
+  shieldParent: {fileID: 0}
 --- !u!1 &978598517277877048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,7 +2300,7 @@ MonoBehaviour:
   windupFinished: 0
   attacking: 0
   healthCurrent: 3
-  navMeshAgent: {fileID: 7620078572531134491}
+  navMeshAgent: {fileID: 0}
   basicEnemyData: {fileID: 11400000, guid: 9bf78ba0a47097b4e8dfcbe95fc2f085, type: 2}
   beatanalyse: {fileID: 0}
   preStartAttack: 1000
@@ -2331,7 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c6ab771c47cf346b373ec9d9133898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiffTarget: {fileID: 7620078572531134485}
+  tiffTarget: {fileID: 0}
 --- !u!1001 &1236008195914535790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2489,6 +2491,41 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9285716
       objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Name
+      value: Source Transform_angles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Name
+      value: Source Transform_position
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Name
+      value: Source Transform_scale
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350a954e4722165498ee6058a3b41cfb, type: 3}
 --- !u!4 &5070725625633792223 stripped
@@ -2514,6 +2551,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BirdGuy_Sword_SM
+      objectReference: {fileID: 0}
+    - target: {fileID: 8686826625178241334, guid: 0a5f4ed006b1f864baa62f7a04a484ed,
+        type: 3}
+      propertyPath: actor
+      value: 
+      objectReference: {fileID: 7620078572531134486}
+    - target: {fileID: 9050517461555910808, guid: 0a5f4ed006b1f864baa62f7a04a484ed,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7577167767152830298, guid: 0a5f4ed006b1f864baa62f7a04a484ed,
         type: 3}
@@ -2570,11 +2617,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -85.366
       objectReference: {fileID: 0}
-    - target: {fileID: 8686826625178241334, guid: 0a5f4ed006b1f864baa62f7a04a484ed,
-        type: 3}
-      propertyPath: actor
-      value: 
-      objectReference: {fileID: 7620078572531134486}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a5f4ed006b1f864baa62f7a04a484ed, type: 3}
 --- !u!114 &2678622601550281967 stripped

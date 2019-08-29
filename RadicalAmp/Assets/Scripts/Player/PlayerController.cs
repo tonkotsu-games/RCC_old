@@ -152,6 +152,8 @@ public class PlayerController : MonoBehaviour
         }
         if(life <= 0)
         {
+            //Adding to the death counter for the scoreboard
+            ScoreTracker.instance.statContainer[5]++;
                 anim.Play("Death");
                 DeadDisable.enabled = false;
         }

@@ -11,12 +11,12 @@ public class EnhancedDash : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            EnemyLife enemyLife = other.GetComponent<EnemyLife>();
-            Debug.Log("EnemyLifeAtStart: " + enemyLife);
-            enemyLife.life -= dashDamage;
-            Debug.Log("EnemyLifeAtEnd: " + enemyLife);
+            EnemyHP enemyHP = other.GetComponent<EnemyHP>();
+            Debug.Log("EnemyLifeAtStart: " + enemyHP);
+            enemyHP.life -= dashDamage;
+            Debug.Log("EnemyLifeAtEnd: " + enemyHP);
             PopupDamageController.instance.CreatePopupText(dashDamage.ToString(), other.gameObject.GetComponent<Transform>().transform);
-            other.GetComponent<EnemyLife>().BloodSplat();
+            other.GetComponent<EnemyHP>().BloodSplat();
         }
     }
 }

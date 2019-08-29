@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    List<Transform> enemiesInScene = new List<Transform>();
-    List<Transform> enemiesInRange = new List<Transform>();
-    public List<Transform> enemiesInCameraRange = new List<Transform>();
+    private List<Transform> enemiesInScene = new List<Transform>();
+    private List<Transform> enemiesInRange = new List<Transform>();
+    private List<Transform> enemiesInCameraRange = new List<Transform>();
 
     private float moveHorizontal;
     private float moveVertical;
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerController DeadDisable;
     private Respawn respawn;
+    private Slider juiceMeter;
     
     public Timer dashTimer = new Timer();
 
@@ -69,6 +71,8 @@ public class PlayerController : MonoBehaviour
         {
             enemiesInScene.Add(trans.transform);
         }
+
+        juiceMeter = Locator.instance.GetJuiceMeter();
 
         respawn = GameObject.FindWithTag("Respawn").GetComponent<Respawn>();
 
@@ -151,10 +155,11 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        if(life <= 0)
+        if (life <= 0)
         {
-                anim.Play("Death");
-                DeadDisable.enabled = false;
+            anim.Play("Death");
+            DeadDisable.enabled = false;
+            juiceMeter.value = 0;
         }
         if(Input.GetKeyDown(KeyCode.R))
         {

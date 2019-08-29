@@ -8,10 +8,10 @@ public class TutorialClone : MonoBehaviour
 
     Animator cloneAnim;
 
-    public bool running;
-    public bool hitting;
-    public bool dashing;
-    public bool dancing;
+    //public bool running;
+    //public bool hitting;
+    //public bool dashing;
+    //public bool dancing;
 
     private void Awake()
     {
@@ -29,46 +29,48 @@ public class TutorialClone : MonoBehaviour
 
     private void Update()
     {
-        if (running)
-        {
-            PlayRunning(true);
-        }
-        else
-        {
-            PlayRunning(false);
-        }
-
-        if (hitting)
-        {
-            PlayAttack(true);
-        }
-        else
-        {
-            PlayAttack(false);
-        }
-
-        if (dashing)
-        {
-            PlayDash(true);
-        }
-        else
-        {
-            PlayDash(false);
-        }
-
-        if (dancing)
-        {
-            PlayDance(true);
-        }
-        else
-        {
-            PlayDance(false);
-        }
+        //if (running)
+        //{
+        //    PlayRunning(true);
+        //}
+        //else
+        //{
+        //    PlayRunning(false);
+        //}
+        //
+        //if (hitting)
+        //{
+        //    PlayAttack(true);
+        //}
+        //else
+        //{
+        //    PlayAttack(false);
+        //}
+        //
+        //if (dashing)
+        //{
+        //    PlayDash(true);
+        //}
+        //else
+        //{
+        //    PlayDash(false);
+        //}
+        //
+        //if (dancing)
+        //{
+        //    PlayDance(true);
+        //}
+        //else
+        //{
+        //    PlayDance(false);
+        //}
     }
 
     public void PlayRunning(bool active)
     {
         cloneAnim.SetBool("Running", active);
+        Debug.Log("LET ME RUUUUUUN");
+
     }
 
     public void PlayAttack(bool active)

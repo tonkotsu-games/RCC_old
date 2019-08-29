@@ -17,16 +17,13 @@ public class WaveAttack : IState
 
     public void Enter()
     {
-        Debug.Log("now in Wave Attack");
         animationFinished = false;
         hasToCheck = true;
     }
 
     public IEnumerator PlaySpecialAttack()
     {
-        Debug.Log("in Coroutine");
         animationFinished = false;
-        SpawnWave();
         yield return new WaitForSeconds(actor.GetComponent<BeathovenFeedback>().waveAttackAnimation.length + actor.GetComponent<BeathovenFeedback>().waveAttackExitAnimation.length);
         animationFinished = true;
         actor.attacking = false;
@@ -37,12 +34,9 @@ public class WaveAttack : IState
     {
         if(hasToCheck)
         {
-            Debug.Log("CheckingBeat");
             if(actor.CheckBeat(this))
             {
-                Debug.Log("HitBeat");
                 actor.GetComponent<Feedback>().PlayAnimationForState("waveWindUp");
-                Debug.Log("SetSpecialWindup");
                 hasToCheck = false;
             }
         }
@@ -51,12 +45,10 @@ public class WaveAttack : IState
         {
             actor.StartCoroutine(PlaySpecialAttack());
             actor.windupFinished = false;
-            Debug.Log("Start Coroutine in SpecialAttack");
         }
 
         if(animationFinished)
         {
-            Debug.Log("Special Attack Finished");
             //Go back to Idle
             actor.StateMachine.ChangeState(new Idle(actor));
         }
@@ -65,10 +57,5 @@ public class WaveAttack : IState
     public void Exit()
     {
         
-    }
-
-    private void SpawnWave()
-    {
-        Debug.Log("WaveSpawned");
     }
 }

@@ -117,6 +117,5 @@ public class Equalizer : MonoBehaviour
                 }
             }
         }
-
     }
 }

@@ -18,22 +18,22 @@ public class BloodStainSpawner : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        Debug.Log("COllision!");
-        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
+            Debug.Log("COllision!");
+            int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
-        
-        int i = 0;
 
-        while (i < numCollisionEvents)
-        {
-         
-            pos = collisionEvents[i].intersection;
+            int i = 0;
 
-            SpawnBloodStain();
-               
-            
-            i++;
-        }
+            while (i < numCollisionEvents)
+            {
+
+                pos = collisionEvents[i].intersection;
+
+                SpawnBloodStain();
+
+
+                i++;
+            }
     }
 
     private void SpawnBloodStain()

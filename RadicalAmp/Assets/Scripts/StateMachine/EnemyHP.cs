@@ -7,6 +7,7 @@ using UnityEngine.Experimental.VFX;
 public class EnemyHP : MonoBehaviour
 {
     [SerializeField] VisualEffect blood;
+    [SerializeField] ParticleSystem[] bloodSplatter;
 
     [Header("Enemy Health")]
     public int life;
@@ -43,6 +44,7 @@ public class EnemyHP : MonoBehaviour
     {
         blood.Play();
         //Debug.Log("BLOOD!");
+        bloodSplatter[Random.Range(0,bloodSplatter.Length)].Play();
     }
 
     private void EnemyDeath()

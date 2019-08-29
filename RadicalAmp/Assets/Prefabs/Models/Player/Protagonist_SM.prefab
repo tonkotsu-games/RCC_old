@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2500953225810700426
 Transform:
   m_ObjectHideFlags: 0
@@ -572,7 +572,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTrail: {fileID: 3653231217339944925}
+  bodyMat: {fileID: 2100000, guid: ecf875ffe293dbe4dbc22bd9f1dccd02, type: 2}
+  capeMat: {fileID: 2100000, guid: e7ae3b30bf3bdf1498f4edead2b5bf57, type: 2}
   weaponTrailMulti: 0.01
+  emissionMulti: 0
 --- !u!1 &2960425245245817569
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +770,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: -0.00000011920929, y: 0.9900961, z: 0.0006722212}
+    m_Center: {x: -0.00000071525574, y: 0.990096, z: 0.0006723404}
     m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041

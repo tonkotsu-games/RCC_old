@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void Update()
-    {
+    {      
         if (!movementLocked)
         {
             distance = Vector3.Distance(target.position, transform.position);

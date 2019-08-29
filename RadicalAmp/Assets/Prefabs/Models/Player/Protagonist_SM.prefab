@@ -376,7 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46d518224da68448aff544797d5f78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInCameraRange: []
   movementSpeed: 10
   acceleration: 10
   snappRange: 3
@@ -386,6 +385,7 @@ MonoBehaviour:
   dashTime: 0.1
   dashParticlesPrefab: {fileID: 2415412595958308877, guid: ded5659a429549e4997118db1bbfc7a9,
     type: 3}
+  heading: {x: 0, y: 0, z: 0}
   life: 10
   dashClip: {fileID: 8300000, guid: 52153348e4a21a941b4f8b1b9b62ec21, type: 3}
   slashClip: {fileID: 8300000, guid: a7119b129ad8f104e954f77f2ae08e85, type: 3}
@@ -545,6 +545,7 @@ MonoBehaviour:
   enemyHitSound:
   - {fileID: 8300000, guid: bb09aceafa6f3464ba6fc2c9c68aff75, type: 3}
   - {fileID: 8300000, guid: 944d0e69cdbd2fa40946a86dd4cbcf06, type: 3}
+  knockbackRange: 2.5
   damage: 2
 --- !u!65 &7115225058092246107
 BoxCollider:

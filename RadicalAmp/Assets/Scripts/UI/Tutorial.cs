@@ -153,12 +153,12 @@ public class Tutorial : MonoBehaviour
             if(juiceMeter.value >= 30)
             {
                 currentStep += 1;
+                cloneAnim.PlayDance(false);
             }
         }
         if(currentStep == TutorialSteps.TutorialFinish)
         {
             clone.SetActive(false);
-            cloneAnim.PlayDance(false);
             gate.SetActive(false);
         }
 

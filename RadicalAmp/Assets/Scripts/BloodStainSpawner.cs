@@ -18,7 +18,7 @@ public class BloodStainSpawner : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-            Debug.Log("COllision!");
+            //Debug.Log("COllision!");
             int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
 

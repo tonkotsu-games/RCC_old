@@ -197,7 +197,9 @@ public class PlayerController : MonoBehaviour
             heading = new Vector3(Input.GetAxisRaw("Horizontal"),
                                   0,
                                   Input.GetAxisRaw("Vertical"));
+
             heading = heading.normalized;
+
 
             anim.SetBool("running", true);
             Turn();

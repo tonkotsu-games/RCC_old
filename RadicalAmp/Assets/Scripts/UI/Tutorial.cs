@@ -142,12 +142,13 @@ public class Tutorial : MonoBehaviour
         if (currentStep == TutorialSteps.JuiceInfo && !tutorialPlay)
         {
             tutorialContainer.SetActive(true);
+            tmproText.text = "Hit the beat three times, use ur dash, shlash or dance.";
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.JuiceTest)
         {
-            if(juiceMeter.value >= 30)
+            if(juiceMeter.value >= 15)
             {
                 currentStep += 1;
             }

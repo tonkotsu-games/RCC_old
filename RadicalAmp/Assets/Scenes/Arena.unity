@@ -4450,6 +4450,11 @@ PrefabInstance:
       propertyPath: canvasParent
       value: 
       objectReference: {fileID: 325495622}
+    - target: {fileID: 787735559030136318, guid: fbcd3ce34e76cc741bce3ac5076944c2,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbcd3ce34e76cc741bce3ac5076944c2, type: 3}
 --- !u!82 &114388798 stripped
@@ -16099,7 +16104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27, y: -125.62}
+  m_AnchoredPosition: {x: -20.2, y: -125.62}
   m_SizeDelta: {x: 278.24, y: 64.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507405897
@@ -21465,7 +21470,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: afbcfe7f443f1c046b683078f8e667ef,
+      objectReference: {fileID: 12800000, guid: 2d5b58a6e1ab18f4fbcfd37f941e7fb2,
         type: 3}
     - target: {fileID: 3331424672819820613, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
@@ -21483,6 +21488,21 @@ PrefabInstance:
       value: 'Press A to start Tutorial
 
         Press X to cancel the Tutorial'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331424672819820613, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331424672819820613, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.28773582
+      objectReference: {fileID: 0}
+    - target: {fileID: 3331424672819820613, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8127764
       objectReference: {fileID: 0}
     - target: {fileID: 1780832420621103364, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}

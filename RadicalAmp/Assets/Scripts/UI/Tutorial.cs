@@ -12,6 +12,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject TutorialText;
     [SerializeField] Slider juiceMeter;
 
+    [SerializeField] float setTimer;
+
     private TutorialClone cloneAnim;
 
     public TutorialSteps currentStep;
@@ -56,7 +58,7 @@ public class Tutorial : MonoBehaviour
             tutorialContainer.SetActive(true);
             image.sprite = sprites[0];
             anim.Play("AnimMovement");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if(currentStep == TutorialSteps.MovementTest)
@@ -76,7 +78,7 @@ public class Tutorial : MonoBehaviour
             tutorialContainer.SetActive(true);
             image.sprite = sprites[1];
             anim.Play("AnimDash");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.DashTest)
@@ -98,7 +100,7 @@ public class Tutorial : MonoBehaviour
             tutorialContainer.SetActive(true);
             image.sprite = sprites[2];
             anim.Play("AnimAttack");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.AttackTest)
@@ -120,7 +122,7 @@ public class Tutorial : MonoBehaviour
             tutorialContainer.SetActive(true);
             image.sprite = sprites[3];
             anim.Play("AnimDance");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.DanceTest)
@@ -140,7 +142,7 @@ public class Tutorial : MonoBehaviour
         {
             tutorialContainer.SetActive(true);
             image.sprite = sprites[4];
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.JuiceTest)

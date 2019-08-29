@@ -35,6 +35,8 @@ public class EnemyHP : MonoBehaviour
     {
         if(life <= 0 && !death)
         {
+            // Adding to the score for enemies killed
+            ScoreTracker.instance.statContainer[0] += 1;
             EnemyDeath();
             death = true;
         }

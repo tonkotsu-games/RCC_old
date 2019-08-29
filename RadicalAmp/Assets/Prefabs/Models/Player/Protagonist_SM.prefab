@@ -387,7 +387,7 @@ MonoBehaviour:
   dashParticlesPrefab: {fileID: 2415412595958308877, guid: ded5659a429549e4997118db1bbfc7a9,
     type: 3}
   life: 10
-  dashClip: {fileID: 8300000, guid: 758ff0eff4f103e45bbdf492b2d4d2af, type: 3}
+  dashClip: {fileID: 8300000, guid: 52153348e4a21a941b4f8b1b9b62ec21, type: 3}
   slashClip: {fileID: 8300000, guid: a7119b129ad8f104e954f77f2ae08e85, type: 3}
 --- !u!114 &2960425244600457811
 MonoBehaviour:
@@ -416,7 +416,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.1
-  m_Pitch: 1
+  m_Pitch: 1.2
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -770,7 +770,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: -0.00000071525574, y: 0.990096, z: 0.0006723404}
+    m_Center: {x: -0.00000011920929, y: 0.9900961, z: 0.0006722212}
     m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041
@@ -5955,11 +5955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2960425245246119787}
     m_Modifications:
-    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
-        type: 3}
-      propertyPath: m_Name
-      value: Protagonist_Sword_SM
-      objectReference: {fileID: 0}
     - target: {fileID: 2839301101805849901, guid: 111fe1801ab084b4eae3b3f123742c76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6014,6 +6009,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.2869873
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
+        type: 3}
+      propertyPath: m_Name
+      value: Protagonist_Sword_SM
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}

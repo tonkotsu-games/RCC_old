@@ -46,9 +46,12 @@ public class BasicEnemy : Actor
 
     private void Update()
     {
-        if(cutSceneFreeze.movementLock)
+        if (cutSceneFreeze != null)
         {
-            StateMachine.ChangeState(new Idle(this)); 
+            if (cutSceneFreeze.movementLock)
+            {
+                StateMachine.ChangeState(new Idle(this));
+            }
         }
 
         StateMachine.StateExecuteTick();

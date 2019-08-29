@@ -32,7 +32,10 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
-        cloneAnim = clone.GetComponent<TutorialClone>();
+        if (clone != null)
+        {
+            cloneAnim = clone.GetComponent<TutorialClone>();
+        }
         tutorialContainer.SetActive(false);
     }
 
@@ -151,12 +154,12 @@ public class Tutorial : MonoBehaviour
             if(juiceMeter.value >= 15)
             {
                 currentStep += 1;
+                cloneAnim.PlayDance(false);
             }
         }
         if(currentStep == TutorialSteps.TutorialFinish)
         {
             clone.SetActive(false);
-            cloneAnim.PlayDance(false);
             gate.SetActive(false);
         }
 

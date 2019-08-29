@@ -2102,6 +2102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shield: {fileID: 0}
   shieldParent: {fileID: 0}
+  waveAttackPrefab: {fileID: 0}
 --- !u!1 &5587216114079061408
 GameObject:
   m_ObjectHideFlags: 0
@@ -7764,6 +7765,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MACE_Lowpoli_SM
       objectReference: {fileID: 0}
+    - target: {fileID: 4584908331960902190, guid: 52c93d2b17405964ead44c4de0e4ee24,
+        type: 3}
+      propertyPath: actor
+      value: 
+      objectReference: {fileID: 8029535818707227849}
+    - target: {fileID: 3837115702254154672, guid: 52c93d2b17405964ead44c4de0e4ee24,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 708674005644573142, guid: 52c93d2b17405964ead44c4de0e4ee24,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7819,11 +7830,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4584908331960902190, guid: 52c93d2b17405964ead44c4de0e4ee24,
-        type: 3}
-      propertyPath: actor
-      value: 
-      objectReference: {fileID: 8029535818707227849}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52c93d2b17405964ead44c4de0e4ee24, type: 3}
 --- !u!4 &4521831727870747298 stripped
@@ -7855,41 +7861,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Blood_Splatter_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Name
-      value: Source Transform_angles
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Name
-      value: Source Transform_position
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
-        type: 3}
-      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Name
-      value: Source Transform_scale
       objectReference: {fileID: 0}
     - target: {fileID: 2280027393295895286, guid: 350a954e4722165498ee6058a3b41cfb,
         type: 3}
@@ -7945,6 +7916,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 23.480001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Name
+      value: Source Transform_angles
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[1].m_Name
+      value: Source Transform_position
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Value.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304843788347522893, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[2].m_Name
+      value: Source Transform_scale
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590074663386793804, guid: 350a954e4722165498ee6058a3b41cfb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350a954e4722165498ee6058a3b41cfb, type: 3}

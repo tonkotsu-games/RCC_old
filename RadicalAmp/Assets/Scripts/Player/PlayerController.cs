@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] GameObject dashParticlesPrefab;
 
-    private Vector3 heading;
+    public Vector3 heading;
+
     private Vector3 dashdirection;
     private Vector3 moveVector;
 
@@ -166,7 +167,7 @@ public class PlayerController : MonoBehaviour
                 show = false;
             }
         }
-        EnemyCount();
+        EnemyCameraCount();
     }
 
     private void FixedUpdate()
@@ -345,10 +346,16 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
     }
-    private void EnemyCount()
+
+    private void EnemyCameraCount()
     {
         for (int i = 0; i < enemiesInScene.Count ;i++)
         {
+            if(enemiesInScene[i] == null)
+            {
+                enemiesInScene.Remove(enemiesInScene[i]);
+            }
+
             if(Vector3.Distance(enemiesInScene[i].position, transform.position) <= enemyDetectionRange)
             {
                 if(enemiesInCameraRange.Contains(enemiesInScene[i]))

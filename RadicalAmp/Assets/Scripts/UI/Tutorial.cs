@@ -31,7 +31,10 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
-        cloneAnim = clone.GetComponent<TutorialClone>();
+        if (clone != null)
+        {
+            cloneAnim = clone.GetComponent<TutorialClone>();
+        }
         tutorialContainer.SetActive(false);
     }
 

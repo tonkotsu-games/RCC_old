@@ -3,18 +3,27 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-
+    [SerializeField] GameObject clone;
     [SerializeField] Animator anim;
     [SerializeField] Image image;
     [SerializeField] Sprite[] sprites;
     [SerializeField] GameObject tutorialContainer;
     [SerializeField] GameObject gate;
     [SerializeField] GameObject TutorialText;
+    [SerializeField] Slider juiceMeter;
+
+    [SerializeField] float setTimer;
+
+    private TutorialClone cloneAnim;
+
     public TutorialSteps currentStep;
 
     bool tutorialPlay = false;
 
     float tutorialTimer = 5;
+    int hitCounter = 0;
+
+    bool animStageChange = false;
 
     public void StartTutorial()
     {
@@ -22,6 +31,7 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
+        cloneAnim = clone.GetComponent<TutorialClone>();
         tutorialContainer.SetActive(false);
     }
 
@@ -33,6 +43,7 @@ public class Tutorial : MonoBehaviour
             {
                 StartTutorial();
                 TutorialText.SetActive(false);
+                clone.SetActive(true);
             }
             if (Input.GetButtonDown("Attack"))
             {
@@ -43,10 +54,11 @@ public class Tutorial : MonoBehaviour
 
         if(currentStep == TutorialSteps.MovementInfo && !tutorialPlay)
         {
+            cloneAnim.PlayRunning(true);
             tutorialContainer.SetActive(true);
             image.sprite = sprites[0];
             anim.Play("AnimMovement");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if(currentStep == TutorialSteps.MovementTest)
@@ -61,54 +73,89 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.DashInfo && !tutorialPlay)
         {
+            cloneAnim.PlayRunning(false);
+            cloneAnim.PlayDash(true);
             tutorialContainer.SetActive(true);
             image.sprite = sprites[1];
             anim.Play("AnimDash");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.DashTest)
         {
-            if (Input.GetButtonDown("Dash") && !tutorialPlay)
+            if (Input.GetButtonDown("Dash") && !tutorialPlay && hitCounter <= 2)
             {
-                tutorialTimer = 2;
-                tutorialPlay = true;
+                hitCounter++;
+            }
+            else if(hitCounter >=3)
+            {
+                currentStep += 1;
+                hitCounter = 0;
             }
         }
         if (currentStep == TutorialSteps.AttackInfo && !tutorialPlay)
         {
+            cloneAnim.PlayDash(false);
+            cloneAnim.PlayAttack(true);
             tutorialContainer.SetActive(true);
             image.sprite = sprites[2];
             anim.Play("AnimAttack");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.AttackTest)
         {
-            if (Input.GetButtonDown("Attack") && !tutorialPlay)
+            if (Input.GetButtonDown("Attack") && !tutorialPlay && hitCounter <= 2)
             {
-                tutorialTimer = 2;
-                tutorialPlay = true;
+                hitCounter++;
+            }
+            else if(hitCounter >= 3)
+            {
+                currentStep += 1;
+                hitCounter = 0;
             }
         }
         if (currentStep == TutorialSteps.DanceInfo && !tutorialPlay)
         {
+            cloneAnim.PlayAttack(false);
+            cloneAnim.PlayDance(true);
             tutorialContainer.SetActive(true);
             image.sprite = sprites[3];
             anim.Play("AnimDance");
-            tutorialTimer = 5;
+            tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.DanceTest)
         {
-            if (Input.GetButtonDown("Dance") && !tutorialPlay)
+            if (Input.GetButtonDown("Dance") && !tutorialPlay && hitCounter <= 2)
             {
-                tutorialTimer = 2;
-                tutorialPlay = true;
+                hitCounter++;
+            }
+            else if(hitCounter >= 3)
+            {
+                currentStep += 1;
+                hitCounter = 0;
+                juiceMeter.value = 0;
+            }
+        }
+        if (currentStep == TutorialSteps.JuiceInfo && !tutorialPlay)
+        {
+            tutorialContainer.SetActive(true);
+            image.sprite = sprites[4];
+            tutorialTimer = setTimer;
+            tutorialPlay = true;
+        }
+        if (currentStep == TutorialSteps.JuiceTest)
+        {
+            if(juiceMeter.value >= 30)
+            {
+                currentStep += 1;
             }
         }
         if(currentStep == TutorialSteps.TutorialFinish)
         {
+            clone.SetActive(false);
+            cloneAnim.PlayDance(false);
             gate.SetActive(false);
         }
 
@@ -142,6 +189,8 @@ public class Tutorial : MonoBehaviour
         AttackTest,
         DanceInfo,
         DanceTest,
+        JuiceInfo,
+        JuiceTest,
         TutorialFinish
     }
 }

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Tutorial : MonoBehaviour
 {
     [SerializeField] GameObject clone;
     [SerializeField] Animator anim;
     [SerializeField] Image image;
-    [SerializeField] Sprite[] sprites;
+    [SerializeField] TextMeshProUGUI tmproText;
     [SerializeField] GameObject tutorialContainer;
     [SerializeField] GameObject gate;
     [SerializeField] GameObject TutorialText;
@@ -31,7 +32,10 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
-        cloneAnim = clone.GetComponent<TutorialClone>();
+        if (clone != null)
+        {
+            cloneAnim = clone.GetComponent<TutorialClone>();
+        }
         tutorialContainer.SetActive(false);
     }
 
@@ -56,7 +60,7 @@ public class Tutorial : MonoBehaviour
         {
             cloneAnim.PlayRunning(true);
             tutorialContainer.SetActive(true);
-            image.sprite = sprites[0];
+            tmproText.text = "Use joystick for movement";
             anim.Play("AnimMovement");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -75,8 +79,8 @@ public class Tutorial : MonoBehaviour
         {
             cloneAnim.PlayRunning(false);
             cloneAnim.PlayDash(true);
+            tmproText.text = "Press A to dash, dash three times.";
             tutorialContainer.SetActive(true);
-            image.sprite = sprites[1];
             anim.Play("AnimDash");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -97,8 +101,8 @@ public class Tutorial : MonoBehaviour
         {
             cloneAnim.PlayDash(false);
             cloneAnim.PlayAttack(true);
+            tmproText.text = "Press RB to slash, slash three times.";
             tutorialContainer.SetActive(true);
-            image.sprite = sprites[2];
             anim.Play("AnimAttack");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -119,8 +123,8 @@ public class Tutorial : MonoBehaviour
         {
             cloneAnim.PlayAttack(false);
             cloneAnim.PlayDance(true);
+            tmproText.text = "Press B to dance, dance three times.";
             tutorialContainer.SetActive(true);
-            image.sprite = sprites[3];
             anim.Play("AnimDance");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -141,21 +145,21 @@ public class Tutorial : MonoBehaviour
         if (currentStep == TutorialSteps.JuiceInfo && !tutorialPlay)
         {
             tutorialContainer.SetActive(true);
-            image.sprite = sprites[4];
+            tmproText.text = "Hit the beat three times, use your dash, shlash or dance.";
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.JuiceTest)
         {
-            if(juiceMeter.value >= 30)
+            if(juiceMeter.value >= 15)
             {
                 currentStep += 1;
+                cloneAnim.PlayDance(false);
             }
         }
         if(currentStep == TutorialSteps.TutorialFinish)
         {
             clone.SetActive(false);
-            cloneAnim.PlayDance(false);
             gate.SetActive(false);
         }
 

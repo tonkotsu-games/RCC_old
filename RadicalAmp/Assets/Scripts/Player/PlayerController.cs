@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour
         }
         if (life <= 0)
         {
+            ScoreTracker.instance.statContainer[5]++;
             anim.Play("Death");
             DeadDisable.enabled = false;
             juiceMeter.value = 0;
@@ -197,7 +198,9 @@ public class PlayerController : MonoBehaviour
             heading = new Vector3(Input.GetAxisRaw("Horizontal"),
                                   0,
                                   Input.GetAxisRaw("Vertical"));
+
             heading = heading.normalized;
+
 
             anim.SetBool("running", true);
             Turn();

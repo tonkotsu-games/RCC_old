@@ -82,6 +82,9 @@ public class EnhancedSkills : MonoBehaviour
 
     public void UseEnhancedSkill (ActionsToEnhance baseSkill)
     {
+        //Add to the tracker for specials used (for scoreboard)
+       //Debug.Log("Adding score");
+       //ScoreTracker.instance.statContainer[2]++;
         if(baseSkill == ActionsToEnhance.Dash)
         {
             EnhanceDash();

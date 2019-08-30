@@ -20,6 +20,8 @@ public class EnemyAttack : MonoBehaviour
             enemySoundSource.clip = playerHitSound; 
             enemySoundSource.Play();
             hit = true;
+            life.PlayerBloodSplat();
+            Debug.Log("BloodSplatPlayed");
             life.life -= damage;
         }
         else

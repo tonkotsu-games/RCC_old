@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashClip;
     public AudioClip slashClip;
 
+    [SerializeField]
+    ParticleSystem[] bloodSplatter;
+
     //gibt an, welcher Dancemove abgespielt werden soll
     private int dancemove;
     
@@ -157,7 +160,7 @@ public class PlayerController : MonoBehaviour
         }
         if (life <= 0)
         {
-            ScoreTracker.instance.statContainer[5]++;
+            //ScoreTracker.instance.statContainer[5]++;
             anim.Play("Death");
             DeadDisable.enabled = false;
             juiceMeter.value = 0;
@@ -384,5 +387,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         CameraFollow.EnemyCheck(enemiesInCameraRange.Count);
+    }
+
+    public void PlayerBloodSplat()
+    {
+        bloodSplatter[Random.Range(0, bloodSplatter.Length)].Play();
     }
 }

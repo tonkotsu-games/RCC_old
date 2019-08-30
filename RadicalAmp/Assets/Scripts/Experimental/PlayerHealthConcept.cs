@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.PostProcessing;
+
 
 public class PlayerHealthConcept : MonoBehaviour
 {
@@ -29,6 +31,13 @@ public class PlayerHealthConcept : MonoBehaviour
     private int soundCriticalRangeMax;
     private int soundCriticalBoundMin = 500;
 //Saturation
+    [SerializeField]
+    ColorGrading colorGrading;
+    [SerializeField]
+    PostProcessVolume volume;
+    private int desaturationBoundMax = 100;
+    private int desaturationRangeMax;
+    private int desaturationBoundMin = 0;
 
 
     public float HealthCurrent { get => healthCurrent; private set => healthCurrent = value; }
@@ -39,8 +48,9 @@ public class PlayerHealthConcept : MonoBehaviour
         healthCurrentFeedback = HealthCurrent;
         SetFeedbackToDefault();
         soundShellshockRangeMax = soundShellshockBoundMax - soundShellshockBoundMin;
-        Debug.Log(soundShellshockRangeMax);
         soundCriticalRangeMax = soundCriticalBoundMax - soundCriticalBoundMin;
+        desaturationRangeMax = desaturationBoundMax - desaturationBoundMin;
+        volume.profile.TryGetSettings(out colorGrading);
     }
 
     private void Update()
@@ -93,11 +103,13 @@ public class PlayerHealthConcept : MonoBehaviour
     {
         if(healthCurrentFeedback > 50)
         {
-            //set desat to default
+            colorGrading.saturation.value = 0f;
         }
         else
         {
-            //check and set
+            float relativePercent = ((healthCurrentFeedback-20)*100)/30;
+            int valueInRange = Mathf.RoundToInt((relativePercent * desaturationRangeMax)/100);
+            colorGrading.saturation.value = -(valueInRange + desaturationBoundMin);
         }
     }
 
@@ -105,11 +117,16 @@ public class PlayerHealthConcept : MonoBehaviour
     {
         if(healthCurrentFeedback <= 20)
         {
-            //Debug.Log("Critical Range!");
+            //Sound
             //0-20% --> 15/20 = x/100  & 20/100 = x/4500
             float relativePercent = (healthCurrentFeedback*100)/20;
             int valueInRange = Mathf.RoundToInt((relativePercent * soundCriticalBoundMax)/100);
             mixer.SetFloat("lowPass", valueInRange + soundCriticalBoundMin);
+
+            //Saturation
+            float relativePercentSat = ((healthCurrentFeedback-20)*100)/30;
+            int valueInRangeSat = Mathf.RoundToInt((relativePercentSat * desaturationRangeMax)/100);
+            colorGrading.saturation.value = -(valueInRangeSat + desaturationBoundMin);
         }
     }
 

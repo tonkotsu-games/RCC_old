@@ -19,8 +19,27 @@ public class ScoreScreenManager : MonoBehaviour
     GameObject[] splashImages;
 
     [SerializeField]
-    float inBetweenScore;
+    TextMeshProUGUI[] bonusScoresTexts;
+    [SerializeField]
+    GameObject[] splashImagesBonus;
 
+    [SerializeField]
+    float[] bonusScores;
+
+
+    [SerializeField]
+    TextMeshProUGUI inBetweenScoreText;
+
+    float inBetweenScore;
+    [SerializeField]
+    float modifierMultiplicator;
+    [SerializeField]
+    TextMeshProUGUI modifierMultiplicatorText;
+
+    [SerializeField]
+    TextMeshProUGUI finalScoreDisplay;
+
+    float finalScore;
     public float[] valueCollector; // = new float[6];
     public float[] scoreCollector; //= new float[6];
 
@@ -45,6 +64,12 @@ public class ScoreScreenManager : MonoBehaviour
     float scorePerDeath;
 
 
+    [SerializeField]
+    Slider juiceSlider;
+    [SerializeField]
+    GameObject finalRankSplash;
+
+    bool normalStatsDone = false;
 
     // Start is called before the first frame update
     void Start()
@@ -80,13 +105,19 @@ public class ScoreScreenManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// The Enumerator for setting all the normal base stats through scrolling Text
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="score"></param>
+    /// <param name="valueText"></param>
+    /// <param name="scoreText"></param>
+    /// <param name="splashImage"></param>
+    /// <returns></returns>
     IEnumerator scrollText(float value, float score, TextMeshProUGUI valueText, TextMeshProUGUI scoreText,GameObject splashImage)
     {
         scoreText.gameObject.SetActive(true);
-        if (scoreTracker < valueTexts.Length)
-        {
-            valueText.gameObject.SetActive(true);
-        }
+        valueText.gameObject.SetActive(true);
         float tempScore = 0;
         float tempValue = 0;
         while (tempScore != score && tempValue != value)
@@ -94,37 +125,112 @@ public class ScoreScreenManager : MonoBehaviour
             yield return new WaitForSeconds(scrollSpeed);
             tempScore += score * 0.05f;
             tempValue += value * 0.05f;
-            scoreText.text = tempScore.ToString();
-            if (scoreTracker < valueTexts.Length)
+
+            tempScore = Mathf.RoundToInt(tempScore);
+            // DISPLAY SCORE WHEN ITS AN INT
+            if (Mathf.Approximately(tempScore, Mathf.RoundToInt(tempScore)))
             {
-                if (Mathf.Approximately(tempValue, Mathf.RoundToInt(tempValue)))
-                {
-                    valueText.text = tempValue.ToString();
-                }
+                scoreText.text = tempScore.ToString();
             }
-            
+
+            // DISPLAY VALUE WHEN ITS AN INT
+            if (Mathf.Approximately(tempValue, Mathf.RoundToInt(tempValue)))
+            {
+                valueText.text = tempValue.ToString();
+            }         
         }
 
-        if(scoreTracker == )
         scoreText.gameObject.GetComponent<Animator>().SetTrigger("scoreSet");
-        if (scoreTracker < valueTexts.Length)
-        {
-            valueText.gameObject.GetComponent<Animator>().SetTrigger("scoreSet");
-        }
+        valueText.gameObject.GetComponent<Animator>().SetTrigger("scoreSet");
         splashImage.SetActive(true);
-        splashImage.GetComponent<Animator>().SetTrigger("splashSet");
 
         scoreTracker++;
-        Debug.Log("ScoreTracker: " + scoreTracker);
-        if (scoreTracker != scoreTexts.Length && scoreTracker < valueTexts.Length)
+
+        if (scoreTracker != scoreTexts.Length && scoreTracker <= valueTexts.Length)
         {
-            Debug.Log("Values,Scores : " + ScoreTracker.instance.statContainer[scoreTracker] + scoreCollector[scoreTracker]);
-            StartCoroutine(scrollText(valueCollector[scoreTracker],scoreCollector[scoreTracker],valueTexts[scoreTracker], scoreTexts[scoreTracker], splashImages[scoreTracker]));
+            StartCoroutine(scrollText(valueCollector[scoreTracker], scoreCollector[scoreTracker], valueTexts[scoreTracker], scoreTexts[scoreTracker], splashImages[scoreTracker]));
         }
         else
         {
-            Debug.Log("Values,Scores : " + ScoreTracker.instance.statContainer[scoreTracker] + scoreCollector[scoreTracker]);
-            StartCoroutine(scrollText(valueCollector[scoreTracker], scoreCollector[scoreTracker], valueTexts[0], scoreTexts[scoreTracker], splashImages[scoreTracker]));
+            NormalStatsDone = true;
+        }
+    }
+
+    public IEnumerator bonusMultiplierScoreSetter()
+    {
+        for(int i = 0; i < bonusScores.Length; i++)
+        {
+            yield return new WaitForSeconds(5 * scrollSpeed);
+            bonusScoresTexts[i].gameObject.SetActive(true);
+            bonusScoresTexts[i].text = bonusScores[i].ToString();
+            splashImagesBonus[i].SetActive(true);
+        }
+
+        for (int i = 0; i < scoreCollector.Length; i++)
+        {
+            inBetweenScore += scoreCollector[i];
+        }
+
+        for(int i = 0; i < bonusScores.Length; i++)
+        {
+            inBetweenScore += bonusScores[i];
+        }
+
+        inBetweenScore = Mathf.RoundToInt(inBetweenScore);
+        float tempBetweenScore = 0;
+
+        inBetweenScoreText.gameObject.SetActive(true);
+        while(tempBetweenScore != inBetweenScore)
+        {
+            yield return new WaitForSeconds(scrollSpeed);
+            tempBetweenScore += inBetweenScore * 0.05f;
+            if (Mathf.Approximately(tempBetweenScore, Mathf.RoundToInt(tempBetweenScore))){
+                inBetweenScoreText.text = tempBetweenScore.ToString();
+            }
+
+        }
+
+        yield return new WaitForSeconds(5 * scrollSpeed);
+
+        modifierMultiplicatorText.gameObject.SetActive(true);
+        modifierMultiplicatorText.text ="x " +  modifierMultiplicator.ToString();
+
+        finalScore = tempBetweenScore * modifierMultiplicator;
+        Debug.Log("Final Score: " + finalScore);
+        finalScore = Mathf.RoundToInt(finalScore);
+        
+        finalScoreDisplay.gameObject.SetActive(true);
+        finalScoreDisplay.text = finalScore.ToString();
+
+        yield return new WaitForSeconds(5 * scrollSpeed);
+
+        juiceSlider.gameObject.SetActive(true);
+        while(juiceSlider.value < 1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            juiceSlider.value += 0.1f;
+        }
+
+        yield return new WaitForSeconds(10 * scrollSpeed);
+        finalRankSplash.SetActive(true);
+    }
+
+
+    public bool NormalStatsDone
+    {
+        get { return normalStatsDone; }
+        set
+        {
+            if (normalStatsDone == false)
+            {
+                Debug.Log("Normal Stats are done");
+                StartCoroutine(bonusMultiplierScoreSetter());
+                normalStatsDone = value;
+            }
+            else
+            {
+                normalStatsDone = value;
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ public class VFXIntensity : MonoBehaviour
     {
         weaponParticleModule.startSizeMultiplier = weaponTrailMulti * juiceMeter.value;
         bodyMat.SetFloat("_emissnIntensity", juiceMeter.value * emissionMulti + 1);
+        capeMat.SetFloat("_emissnIntensity", juiceMeter.value * emissionMulti + 1);
         //Example.SetFloat("Particle Base Size", ExampleMulti * juiceMeter.value);
     }
 }

@@ -7,6 +7,7 @@ public class EndSceneScript : MonoBehaviour
 
     [SerializeField] private Animator myAnimator;
     [SerializeField] AnimationClip EndSceneAnimation;
+    [SerializeField] ScoreScreenManager scoreScreen;
 
     // Start is called before the first frame update
     void Start ()
@@ -17,6 +18,15 @@ public class EndSceneScript : MonoBehaviour
    IEnumerator EndScene()
     {
         yield return new WaitForSeconds(EndSceneAnimation.length);
-        SceneManager.LoadScene("Start_Menu", LoadSceneMode.Single);
-    }  
+        scoreScreen.gameObject.SetActive(true);
+        //SceneManager.LoadScene("Start_Menu", LoadSceneMode.Single);
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("Dash") != 0 && scoreScreen.scoreDone)
+        {
+            SceneManager.LoadScene("Start_Menu", LoadSceneMode.Single);
+        }
+    }
 }

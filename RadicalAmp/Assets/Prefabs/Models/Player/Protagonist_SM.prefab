@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2500953225810700426
 Transform:
   m_ObjectHideFlags: 0
@@ -376,7 +376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46d518224da68448aff544797d5f78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesInCameraRange: []
   movementSpeed: 10
   acceleration: 10
   snappRange: 3
@@ -386,8 +385,9 @@ MonoBehaviour:
   dashTime: 0.1
   dashParticlesPrefab: {fileID: 2415412595958308877, guid: ded5659a429549e4997118db1bbfc7a9,
     type: 3}
+  heading: {x: 0, y: 0, z: 0}
   life: 10
-  dashClip: {fileID: 8300000, guid: 758ff0eff4f103e45bbdf492b2d4d2af, type: 3}
+  dashClip: {fileID: 8300000, guid: 52153348e4a21a941b4f8b1b9b62ec21, type: 3}
   slashClip: {fileID: 8300000, guid: a7119b129ad8f104e954f77f2ae08e85, type: 3}
 --- !u!114 &2960425244600457811
 MonoBehaviour:
@@ -416,7 +416,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.1
-  m_Pitch: 1
+  m_Pitch: 1.2
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -545,6 +545,7 @@ MonoBehaviour:
   enemyHitSound:
   - {fileID: 8300000, guid: bb09aceafa6f3464ba6fc2c9c68aff75, type: 3}
   - {fileID: 8300000, guid: 944d0e69cdbd2fa40946a86dd4cbcf06, type: 3}
+  knockbackRange: 2.5
   damage: 2
 --- !u!65 &7115225058092246107
 BoxCollider:
@@ -572,7 +573,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponTrail: {fileID: 3653231217339944925}
+  bodyMat: {fileID: 2100000, guid: ecf875ffe293dbe4dbc22bd9f1dccd02, type: 2}
+  capeMat: {fileID: 2100000, guid: e7ae3b30bf3bdf1498f4edead2b5bf57, type: 2}
   weaponTrailMulti: 0.01
+  emissionMulti: 0
 --- !u!1 &2960425245245817569
 GameObject:
   m_ObjectHideFlags: 0
@@ -5952,11 +5956,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2960425245246119787}
     m_Modifications:
-    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
-        type: 3}
-      propertyPath: m_Name
-      value: Protagonist_Sword_SM
-      objectReference: {fileID: 0}
     - target: {fileID: 2839301101805849901, guid: 111fe1801ab084b4eae3b3f123742c76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6011,6 +6010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.2869873
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
+        type: 3}
+      propertyPath: m_Name
+      value: Protagonist_Sword_SM
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}

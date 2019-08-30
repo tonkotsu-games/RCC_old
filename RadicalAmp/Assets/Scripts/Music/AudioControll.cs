@@ -11,7 +11,7 @@ public class AudioControll : MonoBehaviour
 
     void Start()
     {
-        juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
+        juiceMeter = Locator.instance.GetJuiceMeter();
     }
 
     void Update()

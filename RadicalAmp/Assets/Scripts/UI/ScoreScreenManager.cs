@@ -70,6 +70,7 @@ public class ScoreScreenManager : MonoBehaviour
     GameObject finalRankSplash;
 
     bool normalStatsDone = false;
+    public bool scoreDone = false;
 
     // Start is called before the first frame update
     void Start()
@@ -213,6 +214,7 @@ public class ScoreScreenManager : MonoBehaviour
 
         yield return new WaitForSeconds(10 * scrollSpeed);
         finalRankSplash.SetActive(true);
+        scoreDone = true;
     }
 
 

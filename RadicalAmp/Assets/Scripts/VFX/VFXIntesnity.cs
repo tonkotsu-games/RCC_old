@@ -9,7 +9,7 @@ public class VFXIntesnity : MonoBehaviour
 {
     [Header("VFX Prefab")]
     [SerializeField] VisualEffect vfx;
-    [Header("VFX Multiplayer")]
+    [Header("VFX Multiplier")]
     [SerializeField] float vfxMulti;
     [Header("VFX emission Name")]
     [SerializeField] string vfxName;

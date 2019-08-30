@@ -10,111 +10,71 @@ public class Equalizer : MonoBehaviour
     [SerializeField] Slider juiceMeter;
     [SerializeField] GameObject canvasParent;
     [SerializeField] Color[] colorEqualizer;
-    Slider[] equalizerRight = new Slider[16];
-    Slider[] equalizerLeft = new Slider[16];
+    Slider[] equalizerRight = new Slider[128];
+    Slider[] equalizerLeft = new Slider[128];
 
     public float maxscale;
 
     void Start()
     {
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < equalizerRight.Length; i++)
         {
             Slider instantSlider = Instantiate(equalizerRightPrefab);
             instantSlider.transform.SetParent(canvasParent.transform, false);
             instantSlider.name = "SampleCube: " + i;
             instantSlider.GetComponent<RectTransform>().localPosition = new Vector3(400,
-                                                                                    -175 + (25f * i),
+                                                                                    -175 + (2.7f * i),
                                                                                     0);
             equalizerRight[i] = instantSlider;
+            equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
         }
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < equalizerLeft.Length; i++)
         {
             Slider instantSlider = Instantiate(equalizerLeftPrefab);
             instantSlider.transform.SetParent(canvasParent.transform, false);
             instantSlider.name = "SampleCube: " + i;
             instantSlider.GetComponent<RectTransform>().localPosition = new Vector3(-400,
-                                                                                    -175 + (25f * i),
+                                                                                    -175 + (2.7f * i),
                                                                                     0);
             equalizerLeft[i] = instantSlider;
-        }
-        for (int i = 0; i < 16; i++)
-        {
-            if (i <= 5)
-            {
-                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
-                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
-            }
-            if(i > 5 && i <= 11)
-            {
-                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
-                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
-            }
-            if(i > 11)
-            {
-                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
-                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
-            }
+            equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
         }
     }
-        void Update()
+    void Update()
     {
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < equalizerLeft.Length; i++)
         {
             if (equalizerRight != null)
             {
-                equalizerRight[i].value = (FrequenzCalculator.spectrum[i] * maxscale) + 0.01f;
-                equalizerLeft[i].value = (FrequenzCalculator.spectrum[i] * maxscale) + 0.01f;
+                equalizerRight[127 - i].value = (FrequenzCalculator.spectrum[i] * maxscale) + 0.01f;
+                equalizerLeft[127 - i].value = (FrequenzCalculator.spectrum[i] * maxscale) + 0.01f;
             }
         }
-        if(juiceMeter.value <= 0)
+        for (int i = 0; i < equalizerLeft.Length; i++)
         {
-            for (int i = 0; i < 16; i++)
+            if (i <= juiceMeter.value * 1.28)
             {
-                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-            }
-        }
-        else if (juiceMeter.value > 0 && juiceMeter.value <= 25)
-        {
-            for (int i = 0; i < 16; i++)
-            {
-                if (i <= 5)
+                if (i <= 50)
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
                 }
-                if (i > 5)
-                {
-                    equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                    equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                }
-            }
-        }
-        else if (juiceMeter.value >= 26 && juiceMeter.value <= 50)
-        {
-            for (int i = 0; i < 16; i++)
-            {
-                if (i > 5 && i <= 11)
+                else if(i >50 && i <= 100)
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
                 }
-                if (i > 11)
-                {
-                    equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                    equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
-                }
-            }
-        }
-        else if (juiceMeter.value >= 51 && juiceMeter.value <= 100)
-        {
-            for (int i = 0; i < 16; i++)
-            {
-                if (i > 11 && i <= 16)
+                else if (i > 100)
                 {
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
                 }
+
+            }
+            if (i > juiceMeter.value * 1.28f)
+            {
+                equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
+                equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
             }
         }
 

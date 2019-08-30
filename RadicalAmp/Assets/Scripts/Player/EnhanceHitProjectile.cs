@@ -39,7 +39,7 @@ public class EnhanceHitProjectile : MonoBehaviour
             enemyLife.life -= projectileDamage;
             Debug.Log("EnemyLifeAtEnd: " + enemyLife);
             PopupDamageController.instance.CreatePopupText(projectileDamage.ToString(), other.gameObject.GetComponent<Transform>().transform);
-            other.GetComponent<EnemyLife>().BloodSplat();
+            other.GetComponent<EnemyHP>().BloodSplat();
         }
     }
 }

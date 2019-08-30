@@ -18,10 +18,9 @@ public class BasicEnemy : Actor
     [SerializeField] BeatAnalyse beatanalyse;
     [SerializeField] int preStartAttack = 1000;
     [SerializeField] int preStartSpecialAttack = 1000;
+    [SerializeField] SplashScreenTrigger cutSceneFreeze;
 
     public string specialAttackState;
-
-    
 
     private void Awake()
     {
@@ -47,6 +46,14 @@ public class BasicEnemy : Actor
 
     private void Update()
     {
+        if (cutSceneFreeze != null)
+        {
+            if (cutSceneFreeze.movementLock)
+            {
+                StateMachine.ChangeState(new Idle(this));
+            }
+        }
+
         StateMachine.StateExecuteTick();
 
         if(StateMachine.StateCurrent is Idle && player != null)

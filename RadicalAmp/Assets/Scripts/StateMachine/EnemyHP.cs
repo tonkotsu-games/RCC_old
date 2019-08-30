@@ -13,12 +13,15 @@ public class EnemyHP : MonoBehaviour
     public int life;
 
     private Animator EnemyAnim;
+    private Renderer enemyDissolve;
 
     private float NavmeshSpeed;
 
     private NavMeshAgent EnemyNav;
 
     public bool death = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +31,16 @@ public class EnemyHP : MonoBehaviour
         EnemyNav = gameObject.GetComponent<NavMeshAgent>();
         blood.SetFloat("Velocity Multiplier", 6f);
         blood.Stop();
+        enemyDissolve = gameObject.transform.GetChild(0).GetChild(1).GetComponent<Renderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(life <= 0 && !death)
+
+
+        if (life <= 0 && !death)
         {
             // Adding to the score for enemies killed
             ScoreTracker.instance.statContainer[0] += 1;
@@ -54,6 +61,8 @@ public class EnemyHP : MonoBehaviour
         EnemyAnim.SetBool("dead", true);
         Debug.Log(EnemyNav.gameObject.name + " died!");
         EnemyNav.gameObject.GetComponent<Actor>().Death();
+
+
         //Debug.Log("Deregister Boss from list");
 
 

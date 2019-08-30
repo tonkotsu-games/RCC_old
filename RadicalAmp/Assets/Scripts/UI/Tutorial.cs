@@ -145,7 +145,7 @@ public class Tutorial : MonoBehaviour
         if (currentStep == TutorialSteps.JuiceInfo && !tutorialPlay)
         {
             tutorialContainer.SetActive(true);
-            tmproText.text = "Hit the beat three times, use ur dash, shlash or dance.";
+            tmproText.text = "Hit the beat three times, use your dash, shlash or dance.";
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }

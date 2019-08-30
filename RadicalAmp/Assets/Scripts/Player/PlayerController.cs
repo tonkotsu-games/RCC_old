@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour
         }
         if (life <= 0)
         {
+            ScoreTracker.instance.statContainer[5]++;
             anim.Play("Death");
             DeadDisable.enabled = false;
             juiceMeter.value = 0;

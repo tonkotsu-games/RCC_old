@@ -20,6 +20,8 @@ public class AttackCheck : MonoBehaviour
             enemySoundSource.clip = playerHitSound; 
             enemySoundSource.Play();
             hit = true;
+            //Adding to the "Hits taken" stat for the score screen
+            ScoreTracker.instance.statContainer[4]++;
             life.life -= damage;
         }
         else

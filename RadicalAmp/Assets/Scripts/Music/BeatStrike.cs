@@ -31,6 +31,10 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] int dancePunish;
     [SerializeField] int idlePunish;
 
+    [Header("On Beat Vertex Displacemet")]
+    [SerializeField] Material bodyMat;
+    [SerializeField] Material capeMat;
+
     private void Awake()
     {
         if(instance == null)
@@ -60,6 +64,8 @@ public class BeatStrike : MonoBehaviour
             Physics.IgnoreLayerCollision(9, 13, true);
             if (IsOnBeat())
             {
+
+                bodyMat.SetFloat("displSwitch", 1f);
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {

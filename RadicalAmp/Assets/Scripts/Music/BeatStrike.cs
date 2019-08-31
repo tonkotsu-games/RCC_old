@@ -34,6 +34,8 @@ public class BeatStrike : MonoBehaviour
     [Header("On Beat Vertex Displacemet")]
     [SerializeField] Material bodyMat;
     [SerializeField] Material capeMat;
+    [SerializeField] float lerpSpeed = 1f;
+    private float displFloat = 0f;
 
     private void Awake()
     {
@@ -56,6 +58,12 @@ public class BeatStrike : MonoBehaviour
 
     void Update()
     {
+        //lerp the Displacement switch back to 0
+        if(bodyMat.GetFloat("_displSwitch") > 0f)
+        {
+            bodyMat.SetFloat("_displSwitch", Mathf.Lerp(bodyMat.GetFloat("_displSwitch"), 0f, lerpSpeed));
+            
+        }
         pulseBeat = false;
 
         if (Input.GetButtonDown("Dash"))
@@ -65,7 +73,8 @@ public class BeatStrike : MonoBehaviour
             if (IsOnBeat())
             {
 
-                bodyMat.SetFloat("displSwitch", 1f);
+                bodyMat.SetFloat("_displSwitch", 1f);
+                
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
@@ -92,6 +101,8 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
+                bodyMat.SetFloat("_displSwitch", 1f);
+
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {

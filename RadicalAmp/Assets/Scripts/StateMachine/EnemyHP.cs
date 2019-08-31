@@ -6,7 +6,6 @@ using UnityEngine.Experimental.VFX;
 
 public class EnemyHP : MonoBehaviour
 {
-    [SerializeField] VisualEffect blood;
     [SerializeField] ParticleSystem[] bloodSplatter;
 
     [Header("Enemy Health")]
@@ -31,8 +30,6 @@ public class EnemyHP : MonoBehaviour
         EnemyAnim = gameObject.GetComponentInChildren<Animator>();
         EnemyAnim.SetBool("dead", false);
         EnemyNav = gameObject.GetComponent<NavMeshAgent>();
-        blood.SetFloat("Velocity Multiplier", 6f);
-        blood.Stop();
         enemyDissolve = gameObject.transform.GetChild(0).GetChild(1).GetComponent<Renderer>();
 
     }
@@ -53,7 +50,6 @@ public class EnemyHP : MonoBehaviour
 
     public void BloodSplat()
     {
-        blood.Play();
         //Debug.Log("BLOOD!");
         bloodSplatter[Random.Range(0,bloodSplatter.Length)].Play();
     }

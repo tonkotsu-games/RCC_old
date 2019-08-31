@@ -24,7 +24,7 @@ public class Locator : MonoBehaviour
         //#region CollectingReturnables
         musicBox = GameObject.FindWithTag("MusicBox").GetComponent<BeatAnalyse>();
         juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
-        Debug.Log("This " + instance.gameObject.name + " musicbox" + instance.musicBox);
+        //Debug.Log("This " + instance.gameObject.name + " musicbox" + instance.musicBox);
         playerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
         //#endregion
     }

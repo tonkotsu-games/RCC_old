@@ -35,9 +35,12 @@ public class PlayerHealthConcept : MonoBehaviour
     ColorGrading colorGrading;
     [SerializeField]
     PostProcessVolume volume;
-    private int desaturationBoundMax = 100;
-    private int desaturationRangeMax;
-    private int desaturationBoundMin = 0;
+    private int desaturationStateBoundMax = 30;
+    private int desaturationStateRangeMax;
+    private int desaturationStateBoundMin = 0;
+    private int desaturationCriticalBoundMax = 100;
+    private int desaturationCriticalRangeMax;
+    private int desaturationCriticalBoundMin = 30;
 
 
     public float HealthCurrent { get => healthCurrent; private set => healthCurrent = value; }
@@ -49,7 +52,8 @@ public class PlayerHealthConcept : MonoBehaviour
         SetFeedbackToDefault();
         soundShellshockRangeMax = soundShellshockBoundMax - soundShellshockBoundMin;
         soundCriticalRangeMax = soundCriticalBoundMax - soundCriticalBoundMin;
-        desaturationRangeMax = desaturationBoundMax - desaturationBoundMin;
+        desaturationStateRangeMax = desaturationStateBoundMax - desaturationStateBoundMin;
+        desaturationCriticalRangeMax = desaturationCriticalBoundMax - desaturationCriticalBoundMin;
         volume.profile.TryGetSettings(out colorGrading);
     }
 
@@ -93,9 +97,7 @@ public class PlayerHealthConcept : MonoBehaviour
     {
             //20-90% --> 23/70 = x/100 --> (23*100)/70  & 20/100 = x/1500
             float relativePercent = ((healthCurrentFeedback-20)*100)/70;
-            //Debug.Log(relativePercent);
             int valueInRange = Mathf.RoundToInt((relativePercent * soundShellshockRangeMax)/100);
-            Debug.Log("value" + valueInRange);
             mixer.SetFloat("lowPass", valueInRange + soundShellshockBoundMin);
     }
 
@@ -107,9 +109,11 @@ public class PlayerHealthConcept : MonoBehaviour
         }
         else
         {
-            float relativePercent = ((healthCurrentFeedback-20)*100)/30;
-            int valueInRange = Mathf.RoundToInt((relativePercent * desaturationRangeMax)/100);
-            colorGrading.saturation.value = -(valueInRange + desaturationBoundMin);
+            float relativePercent = 100-((healthCurrentFeedback-20)*100)/30;
+            int valueInRange = Mathf.RoundToInt((relativePercent * desaturationStateRangeMax)/100);
+            Debug.Log("value in range " + valueInRange);
+            colorGrading.saturation.value = -(valueInRange + desaturationStateBoundMin);
+            Debug.Log(-(valueInRange + desaturationStateBoundMin));
         }
     }
 
@@ -124,9 +128,9 @@ public class PlayerHealthConcept : MonoBehaviour
             mixer.SetFloat("lowPass", valueInRange + soundCriticalBoundMin);
 
             //Saturation
-            float relativePercentSat = ((healthCurrentFeedback-20)*100)/30;
-            int valueInRangeSat = Mathf.RoundToInt((relativePercentSat * desaturationRangeMax)/100);
-            colorGrading.saturation.value = -(valueInRangeSat + desaturationBoundMin);
+            float relativePercentSat = 100-((healthCurrentFeedback)*100)/20;
+            int valueInRangeSat = Mathf.RoundToInt((relativePercentSat * desaturationCriticalRangeMax)/100);
+            colorGrading.saturation.value = -(valueInRangeSat + desaturationCriticalBoundMin);
         }
     }
 

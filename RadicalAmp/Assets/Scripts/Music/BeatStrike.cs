@@ -31,6 +31,12 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] int dancePunish;
     [SerializeField] int idlePunish;
 
+    [Header("On Beat Vertex Displacemet")]
+    [SerializeField] Material bodyMat;
+    [SerializeField] Material capeMat;
+    [SerializeField] float lerpSpeed = 1f;
+    private float displFloat = 0f;
+
     private void Awake()
     {
         if(instance == null)
@@ -52,6 +58,15 @@ public class BeatStrike : MonoBehaviour
 
     void Update()
     {
+        //lerp the Displacement switch back to 0
+        if(bodyMat.GetFloat("_displSwitch") > 0f)
+        {
+            bodyMat.SetFloat("_displSwitch", Mathf.Lerp(bodyMat.GetFloat("_displSwitch"), 0f, lerpSpeed));
+            capeMat.SetFloat("_displSwitch", Mathf.Lerp(capeMat.GetFloat("_displSwitch"), 0f, lerpSpeed));
+
+        }
+
+
         pulseBeat = false;
 
         if (Input.GetButtonDown("Dash"))
@@ -59,6 +74,10 @@ public class BeatStrike : MonoBehaviour
             //Reenable collision through Animation Event after Dash
             if (IsOnBeat())
             {
+
+                bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
+
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
@@ -85,6 +104,9 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
+                bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
+
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
@@ -111,6 +133,9 @@ public class BeatStrike : MonoBehaviour
         {
             if (IsOnBeat())
             {
+                bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
+
                 pulseBeat = true;
                 juiceMeter.value += danceReward;
                 action = true;

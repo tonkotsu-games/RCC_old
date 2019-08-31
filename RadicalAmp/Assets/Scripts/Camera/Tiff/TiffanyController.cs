@@ -60,7 +60,7 @@ public class TiffanyController : MonoBehaviour
         if (target == null)
         {
             allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            Debug.Log("Refilling targets");
+            //Debug.Log("Refilling targets");
             ChangeTiffState(TiffStates.FindNewTarget);
             return;
         }
@@ -87,9 +87,9 @@ public class TiffanyController : MonoBehaviour
 
         if (target.GetComponent<TiffTarget>() == null)
         {
-            Debug.Log(target.name + "has no tiffTarget");
+            //Debug.Log(target.name + "has no tiffTarget");
             allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            Debug.Log("Refilling targets");
+            //Debug.Log("Refilling targets");
             ChangeTiffState(TiffStates.FindNewTarget);
             return;
         }
@@ -116,7 +116,7 @@ public class TiffanyController : MonoBehaviour
             switch (requestedState)
             {
                 case TiffStates.FindNewTarget:
-                    Debug.Log("Changing from state: " + currentTiffState + " to state: " + requestedState);
+                    //Debug.Log("Changing from state: " + currentTiffState + " to state: " + requestedState);
                     currentTiffState = TiffStates.FindNewTarget;
                     target = allEnemies[Random.Range(0, allEnemies.Length)];
                     if (target.GetComponent<Beathoven>() != null)
@@ -127,20 +127,20 @@ public class TiffanyController : MonoBehaviour
                     break;
 
                 case TiffStates.MoveToNewTarget:
-                    Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
+                    //Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
                     currentTiffState = TiffStates.MoveToNewTarget;
                     agent.isStopped = false;
                    
                     break;
 
                 case TiffStates.Streaming:
-                    Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
+                    //Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
                     currentTiffState = TiffStates.Streaming;
                     StartCoroutine("TargetSwapCooldown");
                     break;
 
                 case TiffStates.FocusAttention:
-                    Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
+                    //Debug.Log("Changing from state: " + currentTiffState + "to state: " + requestedState);
                     currentTiffState = TiffStates.FocusAttention;
                     target = player;
                     CalculateNextPos();

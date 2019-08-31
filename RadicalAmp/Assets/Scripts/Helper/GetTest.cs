@@ -10,7 +10,7 @@ public class GetTest : MonoBehaviour
     void Start()
     {
         musicBox = Locator.instance.GetBeat();
-        Debug.Log("musicbox " + musicBox);
+        //Debug.Log("musicbox " + musicBox);
     }
 
     // Update is called once per frame

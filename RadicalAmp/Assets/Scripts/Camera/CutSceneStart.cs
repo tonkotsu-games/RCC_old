@@ -17,12 +17,12 @@ public class CutSceneStart : MonoBehaviour
             tutorialText.SetActive(false);
             StartCoroutine(StartAnim());
         }
-        else
+        else if(gameState.testing)
         {
-            Camera introCam = GetComponent<Camera>();
+            GameObject introCam = this.gameObject;
             tutorialText.SetActive(false);
             tutorialStep.Testing();
-            introCam.enabled = false;
+            introCam.SetActive(false);
         }
     }
 

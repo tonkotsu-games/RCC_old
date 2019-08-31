@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashClip;
     public AudioClip slashClip;
 
+    [SerializeField]
+    ParticleSystem[] bloodSplatter;
+
     //gibt an, welcher Dancemove abgespielt werden soll
     private int dancemove;
     
@@ -157,6 +160,7 @@ public class PlayerController : MonoBehaviour
         }
         if (life <= 0)
         {
+            //ScoreTracker.instance.statContainer[5]++;
             anim.Play("Death");
             DeadDisable.enabled = false;
             juiceMeter.value = 0;
@@ -247,6 +251,7 @@ public class PlayerController : MonoBehaviour
                 dashing = true;
                 attack = false;
                 SpawnDashParticles();
+                Physics.IgnoreLayerCollision(9, 13, true);
             }
         }
         else
@@ -257,6 +262,7 @@ public class PlayerController : MonoBehaviour
                 rigi.velocity = Vector3.zero;
                 dashTimer.ResetTimer();
                 dash = false;
+                Physics.IgnoreLayerCollision(9, 13, false);
             }
             else
             {
@@ -327,6 +333,14 @@ public class PlayerController : MonoBehaviour
     }
     public void afterdeath()
     {
+        attack = false;
+        boxCol.enabled = false;
+        dancing = false;
+        anim.SetBool("dance", false);
+        anim.SetBool("dance2", false);
+        anim.SetBool("dance3", false);
+        dash = false;
+
         respawn.RespawnPlayer();
         life = 3;
         anim.Play("respawn");        
@@ -383,5 +397,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         CameraFollow.EnemyCheck(enemiesInCameraRange.Count);
+    }
+
+    public void PlayerBloodSplat()
+    {
+        bloodSplatter[Random.Range(0, bloodSplatter.Length)].Play();
     }
 }

@@ -77,6 +77,7 @@ public class EnhancedSkills : MonoBehaviour
                     Debug.Log("Enhanced State now " + currentEnhancedState);
                     break;
             }
+            Debug.Log(requestedState);
         }
     }
 

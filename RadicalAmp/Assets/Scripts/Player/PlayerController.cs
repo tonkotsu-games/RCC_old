@@ -342,7 +342,7 @@ public class PlayerController : MonoBehaviour
         dash = false;
 
         respawn.RespawnPlayer();
-        life = 3;
+        life = 10;
         anim.Play("respawn");        
     }
     public void afterrespawn()

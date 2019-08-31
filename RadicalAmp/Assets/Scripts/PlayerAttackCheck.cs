@@ -40,7 +40,7 @@ public class PlayerAttackCheck : MonoBehaviour
 
             Vector3 direction = other.transform.position - transform.position;
             direction.y = 0;
-            Debug.Log("Direction: " + direction);
+            //Debug.Log("Direction: " + direction);
             other.gameObject.GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
     
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];

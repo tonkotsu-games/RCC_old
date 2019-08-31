@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpotlightTargetFollow : MonoBehaviour
 {
+    [Header("Player as Target")]
     [SerializeField] Transform target;
 
     void Update()

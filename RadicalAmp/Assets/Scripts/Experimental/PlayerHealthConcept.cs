@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class PlayerHealthConcept : MonoBehaviour
 {
 //Player Health in %.
     //current actual HP
-    [SerializeField]
-    private float healthCurrent;
+    [SerializeField] private float healthCurrent;
     //feedback HP
     private float healthCurrentFeedback;
     //maximum HP
@@ -24,26 +25,34 @@ public class PlayerHealthConcept : MonoBehaviour
     private AudioMixer mixer;
     int soundDefault = 20000;
     //Bounds calculation: max 6000 - min 500 --> 30% = 1650 --> 6000-4350 & 4350 - 500
-    private int soundShellshockBoundMax = 6000;
+    [SerializeField] private int soundShellshockBoundMax = 6000;
     private int soundShellshockRangeMax;
-    private int soundShellshockBoundMin = 4350;
-    private int soundCriticalBoundMax = 4350;
+    [SerializeField] private int soundShellshockBoundMin = 4350;
+    [SerializeField] private int soundCriticalBoundMax = 4350;
     private int soundCriticalRangeMax;
-    private int soundCriticalBoundMin = 500;
+    [SerializeField] private int soundCriticalBoundMin = 500;
 //Saturation
     [SerializeField]
     ColorGrading colorGrading;
     [SerializeField]
     PostProcessVolume volume;
-    private int desaturationStateBoundMax = 30;
+    [SerializeField] private int desaturationStateBoundMax = 30;
     private int desaturationStateRangeMax;
-    private int desaturationStateBoundMin = 0;
-    private int desaturationCriticalBoundMax = 100;
+    [SerializeField] private int desaturationStateBoundMin = 0;
+    [SerializeField] private int desaturationCriticalBoundMax = 100;
     private int desaturationCriticalRangeMax;
-    private int desaturationCriticalBoundMin = 30;
+    [SerializeField] private int desaturationCriticalBoundMin = 30;
 
 
     public float HealthCurrent { get => healthCurrent; private set => healthCurrent = value; }
+
+    //Presentation UI
+    [SerializeField]
+    private InputField intputField;
+    [SerializeField]
+    private TextMeshProUGUI tmpText;
+
+    
 
     private void Awake()
     {
@@ -55,12 +64,17 @@ public class PlayerHealthConcept : MonoBehaviour
         desaturationStateRangeMax = desaturationStateBoundMax - desaturationStateBoundMin;
         desaturationCriticalRangeMax = desaturationCriticalBoundMax - desaturationCriticalBoundMin;
         volume.profile.TryGetSettings(out colorGrading);
+
+        Cursor.visible=true;
+        intputField.ActivateInputField();
+        intputField.Select();
     }
 
     private void Update()
     {
         SetHealthFeedback();
         ChooseFeedback();
+        tmpText.SetText("Current FeedbackHP: " + healthCurrentFeedback);
     }
 
     private void SetHealthFeedback()
@@ -158,5 +172,17 @@ public class PlayerHealthConcept : MonoBehaviour
     private void Death()
     {
         Debug.LogError("Player died!");
+    }
+
+    public void InputField()
+    {
+        TakeDamage(float.Parse(intputField.text));
+        intputField.text = "";
+        intputField.Select();
+    }
+
+    public void DamageButton(float damage)
+    {
+        TakeDamage(damage);
     }
 }

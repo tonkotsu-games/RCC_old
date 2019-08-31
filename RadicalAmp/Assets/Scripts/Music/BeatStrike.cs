@@ -62,8 +62,11 @@ public class BeatStrike : MonoBehaviour
         if(bodyMat.GetFloat("_displSwitch") > 0f)
         {
             bodyMat.SetFloat("_displSwitch", Mathf.Lerp(bodyMat.GetFloat("_displSwitch"), 0f, lerpSpeed));
-            
+            capeMat.SetFloat("_displSwitch", Mathf.Lerp(capeMat.GetFloat("_displSwitch"), 0f, lerpSpeed));
+
         }
+
+
         pulseBeat = false;
 
         if (Input.GetButtonDown("Dash"))
@@ -74,7 +77,8 @@ public class BeatStrike : MonoBehaviour
             {
 
                 bodyMat.SetFloat("_displSwitch", 1f);
-                
+                capeMat.SetFloat("_displSwitch", 1f);
+
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
@@ -102,6 +106,7 @@ public class BeatStrike : MonoBehaviour
             if(IsOnBeat())
             {
                 bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
 
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
@@ -129,6 +134,9 @@ public class BeatStrike : MonoBehaviour
         {
             if (IsOnBeat())
             {
+                bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
+
                 pulseBeat = true;
                 juiceMeter.value += danceReward;
                 action = true;

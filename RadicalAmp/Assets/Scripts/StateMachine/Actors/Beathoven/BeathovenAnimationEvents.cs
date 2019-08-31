@@ -19,7 +19,7 @@ public class BeathovenAnimationEvents : MonoBehaviour
         {
             startRotation = shield.transform.localEulerAngles;
             startPosition = shield.transform.localPosition;
-            Debug.Log("Start rotation " + startRotation);
+            //Debug.Log("Start rotation " + startRotation);
         }
     }
 

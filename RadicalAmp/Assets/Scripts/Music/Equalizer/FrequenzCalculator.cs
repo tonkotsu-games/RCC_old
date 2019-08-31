@@ -85,16 +85,18 @@ public class FrequenzCalculator : MonoBehaviour
          * 6 - 128
          * 7 - 256
          * 8 - 512
-         * 
+         * 9 - 1024
+         * 10 - 2048
+         * 11 - 4096
          */
         int count = 0;
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 11; i++)
         {
             float average = 0;
             int sammpleCount = (int)Mathf.Pow(2, i) * 2;
 
-            if (i == 2)
+            if (i == 10)
             {
                 sammpleCount += 2;
             }

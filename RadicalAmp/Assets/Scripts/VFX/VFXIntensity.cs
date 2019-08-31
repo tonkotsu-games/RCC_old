@@ -20,12 +20,14 @@ public class VFXIntensity : MonoBehaviour
     {
         juiceMeter = Locator.instance.GetJuiceMeter();
         weaponParticleModule = weaponTrail.main;
-        bodyMat.SetFloat("Vector1_244E07B5", 1f);
+        //bodyMat.SetFloat("Vector1_244E07B5", 1f);
     }
 
     void Update()
     {
         weaponParticleModule.startSizeMultiplier = weaponTrailMulti * juiceMeter.value;
+        bodyMat.SetFloat("_emissnIntensity", juiceMeter.value * emissionMulti + 1);
+        capeMat.SetFloat("_emissnIntensity", juiceMeter.value * emissionMulti + 1);
         //Example.SetFloat("Particle Base Size", ExampleMulti * juiceMeter.value);
     }
 }

@@ -21,6 +21,8 @@ public class EnemyHP : MonoBehaviour
 
     public bool death = false;
 
+    [SerializeField] BoxCollider endScreenTrigger;
+
 
 
     // Start is called before the first frame update
@@ -42,6 +44,8 @@ public class EnemyHP : MonoBehaviour
 
         if (life <= 0 && !death)
         {
+            // Adding to the score for enemies killed
+            // ScoreTracker.instance.statContainer[0] += 1;
             EnemyDeath();
             death = true;
         }
@@ -56,6 +60,10 @@ public class EnemyHP : MonoBehaviour
 
     private void EnemyDeath()
     {
+       if(gameObject.GetComponent<Beathoven>() != null)
+       {
+           endScreenTrigger.enabled = true;
+       }
         EnemyAnim.SetBool("dead", true);
         Debug.Log(EnemyNav.gameObject.name + " died!");
         EnemyNav.gameObject.GetComponent<Actor>().Death();

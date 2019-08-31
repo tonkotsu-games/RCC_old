@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    List<Transform> enemiesInScene = new List<Transform>();
-    List<Transform> enemiesInRange = new List<Transform>();
-    public List<Transform> enemiesInCameraRange = new List<Transform>();
+    private List<Transform> enemiesInScene = new List<Transform>();
+    private List<Transform> enemiesInRange = new List<Transform>();
+    private List<Transform> enemiesInCameraRange = new List<Transform>();
 
     private float moveHorizontal;
     private float moveVertical;
@@ -28,7 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] GameObject dashParticlesPrefab;
 
-    private Vector3 heading;
+    public Vector3 heading;
+
     private Vector3 dashdirection;
     private Vector3 moveVector;
 
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerController DeadDisable;
     private Respawn respawn;
+    private Slider juiceMeter;
     
     public Timer dashTimer = new Timer();
 
@@ -59,6 +62,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashClip;
     public AudioClip slashClip;
 
+    [SerializeField]
+    ParticleSystem[] bloodSplatter;
+
     //gibt an, welcher Dancemove abgespielt werden soll
     private int dancemove;
     
@@ -68,6 +74,8 @@ public class PlayerController : MonoBehaviour
         {
             enemiesInScene.Add(trans.transform);
         }
+
+        juiceMeter = Locator.instance.GetJuiceMeter();
 
         respawn = GameObject.FindWithTag("Respawn").GetComponent<Respawn>();
 
@@ -150,10 +158,12 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        if(life <= 0)
+        if (life <= 0)
         {
-                anim.Play("Death");
-                DeadDisable.enabled = false;
+            //ScoreTracker.instance.statContainer[5]++;
+            anim.Play("Death");
+            DeadDisable.enabled = false;
+            juiceMeter.value = 0;
         }
         if(Input.GetKeyDown(KeyCode.R))
         {
@@ -166,7 +176,7 @@ public class PlayerController : MonoBehaviour
                 show = false;
             }
         }
-        EnemyCount();
+        EnemyCameraCount();
     }
 
     private void FixedUpdate()
@@ -191,7 +201,9 @@ public class PlayerController : MonoBehaviour
             heading = new Vector3(Input.GetAxisRaw("Horizontal"),
                                   0,
                                   Input.GetAxisRaw("Vertical"));
+
             heading = heading.normalized;
+
 
             anim.SetBool("running", true);
             Turn();
@@ -239,6 +251,7 @@ public class PlayerController : MonoBehaviour
                 dashing = true;
                 attack = false;
                 SpawnDashParticles();
+                Physics.IgnoreLayerCollision(9, 13, true);
             }
         }
         else
@@ -249,6 +262,7 @@ public class PlayerController : MonoBehaviour
                 rigi.velocity = Vector3.zero;
                 dashTimer.ResetTimer();
                 dash = false;
+                Physics.IgnoreLayerCollision(9, 13, false);
             }
             else
             {
@@ -319,6 +333,14 @@ public class PlayerController : MonoBehaviour
     }
     public void afterdeath()
     {
+        attack = false;
+        boxCol.enabled = false;
+        dancing = false;
+        anim.SetBool("dance", false);
+        anim.SetBool("dance2", false);
+        anim.SetBool("dance3", false);
+        dash = false;
+
         respawn.RespawnPlayer();
         life = 3;
         anim.Play("respawn");        
@@ -345,10 +367,16 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
     }
-    private void EnemyCount()
+
+    private void EnemyCameraCount()
     {
         for (int i = 0; i < enemiesInScene.Count ;i++)
         {
+            if(enemiesInScene[i] == null)
+            {
+                enemiesInScene.Remove(enemiesInScene[i]);
+            }
+
             if(Vector3.Distance(enemiesInScene[i].position, transform.position) <= enemyDetectionRange)
             {
                 if(enemiesInCameraRange.Contains(enemiesInScene[i]))
@@ -369,5 +397,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         CameraFollow.EnemyCheck(enemiesInCameraRange.Count);
+    }
+
+    public void PlayerBloodSplat()
+    {
+        bloodSplatter[Random.Range(0, bloodSplatter.Length)].Play();
     }
 }

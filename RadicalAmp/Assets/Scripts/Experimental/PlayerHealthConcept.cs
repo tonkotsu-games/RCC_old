@@ -43,6 +43,12 @@ public class PlayerHealthConcept : MonoBehaviour
     private int desaturationCriticalRangeMax;
     [SerializeField] private int desaturationCriticalBoundMin = 30;
 
+    //Regeneration
+    private Timer regenTimer = new Timer();
+    [SerializeField] private float regenTime = 7f;
+    [SerializeField] private float regenSpeed = 2f;
+    private bool regenerating = false;
+
 
     public float HealthCurrent { get => healthCurrent; private set => healthCurrent = value; }
 
@@ -65,6 +71,10 @@ public class PlayerHealthConcept : MonoBehaviour
         desaturationCriticalRangeMax = desaturationCriticalBoundMax - desaturationCriticalBoundMin;
         volume.profile.TryGetSettings(out colorGrading);
 
+        regenTimer.timeMax = regenTime;
+        regenTimer.ResetTimer();
+        regenTimer.paused = true;
+
         Cursor.visible=true;
         intputField.ActivateInputField();
         intputField.Select();
@@ -72,6 +82,7 @@ public class PlayerHealthConcept : MonoBehaviour
 
     private void Update()
     {
+        RegenerationCheck();
         SetHealthFeedback();
         ChooseFeedback();
         tmpText.SetText("Current FeedbackHP: " + healthCurrentFeedback);
@@ -158,10 +169,16 @@ public class PlayerHealthConcept : MonoBehaviour
         if(healthCurrent - amount > 0)
         {
             HealthCurrent = healthCurrent - amount;
+            regenTimer.ResetTimer();
+            regenTimer.paused = false;
+            regenerating = false;
         }
         else if(healthCurrent - amount <= 0 && healthCurrent == healthMax)
         {
             HealthCurrent = 1;
+            regenTimer.ResetTimer();
+            regenTimer.paused = false;
+            regenerating = false;
         }
         else
         {
@@ -184,5 +201,27 @@ public class PlayerHealthConcept : MonoBehaviour
     public void DamageButton(float damage)
     {
         TakeDamage(damage);
+    }
+
+    private void RegenerationCheck()
+    {
+        if(healthCurrent != healthMax)
+        {  
+            if(regenerating)
+            {
+                healthCurrent = Mathf.Lerp(healthCurrent, healthMax, regenSpeed);
+            }
+            else
+            {
+                regenTimer.Tick();
+                Debug.Log("Timer: " + regenTimer.timeCurrent);
+
+                if(regenTimer.timeCurrent <= 0)
+                {
+                    regenerating = true;
+                    regenTimer.paused = true;
+                }
+            }
+        }
     }
 }

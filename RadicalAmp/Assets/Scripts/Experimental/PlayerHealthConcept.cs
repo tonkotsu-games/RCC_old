@@ -31,6 +31,7 @@ public class PlayerHealthConcept : MonoBehaviour
     [SerializeField] private int soundCriticalBoundMax = 4350;
     private int soundCriticalRangeMax;
     [SerializeField] private int soundCriticalBoundMin = 500;
+    [SerializeField] private float volumeLowered = 10f;
 //Saturation
     [SerializeField]
     ColorGrading colorGrading;
@@ -103,7 +104,12 @@ public class PlayerHealthConcept : MonoBehaviour
 
     private void ChooseFeedback()
     {
-        if(healthCurrentFeedback > 90)
+        if(healthCurrentFeedback < 90 && healthCurrentFeedback > 70)
+        {
+            LowerVolume();
+            Debug.Log("Lower Volume");
+        }
+        else if(healthCurrentFeedback > 70)
         {
             SetFeedbackToDefault();
         }
@@ -120,8 +126,8 @@ public class PlayerHealthConcept : MonoBehaviour
 
     private void ShellshockState()
     {
-            //20-90% --> 23/70 = x/100 --> (23*100)/70  & 20/100 = x/1500
-            float relativePercent = ((healthCurrentFeedback-20)*100)/70;
+            //20-70% --> 23/70 = x/100 --> (23*100)/70  & 20/100 = x/1500
+            float relativePercent = ((healthCurrentFeedback-20)*100)/50;
             int valueInRange = Mathf.RoundToInt((relativePercent * soundShellshockRangeMax)/100);
             mixer.SetFloat("lowPass", valueInRange + soundShellshockBoundMin);
     }
@@ -157,6 +163,14 @@ public class PlayerHealthConcept : MonoBehaviour
             int valueInRangeSat = Mathf.RoundToInt((relativePercentSat * desaturationCriticalRangeMax)/100);
             colorGrading.saturation.value = -(valueInRangeSat + desaturationCriticalBoundMin);
         }
+    }
+
+    private void LowerVolume()
+    {
+        Debug.Log("Lower Volume");
+        float relativePercent = 100-((healthCurrentFeedback-70)*100)/20;
+        int valueInRange = Mathf.RoundToInt((relativePercent * volumeLowered)/100);
+        mixer.SetFloat("volume", -valueInRange);
     }
 
     private void SetFeedbackToDefault()

@@ -193,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 8039797987730609339, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8039797987730609343, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
@@ -2055,12 +2055,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthCurrent: 100
-  speed: 10
+  speed: 90
   mixer: {fileID: 24100000, guid: a1cdb6d4ece4c4c41b8cd8b699b9f5ae, type: 2}
   soundShellshockBoundMax: 6000
   soundShellshockBoundMin: 4350
   soundCriticalBoundMax: 4350
   soundCriticalBoundMin: 500
+  volumeLowered: 10
   colorGrading: {fileID: 0}
   volume: {fileID: 513751234}
   desaturationStateBoundMax: 30

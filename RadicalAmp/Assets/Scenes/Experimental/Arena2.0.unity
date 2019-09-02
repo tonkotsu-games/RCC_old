@@ -198,6 +198,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 977528577635107536, guid: 349add9c9c8525e499f4881576de9010,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8038719967257664695, guid: 349add9c9c8525e499f4881576de9010,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -252,11 +257,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 977528577635107536, guid: 349add9c9c8525e499f4881576de9010,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 349add9c9c8525e499f4881576de9010, type: 3}
@@ -1503,15 +1503,30 @@ PrefabInstance:
       propertyPath: spotlights
       value: 
       objectReference: {fileID: 1740398177}
-    - target: {fileID: 6929866555481421632, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
+      propertyPath: snappRange
+      value: 3.79
       objectReference: {fileID: 0}
-    - target: {fileID: 7736624344749038792, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+    - target: {fileID: 2960425245232156251, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425245232156251, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d24158938026d6499602b8e2642797a, type: 2}
+    - target: {fileID: 2960425245232156251, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 2100000, guid: ecf875ffe293dbe4dbc22bd9f1dccd02, type: 2}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
@@ -1533,6 +1548,16 @@ PrefabInstance:
       propertyPath: m_AABB.m_Extent.z
       value: 0.30694872
       objectReference: {fileID: 0}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e7ae3b30bf3bdf1498f4edead2b5bf57, type: 2}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 25bdfb4a11191419ca22d978d84c36a1, type: 2}
     - target: {fileID: 6105408276402344689, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: m_IsTrigger
@@ -1543,10 +1568,15 @@ PrefabInstance:
       propertyPath: knockbackMultiplier
       value: 1000
       objectReference: {fileID: 0}
-    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+    - target: {fileID: 6929866555481421632, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
-      propertyPath: snappRange
-      value: 3.79
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7736624344749038792, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd, type: 3}
@@ -2764,15 +2794,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.66666675
       objectReference: {fileID: 0}
-    - target: {fileID: 937094402, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 7396931209444493584, guid: ec05a20d01665cb4e8af1111dad4e64b,
-        type: 3}
-    - target: {fileID: 937094402, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
-      propertyPath: debugInnerSphere
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 937094404, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
       propertyPath: juiceMeter
       value: 
@@ -2786,6 +2807,15 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1525382178}
+    - target: {fileID: 937094402, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7396931209444493584, guid: ec05a20d01665cb4e8af1111dad4e64b,
+        type: 3}
+    - target: {fileID: 937094402, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
+      propertyPath: debugInnerSphere
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
 --- !u!4 &9121784630001405707 stripped

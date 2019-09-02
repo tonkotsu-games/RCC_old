@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.056231655, g: 0.079377376, b: 0.12584507, a: 1}
+  m_IndirectSpecularColor: {r: 0.05619461, g: 0.07932331, b: 0.12575693, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3121,16 +3121,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -3141,21 +3131,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &55280009 stripped
@@ -5328,6 +5328,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicBox
       objectReference: {fileID: 0}
+    - target: {fileID: 787735559030136318, guid: fbcd3ce34e76cc741bce3ac5076944c2,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 787735559030136318, guid: fbcd3ce34e76cc741bce3ac5076944c2,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6432124486192694743, guid: fbcd3ce34e76cc741bce3ac5076944c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5393,16 +5403,6 @@ PrefabInstance:
       propertyPath: canvasParent
       value: 
       objectReference: {fileID: 325495622}
-    - target: {fileID: 787735559030136318, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 787735559030136318, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7321047686945318522, guid: fbcd3ce34e76cc741bce3ac5076944c2,
         type: 3}
       propertyPath: m_Volume
@@ -8054,16 +8054,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -8074,21 +8064,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &176229771 stripped
@@ -8621,6 +8621,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7309687070487315666, guid: c8ea835e1bc50ea4386dd2fe6bd34063,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 937094404, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
       propertyPath: juiceMeter
       value: 
@@ -8643,11 +8648,6 @@ PrefabInstance:
         type: 3}
       propertyPath: near clip plane
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7309687070487315666, guid: c8ea835e1bc50ea4386dd2fe6bd34063,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
@@ -8729,16 +8729,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -8749,21 +8739,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &204994831 stripped
@@ -13783,16 +13783,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -13803,21 +13793,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &320339070 stripped
@@ -16297,16 +16297,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -16317,21 +16307,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &400109575 stripped
@@ -18922,16 +18922,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -18942,21 +18932,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &486852282 stripped
@@ -19312,16 +19312,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -19332,21 +19322,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &487861532 stripped
@@ -20997,6 +20997,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -21.73
       objectReference: {fileID: 0}
+    - target: {fileID: 1837699841396461503, guid: ed9d685efaed44532915a322e3b57582,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7966cbde3eae64d98b1efd8c1ff80c39, type: 2}
     - target: {fileID: 1861288466, guid: ed9d685efaed44532915a322e3b57582, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.36
@@ -21067,11 +21072,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: eb84ce23d10a74e7a9d972999c13210b, type: 2}
-    - target: {fileID: 1837699841396461503, guid: ed9d685efaed44532915a322e3b57582,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7966cbde3eae64d98b1efd8c1ff80c39, type: 2}
     - target: {fileID: 4802259799002307341, guid: ed9d685efaed44532915a322e3b57582,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -22801,16 +22801,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -22821,21 +22811,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &556766969 stripped
@@ -23932,16 +23932,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -23952,21 +23942,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &590057554 stripped
@@ -26046,6 +26046,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_FillRect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7709579163050753898, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: clone
@@ -26116,142 +26126,12 @@ PrefabInstance:
       propertyPath: audioSource.Array.data[10]
       value: 
       objectReference: {fileID: 114388798}
-    - target: {fileID: 8999327344410049568, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344410049568, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345628165345, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345628165345, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345176504230, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345176504230, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344889698793, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344889698793, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327346067284707, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327346067284707, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345099945682, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345099945682, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344927569831, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344927569831, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344349432528, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344349432528, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345119170309, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345119170309, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345698821736, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345698821736, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344865487673, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327344865487673, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345807596855, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8999327345807596855, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3331424672819820613, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: m_Text
       value: 'Press A to start Tutorial
 
         Press RB to cancel the Tutorial'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_FillRect
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_Value
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8999327344611959703, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
@@ -26292,6 +26172,126 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344865487673, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344865487673, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345698821736, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345698821736, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345807596855, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345807596855, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344349432528, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344349432528, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344410049568, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344410049568, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344889698793, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344889698793, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344927569831, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327344927569831, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345099945682, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345099945682, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345119170309, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345119170309, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345176504230, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345176504230, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345628165345, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327345628165345, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327346067284707, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999327346067284707, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f894df82f47fc00438f7f2927dcd72d1, type: 3}
@@ -27087,16 +27087,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -27107,21 +27097,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &625190257 stripped
@@ -29186,16 +29186,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -29206,21 +29196,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &691906891 stripped
@@ -32379,16 +32379,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -32399,21 +32389,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &761022082 stripped
@@ -32494,16 +32494,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -32514,21 +32504,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &764945950 stripped
@@ -38169,16 +38169,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -38189,21 +38179,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &896426792 stripped
@@ -47590,6 +47590,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 7294766169054669486, guid: b7c8dfe3981a4474dae0f932c88ae1c0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7294766169057093708, guid: b7c8dfe3981a4474dae0f932c88ae1c0,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -47619,11 +47624,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -17.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7294766169054669486, guid: b7c8dfe3981a4474dae0f932c88ae1c0,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7c8dfe3981a4474dae0f932c88ae1c0, type: 3}
@@ -48513,16 +48513,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -48533,21 +48523,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1089748998 stripped
@@ -50871,16 +50871,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -50891,21 +50881,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1177317774 stripped
@@ -51521,16 +51521,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -51541,21 +51531,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1185291888 stripped
@@ -58176,7 +58176,7 @@ PrefabInstance:
     - target: {fileID: 977528577635107536, guid: 349add9c9c8525e499f4881576de9010,
         type: 3}
       propertyPath: testing
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 977528577635107536, guid: 349add9c9c8525e499f4881576de9010,
         type: 3}
@@ -59226,11 +59226,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -59246,6 +59241,11 @@ PrefabInstance:
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1390959034 stripped
@@ -59670,16 +59670,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -59690,21 +59680,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1393029610 stripped
@@ -62526,16 +62526,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -62546,21 +62536,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1470875397 stripped
@@ -62641,16 +62641,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -62661,21 +62651,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1473719164 stripped
@@ -64294,16 +64294,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -64314,21 +64304,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1510724029 stripped
@@ -67677,16 +67677,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -67697,21 +67687,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1606400838 stripped
@@ -67885,11 +67885,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -67900,16 +67895,21 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!1001 &1617711150
@@ -68914,16 +68914,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -68934,21 +68924,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1654520697 stripped
@@ -71073,16 +71073,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -71093,21 +71083,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1693689001 stripped
@@ -71577,6 +71577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039797987730609339, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 8039797987730609343, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
@@ -77021,16 +77026,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -77041,21 +77036,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &1837357514 stripped
@@ -82890,16 +82895,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: beatanalyse
@@ -82910,21 +82905,31 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
-        type: 3}
-      propertyPath: blood
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 627600590346582362, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: life
       value: 
       objectReference: {fileID: 2048647450}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073112465281199345, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253442519248722353, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c0494730e53d146b284520a936371f, type: 3}
 --- !u!4 &2008237693 stripped

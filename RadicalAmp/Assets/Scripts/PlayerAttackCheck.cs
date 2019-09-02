@@ -31,22 +31,27 @@ public class PlayerAttackCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (PlayerController.attack == true && other.gameObject.tag == "Enemy" && !other.gameObject.GetComponent<EnemyHP>().death)
+        if (PlayerController.attack == true && 
+            (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Boss") && 
+            !other.gameObject.GetComponent<EnemyHP>().death)
         {
             boxCol.enabled = false;
             life = other.gameObject.GetComponent<EnemyHP>();
             life.life -= damage;
             popupController.CreatePopupText(damage.ToString(), other.gameObject.GetComponent<Transform>().transform);
-
-            Vector3 direction = other.transform.position - transform.position;
-            direction.y = 0;
-            //Debug.Log("Direction: " + direction);
-            other.gameObject.GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
-    
+            
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];
             my_audioSource.Play();
     
             life.BloodSplat();
+
+            if (other.gameObject.tag == "Enemy")
+            {
+                Vector3 direction = other.transform.position - transform.position;
+                direction.y = 0;
+                //Debug.Log("Direction: " + direction);
+                other.gameObject.GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
+            }
         }
         else
         {

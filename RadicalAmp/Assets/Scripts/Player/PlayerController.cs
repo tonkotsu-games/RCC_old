@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private List<Transform> enemiesInScene = new List<Transform>();
     private List<Transform> enemiesInRange = new List<Transform>();
-    private List<Transform> enemiesInCameraRange = new List<Transform>();
+    public List<Transform> enemiesInCameraRange = new List<Transform>();
 
     private float moveHorizontal;
     private float moveVertical;
@@ -375,7 +375,9 @@ public class PlayerController : MonoBehaviour
             if(enemiesInScene[i] == null)
             {
                 enemiesInScene.Remove(enemiesInScene[i]);
+                i--;
             }
+            
 
             if(Vector3.Distance(enemiesInScene[i].position, transform.position) <= enemyDetectionRange)
             {
@@ -394,6 +396,14 @@ public class PlayerController : MonoBehaviour
                 {
                     enemiesInCameraRange.Remove(enemiesInScene[i]);
                 }
+            }
+        }
+        for(int i = 0; i < enemiesInCameraRange.Count; i++)
+        {
+            if(enemiesInCameraRange[i] == null)
+            {
+                enemiesInCameraRange.Remove(enemiesInCameraRange[i]);
+                i--;       
             }
         }
         CameraFollow.EnemyCheck(enemiesInCameraRange.Count);

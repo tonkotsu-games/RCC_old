@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.05659508, g: 0.07961509, b: 0.12583055, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -199,10 +199,50 @@ PrefabInstance:
       propertyPath: life
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: bloodSplatter.Array.data[0]
+      value: 
+      objectReference: {fileID: 1654248683}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: bloodSplatter.Array.data[1]
+      value: 
+      objectReference: {fileID: 1278174678}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: knockBackAoeRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: knockBackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: knockbackAoeRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: knockbackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: knockbackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: knockbackJuiceConsum
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 9065168021427870999, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: knockbackRange
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd, type: 3}
@@ -547,6 +587,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedBunny_SM (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087969, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
@@ -1052,6 +1097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedBunny_SM (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087969, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
@@ -2148,6 +2198,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedBunny_SM (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087969, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
@@ -4275,6 +4330,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1723539838}
+    - target: {fileID: 7309687070487315667, guid: c8ea835e1bc50ea4386dd2fe6bd34063,
+        type: 3}
+      propertyPath: m_ForceIntoRT
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ea835e1bc50ea4386dd2fe6bd34063, type: 3}
 --- !u!1 &1080225221
@@ -5193,6 +5253,12 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!198 &1278174678 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5196868616934902671, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 37611596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1296111503
 GameObject:
   m_ObjectHideFlags: 0
@@ -5982,6 +6048,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBunny_SM
       objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087969, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6036,6 +6107,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 8029535818707227849, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
@@ -6389,6 +6470,12 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!198 &1654248683 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8713840097279418048, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 37611596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1702247126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8153,6 +8240,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpeedBunny_SM (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 929156508222087969, guid: b0c0494730e53d146b284520a936371f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 929156508222087900, guid: b0c0494730e53d146b284520a936371f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8429,7 +8521,7 @@ PrefabInstance:
     - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}

@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.056231655, g: 0.079377376, b: 0.12584507, a: 1}
+  m_IndirectSpecularColor: {r: 0.03764126, g: 0.047973316, b: 0.061335944, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25830,11 +25830,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BirdGuy_SM
       objectReference: {fileID: 0}
-    - target: {fileID: 7620078572531134482, guid: 4ca252a1e1b38c0438514b3b42dd5158,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 7620078572531134485, guid: 4ca252a1e1b38c0438514b3b42dd5158,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25909,11 +25904,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7505283001691696485, guid: 4ca252a1e1b38c0438514b3b42dd5158,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca252a1e1b38c0438514b3b42dd5158, type: 3}
@@ -26292,11 +26282,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillRect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1826467713}
     - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_MinValue
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8999327344611959703, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
@@ -76561,6 +76556,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1362139585}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1826467713 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8999327344611959703, guid: f894df82f47fc00438f7f2927dcd72d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 606797444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1827964560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83763,6 +83764,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1308412735}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2048647447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048647446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77088d294c3da2a48aa014b7c4d21555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  juiceConsumedPerCharge: 30
+  abilityRange: 20
+  markerOffset: 5
+  playerClone: {fileID: 2960425245245817563, guid: eb6acba98b7dd424996de8f05582caa9,
+    type: 3}
+  markedTargets: []
 --- !u!82 &2048647449 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,

@@ -17,6 +17,10 @@ public class TrailerToggleCamera : MonoBehaviour
         {
             ToggleCamera();
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ToggleSlowMotion();
+        }
     }
 
     private void ToggleCamera()
@@ -24,19 +28,28 @@ public class TrailerToggleCamera : MonoBehaviour
         if(camEnabled)
         {
             mainCamera.SetActive(false);
-            mainCamera.SetActive(true);
+            trailerCamera.SetActive(true);
             camEnabled = false;
         }
         else
         {
             mainCamera.SetActive(true);
-            mainCamera.SetActive(false);
+            trailerCamera.SetActive(false);
             camEnabled = true;
         }
     }
 
     private void ToggleSlowMotion()
     {
-
+        if(inSlowMotion)
+        {
+            Time.timeScale = slowMotionAmount;
+            inSlowMotion = false;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            inSlowMotion = true;
+        }
     }
 }

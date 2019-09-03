@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0
+  m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 0
+  m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
+  m_IndirectSpecularColor: {r: 0.05659508, g: 0.07961509, b: 0.12583055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -193,6 +193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Center.y
       value: 0.99009633
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0.0006723404
       objectReference: {fileID: 0}
     - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
@@ -1185,12 +1190,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2133802198667455121, guid: 833b866f307cc3e4b98d9aa87e1d1fdb,
     type: 3}
   m_PrefabInstance: {fileID: 2133802197427622164}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &222206027 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 787735559030136318, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 6432124485748246902}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &350750598
 GameObject:
@@ -5688,12 +5687,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!20 &1438171513 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7309687070487315667, guid: c8ea835e1bc50ea4386dd2fe6bd34063,
-    type: 3}
-  m_PrefabInstance: {fileID: 1036215225}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1448137042 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
@@ -8861,11 +8854,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicBox
       objectReference: {fileID: 0}
-    - target: {fileID: 787735559030136318, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6432124486192694743, guid: fbcd3ce34e76cc741bce3ac5076944c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8921,125 +8909,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2986342689827830599, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: audiosource
-      value: 
-      objectReference: {fileID: 222206027}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1438171513}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: sampleCube
-      value: 
-      objectReference: {fileID: 3448493041772517829, guid: cf65ed805de713042805594cbfe129bf,
-        type: 3}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: maxscale
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: camParent
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: canvasParent
-      value: 
-      objectReference: {fileID: 1005865587}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: equalizerPrefab
-      value: 
-      objectReference: {fileID: 1098576749157062936, guid: 9363f3ff75c533a4b9d161d7bd0384b2,
-        type: 3}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: equalizerLeftPrefab
-      value: 
-      objectReference: {fileID: 1098576749157062936, guid: 9363f3ff75c533a4b9d161d7bd0384b2,
-        type: 3}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: equalizerRightPrefab
-      value: 
-      objectReference: {fileID: 1098576749157062936, guid: 52d301dcf21e2d4459776de08d65f977,
-        type: 3}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[0].a
-      value: 0.5019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[1].r
-      value: 0.04431629
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[1].g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[1].b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[1].a
-      value: 0.50980395
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[2].r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[2].g
-      value: 0.97662324
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[2].b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[2].a
-      value: 0.5529412
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[3].r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[3].g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[3].b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[3].a
-      value: 0.5254902
-      objectReference: {fileID: 0}
     - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
         type: 3}
       propertyPath: juiceMeter
@@ -9047,19 +8916,9 @@ PrefabInstance:
       objectReference: {fileID: 1448137042}
     - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
         type: 3}
-      propertyPath: colorEqualizer.Array.data[0].r
-      value: 0.5019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[0].g
-      value: 0.5019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494079195857632399, guid: fbcd3ce34e76cc741bce3ac5076944c2,
-        type: 3}
-      propertyPath: colorEqualizer.Array.data[0].b
-      value: 0.5019608
-      objectReference: {fileID: 0}
+      propertyPath: canvasParent
+      value: 
+      objectReference: {fileID: 1005865587}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbcd3ce34e76cc741bce3ac5076944c2, type: 3}
 --- !u!82 &6432124485748246903 stripped

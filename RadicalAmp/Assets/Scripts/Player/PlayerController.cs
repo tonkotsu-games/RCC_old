@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     // so that the attack animation only affects the upperbody
     public Transform upperbody;
-    Animation animation;
+    public Animation animation;
 
     private AnimatorClipInfo[] clipInfo;
 
@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+     
                 animation["Attack"].AddMixingTransform(upperbody);
                 attacking();
                 animation["Attack"].RemoveMixingTransform(upperbody);

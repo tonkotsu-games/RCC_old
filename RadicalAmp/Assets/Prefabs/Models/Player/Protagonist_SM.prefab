@@ -381,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46d518224da68448aff544797d5f78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesInCameraRange: []
   movementSpeed: 10
   acceleration: 10
   snappRange: 3
@@ -390,7 +391,12 @@ MonoBehaviour:
   dashTime: 0.1
   dashParticlesPrefab: {fileID: 2415412595958308877, guid: ded5659a429549e4997118db1bbfc7a9,
     type: 3}
+  knockbackAoeRange: 15
+  knockbackRange: 15
+  knockbackDamage: 1
+  knockbackJuiceConsum: 50
   heading: {x: 0, y: 0, z: 0}
+  triggerLeft: 0
   life: 10
   dashClip: {fileID: 8300000, guid: 52153348e4a21a941b4f8b1b9b62ec21, type: 3}
   slashClip: {fileID: 8300000, guid: a7119b129ad8f104e954f77f2ae08e85, type: 3}
@@ -779,7 +785,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: -0.00000047683716, y: 0.9900961, z: 0.0006723404}
+    m_Center: {x: -0.00000011920929, y: 0.9900961, z: 0.0006722212}
     m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041

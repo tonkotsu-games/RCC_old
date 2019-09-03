@@ -417,6 +417,7 @@ public class PlayerController : MonoBehaviour
                 Vector3 direction = enemiesInScene[i].transform.position - transform.position;
                 direction.y = 0;
                 enemiesInScene[i].GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
+                enemiesInScene[i].GetComponent<EnemyHP>().life -= knockbackDamage;
             }
         }
         juiceMeter.value -= knockbackJuiceConsum;

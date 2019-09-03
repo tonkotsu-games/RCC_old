@@ -43,9 +43,9 @@ public class Beathoven : Actor
         this.StateMachine.ChangeState(new Idle(this));
     }
 
-    private void Update()
+    protected override void Update()
     {
-        StateMachine.StateExecuteTick();
+        base.Update();
 
         if(StateMachine.StateCurrent is Idle && player != null)
         {

@@ -71,7 +71,7 @@ public class GameState : MonoBehaviour
         }
         else if (StateCurrent == State.Play)
         {
-            if (SceneManager.GetActiveScene().name != "Arena")
+            if (SceneManager.GetActiveScene().name != "Arena_Trailer_scene")
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 SceneManager.LoadScene("Metrodome", LoadSceneMode.Additive);

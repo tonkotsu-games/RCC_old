@@ -88,6 +88,11 @@ public class CameraFollow : MonoBehaviour
 
     // Rotation we should blend towards.
     private Quaternion targetRotation = Quaternion.identity;
+
+
+    //FOR TRAILER ONLY
+    static bool inTrailer = false;
+    int stateTrailer = 0;
      
     void Start()
     {
@@ -100,6 +105,11 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            inTrailer = !inTrailer;
+        }
+
         SetVariables();
         CalculateSmoothFollow();
         ChangePositionAndRotation();
@@ -107,27 +117,54 @@ public class CameraFollow : MonoBehaviour
 
    public static void EnemyCheck(int enemyCount)
    {
-        switch(enemyCount)
+        if(!inTrailer)
         {
-            case 0:
+            switch (enemyCount)
+            {
+                case 0:
+                    cameraState = 0;
+                    break;
+                case 1:
+                    cameraState = 1;
+                    break;
+                case 2:
+                    cameraState = 2;
+                    break;
+                case 3:
+                    cameraState = 3;
+                    break;
+                case 4:
+                    cameraState = 4;
+                    break;
+                default:
+                    cameraState = 4;
+                    break;
+            }
+        }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
                 cameraState = 0;
-                break;
-            case 1:
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
                 cameraState = 1;
-                break;
-            case 2:
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
                 cameraState = 2;
-                break;
-            case 3:
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
                 cameraState = 3;
-                break;
-            case 4:
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
                 cameraState = 4;
-                break;
-            default:
-                cameraState = 4;
-                break;
-        }        
+            }
+        }
+              
    }
   
     //Calculates the new offset to transition into different View/State

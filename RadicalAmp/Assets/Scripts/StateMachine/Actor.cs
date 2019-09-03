@@ -16,7 +16,7 @@ public class Actor : MonoBehaviour
     public bool windupFinished;
     public bool attacking = false;
 
-    private void Update()
+    protected virtual void Update()
     {
         StateMachine.StateExecuteTick();
     }

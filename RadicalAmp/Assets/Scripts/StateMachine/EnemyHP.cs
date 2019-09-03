@@ -43,6 +43,12 @@ public class EnemyHP : MonoBehaviour
         {
             // Adding to the score for enemies killed
             // ScoreTracker.instance.statContainer[0] += 1;
+
+            if(LevelManager.instance != null)
+            {
+                Debug.Log("Removing " + gameObject.name + " from list");
+                LevelManager.instance.DeleteFromEnemyCount(this.gameObject);
+            }
             EnemyDeath();
             death = true;
         }

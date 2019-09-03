@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour
     private float moveHorizontal;
     private float moveVertical;
 
+    // so that the attack animation only affects the upperbody
+    public Transform upperbody;
+    Animation animation;
+
+    private AnimatorClipInfo[] clipInfo;
+
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float acceleration;
@@ -29,14 +35,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] GameObject dashParticlesPrefab;
 
-    [Header("KnockBack AOE settings")]
-    [Range(0f,15f)]
-    [SerializeField] float knockbackAoeRange;
-    [Range(0f, 15f)]
-    [SerializeField] float knockbackRange;
-    [SerializeField] int knockbackDamage = 0;
-    [SerializeField] int knockbackJuiceConsum = 0;
-
     public Vector3 heading;
 
     private Vector3 dashdirection;
@@ -46,8 +44,6 @@ public class PlayerController : MonoBehaviour
     
     private bool dash = false;
     private bool dashing = false;
-    private bool knockBackAOE = false;
-    public bool triggerLeft = false;
 
     public static bool show = false;
     public static bool attack = false;
@@ -106,66 +102,62 @@ public class PlayerController : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         DeadDisable = gameObject.GetComponent<PlayerController>();
         my_audioSource = GetComponent<AudioSource>(); 
+
+
+
     }
 
     void Update()
     {
+        
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
         anim.SetFloat("PosX", moveHorizontal);
         anim.SetFloat("PosY", moveVertical);
 
-        if(Input.GetAxisRaw("LeftTrigger") >= 0.5f)
-        {
-            triggerLeft = true;
-        }
-        else
-        {
-            triggerLeft = false;
-        }
-
-        if(Input.GetButtonDown("Attack") && 
-           !attack && 
-           !dancing && 
-           life > 0 && 
-           !triggerLeft)
+        if(Input.GetButtonDown("Attack") && !attack && !dancing && life > 0)
         {
             boxCol.enabled = true;
             Snapping();
 
-            if (attack1DONE == false)
+
+            if (GetCurrentClipName() == "Main_Idle")
             {
-                anim.Play("Attack", 0, 0);
-                attack = true;
-                my_audioSource.clip = slashClip;
-                my_audioSource.Play();
-                attack1DONE = true;
+
+                attacking();
             }
-            else 
+            else
             {
-                anim.Play("Attack2", 0, 0);
-                attack = true;
-                my_audioSource.clip = slashClip;
-                my_audioSource.Play();
-                attack1DONE = false;
+                animation["Attack"].AddMixingTransform(upperbody);
+                attacking();
+                animation["Attack"].RemoveMixingTransform(upperbody);
             }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
-        if(Input.GetButtonDown("Dash") && 
-           !dash && 
-           !dancing && 
-           !triggerLeft)
+        if(!dash && Input.GetButtonDown("Dash") && !dancing)
         {
             anim.Play("Dashing");
             my_audioSource.clip = dashClip; 
             my_audioSource.Play(); 
             dash = true;
         }
-        if(Input.GetButtonDown("Dance") && 
-           !dancing && 
-           !attack && 
-           !dash)
+        if(Input.GetButtonDown("Dance") && !dancing && !attack && !dash)
         {
+
 
             if (dancemove == 0)
             {
@@ -194,15 +186,7 @@ public class PlayerController : MonoBehaviour
             DeadDisable.enabled = false;
             juiceMeter.value = 0;
         }
-        if(triggerLeft && 
-           Input.GetButtonDown("Attack") &&
-           juiceMeter.value >= knockbackJuiceConsum)
-        {
-            knockBackAOE = true;
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R))
         {
             if(!show)
             {
@@ -219,7 +203,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         MovementCalculation();
-        Dashing();
 
         if (!IsGrounded.isGrounded)
         {
@@ -249,12 +232,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetBool("running", false);
-        }
-
-        if (knockBackAOE)
-        {
-            KnockBackAOE();
-        }
+        }        
+        Dashing();
     }
 
     void MovementCalculation()
@@ -356,14 +335,12 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(heading);
         }
     }
-
     public void AfterAttack()
     {
         attack = false;
         boxCol.enabled = false;
         BeatStrike.beatAttack = false;
     }
-
     public void AfterDancing()
     {        
         dancing = false;
@@ -371,12 +348,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("dance2", false);
         anim.SetBool("dance3", false);
     }
-
     public void AfterDash()
     {
         dash = false;
     }
-
     public void afterdeath()
     {
         attack = false;
@@ -391,7 +366,6 @@ public class PlayerController : MonoBehaviour
         life = 10;
         anim.Play("respawn");        
     }
-
     public void afterrespawn()
     {
         anim.SetBool("backtoidle", true);
@@ -407,30 +381,12 @@ public class PlayerController : MonoBehaviour
         float totalDuration = parts.main.duration + parts.main.startLifetime.constant + parts.main.startDelay.constant;
         Destroy(particlesInstance, totalDuration);
     }
-
-    private void KnockBackAOE()
-    {
-        for(int i = 0; i < enemiesInScene.Count; i++)
-        {
-            if(Vector3.Distance(enemiesInScene[i].position, transform.position) <= knockbackAoeRange)
-            {
-                Vector3 direction = enemiesInScene[i].transform.position - transform.position;
-                direction.y = 0;
-                enemiesInScene[i].GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
-            }
-        }
-        juiceMeter.value -= knockbackJuiceConsum;
-        knockBackAOE = false;
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, snappRange);
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, knockbackAoeRange);
     }
 
     private void EnemyCameraCount()
@@ -474,8 +430,35 @@ public class PlayerController : MonoBehaviour
         CameraFollow.EnemyCheck(enemiesInCameraRange.Count);
     }
 
-    public void PlayerBloodSplat()
+    public void attacking()
+    { 
+        if (attack1DONE == false)
+        {
+            anim.Play("Attack", 0, 0);
+            attack = true;
+            my_audioSource.clip = slashClip;
+            my_audioSource.Play();
+            attack1DONE = true;
+        }
+        else
+        {
+            anim.Play("Attack2", 0, 0);
+            attack = true;
+            my_audioSource.clip = slashClip;
+            my_audioSource.Play();
+            attack1DONE = false;
+        }
+
+    }
+        public void PlayerBloodSplat()
     {
         bloodSplatter[Random.Range(0, bloodSplatter.Length)].Play();
+    }
+    public string GetCurrentClipName()
+    {
+        
+        clipInfo = anim.GetCurrentAnimatorClipInfo(0);
+        Debug.Log(clipInfo[0].clip.name);
+        return clipInfo[0].clip.name;
     }
 }

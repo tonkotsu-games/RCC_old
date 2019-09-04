@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public float MaskWeight;
     private AnimatorClipInfo[] clipInfo;
+    public static bool runattack1DONE;
 
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
@@ -98,6 +99,7 @@ public class PlayerController : MonoBehaviour
         attack = false;
         dancing = false;
         attack1DONE = false;
+        runattack1DONE = false;
 
         dashTimer.Start(dashTime);
         boxCol = GetComponent<BoxCollider>();
@@ -137,10 +139,13 @@ public class PlayerController : MonoBehaviour
             boxCol.enabled = true;
             Snapping();
 
-            if (GetCurrentClipName() == "Main_Idle_Animv1")
+            if(GetCurrentClipName() == "Main_Idle" )
             {
-
                 attacking();
+            }
+            else
+            {
+                runattacking();
             }
 
 
@@ -491,6 +496,7 @@ public class PlayerController : MonoBehaviour
             my_audioSource.clip = slashClip;
             my_audioSource.Play();
             attack1DONE = true;
+            runattack1DONE = true;
         }
         else
         {
@@ -499,11 +505,37 @@ public class PlayerController : MonoBehaviour
             my_audioSource.clip = slashClip;
             my_audioSource.Play();
             attack1DONE = false;
+            runattack1DONE = false;
         }
+    }
+    public void runattacking()
+    {
+
+        if (attack1DONE == false || runattack1DONE == false)
+        {           
+            anim.SetTrigger("runattack1");
+            attack = true;
+            attack1DONE = true;
+            runattack1DONE = true;
+        }
+        else
+        {
+            anim.SetTrigger("runattack2");
+            attack = true;
+            attack1DONE = false;
+            runattack1DONE = false;
+        }
+    }
+    public void Statename()
+    {
+        anim.GetCurrentAnimatorStateInfo(0).IsName("Main_Idle");
     }
     public string GetCurrentClipName()
     {
         clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         return clipInfo[0].clip.name;
     }
+
+
+
 }

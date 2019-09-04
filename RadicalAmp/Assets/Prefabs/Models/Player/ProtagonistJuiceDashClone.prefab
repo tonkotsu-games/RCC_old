@@ -297,7 +297,7 @@ Animator:
   m_GameObject: {fileID: 2960425245245817563}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4f255f4fbe915c949a1196642242fe1f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8463d0f0367721f4da722110d52e8a11, type: 2}
+  m_Controller: {fileID: 9100000, guid: a72b329a0211ba541ae15e69c1d18d79, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -5868,6 +5868,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4356880715370522425, guid: b618437dc82e7ce488f47bad41d7cc65,
+        type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356880715370522425, guid: b618437dc82e7ce488f47bad41d7cc65,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b618437dc82e7ce488f47bad41d7cc65, type: 3}
 --- !u!4 &8713840097760972726 stripped
@@ -5982,6 +5992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -12.408001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356880715370522425, guid: b618437dc82e7ce488f47bad41d7cc65,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b618437dc82e7ce488f47bad41d7cc65, type: 3}

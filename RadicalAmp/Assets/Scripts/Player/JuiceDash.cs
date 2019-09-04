@@ -53,7 +53,7 @@ public class JuiceDash : MonoBehaviour
     void Start()
     {
         playerAnim = gameObject.GetComponent<Animator>();
-        source = gameObject.GetComponent<AudioSource>();
+        //source = gameObject.GetComponent<AudioSource>();
         markedTargets = new List<GameObject>();
         activeMarkers = new List<GameObject>();
         juiceMeter = Locator.instance.GetJuiceMeter();
@@ -98,36 +98,6 @@ public class JuiceDash : MonoBehaviour
                 beat = false;
             }
         }
-        // }
-        //else
-        //{
-        //   // if(beatAnalyse.IsOnBeat(1000)&&beat == false)
-        //   // {
-        //   //     ChangeChargeState(ChargeStates.success);
-        //   // }
-        //   // if (Input.GetButtonUp("Attack") && beatAnalyse.IsOnBeat(1000) && beat == false)
-        //   // {
-        //   //     Debug.Log("Using Juice Dash");
-        //   //     beat = true;
-        //   //     ChangeChargeState(nextState);
-        //   // }
-        //   // else if (Input.GetButtonUp("Attack"))
-        //   // {
-        //   //     Debug.Log("Punish because released button too early");
-        //   //     ChangeChargeState(ChargeStates.punish);
-        //   // }
-        //   // else if (Input.GetButton("Attack") && beatAnalyse.IsOnBeat(1000) && beat == false)
-        //   // {
-        //   //     Debug.Log("Punish because held too long");
-        //   //     beat = true;
-        //   //     ChangeChargeState(ChargeStates.punish);
-        //   // }
-        //   //
-        //   else if (!beatAnalyse.IsOnBeat(1000))
-        //   {
-        //       beat = false;
-        //   }
-        //}
 
     }
 
@@ -198,8 +168,6 @@ public class JuiceDash : MonoBehaviour
                 CameraFollow.ChangeCameraState(1);
                 for (int i = 1; i <= 2; i++)
                 {
-                    // i == 2 i want to add the 3rd enemy in range  
-                    // 2 >= 2 enemies in range
                     if (i <= enemiesInRange.Length - 1)
                     {
                         markedTargets.Add(enemiesInRange[i].gameObject);
@@ -227,6 +195,7 @@ public class JuiceDash : MonoBehaviour
                 //source3.clip = chargeClips[3];
                 //source3.Play();
                 //shakeIntensity = shakeIntensityFinal;
+                Physics.IgnoreLayerCollision(9, 13, true);
                 playerAnim.SetTrigger("JuiceDash3");
                 nikCam.zoomSpeedZero = new Vector3(zoomSpeedZeroBase.x, zoomSpeedZeroBase.y + zoomSpeedYIncrease, zoomSpeedZeroBase.z);
                 CameraFollow.ChangeCameraState(0);
@@ -292,6 +261,7 @@ public class JuiceDash : MonoBehaviour
             SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
             rend.material = juiceTargetMat;
             target.GetComponentInChildren<Animator>().speed = 0;
+            target.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         }
     }
@@ -310,6 +280,7 @@ public class JuiceDash : MonoBehaviour
     void SpawnClone()
     {
         //nikCam.gameObject.GetComponent<CameraShake>().enabled = true;
+
         nikCam.zoomSpeedZero = zoomSpeedZeroBase;
         nikCam.zoomSpeedOne = zoomSpeedOneBase;
         nikCam.zoomSpeedTwo = zoomSpeedTwoBase;
@@ -340,7 +311,7 @@ public class JuiceDash : MonoBehaviour
     public void BackToNormal()
     {
         TurnPlayerONandOff(true);
-        Physics.IgnoreLayerCollision(9, 13, true);
+        Physics.IgnoreLayerCollision(9, 13, false);
         markedTargets.Clear();
     }
     private void OnGUI()

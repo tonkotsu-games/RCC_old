@@ -28,11 +28,14 @@ public class JuiceDash : MonoBehaviour
     ChargeStates currentState = ChargeStates.none;
     ChargeStates nextState = ChargeStates.first;
 
+    AudioSource source;
+    public AudioClip[] chargeClips;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        source = gameObject.GetComponent<AudioSource>();
         markedTargets = new List<GameObject>();
         activeMarkers = new List<GameObject>();
         juiceMeter = Locator.instance.GetJuiceMeter();
@@ -57,6 +60,7 @@ public class JuiceDash : MonoBehaviour
         {
             if (beatAnalyse.IsOnBeat(1000) && beat == false)
             {
+                
                 beat = true;
                 Debug.Log("Changing ChargeState");
                 ChangeChargeState(nextState);
@@ -126,10 +130,15 @@ public class JuiceDash : MonoBehaviour
             {
                 if (juiceMeter.value >= 90)
                 {
+                    //AudioSource source1 = gameObject.AddComponent<AudioSource>();
+                    //source1.clip = chargeClips[0];
+                    //source1.Play();
                     StartCoroutine(ReadyUpDelay());
                     CollectEnemies();
                     if (enemiesInRange.Length != 0)
                     {
+                        source.clip = chargeClips[0];
+                        source.Play();
                         markedTargets.Add(enemiesInRange[0].gameObject);
                         DisplayMarkerOnTarget(markedTargets[0]);
                         foreach (GameObject t in markedTargets)
@@ -148,6 +157,9 @@ public class JuiceDash : MonoBehaviour
             }
             else if (requestedState == ChargeStates.second)
             {
+               //AudioSource source2 = gameObject.AddComponent<AudioSource>();
+               //source2.clip = chargeClips[1];
+               //source2.Play();
                 for (int i = 1; i <= 2; i++)
                 {
                     // i == 2 i want to add the 3rd enemy in range  
@@ -175,7 +187,9 @@ public class JuiceDash : MonoBehaviour
 
             else if (requestedState == ChargeStates.final)
             {
-
+               //AudioSource source3 = gameObject.AddComponent<AudioSource>();
+               //source3.clip = chargeClips[3];
+               //source3.Play();
                 for (int i = 3; i <= 5; i++)
                 {
                     if (i <= enemiesInRange.Length - 1)

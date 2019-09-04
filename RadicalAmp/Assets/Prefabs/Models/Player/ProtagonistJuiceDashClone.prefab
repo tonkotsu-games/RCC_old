@@ -336,12 +336,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
+  juiceDashScript: {fileID: 0}
   hologram: {fileID: 7229994323013271492, guid: ca1de10c76e6c6d4d9a30af4d497ef5f,
     type: 3}
   attackClip: {fileID: 7400000, guid: aaa03a8bc77f414469def2b61653df0f, type: 2}
   startAction: 0
-  dashSpeed: 8
-  delay: 0.1
+  dashSpeed: 15
+  delay: 0.02
   dashParticlesPrefab: {fileID: 2415412595958308877, guid: ded5659a429549e4997118db1bbfc7a9,
     type: 3}
 --- !u!1 &2960425245245817569
@@ -538,8 +539,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: 0.16295934, y: -0.10881853, z: 0.000017523766}
-    m_Extent: {x: 0.89935434, y: 0.47795272, z: 0.31345758}
+    m_Center: {x: -0.00000011920929, y: 0.9900961, z: 0.0006722212}
+    m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041
 Cloth:

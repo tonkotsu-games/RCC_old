@@ -55,10 +55,11 @@ public class JuiceDashClone : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, nextPos) >= 1)
                 {
+                    transform.LookAt(nextPos);
                     transform.position = Vector3.Lerp(transform.position, nextPos, dashSpeed*Time.deltaTime);
                 }
                 else
-                {
+                {                  
                     if (!delayActive)
                     {
                         if (!returned)

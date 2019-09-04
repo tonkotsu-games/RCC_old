@@ -135,6 +135,7 @@ public class JuiceDashClone : MonoBehaviour
             targets[counter].GetComponent<EnemyHP>().BloodSplat();
             targets[counter].GetComponent<EnemyHP>().BloodSplat();
             targets[counter].GetComponent<EnemyHP>().life = 0;
+            targets[counter].GetComponentInChildren<Animator>().speed = 1;
             yield return new WaitForSeconds(attackClip.length*0.2f);
             Destroy(holograms[counter]);
             counter++;

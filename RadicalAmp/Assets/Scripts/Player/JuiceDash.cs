@@ -28,9 +28,25 @@ public class JuiceDash : MonoBehaviour
     ChargeStates currentState = ChargeStates.none;
     ChargeStates nextState = ChargeStates.first;
 
+    public Material juiceTargetMat;
     AudioSource source;
     public AudioClip[] chargeClips;
 
+    CameraFollow nikCam;
+    Vector3 zoomSpeedZeroBase;
+    Vector3 zoomSpeedOneBase;
+    Vector3 zoomSpeedTwoBase;
+    public float zoomSpeedYIncrease;
+
+    bool shakeEnabled = false;
+    float shakeIntensity;
+    public float shakeIntensityFirst;
+    public float shakeIntensitySecond;
+    public float shakeIntensityFinal;
+
+    public float shakeDuration;
+    public float shakeSpeed;
+    float shakeTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -40,13 +56,21 @@ public class JuiceDash : MonoBehaviour
         activeMarkers = new List<GameObject>();
         juiceMeter = Locator.instance.GetJuiceMeter();
         beatAnalyse = Locator.instance.GetBeat();
+        nikCam = Locator.instance.GetNikCam().GetComponent<CameraFollow>() ;
+        zoomSpeedZeroBase = nikCam.zoomSpeedZero;
+        zoomSpeedOneBase = nikCam.zoomSpeedOne;
+        zoomSpeedTwoBase = nikCam.zoomSpeedTwo;
+        shakeTimer = shakeDuration;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
+        //if (shakeEnabled)
+        //{
+        //    JuiceDashCamShake();
+        //}
         //  if (currentState != ChargeStates.final)
         //  {
         if (abilityReady)
@@ -130,15 +154,20 @@ public class JuiceDash : MonoBehaviour
             {
                 if (juiceMeter.value >= 90)
                 {
+                    //nikCam.gameObject.GetComponent<CameraShake>().enabled = false ;
+                    //shakeIntensity = shakeIntensityFirst;
+                    //shakeEnabled = true;
+                    CameraFollow.juiceDashActive = true;
+                    nikCam.zoomSpeedTwo = new Vector3(zoomSpeedTwoBase.x, zoomSpeedTwoBase.y + zoomSpeedYIncrease, zoomSpeedTwoBase.z);
+                    CameraFollow.ChangeCameraState(2);
                     //AudioSource source1 = gameObject.AddComponent<AudioSource>();
                     //source1.clip = chargeClips[0];
                     //source1.Play();
+                    Physics.IgnoreLayerCollision(9, 13, false);
                     StartCoroutine(ReadyUpDelay());
                     CollectEnemies();
                     if (enemiesInRange.Length != 0)
                     {
-                        source.clip = chargeClips[0];
-                        source.Play();
                         markedTargets.Add(enemiesInRange[0].gameObject);
                         DisplayMarkerOnTarget(markedTargets[0]);
                         foreach (GameObject t in markedTargets)
@@ -157,9 +186,12 @@ public class JuiceDash : MonoBehaviour
             }
             else if (requestedState == ChargeStates.second)
             {
-               //AudioSource source2 = gameObject.AddComponent<AudioSource>();
-               //source2.clip = chargeClips[1];
-               //source2.Play();
+                //AudioSource source2 = gameObject.AddComponent<AudioSource>();
+                //source2.clip = chargeClips[1];
+                //source2.Play();
+                //shakeIntensity = shakeIntensitySecond;
+                nikCam.zoomSpeedOne = new Vector3(zoomSpeedOneBase.x, zoomSpeedOneBase.y + zoomSpeedYIncrease, zoomSpeedOneBase.z);
+                CameraFollow.ChangeCameraState(1);
                 for (int i = 1; i <= 2; i++)
                 {
                     // i == 2 i want to add the 3rd enemy in range  
@@ -187,9 +219,12 @@ public class JuiceDash : MonoBehaviour
 
             else if (requestedState == ChargeStates.final)
             {
-               //AudioSource source3 = gameObject.AddComponent<AudioSource>();
-               //source3.clip = chargeClips[3];
-               //source3.Play();
+                //AudioSource source3 = gameObject.AddComponent<AudioSource>();
+                //source3.clip = chargeClips[3];
+                //source3.Play();
+                //shakeIntensity = shakeIntensityFinal;
+                nikCam.zoomSpeedZero = new Vector3(zoomSpeedZeroBase.x, zoomSpeedZeroBase.y + zoomSpeedYIncrease, zoomSpeedZeroBase.z);
+                CameraFollow.ChangeCameraState(0);
                 for (int i = 3; i <= 5; i++)
                 {
                     if (i <= enemiesInRange.Length - 1)
@@ -216,7 +251,7 @@ public class JuiceDash : MonoBehaviour
             else if (requestedState == ChargeStates.success)
             {
                 nextState = ChargeStates.none;
-                SpawnClone(markedTargets[0]);
+                SpawnClone();
                 ChangeChargeState(nextState);
 
             }
@@ -244,10 +279,15 @@ public class JuiceDash : MonoBehaviour
     {
         if (markedTargets.Count != 0)
         {
-            var marker = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), target.transform.position + new Vector3(0, markerOffset, 0), Quaternion.identity);
-            marker.transform.parent = target.transform;
-            marker.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            activeMarkers.Add(marker);
+            //var marker = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), target.transform.position + new Vector3(0, markerOffset, 0), Quaternion.identity);
+            //marker.transform.parent = target.transform;
+            //marker.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            //activeMarkers.Add(marker);
+
+            SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
+            rend.material = juiceTargetMat;
+            target.GetComponentInChildren<Animator>().speed = 0;
+
         }
     }
     void DisableAllMarkers()
@@ -262,8 +302,13 @@ public class JuiceDash : MonoBehaviour
     }
 
 
-    void SpawnClone(GameObject target)
+    void SpawnClone()
     {
+        //nikCam.gameObject.GetComponent<CameraShake>().enabled = true;
+        nikCam.zoomSpeedZero = zoomSpeedZeroBase;
+        nikCam.zoomSpeedOne = zoomSpeedOneBase;
+        nikCam.zoomSpeedTwo = zoomSpeedTwoBase;
+        CameraFollow.juiceDashActive = false;
         GameObject clone = Instantiate(playerClone, transform.position, Quaternion.identity);
         clone.GetComponent<JuiceDashClone>().juiceDashScript = this;
         clone.GetComponent<JuiceDashClone>().targets = new List<GameObject>(markedTargets);
@@ -289,6 +334,7 @@ public class JuiceDash : MonoBehaviour
     public void BackToNormal()
     {
         TurnPlayerONandOff(true);
+        Physics.IgnoreLayerCollision(9, 13, true);
         markedTargets.Clear();
     }
     private void OnGUI()
@@ -296,6 +342,21 @@ public class JuiceDash : MonoBehaviour
         GUILayout.Label(currentState.ToString());
         GUILayout.Label("Ability Ready: " + abilityReady);
     }
+
+   //void JuiceDashCamShake()
+   //{
+   //    if (shakeTimer > 0)
+   //    {
+   //        nikCam.gameObject.GetComponent<Camera>().fieldOfView -= shakeIntensity;
+   //
+   //        shakeDuration -= Time.deltaTime * shakeSpeed;
+   //    }
+   //    else
+   //    {
+   //        shakeTimer = shakeDuration;
+   //        nikCam.gameObject.GetComponent<Camera>().fieldOfView = 60;
+   //    }
+   //}
 }
     
 

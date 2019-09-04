@@ -42,6 +42,11 @@ public class BasicEnemy : Actor
     void Start()
     {
         this.StateMachine.ChangeState(new Idle(this));
+        if(LevelManager.instance != null)
+        {
+            Debug.Log("Adding " + gameObject.name + " to list");
+            LevelManager.instance.AddToEnemyCount(this.gameObject);
+        }
     }
 
     private void Update()

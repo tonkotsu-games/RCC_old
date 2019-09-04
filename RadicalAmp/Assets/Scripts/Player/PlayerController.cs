@@ -29,6 +29,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float dashTime;
     [SerializeField] GameObject dashParticlesPrefab;
 
+    [Header("KnockBack AOE settings")]
+    [Range(0f,15f)]
+    [SerializeField] float knockbackAoeRange;
+    [Range(0f, 15f)]
+    [SerializeField] float knockbackRange;
+    [SerializeField] int knockbackDamage = 0;
+    [SerializeField] int knockbackJuiceConsum = 0;
+
     public Vector3 heading;
 
     private Vector3 dashdirection;
@@ -38,6 +46,8 @@ public class PlayerController : MonoBehaviour
     
     private bool dash = false;
     private bool dashing = false;
+    private bool knockBackAOE = false;
+    public bool triggerLeft = false;
 
     public static bool show = false;
     public static bool attack = false;
@@ -106,7 +116,20 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("PosX", moveHorizontal);
         anim.SetFloat("PosY", moveVertical);
 
-        if(Input.GetButtonDown("Attack") && !attack && !dancing && life > 0)
+        if(Input.GetAxisRaw("LeftTrigger") >= 0.5f)
+        {
+            triggerLeft = true;
+        }
+        else
+        {
+            triggerLeft = false;
+        }
+
+        if(Input.GetButtonDown("Attack") && 
+           !attack && 
+           !dancing && 
+           life > 0 && 
+           !triggerLeft)
         {
             boxCol.enabled = true;
             Snapping();
@@ -128,14 +151,20 @@ public class PlayerController : MonoBehaviour
                 attack1DONE = false;
             }
         }
-        if(!dash && Input.GetButtonDown("Dash") && !dancing)
+        if(Input.GetButtonDown("Dash") && 
+           !dash && 
+           !dancing && 
+           !triggerLeft)
         {
             anim.Play("Dashing");
             my_audioSource.clip = dashClip; 
             my_audioSource.Play(); 
             dash = true;
         }
-        if(Input.GetButtonDown("Dance") && !dancing && !attack && !dash)
+        if(Input.GetButtonDown("Dance") && 
+           !dancing && 
+           !attack && 
+           !dash)
         {
 
             if (dancemove == 0)
@@ -165,7 +194,15 @@ public class PlayerController : MonoBehaviour
             DeadDisable.enabled = false;
             juiceMeter.value = 0;
         }
-        if(Input.GetKeyDown(KeyCode.R))
+        if(triggerLeft && 
+           Input.GetButtonDown("Attack") &&
+           juiceMeter.value >= knockbackJuiceConsum)
+        {
+            knockBackAOE = true;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
             if(!show)
             {
@@ -182,6 +219,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         MovementCalculation();
+        Dashing();
 
         if (!IsGrounded.isGrounded)
         {
@@ -211,8 +249,12 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetBool("running", false);
-        }        
-        Dashing();
+        }
+
+        if (knockBackAOE)
+        {
+            KnockBackAOE();
+        }
     }
 
     void MovementCalculation()
@@ -314,12 +356,14 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(heading);
         }
     }
+
     public void AfterAttack()
     {
         attack = false;
         boxCol.enabled = false;
         BeatStrike.beatAttack = false;
     }
+
     public void AfterDancing()
     {        
         dancing = false;
@@ -327,10 +371,12 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("dance2", false);
         anim.SetBool("dance3", false);
     }
+
     public void AfterDash()
     {
         dash = false;
     }
+
     public void afterdeath()
     {
         attack = false;
@@ -345,6 +391,7 @@ public class PlayerController : MonoBehaviour
         life = 10;
         anim.Play("respawn");        
     }
+
     public void afterrespawn()
     {
         anim.SetBool("backtoidle", true);
@@ -360,12 +407,31 @@ public class PlayerController : MonoBehaviour
         float totalDuration = parts.main.duration + parts.main.startLifetime.constant + parts.main.startDelay.constant;
         Destroy(particlesInstance, totalDuration);
     }
+
+    private void KnockBackAOE()
+    {
+        for(int i = 0; i < enemiesInScene.Count; i++)
+        {
+            if(Vector3.Distance(enemiesInScene[i].position, transform.position) <= knockbackAoeRange)
+            {
+                Vector3 direction = enemiesInScene[i].transform.position - transform.position;
+                direction.y = 0;
+                enemiesInScene[i].GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
+                enemiesInScene[i].GetComponent<EnemyHP>().life -= knockbackDamage;
+            }
+        }
+        juiceMeter.value -= knockbackJuiceConsum;
+        knockBackAOE = false;
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, snappRange);
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, knockbackAoeRange);
     }
 
     private void EnemyCameraCount()

@@ -5,11 +5,23 @@ using UnityEngine.AI;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
     [Tooltip("The amount of units a ring moves down")]
     public float ringStepSize = 5;
     public float ringMoveSpeed = 1;
     public StageRingController[] rings;
 
+    [SerializeField]
+    List<GameObject> activeEnemies;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else { Destroy(gameObject); }
+    }
 
     void Start()
     {
@@ -61,4 +73,21 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+
+    public void AddToEnemyCount(GameObject enemy)
+    {
+        Debug.Log("Adding to EnemyList");
+        activeEnemies.Add(enemy);
+    }
+    public void DeleteFromEnemyCount(GameObject enemy)
+    {
+        foreach(GameObject e in activeEnemies)
+        {
+            if(e == enemy)
+            {
+                Debug.Log("RemovedEnemyFromList");
+                activeEnemies.Remove(e);
+            }
+        }
+    }
 }

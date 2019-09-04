@@ -47320,12 +47320,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &1077441536 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8713840097279418048, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1308412735}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1078613283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55807,11 +55801,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Protagonist_SM
       objectReference: {fileID: 0}
-    - target: {fileID: 8713840097279418048, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2960425245246119675, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55872,61 +55861,6 @@ PrefabInstance:
       propertyPath: spotlights
       value: 
       objectReference: {fileID: 313538150}
-    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: bloodSplatter.Array.data[0]
-      value: 
-      objectReference: {fileID: 1077441536}
-    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: bloodSplatter.Array.data[1]
-      value: 
-      objectReference: {fileID: 1617928901}
-    - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960425245232156251, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ecf875ffe293dbe4dbc22bd9f1dccd02, type: 2}
-    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: e7ae3b30bf3bdf1498f4edead2b5bf57, type: 2}
-    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bd14c92d6aab2c54cbb857aab120a78b, type: 2}
-    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_AABB.m_Center.x
-      value: -0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: m_AABB.m_Center.z
-      value: 0.0006723404
-      objectReference: {fileID: 0}
-    - target: {fileID: 5196868616934902671, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd, type: 3}
 --- !u!1001 &1315778268
@@ -68188,12 +68122,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 565524264454964946, guid: 56a6f29d2cc2f7e419b8b4cdcf55980d,
     type: 3}
   m_PrefabInstance: {fileID: 1617711150}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1617928901 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5196868616934902671, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1308412735}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1628730058
 GameObject:
@@ -83864,27 +83792,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1308412735}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2048647447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048647446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77088d294c3da2a48aa014b7c4d21555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  juiceConsumedPerCharge: 30
-  abilityRange: 20
-  markerOffset: 5
-  playerClone: {fileID: 2960425245245817563, guid: eb6acba98b7dd424996de8f05582caa9,
-    type: 3}
-  markedTargets: []
-  juiceTargetMat: {fileID: 2100000, guid: 4902f49921b6a9b4e979bc32a7c186f5, type: 2}
-  chargeClips: []
-  zoomSpeedYIncrease: 50
 --- !u!82 &2048647449 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,

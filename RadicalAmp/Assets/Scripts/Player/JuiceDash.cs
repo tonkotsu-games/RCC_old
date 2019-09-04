@@ -12,6 +12,7 @@ public class JuiceDash : MonoBehaviour
     public float juiceConsumedPerCharge = 30;
     public float abilityRange = 20;
     public float markerOffset = 5;
+    Animator playerAnim;
 
     public GameObject playerClone;
     //public int enemiesTargetedPerCharge = 3;
@@ -38,19 +39,20 @@ public class JuiceDash : MonoBehaviour
     Vector3 zoomSpeedTwoBase;
     public float zoomSpeedYIncrease;
 
-    bool shakeEnabled = false;
-    float shakeIntensity;
-    public float shakeIntensityFirst;
-    public float shakeIntensitySecond;
-    public float shakeIntensityFinal;
-
-    public float shakeDuration;
-    public float shakeSpeed;
-    float shakeTimer;
+   //bool shakeEnabled = false;
+   //float shakeIntensity;
+   //public float shakeIntensityFirst;
+   //public float shakeIntensitySecond;
+   //public float shakeIntensityFinal;
+   //
+   //public float shakeDuration;
+   //public float shakeSpeed;
+   //float shakeTimer;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerAnim = gameObject.GetComponent<Animator>();
         source = gameObject.GetComponent<AudioSource>();
         markedTargets = new List<GameObject>();
         activeMarkers = new List<GameObject>();
@@ -60,7 +62,7 @@ public class JuiceDash : MonoBehaviour
         zoomSpeedZeroBase = nikCam.zoomSpeedZero;
         zoomSpeedOneBase = nikCam.zoomSpeedOne;
         zoomSpeedTwoBase = nikCam.zoomSpeedTwo;
-        shakeTimer = shakeDuration;
+        //shakeTimer = shakeDuration;
     }
 
     // Update is called once per frame
@@ -154,6 +156,7 @@ public class JuiceDash : MonoBehaviour
             {
                 if (juiceMeter.value >= 90)
                 {
+                    playerAnim.SetTrigger("JuiceDash1");
                     //nikCam.gameObject.GetComponent<CameraShake>().enabled = false ;
                     //shakeIntensity = shakeIntensityFirst;
                     //shakeEnabled = true;
@@ -190,6 +193,7 @@ public class JuiceDash : MonoBehaviour
                 //source2.clip = chargeClips[1];
                 //source2.Play();
                 //shakeIntensity = shakeIntensitySecond;
+                playerAnim.SetTrigger("JuiceDash2");
                 nikCam.zoomSpeedOne = new Vector3(zoomSpeedOneBase.x, zoomSpeedOneBase.y + zoomSpeedYIncrease, zoomSpeedOneBase.z);
                 CameraFollow.ChangeCameraState(1);
                 for (int i = 1; i <= 2; i++)
@@ -223,6 +227,7 @@ public class JuiceDash : MonoBehaviour
                 //source3.clip = chargeClips[3];
                 //source3.Play();
                 //shakeIntensity = shakeIntensityFinal;
+                playerAnim.SetTrigger("JuiceDash3");
                 nikCam.zoomSpeedZero = new Vector3(zoomSpeedZeroBase.x, zoomSpeedZeroBase.y + zoomSpeedYIncrease, zoomSpeedZeroBase.z);
                 CameraFollow.ChangeCameraState(0);
                 for (int i = 3; i <= 5; i++)
@@ -313,6 +318,7 @@ public class JuiceDash : MonoBehaviour
         clone.GetComponent<JuiceDashClone>().juiceDashScript = this;
         clone.GetComponent<JuiceDashClone>().targets = new List<GameObject>(markedTargets);
         clone.GetComponent<JuiceDashClone>().startAction = true;
+        playerAnim.SetTrigger("JuiceDashUSED");
         TurnPlayerONandOff(false);
 
 

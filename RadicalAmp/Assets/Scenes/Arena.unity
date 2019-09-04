@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03764126, g: 0.047973316, b: 0.061335944, a: 1}
+  m_IndirectSpecularColor: {r: 0.056231655, g: 0.079377376, b: 0.12584507, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4547,7 +4547,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 413989788}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &87800052
+--- !u!64 &87800055
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4744,7 +4744,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 275963348}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &94205973
+--- !u!64 &94205976
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11083,7 +11083,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 688971513}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &251993671
+--- !u!64 &251993674
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11199,7 +11199,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2073792399}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &258451227
+--- !u!64 &258451230
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19631,7 +19631,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1707864589}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &484663230
+--- !u!64 &484663233
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57867,6 +57867,11 @@ PrefabInstance:
       propertyPath: bloodSplatter.Array.data[1]
       value: 
       objectReference: {fileID: 1617928901}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: dashClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 88f1b3757c5fa9e4395ad8da306d64bf, type: 3}
     - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -57875,7 +57880,12 @@ PrefabInstance:
     - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: m_Volume
-      value: 0.05
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_Pitch
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
@@ -57886,6 +57896,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Center.z
       value: 0.0006723404
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.9900961
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 0.49480197
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.8878147
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.30694878
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd, type: 3}
@@ -68806,7 +68836,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 797177144}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1565095958
+--- !u!64 &1565095961
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70363,7 +70393,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 367479517}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1606340902
+--- !u!64 &1606340905
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70886,7 +70916,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 529743613}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1632513407
+--- !u!64 &1632513410
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73127,7 +73157,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 820016212}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1682169967
+--- !u!64 &1682169970
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74183,7 +74213,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1210710985}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1708717037
+--- !u!64 &1708717040
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76582,7 +76612,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1523227321}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1758836964
+--- !u!64 &1758836967
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83030,7 +83060,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 393014351}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1911652124
+--- !u!64 &1911652127
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

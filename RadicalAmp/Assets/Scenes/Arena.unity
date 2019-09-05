@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03764126, g: 0.047973316, b: 0.061335944, a: 1}
+  m_IndirectSpecularColor: {r: 0.056231655, g: 0.079377376, b: 0.12584507, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -57872,6 +57872,11 @@ PrefabInstance:
       propertyPath: dashClip
       value: 
       objectReference: {fileID: 8300000, guid: 88f1b3757c5fa9e4395ad8da306d64bf, type: 3}
+    - target: {fileID: 2960425244600457809, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: life
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -57885,6 +57890,11 @@ PrefabInstance:
     - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953226464966658, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: BypassListenerEffects
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2960425245232156249, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
@@ -57916,6 +57926,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.30694878
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457838, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: dashReward
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457838, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: attackReward
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457838, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: danceReward
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457838, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: dashPunish
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457838, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: attackPunish
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960425244600457838, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+        type: 3}
+      propertyPath: dancePunish
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd, type: 3}
@@ -94145,12 +94185,12 @@ PrefabInstance:
     - target: {fileID: 8734146943786329039, guid: de6278fb166b3dc4a8f91a5ca05af352,
         type: 3}
       propertyPath: spotEndIntensity
-      value: 10000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 8734146943786329039, guid: de6278fb166b3dc4a8f91a5ca05af352,
         type: 3}
       propertyPath: spotStartIntensity
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8734146943786329039, guid: de6278fb166b3dc4a8f91a5ca05af352,
         type: 3}

@@ -71,6 +71,7 @@ public class EnemyHP : MonoBehaviour
         EnemyNav.gameObject.GetComponent<Actor>().Death();
 
 
+        EnemyNav.gameObject.transform.LookAt(Locator.instance.GetPlayerPosition());
         //Debug.Log("Deregister Boss from list");
 
 

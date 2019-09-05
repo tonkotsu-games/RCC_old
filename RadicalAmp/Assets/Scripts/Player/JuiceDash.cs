@@ -87,8 +87,7 @@ public class JuiceDash : MonoBehaviour
         //  {
         if (abilityReady)
         {
-            if (Input.GetButtonUp("Dash") && 
-                triggerLeft)
+            if (Input.GetButtonUp("Dash"))
             {
                 ChangeChargeState(ChargeStates.success);
             }
@@ -154,6 +153,7 @@ public class JuiceDash : MonoBehaviour
                             target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                         }
                     }
+                    abilityReady = true;
                     nextState = ChargeStates.second;
                     juiceMeter.value -= juiceConsumedPerCharge;
                 }

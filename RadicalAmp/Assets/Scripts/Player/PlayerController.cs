@@ -516,7 +516,6 @@ public class PlayerController : MonoBehaviour
     public string GetCurrentClipName()
     {
         clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-        Debug.Log("clip " + clipInfo[0].clip.name);
         if(clipInfo.Length == 0)
         {
             Debug.Log("No Clip found in Layer 0");

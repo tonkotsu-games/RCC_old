@@ -147,16 +147,6 @@ public class PlayerController : MonoBehaviour
             {
                 runattacking();
             }
-
-
-
-
-
-
-
-
-
-
         }
         if (Input.GetButtonDown("Dash") &&
            !dash &&
@@ -173,7 +163,6 @@ public class PlayerController : MonoBehaviour
            !attack &&
            !dash)
         {
-
             if (dancemove == 0)
             {
                 anim.SetBool("dance", true);
@@ -192,7 +181,6 @@ public class PlayerController : MonoBehaviour
                 dancing = true;
                 dancemove = 0;
             }
-
         }
         if (life <= 0)
         {
@@ -205,10 +193,9 @@ public class PlayerController : MonoBehaviour
            Input.GetButtonDown("Attack") &&
            juiceMeter.value >= knockbackJuiceConsum)
         {
+            anim.SetTrigger("juiceknockback");
             knockBackAOE = true;
         }
-
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (!show)

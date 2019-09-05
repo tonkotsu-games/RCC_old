@@ -10,7 +10,8 @@ public class JuiceDash : MonoBehaviour
     Slider juiceMeter;
     BeatAnalyse beatAnalyse;
     public float juiceConsumedPerCharge = 30;
-    public float abilityRange = 20;
+    [Range(0f,20f)]
+    [SerializeField] float abilityRange = 20;
     public float markerOffset = 5;
     Animator playerAnim;
 

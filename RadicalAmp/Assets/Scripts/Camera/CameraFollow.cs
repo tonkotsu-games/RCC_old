@@ -58,11 +58,11 @@ public class CameraFollow : MonoBehaviour
     [Header("Zoom Speed")]
     [InfoBox("The speed at which the camera should move to the state dependent offset, also dependent on the CameraState.")]
     [Tooltip("The zoom speed for CameraState 0.")]
-    [SerializeField] Vector3 zoomSpeedZero = new Vector3(10f,10f,10f);
+    [SerializeField] public Vector3 zoomSpeedZero = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 1.")]
-    [SerializeField] Vector3 zoomSpeedOne = new Vector3(10f,10f,10f);
+    [SerializeField] public Vector3 zoomSpeedOne = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 2.")]
-    [SerializeField] Vector3 zoomSpeedTwo = new Vector3(10f,10f,10f);
+    [SerializeField] public Vector3 zoomSpeedTwo = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 3.")]
     [SerializeField] Vector3 zoomSpeedThree = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 4.")]
@@ -86,6 +86,9 @@ public class CameraFollow : MonoBehaviour
     private Vector3 followSpeed = new Vector3(20f,15f,40f); 
     private Vector3 newPosition = new Vector3(0,0,0);
 
+    [HideInInspector]
+    public static bool juiceDashActive = false;
+    
     // Rotation we should blend towards.
     private Quaternion targetRotation = Quaternion.identity;
 
@@ -105,40 +108,45 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             inTrailer = !inTrailer;
         }
+
 
         SetVariables();
         CalculateSmoothFollow();
         ChangePositionAndRotation();
     }
 
+
    public static void EnemyCheck(int enemyCount)
    {
         if(!inTrailer)
         {
-            switch (enemyCount)
+            if (!juiceDashActive)
             {
-                case 0:
-                    cameraState = 0;
-                    break;
-                case 1:
-                    cameraState = 1;
-                    break;
-                case 2:
-                    cameraState = 2;
-                    break;
-                case 3:
-                    cameraState = 3;
-                    break;
-                case 4:
-                    cameraState = 4;
-                    break;
-                default:
-                    cameraState = 4;
-                    break;
+                switch (enemyCount)
+                {
+                    case 0:
+                        cameraState = 0;
+                        break;
+                    case 1:
+                        cameraState = 1;
+                        break;
+                    case 2:
+                        cameraState = 2;
+                        break;
+                    case 3:
+                        cameraState = 3;
+                        break;
+                    case 4:
+                        cameraState = 4;
+                        break;
+                    default:
+                        cameraState = 4;
+                        break;
+                }
             }
         }
         else
@@ -236,4 +244,11 @@ public class CameraFollow : MonoBehaviour
         
         return positionCurrent;
     }
+
+    #region JuiceDashCamera
+    public static void ChangeCameraState(int newCameraState)
+    {
+        cameraState = newCameraState;
+    }
+    #endregion
 }

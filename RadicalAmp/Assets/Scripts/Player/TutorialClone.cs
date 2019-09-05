@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class TutorialClone : MonoBehaviour
 {
-    public static TutorialClone instance;
 
     Animator cloneAnim;
 
     //public bool running;
-    //public bool hitting;
+    //public bool hitting = true;
     //public bool dashing;
     //public bool dancing;
 
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
 
         cloneAnim = gameObject.GetComponent<Animator>();
     }

@@ -50,7 +50,6 @@ public class JuiceDashClone : MonoBehaviour
                 SpawnDashParticles();
                 Physics.IgnoreLayerCollision(9, 13, true);
             }
-
             else
             {
                 if (Vector3.Distance(transform.position, nextPos) >= 1)
@@ -96,6 +95,7 @@ public class JuiceDashClone : MonoBehaviour
             StartCoroutine(DelayBetweenKill());
         }
     }
+
     private void SpawnDashParticles()
     {
         GameObject particlesInstance = Instantiate(dashParticlesPrefab, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
@@ -141,6 +141,5 @@ public class JuiceDashClone : MonoBehaviour
             counter++;
         }
         Destroy(gameObject);
-
     }
 }

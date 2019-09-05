@@ -16,8 +16,9 @@ public class JuiceDash : MonoBehaviour
 
     public GameObject playerClone;
     //public int enemiesTargetedPerCharge = 3;
-    bool beat = false;
-    bool abilityReady = false;
+    private bool beat = false;
+    private bool abilityReady = false;
+    private bool triggerLeft = false;
 
     Collider[] enemiesInRange;
     LayerMask layerMask = 1 << 13;
@@ -68,6 +69,14 @@ public class JuiceDash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetAxisRaw("LeftTrigger") >= 0.5f)
+        {
+            triggerLeft = true;
+        }
+        else
+        {
+            triggerLeft = false;
+        }
 
         //if (shakeEnabled)
         //{
@@ -77,28 +86,26 @@ public class JuiceDash : MonoBehaviour
         //  {
         if (abilityReady)
         {
-            if (Input.GetButtonUp("Attack"))
+            if (Input.GetButtonUp("Dash") && 
+                triggerLeft)
             {
                 ChangeChargeState(ChargeStates.success);
             }
         }
-        if (Input.GetButton("Attack"))
+        if (Input.GetButton("Dash") &&
+            triggerLeft)
         {
             if (beatAnalyse.IsOnBeat(1000) && beat == false)
-            {
-                
+            {                
                 beat = true;
                 Debug.Log("Changing ChargeState");
                 ChangeChargeState(nextState);
-
             }
-
             else if (!beatAnalyse.IsOnBeat(1000))
             {
                 beat = false;
             }
         }
-
     }
 
     void ChangeChargeState(ChargeStates requestedState)
@@ -136,16 +143,14 @@ public class JuiceDash : MonoBehaviour
                     //AudioSource source1 = gameObject.AddComponent<AudioSource>();
                     //source1.clip = chargeClips[0];
                     //source1.Play();
-                    Physics.IgnoreLayerCollision(9, 13, false);
-                    StartCoroutine(ReadyUpDelay());
                     CollectEnemies();
                     if (enemiesInRange.Length != 0)
                     {
                         markedTargets.Add(enemiesInRange[0].gameObject);
                         DisplayMarkerOnTarget(markedTargets[0]);
-                        foreach (GameObject t in markedTargets)
+                        foreach (GameObject target in markedTargets)
                         {
-                            t.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                            target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                         }
                     }
                     nextState = ChargeStates.second;
@@ -155,7 +160,6 @@ public class JuiceDash : MonoBehaviour
                 {
                     ChangeChargeState(ChargeStates.none);
                 }
-
             }
             else if (requestedState == ChargeStates.second)
             {
@@ -174,21 +178,14 @@ public class JuiceDash : MonoBehaviour
 
                     }
                 }
-
-                Debug.Log("Updating Markers");
-                foreach (GameObject t in markedTargets)
+                foreach (GameObject target in markedTargets)
                 {
-                    DisplayMarkerOnTarget(t);
-                }
-                foreach (GameObject t in markedTargets)
-                {
-                    t.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                    DisplayMarkerOnTarget(target);
+                    target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                 }
                 nextState = ChargeStates.final;
                 juiceMeter.value -= juiceConsumedPerCharge;
             }
-
-
             else if (requestedState == ChargeStates.final)
             {
                 //AudioSource source3 = gameObject.AddComponent<AudioSource>();
@@ -206,19 +203,11 @@ public class JuiceDash : MonoBehaviour
                         markedTargets.Add(enemiesInRange[i].gameObject);
                     }
                 }
-
-
-                Debug.Log("Updating Markers");
-                foreach (GameObject t in markedTargets)
+                foreach (GameObject target in markedTargets)
                 {
-                    DisplayMarkerOnTarget(t);
+                    DisplayMarkerOnTarget(target);
+                    target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                 }
-                foreach (GameObject t in markedTargets)
-                {
-                    t.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-                }
-
-
                 nextState = ChargeStates.success;
                 juiceMeter.value -= juiceConsumedPerCharge;
             }
@@ -227,55 +216,40 @@ public class JuiceDash : MonoBehaviour
                 nextState = ChargeStates.none;
                 SpawnClone();
                 ChangeChargeState(nextState);
-
             }
             else if (requestedState == ChargeStates.punish)
             {
                 ChangeChargeState(ChargeStates.none);
             }
-
         }
-    }
-
-    IEnumerator ReadyUpDelay()
-    {
-        yield return new WaitForSeconds(0.2f);
-        abilityReady = true;
     }
 
     void CollectEnemies()
     {
         enemiesInRange = Physics.OverlapSphere(transform.position, abilityRange, layerMask);
-
     }
 
     void DisplayMarkerOnTarget(GameObject target)
     {
         if (markedTargets.Count != 0)
         {
-            //var marker = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube), target.transform.position + new Vector3(0, markerOffset, 0), Quaternion.identity);
-            //marker.transform.parent = target.transform;
-            //marker.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            //activeMarkers.Add(marker);
-
             SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
             rend.material = juiceTargetMat;
             target.GetComponentInChildren<Animator>().speed = 0;
             target.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
         }
     }
+
     void DisableAllMarkers()
     {
         if (activeMarkers.Count != 0)
         {
-            foreach (GameObject m in activeMarkers)
+            foreach (GameObject marker in activeMarkers)
             {
-                Destroy(m);
+                Destroy(marker);
             }
         }
     }
-
 
     void SpawnClone()
     {
@@ -291,16 +265,14 @@ public class JuiceDash : MonoBehaviour
         clone.GetComponent<JuiceDashClone>().startAction = true;
         playerAnim.SetTrigger("JuiceDashUSED");
         TurnPlayerONandOff(false);
-
-
     }
 
     void TurnPlayerONandOff(bool value)
     {
         SkinnedMeshRenderer[] renderers = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
-        foreach (SkinnedMeshRenderer rend in renderers)
+        foreach (SkinnedMeshRenderer renderer in renderers)
         {
-            rend.enabled = value;
+            renderer.enabled = value;
         }
         gameObject.GetComponentInChildren<PlayerAttackCheck>().gameObject.SetActive(value);
         gameObject.GetComponent<CapsuleCollider>().enabled = value;
@@ -312,29 +284,25 @@ public class JuiceDash : MonoBehaviour
     {
         TurnPlayerONandOff(true);
         Physics.IgnoreLayerCollision(9, 13, false);
-        markedTargets.Clear();
     }
-    private void OnGUI()
+
+    private void OnDrawGizmosSelected()
     {
-        GUILayout.Label(currentState.ToString());
-        GUILayout.Label("Ability Ready: " + abilityReady);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, abilityRange);
     }
-
-   //void JuiceDashCamShake()
-   //{
-   //    if (shakeTimer > 0)
-   //    {
-   //        nikCam.gameObject.GetComponent<Camera>().fieldOfView -= shakeIntensity;
-   //
-   //        shakeDuration -= Time.deltaTime * shakeSpeed;
-   //    }
-   //    else
-   //    {
-   //        shakeTimer = shakeDuration;
-   //        nikCam.gameObject.GetComponent<Camera>().fieldOfView = 60;
-   //    }
-   //}
+    //void JuiceDashCamShake()
+    //{
+    //    if (shakeTimer > 0)
+    //    {
+    //        nikCam.gameObject.GetComponent<Camera>().fieldOfView -= shakeIntensity;
+    //
+    //        shakeDuration -= Time.deltaTime * shakeSpeed;
+    //    }
+    //    else
+    //    {
+    //        shakeTimer = shakeDuration;
+    //        nikCam.gameObject.GetComponent<Camera>().fieldOfView = 60;
+    //    }
+    //}
 }
-    
-
-

@@ -448,17 +448,13 @@ public class PlayerController : MonoBehaviour
             if (enemiesInScene[i] == null)
             {
                 enemiesInScene.Remove(enemiesInScene[i]);
-                i--;
+                enemiesInCameraRange.Clear();
+                EnemyCameraCount();
+                break;
             }
-
-
             if (Vector3.Distance(enemiesInScene[i].position, transform.position) <= enemyDetectionRange)
             {
-                if (enemiesInCameraRange.Contains(enemiesInScene[i]))
-                {
-
-                }
-                else
+                if (!enemiesInCameraRange.Contains(enemiesInScene[i]))
                 {
                     enemiesInCameraRange.Add(enemiesInScene[i]);
                 }

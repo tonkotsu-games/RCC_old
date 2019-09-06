@@ -40,7 +40,7 @@ public class Equalizer : MonoBehaviour
             equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
         }
     }
-    void Update()
+    void FixedUpdate()
     {
         for (int i = 0; i < equalizerLeft.Length; i++)
         {
@@ -69,14 +69,13 @@ public class Equalizer : MonoBehaviour
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
                 }
-
             }
+
             if (i > juiceMeter.value * 1.28f)
             {
                 equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
                 equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
             }
         }
-
     }
 }

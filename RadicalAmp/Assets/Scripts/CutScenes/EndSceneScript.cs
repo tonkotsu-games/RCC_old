@@ -24,7 +24,7 @@ public class EndSceneScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetAxis("Dash") != 0 && scoreScreen.scoreDone)
+        if (Input.GetButton("Start") && scoreScreen.scoreDone)
         {
             SceneManager.LoadScene("Start_Menu", LoadSceneMode.Single);
         }

@@ -207,11 +207,11 @@ public class PlayerController : MonoBehaviour
                 show = false;
             }
         }
-        EnemyCameraCount();
     }
 
     private void FixedUpdate()
     {
+        EnemyCameraCount();
         MovementCalculation();
         Dashing();
 
@@ -274,6 +274,7 @@ public class PlayerController : MonoBehaviour
                                     -10f,
                                     moveVector.z);
     }
+
     /// <summary>
     /// Function for dashing in the direction you are facing
     /// </summary>
@@ -454,6 +455,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
         for (int i = 0; i < enemiesInCameraRange.Count; i++)
         {
             if (enemiesInCameraRange[i] == null)
@@ -491,6 +493,7 @@ public class PlayerController : MonoBehaviour
             runattack1DONE = false;
         }
     }
+
     public void runattacking()
     {
 
@@ -509,10 +512,12 @@ public class PlayerController : MonoBehaviour
             runattack1DONE = false;
         }
     }
+
     public void Statename()
     {
         anim.GetCurrentAnimatorStateInfo(0).IsName("Main_Idle");
     }
+
     public string GetCurrentClipName()
     {
         clipInfo = anim.GetCurrentAnimatorClipInfo(0);
@@ -523,7 +528,4 @@ public class PlayerController : MonoBehaviour
         }
         return clipInfo[0].clip.name;
     }
-
-
-
 }

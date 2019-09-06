@@ -214,6 +214,10 @@ public class JuiceDash : MonoBehaviour
             }
             else if (requestedState == ChargeStates.success)
             {
+                if (markedTargets.Count != 0)
+                {
+                    transform.LookAt(markedTargets[0].transform);
+                }
                 nextState = ChargeStates.none;
                 SpawnClone();
                 ChangeChargeState(nextState);

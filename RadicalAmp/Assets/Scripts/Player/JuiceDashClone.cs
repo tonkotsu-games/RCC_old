@@ -131,10 +131,12 @@ public class JuiceDashClone : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             holograms[counter].GetComponent<Animator>().speed = 5;
             holograms[counter].GetComponent<TutorialClone>().PlayAttack(true);
-            targets[counter].GetComponent<EnemyHP>().BloodSplat();
-            targets[counter].GetComponent<EnemyHP>().BloodSplat();
-            targets[counter].GetComponent<EnemyHP>().BloodSplat();
-            targets[counter].GetComponent<EnemyHP>().life = 0;
+            EnemyHP enemyHPScript = targets[counter].GetComponent<EnemyHP>();
+            enemyHPScript.BloodSplat();
+            enemyHPScript.BloodSplat();
+            enemyHPScript.BloodSplat();
+            PopupDamageController.instance.CreatePopupText(enemyHPScript.life + Random.Range(200,500), targets[counter].GetComponent<Transform>().transform);
+            enemyHPScript.life = 0;
             targets[counter].GetComponentInChildren<Animator>().speed = 1;
             yield return new WaitForSeconds(attackClip.length*0.2f);
             Destroy(holograms[counter]);

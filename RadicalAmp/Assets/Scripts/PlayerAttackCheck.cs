@@ -27,17 +27,13 @@ public class PlayerAttackCheck : MonoBehaviour
 
     private void Start()
     {
-        baseDamage = Random.Range(10, 100);
         my_audioSource = GetComponent<AudioSource>();
         popupController = GameObject.FindWithTag("Player").GetComponent<PopupDamageController>();
         boxCol = GetComponent<BoxCollider>();
         player = GetComponent<GameObject>();
         juiceMeter = Locator.instance.GetJuiceMeter();
     }
-    private void Update()
-    {
-        damageOnBeat = baseDamage + Mathf.RoundToInt(juiceMeter.value)*10;
-    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,16 +45,17 @@ public class PlayerAttackCheck : MonoBehaviour
             life = other.gameObject.GetComponent<EnemyHP>();
             if (BeatStrike.beatAttack)
             {
+                damageOnBeat = baseDamage + Mathf.RoundToInt(juiceMeter.value) * 10;
                 damage = damageOnBeat;               
             }
             else
             {
+                baseDamage = Random.Range(10, 100);
                 damage = baseDamage;
             }
-            Debug.Log("damage: " + damage);
-            life.life -= damage;
             BeatStrike.beatAttack = false;
-            popupController.CreatePopupText(damage.ToString(), other.gameObject.GetComponent<Transform>().transform);
+            life.life -= damage;
+            popupController.CreatePopupText(damage, other.gameObject.GetComponent<Transform>().transform);
             
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];
             my_audioSource.Play();

@@ -21,7 +21,6 @@ public class EnhanceHitProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        projectileDamage = Random.Range(300, 500) + Mathf.RoundToInt(juiceMeter.value*10);
         if (Vector3.Distance(gameObject.transform.position, spawnPoint) < maxRange)
         {
             gameObject.transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
@@ -36,12 +35,11 @@ public class EnhanceHitProjectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Enemy")
-        {
-            EnemyHP enemyLife = other.GetComponent<EnemyHP>();
-            Debug.Log("EnemyLifeAtStart: " + enemyLife);
+        {            
+            EnemyHP enemyLife = other.GetComponent<EnemyHP>();    
+            projectileDamage = Random.Range(300, 500) + Mathf.RoundToInt(juiceMeter.value * 10);
             enemyLife.life -= projectileDamage;
-            Debug.Log("EnemyLifeAtEnd: " + enemyLife);
-            PopupDamageController.instance.CreatePopupText(projectileDamage.ToString(), other.gameObject.GetComponent<Transform>().transform);
+            PopupDamageController.instance.CreatePopupText(projectileDamage, other.gameObject.GetComponent<Transform>().transform);
             other.GetComponent<EnemyHP>().BloodSplat();
         }
     }

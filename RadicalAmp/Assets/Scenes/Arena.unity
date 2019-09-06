@@ -49763,7 +49763,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077267718}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: -42.5, z: 268}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -49773,8 +49773,8 @@ Transform:
   - {fileID: 1450555497}
   - {fileID: 2112154595}
   - {fileID: 1571389864}
-  m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_Father: {fileID: 1440858587}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1077441536 stripped
 ParticleSystem:
@@ -64734,6 +64734,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: daf49b67f7dd845a9b388b9079c1876c, type: 3}
+--- !u!1 &1440858586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1440858587}
+  m_Layer: 0
+  m_Name: Ending
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1440858587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440858586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.9, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1077267720}
+  m_Father: {fileID: 0}
+  m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1444697610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65306,7 +65337,7 @@ PrefabInstance:
     - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
         type: 3}
       propertyPath: m_AABB.m_Center.z
-      value: 0.05817914
+      value: 0.05817908
       objectReference: {fileID: 0}
     - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
         type: 3}
@@ -65321,12 +65352,12 @@ PrefabInstance:
     - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
         type: 3}
       propertyPath: m_AABB.m_Extent.x
-      value: 0.14132915
+      value: 0.14132912
       objectReference: {fileID: 0}
     - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
         type: 3}
       propertyPath: m_AABB.m_Center.x
-      value: 0
+      value: -0.000000059604645
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43c5976be69b37943bf33a80d3f2bf83, type: 3}
@@ -76746,7 +76777,7 @@ PrefabInstance:
         type: 3}
       propertyPath: endScreenTrigger
       value: 
-      objectReference: {fileID: 1961470792}
+      objectReference: {fileID: 0}
     - target: {fileID: 8039797987730609340, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
       propertyPath: bloodSplatter.Array.data[0]
@@ -76757,6 +76788,11 @@ PrefabInstance:
       propertyPath: bloodSplatter.Array.data[1]
       value: 
       objectReference: {fileID: 1891330795}
+    - target: {fileID: 8039797987730609340, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
+        type: 3}
+      propertyPath: endScreen
+      value: 
+      objectReference: {fileID: 1961470794}
     - target: {fileID: 530774071300596474, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
       propertyPath: m_Layer
@@ -85950,8 +85986,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.27486935, y: 1, z: 0.6035341}
+  m_Center: {x: 0.0024840843, y: 0, z: 0.19823392}
 --- !u!4 &1961470793
 Transform:
   m_ObjectHideFlags: 0
@@ -90740,7 +90776,7 @@ PrefabInstance:
     - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
         type: 3}
       propertyPath: m_AABB.m_Center.z
-      value: 0.05817914
+      value: 0.05817908
       objectReference: {fileID: 0}
     - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
         type: 3}
@@ -90755,7 +90791,12 @@ PrefabInstance:
     - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
         type: 3}
       propertyPath: m_AABB.m_Extent.x
-      value: 0.14132915
+      value: 0.14132914
+      objectReference: {fileID: 0}
+    - target: {fileID: 9061238597516245888, guid: 43c5976be69b37943bf33a80d3f2bf83,
+        type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43c5976be69b37943bf33a80d3f2bf83, type: 3}
@@ -90781,6 +90822,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194887771401531728, guid: 1c740f65cdf6516449c602211ec0b79b,
+        type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493482902038998180, guid: 1c740f65cdf6516449c602211ec0b79b,
+        type: 3}
+      propertyPath: m_UseColorTemperature
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7620078572531134485, guid: 4ca252a1e1b38c0438514b3b42dd5158,
         type: 3}
@@ -90857,16 +90908,6 @@ PrefabInstance:
       propertyPath: cutSceneFreeze
       value: 
       objectReference: {fileID: 1153055588}
-    - target: {fileID: 1194887771401531728, guid: 1c740f65cdf6516449c602211ec0b79b,
-        type: 3}
-      propertyPath: m_UseColorTemperature
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6493482902038998180, guid: 1c740f65cdf6516449c602211ec0b79b,
-        type: 3}
-      propertyPath: m_UseColorTemperature
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca252a1e1b38c0438514b3b42dd5158, type: 3}
 --- !u!4 &2112843963 stripped

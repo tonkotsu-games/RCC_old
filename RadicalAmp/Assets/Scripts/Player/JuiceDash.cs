@@ -241,7 +241,7 @@ public class JuiceDash : MonoBehaviour
             SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
             rend.material = juiceTargetMat;
             target.GetComponentInChildren<Animator>().speed = 0;
-            target.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            target.GetComponent<NavMeshAgent>().isStopped = true;
         }
     }
 

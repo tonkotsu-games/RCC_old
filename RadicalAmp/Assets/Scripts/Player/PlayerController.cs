@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     //gibt an, welcher Dancemove abgespielt werden soll
     private int dancemove;
+    private int fixedUpdateTicks = 0;
 
     void Start()
     {
@@ -211,7 +212,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        EnemyCameraCount();
+        
         MovementCalculation();
         Dashing();
 
@@ -248,6 +249,13 @@ public class PlayerController : MonoBehaviour
         if (knockBackAOE)
         {
             KnockBackAOE();
+        }
+
+        fixedUpdateTicks++;
+        if(fixedUpdateTicks == 12)
+        {
+            fixedUpdateTicks = 0;
+            EnemyCameraCount();
         }
     }
 

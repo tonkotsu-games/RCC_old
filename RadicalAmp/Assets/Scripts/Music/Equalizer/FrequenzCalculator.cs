@@ -27,18 +27,13 @@ public class FrequenzCalculator : MonoBehaviour
     {
         GetSpectrumData();
         FrequenzBand();
-        Bandbuffer();
-        AudioBand();
+        //Bandbuffer();
+        //AudioBand();
     }
 
     void GetSpectrumData()
     {
         audiosource.GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris);
-    }
-
-    void Amplitude()
-    {
-
     }
 
     void AudioBand()

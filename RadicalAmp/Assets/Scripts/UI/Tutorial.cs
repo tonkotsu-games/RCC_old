@@ -195,6 +195,10 @@ public class Tutorial : MonoBehaviour
         DanceTest,
         JuiceInfo,
         JuiceTest,
-        TutorialFinish
+        TutorialFinish,
+        EmpowerSlashInfo,
+        EmpowerSlashTest,
+        JuiceDashInfo,
+        JuiceDashTest
     }
 }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private AnimatorClipInfo[] clipInfo;
     public static bool runattack1DONE;
 
+
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float acceleration;
@@ -68,7 +69,10 @@ public class PlayerController : MonoBehaviour
     [Header("Life setting")]
     public int life = 3;
 
+
+    [Header("Audiosources")]
     private AudioSource my_audioSource;
+    public AudioSource my_secondaudiosource;
     private Animator anim;
     private Rigidbody rigi;
     private BoxCollider boxCol;
@@ -76,6 +80,7 @@ public class PlayerController : MonoBehaviour
     [Header("Several Audiofiles")]
     public AudioClip dashClip;
     public AudioClip slashClip;
+    public AudioClip DanceMove;
 
     [MinMaxSlider(-3f, 3f)]
     public Vector2 soundPitchRange = new Vector2(1f,1f);
@@ -116,6 +121,7 @@ public class PlayerController : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         DeadDisable = gameObject.GetComponent<PlayerController>();
         my_audioSource = GetComponent<AudioSource>();
+        
     }
 
     void Update()
@@ -159,9 +165,9 @@ public class PlayerController : MonoBehaviour
            !triggerLeft)
         {
             anim.Play("Dashing");
-            my_audioSource.clip = dashClip;
-            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
-            my_audioSource.Play();
+            my_secondaudiosource.clip = dashClip;
+            my_secondaudiosource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+            my_secondaudiosource.Play();
             dash = true;
         }
         if (Input.GetButtonDown("Dance") &&
@@ -169,6 +175,8 @@ public class PlayerController : MonoBehaviour
            !attack &&
            !dash)
         {
+            my_audioSource.clip = DanceMove;
+            my_audioSource.Play();
             if (dancemove == 0)
             {
                 anim.SetBool("dance", true);
@@ -515,6 +523,9 @@ public class PlayerController : MonoBehaviour
         if (attack1DONE == false || runattack1DONE == false)
         {           
             anim.SetTrigger("runattack1");
+            my_audioSource.clip = slashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+            my_audioSource.Play();
             attack = true;
             attack1DONE = true;
             runattack1DONE = true;
@@ -522,6 +533,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetTrigger("runattack2");
+            my_audioSource.clip = slashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+            my_audioSource.Play();
             attack = true;
             attack1DONE = false;
             runattack1DONE = false;

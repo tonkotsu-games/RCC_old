@@ -82,8 +82,8 @@ public class Equalizer : MonoBehaviour
                 else if (juiceMeter.value * 1.28 > 100)
                 {
 
-                    equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
-                    equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
+                    equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
+                    equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
                 }
             }
             if (i > juiceMeter.value * 1.28f)

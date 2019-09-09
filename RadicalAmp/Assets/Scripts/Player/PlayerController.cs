@@ -523,6 +523,9 @@ public class PlayerController : MonoBehaviour
         if (attack1DONE == false || runattack1DONE == false)
         {           
             anim.SetTrigger("runattack1");
+            my_audioSource.clip = slashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+            my_audioSource.Play();
             attack = true;
             attack1DONE = true;
             runattack1DONE = true;
@@ -530,6 +533,9 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetTrigger("runattack2");
+            my_audioSource.clip = slashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+            my_audioSource.Play();
             attack = true;
             attack1DONE = false;
             runattack1DONE = false;

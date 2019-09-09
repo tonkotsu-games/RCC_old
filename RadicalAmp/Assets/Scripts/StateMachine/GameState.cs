@@ -16,7 +16,6 @@ public class GameState : MonoBehaviour
 
     Camera introCam;
     public bool testing;
-    public State stateTest;
 
     public static GameState instance;
 
@@ -98,7 +97,7 @@ public class GameState : MonoBehaviour
     {
         if (testing && SceneManager.GetActiveScene().name != "Arena")
         {
-            stateCurrent = stateTest;
+            stateCurrent = State.Test;
         }
     }
 }

@@ -7,7 +7,7 @@ public class EndScreenTrigger : MonoBehaviour
     [SerializeField] private Animator myAnimator;
     [SerializeField] BoxCollider EndTriggerZone;
     [SerializeField] AnimationClip EndSceneAnimation;
-    [SerializeField] GameObject EndSceneGameObject; 
+    [SerializeField] GameObject EndSceneGameObject;
 
     public void TriggerEndEvent()
     {
@@ -17,9 +17,10 @@ public class EndScreenTrigger : MonoBehaviour
 
    IEnumerator EndSceneTrigger()
     {
-        yield return new WaitForSeconds(EndSceneAnimation.length);
+        yield return new WaitForSeconds(EndSceneAnimation.length+1);
         EndTriggerZone.enabled = true; 
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

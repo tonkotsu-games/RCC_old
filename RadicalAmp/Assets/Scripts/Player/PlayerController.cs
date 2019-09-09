@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class PlayerController : MonoBehaviour
 {
@@ -76,11 +77,15 @@ public class PlayerController : MonoBehaviour
     public AudioClip dashClip;
     public AudioClip slashClip;
 
+    [MinMaxSlider(-3f, 3f)]
+    public Vector2 soundPitchRange = new Vector2(1f,1f);
+
     [SerializeField]
     ParticleSystem[] bloodSplatter;
 
     //gibt an, welcher Dancemove abgespielt werden soll
     private int dancemove;
+    private int fixedUpdateTicks = 0;
 
     void Start()
     {
@@ -155,6 +160,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.Play("Dashing");
             my_audioSource.clip = dashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
             my_audioSource.Play();
             dash = true;
         }
@@ -207,11 +213,11 @@ public class PlayerController : MonoBehaviour
                 show = false;
             }
         }
-        EnemyCameraCount();
     }
 
     private void FixedUpdate()
     {
+        
         MovementCalculation();
         Dashing();
 
@@ -249,6 +255,13 @@ public class PlayerController : MonoBehaviour
         {
             KnockBackAOE();
         }
+
+        fixedUpdateTicks++;
+        if(fixedUpdateTicks == 12)
+        {
+            fixedUpdateTicks = 0;
+            EnemyCameraCount();
+        }
     }
 
     void MovementCalculation()
@@ -274,6 +287,7 @@ public class PlayerController : MonoBehaviour
                                     -10f,
                                     moveVector.z);
     }
+
     /// <summary>
     /// Function for dashing in the direction you are facing
     /// </summary>
@@ -454,6 +468,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
         for (int i = 0; i < enemiesInCameraRange.Count; i++)
         {
             if (enemiesInCameraRange[i] == null)
@@ -477,6 +492,7 @@ public class PlayerController : MonoBehaviour
             anim.Play("Attack", 0, 0);
             attack = true;
             my_audioSource.clip = slashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
             my_audioSource.Play();
             attack1DONE = true;
             runattack1DONE = true;
@@ -486,11 +502,13 @@ public class PlayerController : MonoBehaviour
             anim.Play("Attack2", 0, 0);
             attack = true;
             my_audioSource.clip = slashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
             my_audioSource.Play();
             attack1DONE = false;
             runattack1DONE = false;
         }
     }
+
     public void runattacking()
     {
 
@@ -509,14 +527,15 @@ public class PlayerController : MonoBehaviour
             runattack1DONE = false;
         }
     }
+
     public void Statename()
     {
         anim.GetCurrentAnimatorStateInfo(0).IsName("Main_Idle");
     }
+
     public string GetCurrentClipName()
     {
         clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-        Debug.Log("clip " + clipInfo[0].clip.name);
         if(clipInfo.Length == 0)
         {
             Debug.Log("No Clip found in Layer 0");
@@ -524,7 +543,4 @@ public class PlayerController : MonoBehaviour
         }
         return clipInfo[0].clip.name;
     }
-
-
-
 }

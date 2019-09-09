@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NaughtyAttributes;
 using UnityEngine.UI;
 
 public class PlayerAttackCheck : MonoBehaviour
@@ -11,6 +12,9 @@ public class PlayerAttackCheck : MonoBehaviour
     private AudioSource my_audioSource;
 
     public AudioClip[] enemyHitSound;
+
+    [MinMaxSlider(-3f, 3f)]
+    public Vector2 soundPitchRange = new Vector2(1f, 1f);
 
     EnemyHP life;
     [Header("Knockback Range")]
@@ -56,7 +60,7 @@ public class PlayerAttackCheck : MonoBehaviour
             BeatStrike.beatAttack = false;
             life.life -= damage;
             popupController.CreatePopupText(damage, other.gameObject.GetComponent<Transform>().transform);
-            
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];
             my_audioSource.Play();
     
@@ -66,7 +70,7 @@ public class PlayerAttackCheck : MonoBehaviour
             {
                 Vector3 direction = other.transform.position - transform.position;
                 direction.y = 0;
-                other.gameObject.GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
+                other.gameObject.GetComponent<Transform>().transform.position += direction.normalized * knockbackRange;
             }
         }
         else

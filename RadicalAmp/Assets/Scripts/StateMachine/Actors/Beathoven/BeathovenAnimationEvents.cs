@@ -43,6 +43,7 @@ public class BeathovenAnimationEvents : MonoBehaviour
 
     public void AfterDeath()
     {
+        Debug.Log("Death");
         Destroy(this.gameObject.transform.parent.gameObject);      
     }
 

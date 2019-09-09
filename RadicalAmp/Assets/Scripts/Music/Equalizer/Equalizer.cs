@@ -15,6 +15,8 @@ public class Equalizer : MonoBehaviour
 
     public float maxscale;
 
+    private float currentJuiceValue = 0;
+
     void Start()
     {
         for (int i = 0; i < equalizerRight.Length; i++)
@@ -40,7 +42,7 @@ public class Equalizer : MonoBehaviour
             equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
         }
     }
-    void Update()
+    void FixedUpdate()
     {
         for (int i = 0; i < equalizerLeft.Length; i++)
         {
@@ -50,26 +52,39 @@ public class Equalizer : MonoBehaviour
                 equalizerLeft[127 - i].value = (FrequenzCalculator.spectrum[i] * maxscale) + 0.01f;
             }
         }
+
+        if(juiceMeter.value != currentJuiceValue)
+        {
+            currentJuiceValue = juiceMeter.value;
+            ChangeEqualizerColor();
+        }
+    }
+
+    private void ChangeEqualizerColor()
+    {
         for (int i = 0; i < equalizerLeft.Length; i++)
         {
             if (i <= juiceMeter.value * 1.28)
             {
-                if (i <= 50)
+                if (juiceMeter.value * 1.28 < 100)
                 {
-                    equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
-                    equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
+                    if (i <= 50)
+                    {
+                        equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
+                        equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
+                    }
+                    else if (i > 50 && i <= 100)
+                    {
+                        equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
+                        equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[1];
+                    }
                 }
-                else if(i >50 && i <= 100)
+                else if (juiceMeter.value * 1.28 > 100)
                 {
+
                     equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
                     equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[2];
                 }
-                else if (i > 100)
-                {
-                    equalizerRight[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
-                    equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[3];
-                }
-
             }
             if (i > juiceMeter.value * 1.28f)
             {
@@ -77,6 +92,5 @@ public class Equalizer : MonoBehaviour
                 equalizerLeft[i].transform.GetChild(1).GetChild(0).GetComponent<Image>().color = colorEqualizer[0];
             }
         }
-
     }
 }

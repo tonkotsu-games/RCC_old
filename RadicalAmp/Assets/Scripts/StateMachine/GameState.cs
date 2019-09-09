@@ -94,7 +94,6 @@ public class GameState : MonoBehaviour
         }
     }
 
-
     void Start()
     {
         if (testing && SceneManager.GetActiveScene().name != "Arena")

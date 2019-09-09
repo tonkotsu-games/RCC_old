@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class AttackCheck : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class AttackCheck : MonoBehaviour
     [SerializeField] Actor actor;
     [SerializeField] AudioClip playerHitSound;
     [SerializeField] AudioSource enemySoundSource;
+
+    [MinMaxSlider(-3f, 3f)]
+    public Vector2 soundPitchRange = new Vector2(1f,1f);
 
     private bool hit = false;
 
@@ -17,7 +21,8 @@ public class AttackCheck : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && !hit && actor.attacking)
         {
-            enemySoundSource.clip = playerHitSound; 
+            enemySoundSource.clip = playerHitSound;
+            enemySoundSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
             enemySoundSource.Play();
             hit = true;
             life.PlayerBloodSplat();

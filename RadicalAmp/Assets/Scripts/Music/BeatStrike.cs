@@ -38,6 +38,9 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] float lerpSpeed = 1f;
     private float displFloat = 0f;
 
+    Animator anim;
+
+
     private void Awake()
     {
         if(instance == null)
@@ -53,6 +56,7 @@ public class BeatStrike : MonoBehaviour
     void Start()
     {
         damage = GameObject.FindWithTag("Player").GetComponent<PlayerAttackCheck>();
+        anim = gameObject.GetComponentInChildren<Animator>();
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
         juiceMeter = Locator.instance.GetJuiceMeter();
         player = GetComponent<PlayerController>();
@@ -112,6 +116,7 @@ public class BeatStrike : MonoBehaviour
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
+                    anim.SetTrigger("enhancedSlash");
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
                 }
 

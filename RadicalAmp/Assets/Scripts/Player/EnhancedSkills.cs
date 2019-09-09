@@ -96,7 +96,7 @@ public class EnhancedSkills : MonoBehaviour
 
         else if(baseSkill == ActionsToEnhance.Attack)
         {
-            anim.SetBool("enhancedSlash", true);
+            anim.SetTrigger("enhancedSlash");
         }
         ChangeEnhancedState(EnhancedState.Inactive);
         Debug.Log("Using Enhanced " + baseSkill);

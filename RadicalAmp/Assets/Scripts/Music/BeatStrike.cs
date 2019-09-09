@@ -8,7 +8,6 @@ public class BeatStrike : MonoBehaviour
     private Slider juiceMeter;
     private AudioSource wave;
     private PlayerController player;
-    private PlayerAttackCheck damage;
 
     [Header("Reaction time for Beat hitting")]
     [SerializeField] int reactionTime;
@@ -55,7 +54,6 @@ public class BeatStrike : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damage = GameObject.FindWithTag("Player").GetComponent<PlayerAttackCheck>();
         anim = gameObject.GetComponentInChildren<Animator>();
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
         juiceMeter = Locator.instance.GetJuiceMeter();
@@ -112,11 +110,11 @@ public class BeatStrike : MonoBehaviour
             {
                 bodyMat.SetFloat("_displSwitch", 1f);
                 capeMat.SetFloat("_displSwitch", 1f);
-                //damage.damage = damage.damageOnBeat;
+
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
-                    anim.SetTrigger("enhancedSlash");
+                    Debug.LogError("EnhancedSlash");
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
                 }
 

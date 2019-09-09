@@ -148,9 +148,12 @@ public class JuiceDash : MonoBehaviour
                     {
                         markedTargets.Add(enemiesInRange[0].gameObject);
                         DisplayMarkerOnTarget(markedTargets[0]);
-                        foreach (GameObject target in markedTargets)
+                        if (markedTargets[0].GetComponent<NavMeshAgent>() != null)
                         {
-                            target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                            foreach (GameObject target in markedTargets)
+                            {
+                                target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                            }
                         }
                     }
                     abilityReady = true;
@@ -181,8 +184,11 @@ public class JuiceDash : MonoBehaviour
                 }
                 foreach (GameObject target in markedTargets)
                 {
-                    DisplayMarkerOnTarget(target);
-                    target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                    if (target.GetComponent<NavMeshAgent>() != null)
+                    {
+                        DisplayMarkerOnTarget(target);
+                        target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                    }
                 }
                 nextState = ChargeStates.final;
                 juiceMeter.value -= juiceConsumedPerCharge;
@@ -206,8 +212,11 @@ public class JuiceDash : MonoBehaviour
                 }
                 foreach (GameObject target in markedTargets)
                 {
-                    DisplayMarkerOnTarget(target);
-                    target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                    if (target.GetComponent<NavMeshAgent>() != null)
+                    {
+                        DisplayMarkerOnTarget(target);
+                        target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
+                    }
                 }
                 nextState = ChargeStates.success;
                 juiceMeter.value -= juiceConsumedPerCharge;
@@ -241,7 +250,10 @@ public class JuiceDash : MonoBehaviour
             SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
             rend.material = juiceTargetMat;
             target.GetComponentInChildren<Animator>().speed = 0;
-            target.GetComponent<NavMeshAgent>().isStopped = true;
+            if (target.GetComponent<NavMeshAgent>() != null)
+            {
+                target.GetComponent<NavMeshAgent>().isStopped = true;
+            }
         }
     }
 

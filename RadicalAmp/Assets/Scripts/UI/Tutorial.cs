@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Experimental.VFX;
 using TMPro;
 
 public class Tutorial : MonoBehaviour
@@ -18,6 +20,10 @@ public class Tutorial : MonoBehaviour
     private TutorialClone cloneAnim;
 
     public TutorialSteps currentStep;
+
+    public List<GameObject> EmpowerClone;
+    public List<GameObject> JuiceDashClone;
+
 
     bool tutorialPlay = false;
 
@@ -157,8 +163,51 @@ public class Tutorial : MonoBehaviour
                 cloneAnim.PlayDance(false);
             }
         }
-        if(currentStep == TutorialSteps.TutorialFinish)
+        if (currentStep == TutorialSteps.EmpowerSlashInfo && !tutorialPlay)
         {
+            tmproText.text = "Press A to dash, dash three times.";
+            tutorialContainer.SetActive(true);
+            anim.Play("AnimDash");
+            foreach(GameObject clone in EmpowerClone)
+            {
+                clone.SetActive(true);
+            }
+            tutorialTimer = setTimer;
+            tutorialPlay = true;
+
+        }
+        if (currentStep == TutorialSteps.EmpowerSlashTest)
+        {
+            if (EmpowerClone.Count == 0)
+            {
+                currentStep += 1;
+            }
+        }
+        if (currentStep == TutorialSteps.JuiceDashInfo && !tutorialPlay)
+        {
+            tmproText.text = "Press A to dash, dash three times.";
+            tutorialContainer.SetActive(true);
+            anim.Play("AnimDash");
+            foreach (GameObject clone in JuiceDashClone)
+            {
+                clone.SetActive(true);
+            }
+            juiceMeter.minValue = 100;
+            tutorialTimer = setTimer;
+            tutorialPlay = true;
+        }
+        if (currentStep == TutorialSteps.JuiceDashTest)
+        {
+
+            if (JuiceDashClone.Count == 0)
+            {
+                currentStep += 1;
+                juiceMeter.minValue = 0;
+            }
+        }
+        if (currentStep == TutorialSteps.TutorialFinish)
+        {
+            juiceMeter.value = 0;
             clone.SetActive(false);
             gate.SetActive(false);
         }
@@ -195,10 +244,10 @@ public class Tutorial : MonoBehaviour
         DanceTest,
         JuiceInfo,
         JuiceTest,
-        TutorialFinish,
         EmpowerSlashInfo,
         EmpowerSlashTest,
         JuiceDashInfo,
-        JuiceDashTest
+        JuiceDashTest,
+        TutorialFinish
     }
 }

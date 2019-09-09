@@ -24,9 +24,14 @@ public class JuiceDashClone : MonoBehaviour
     int targetCounter = 0;
     public GameObject dashParticlesPrefab;
 
+    [SerializeField] AudioClip dashClip;
+    [SerializeField] AudioClip hitClip;
+    AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
+        source = gameObject.GetComponent<AudioSource>();
         startPos = transform.position;
         anim = gameObject.GetComponent<Animator>();
         holograms = new List<GameObject>();
@@ -67,6 +72,8 @@ public class JuiceDashClone : MonoBehaviour
                             holograms.Add(holo);
                         }
                         anim.Play("Dashing");
+                        source.clip = dashClip;
+                        source.Play();
                         delayActive = true;
                         StartCoroutine(DelayBetweenDashes());
                     }
@@ -131,6 +138,8 @@ public class JuiceDashClone : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             holograms[counter].GetComponent<Animator>().speed = 5;
             holograms[counter].GetComponent<TutorialClone>().PlayAttack(true);
+            source.clip = hitClip;
+            source.Play();
             EnemyHP enemyHPScript = targets[counter].GetComponent<EnemyHP>();
             enemyHPScript.BloodSplat();
             enemyHPScript.BloodSplat();

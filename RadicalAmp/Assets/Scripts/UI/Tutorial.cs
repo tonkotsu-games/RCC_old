@@ -217,7 +217,7 @@ public class Tutorial : MonoBehaviour
         {
             gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
 
-            if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.99f)
+            if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
             {
                 clone.SetActive(false);
                 gate.SetActive(false);

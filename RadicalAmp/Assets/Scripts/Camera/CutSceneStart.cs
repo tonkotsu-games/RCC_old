@@ -7,6 +7,8 @@ public class CutSceneStart : MonoBehaviour
     [SerializeField] Tutorial tutorialStep;
     [SerializeField] GameObject tutorialText;
     public AnimationClip cameraDrive;
+
+    [SerializeField] BeatStrike playerBeatStrike;
    
     void Start()
     {
@@ -29,10 +31,11 @@ public class CutSceneStart : MonoBehaviour
 
     IEnumerator StartAnim()
     {
-        yield return new WaitForSeconds(cameraDrive.length);
-       
+        playerBeatStrike.enabled = false;
+        yield return new WaitForSeconds(cameraDrive.length); 
         GameObject.Find("Protagonist_SM").GetComponent<PlayerController>().enabled = true;
         GameObject.Find("UI_Manager").GetComponent<Tutorial>().enabled = true;
+        playerBeatStrike.enabled = true;
         tutorialText.SetActive(true);
         this.gameObject.SetActive(false); 
     }

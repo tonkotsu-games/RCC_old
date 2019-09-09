@@ -57,7 +57,8 @@ public class EnemyHP : MonoBehaviour
     public void BloodSplat()
     {
         //Debug.Log("BLOOD!");
-        bloodSplatter[Random.Range(0,bloodSplatter.Length)].Play();
+        ParticleSystem particles = bloodSplatter[Random.Range(0, bloodSplatter.Length)];
+        particles.Play();
     }
 
     private void EnemyDeath()

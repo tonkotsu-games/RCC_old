@@ -39,6 +39,7 @@ public class JuiceDash : MonoBehaviour
     Vector3 zoomSpeedZeroBase;
     Vector3 zoomSpeedOneBase;
     Vector3 zoomSpeedTwoBase;
+    Vector3 zoomSpeedFourBase;
     public float zoomSpeedYIncrease;
 
    //bool shakeEnabled = false;
@@ -64,6 +65,7 @@ public class JuiceDash : MonoBehaviour
         zoomSpeedZeroBase = nikCam.zoomSpeedZero;
         zoomSpeedOneBase = nikCam.zoomSpeedOne;
         zoomSpeedTwoBase = nikCam.zoomSpeedTwo;
+        zoomSpeedFourBase = nikCam.zoomSpeedFour;
         //shakeTimer = shakeDuration;
     }
 
@@ -271,11 +273,8 @@ public class JuiceDash : MonoBehaviour
     void SpawnClone()
     {
         //nikCam.gameObject.GetComponent<CameraShake>().enabled = true;
-
-        nikCam.zoomSpeedZero = zoomSpeedZeroBase;
-        nikCam.zoomSpeedOne = zoomSpeedOneBase;
-        nikCam.zoomSpeedTwo = zoomSpeedTwoBase;
-        CameraFollow.juiceDashActive = false;
+        nikCam.zoomSpeedFour = new Vector3(zoomSpeedFourBase.x, zoomSpeedFourBase.y + zoomSpeedYIncrease*10, zoomSpeedFourBase.z);
+        CameraFollow.ChangeCameraState(4);
         GameObject clone = Instantiate(playerClone, transform.position, Quaternion.identity);
         clone.GetComponent<JuiceDashClone>().juiceDashScript = this;
         clone.GetComponent<JuiceDashClone>().targets = new List<GameObject>(markedTargets);
@@ -299,6 +298,11 @@ public class JuiceDash : MonoBehaviour
 
     public void BackToNormal()
     {
+        nikCam.zoomSpeedZero = zoomSpeedZeroBase;
+        nikCam.zoomSpeedOne = zoomSpeedOneBase;
+        nikCam.zoomSpeedTwo = zoomSpeedTwoBase;
+        nikCam.zoomSpeedFour = zoomSpeedFourBase;
+        CameraFollow.juiceDashActive = false;
         TurnPlayerONandOff(true);
         Physics.IgnoreLayerCollision(9, 13, false);
     }

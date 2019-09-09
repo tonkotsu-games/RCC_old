@@ -66,7 +66,7 @@ public class CameraFollow : MonoBehaviour
     [Tooltip("The zoom speed for CameraState 3.")]
     [SerializeField] Vector3 zoomSpeedThree = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 4.")]
-    [SerializeField] Vector3 zoomSpeedFour = new Vector3(10f,10f,10f);
+    [SerializeField] public Vector3 zoomSpeedFour = new Vector3(10f,10f,10f);
     
     [Header("Camera X Rotation Speed")]
     [InfoBox("The speed at which the camera should to the state dependent angle, currently only around X-Axis.")]

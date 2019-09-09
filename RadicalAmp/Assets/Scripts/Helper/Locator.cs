@@ -10,6 +10,7 @@ public class Locator : MonoBehaviour
     private Slider juiceMeter;
     private GameObject nikCam;
     private Transform playerPosition;
+    private GameObject canvas;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class Locator : MonoBehaviour
         musicBox = GameObject.FindWithTag("MusicBox").GetComponent<BeatAnalyse>();
         juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
         nikCam = GameObject.FindWithTag("MainCamera");
+        canvas = GameObject.FindWithTag("Canvas");
         //Debug.Log("This " + instance.gameObject.name + " musicbox" + instance.musicBox);
         playerPosition = GameObject.FindWithTag("Player").GetComponent<Transform>();
         //#endregion
@@ -39,6 +41,11 @@ public class Locator : MonoBehaviour
         }*/
 
         return musicBox;
+    }
+
+    public GameObject GetCanvas()
+    {
+        return canvas;
     }
     public Slider GetJuiceMeter()
     {

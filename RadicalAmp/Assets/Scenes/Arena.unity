@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.056231655, g: 0.079377376, b: 0.12584507, a: 1}
+  m_IndirectSpecularColor: {r: 0.03764126, g: 0.047973316, b: 0.061335944, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -52793,6 +52793,7 @@ MonoBehaviour:
   splashScreen: {fileID: 138123571}
   splashClip: {fileID: 7400000, guid: 037795c25c7b7c24787e01355f82a9a5, type: 2}
   movementLock: 0
+  playerBeatStrike: {fileID: 2048647457}
 --- !u!65 &1153055589
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -83618,6 +83619,7 @@ MonoBehaviour:
   tutorialStep: {fileID: 715895462}
   tutorialText: {fileID: 907361219}
   cameraDrive: {fileID: 7400000, guid: ac1af808214033640bc86967bbbcf708, type: 2}
+  playerBeatStrike: {fileID: 2048647457}
 --- !u!114 &1883403231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88859,6 +88861,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1308412735}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2048647457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2960425244600457838, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308412735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048647446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d48b141a2fc9b4d83edb2582a38d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2048701367
 GameObject:
   m_ObjectHideFlags: 0

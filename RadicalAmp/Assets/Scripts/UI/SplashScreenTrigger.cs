@@ -8,6 +8,7 @@ public class SplashScreenTrigger : MonoBehaviour
     [SerializeField] GameObject splashScreen;
     public AnimationClip splashClip; 
     public bool movementLock = false;
+    [SerializeField] BeatStrike playerBeatStrike;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,6 +27,7 @@ public class SplashScreenTrigger : MonoBehaviour
     IEnumerator SplashScreen()
     {
         movementLock = true;
+        playerBeatStrike.enabled = false;
 
         yield return new WaitForSeconds(splashClip.length);
 
@@ -34,6 +36,9 @@ public class SplashScreenTrigger : MonoBehaviour
         splashScreen.SetActive(false);
         
         GameObject.Find("Protagonist_SM").GetComponent<PlayerController>().enabled = true;
+
+        playerBeatStrike.enabled = true;
+
         movementLock = false;
     }
 }

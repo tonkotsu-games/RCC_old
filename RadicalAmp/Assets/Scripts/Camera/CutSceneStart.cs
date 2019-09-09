@@ -31,8 +31,8 @@ public class CutSceneStart : MonoBehaviour
 
     IEnumerator StartAnim()
     {
-        yield return new WaitForSeconds(cameraDrive.length);
         playerBeatStrike.enabled = false;
+        yield return new WaitForSeconds(cameraDrive.length); 
         GameObject.Find("Protagonist_SM").GetComponent<PlayerController>().enabled = true;
         GameObject.Find("UI_Manager").GetComponent<Tutorial>().enabled = true;
         playerBeatStrike.enabled = true;

@@ -27488,6 +27488,16 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7246610890031720559, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: m_IsActive
@@ -27667,6 +27677,11 @@ PrefabInstance:
       propertyPath: audioSource.Array.data[10]
       value: 
       objectReference: {fileID: 114388798}
+    - target: {fileID: 1780832420974048043, guid: f894df82f47fc00438f7f2927dcd72d1,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 507405897, guid: f894df82f47fc00438f7f2927dcd72d1, type: 3}
       propertyPath: m_havePropertiesChanged
       value: 1
@@ -27962,21 +27977,6 @@ PrefabInstance:
       propertyPath: m_FillRect
       value: 
       objectReference: {fileID: 1433641378}
-    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1780832421274329059, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_MaxValue
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1780832420974048043, guid: f894df82f47fc00438f7f2927dcd72d1,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8999327345119170309, guid: f894df82f47fc00438f7f2927dcd72d1,
         type: 3}
       propertyPath: m_isInputParsingRequired
@@ -58698,8 +58698,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Volume
       value: 0.025
-      propertyPath: lowDamageColor.a
-      value: 0.3647059
       objectReference: {fileID: 0}
     - target: {fileID: 2960425244600457811, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
@@ -58719,8 +58717,6 @@ PrefabInstance:
     - target: {fileID: 2960425244600457811, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
         type: 3}
       propertyPath: soundPitchRange.x
-      value: 1
-      propertyPath: highDamageColor.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2960425244600457811, guid: 7a9a19c9b46f9ef4c9b8886aa66df7dd,
@@ -76829,12 +76825,12 @@ PrefabInstance:
         type: 3}
       propertyPath: bloodSplatter.Array.data[0]
       value: 
-      objectReference: {fileID: 570008114}
+      objectReference: {fileID: 0}
     - target: {fileID: 8039797987730609340, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
       propertyPath: bloodSplatter.Array.data[1]
       value: 
-      objectReference: {fileID: 1891330795}
+      objectReference: {fileID: 0}
     - target: {fileID: 8039797987730609340, guid: 368d1bcd9f5212d4cb987b2f63181bf7,
         type: 3}
       propertyPath: endScreen

@@ -403,6 +403,7 @@ MonoBehaviour:
   life: 10
   dashClip: {fileID: 8300000, guid: 88f1b3757c5fa9e4395ad8da306d64bf, type: 3}
   slashClip: {fileID: 8300000, guid: a7119b129ad8f104e954f77f2ae08e85, type: 3}
+  soundPitchRange: {x: 1, y: 1}
   bloodSplatter:
   - {fileID: 8713840097279418048}
   - {fileID: 5196868616934902671}
@@ -432,7 +433,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -562,6 +563,7 @@ MonoBehaviour:
   enemyHitSound:
   - {fileID: 8300000, guid: bb09aceafa6f3464ba6fc2c9c68aff75, type: 3}
   - {fileID: 8300000, guid: 944d0e69cdbd2fa40946a86dd4cbcf06, type: 3}
+  soundPitchRange: {x: 1, y: 1}
   knockbackRange: 2.5
   damage: 2
   baseDamage: 0

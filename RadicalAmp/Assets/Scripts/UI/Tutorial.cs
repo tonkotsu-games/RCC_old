@@ -63,7 +63,7 @@ public class Tutorial : MonoBehaviour
             }
             if (Input.GetButtonDown("Attack"))
             {
-                currentStep = TutorialSteps.TutorialFinish;
+                currentStep = TutorialSteps.TutorialPreFinish;
                 TutorialText.SetActive(false);
             }
         }
@@ -213,15 +213,20 @@ public class Tutorial : MonoBehaviour
 
             }
         }
-        if (currentStep == TutorialSteps.TutorialFinish)
+        if(currentStep == TutorialSteps.TutorialPreFinish)
         {
-            gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.1f));
+            gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
 
             if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.99f)
             {
                 clone.SetActive(false);
                 gate.SetActive(false);
+                currentStep += 1;
             }
+        }
+        if (currentStep == TutorialSteps.TutorialFinish)
+        {
+
         }
 
         if (tutorialPlay)
@@ -240,7 +245,7 @@ public class Tutorial : MonoBehaviour
 
     public void Testing()
     {
-        currentStep = TutorialSteps.TutorialFinish;
+        currentStep = TutorialSteps.TutorialPreFinish;
     }
 
     public enum TutorialSteps
@@ -260,6 +265,7 @@ public class Tutorial : MonoBehaviour
         EmpowerSlashTest,
         JuiceDashInfo,
         JuiceDashTest,
+        TutorialPreFinish,
         TutorialFinish
     }
 }

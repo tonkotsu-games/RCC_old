@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using NaughtyAttributes;
 
 public class PlayerAttackCheck : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class PlayerAttackCheck : MonoBehaviour
     private AudioSource my_audioSource;
 
     public AudioClip[] enemyHitSound;
+
+    [MinMaxSlider(-3f, 3f)]
+    public Vector2 soundPitchRange = new Vector2(1f, 1f);
 
     EnemyHP life;
     [Header("Knockback Range")]
@@ -39,7 +43,8 @@ public class PlayerAttackCheck : MonoBehaviour
             life = other.gameObject.GetComponent<EnemyHP>();
             life.life -= damage;
             popupController.CreatePopupText(damage.ToString(), other.gameObject.GetComponent<Transform>().transform);
-            
+
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];
             my_audioSource.Play();
     

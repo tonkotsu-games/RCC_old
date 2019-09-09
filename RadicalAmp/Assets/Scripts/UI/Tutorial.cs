@@ -18,12 +18,12 @@ public class Tutorial : MonoBehaviour
     [SerializeField] float setTimer;
 
     private TutorialClone cloneAnim;
+    private Material gateMaterial;
 
     public TutorialSteps currentStep;
 
     public List<GameObject> EmpowerClone;
     public List<GameObject> JuiceDashClone;
-
 
     bool tutorialPlay = false;
 
@@ -38,6 +38,12 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
+        gateMaterial = gate.GetComponent<Renderer>().material;
+        if(gateMaterial == null)
+        {
+            Debug.Log("ARSCHLOCH ARSCHLOCH");
+        }
+
         if (clone != null)
         {
             cloneAnim = clone.GetComponent<TutorialClone>();
@@ -203,13 +209,19 @@ public class Tutorial : MonoBehaviour
             {
                 currentStep += 1;
                 juiceMeter.minValue = 0;
+                juiceMeter.value = 0;
+
             }
         }
         if (currentStep == TutorialSteps.TutorialFinish)
         {
-            juiceMeter.value = 0;
-            clone.SetActive(false);
-            gate.SetActive(false);
+            gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.1f));
+
+            if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.99f)
+            {
+                clone.SetActive(false);
+                gate.SetActive(false);
+            }
         }
 
         if (tutorialPlay)

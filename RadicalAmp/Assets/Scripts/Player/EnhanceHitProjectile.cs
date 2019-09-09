@@ -34,10 +34,10 @@ public class EnhanceHitProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
-        {            
-            EnemyHP enemyLife = other.GetComponent<EnemyHP>();    
-            projectileDamage = Random.Range(300, 500) + Mathf.RoundToInt(juiceMeter.value * 10);
+        if (other.tag == "Enemy" && other.gameObject.GetComponent<EnemyHP>() != null)
+        {
+            EnemyHP enemyLife = other.GetComponent<EnemyHP>();
+            Debug.Log("EnemyLifeAtStart: " + enemyLife);
             enemyLife.life -= projectileDamage;
             PopupDamageController.instance.CreatePopupText(projectileDamage, other.gameObject.GetComponent<Transform>().transform);
             other.GetComponent<EnemyHP>().BloodSplat();

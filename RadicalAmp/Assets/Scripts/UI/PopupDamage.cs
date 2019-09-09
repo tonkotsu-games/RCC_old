@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PopupDamage : MonoBehaviour
 {
     [SerializeField] Animator anim;
-    Text popupText;
+    TextMeshProUGUI popupText;
     [SerializeField]
     Color[] popUpColors;
     GameObject canvas;
@@ -15,7 +16,7 @@ public class PopupDamage : MonoBehaviour
         anim = gameObject.GetComponentInChildren<Animator>();
         AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         Destroy(gameObject, clipInfo[0].clip.length);
-        popupText = anim.GetComponent<Text>();
+        popupText = anim.GetComponent<TextMeshProUGUI>();
         
     }
 

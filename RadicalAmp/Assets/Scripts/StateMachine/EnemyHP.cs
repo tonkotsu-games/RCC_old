@@ -20,7 +20,7 @@ public class EnemyHP : MonoBehaviour
 
     public bool death = false;
 
-    [SerializeField] BoxCollider endScreenTrigger;
+    [SerializeField] private EndScreenTrigger endScreen;
 
 
 
@@ -64,7 +64,7 @@ public class EnemyHP : MonoBehaviour
     {
        if(gameObject.GetComponent<Beathoven>() != null)
        {
-           endScreenTrigger.enabled = true;
+           endScreen.TriggerEndEvent();
        }
         EnemyAnim.SetBool("dead", true);
         Debug.Log(EnemyNav.gameObject.name + " died!");

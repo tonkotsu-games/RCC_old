@@ -87,8 +87,7 @@ public class JuiceDash : MonoBehaviour
         //  {
         if (abilityReady)
         {
-            if (Input.GetButtonUp("Dash") && 
-                triggerLeft)
+            if (Input.GetButtonUp("Dash"))
             {
                 ChangeChargeState(ChargeStates.success);
             }
@@ -154,6 +153,7 @@ public class JuiceDash : MonoBehaviour
                             target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                         }
                     }
+                    abilityReady = true;
                     nextState = ChargeStates.second;
                     juiceMeter.value -= juiceConsumedPerCharge;
                 }
@@ -214,6 +214,10 @@ public class JuiceDash : MonoBehaviour
             }
             else if (requestedState == ChargeStates.success)
             {
+                if (markedTargets.Count != 0)
+                {
+                    transform.LookAt(markedTargets[0].transform);
+                }
                 nextState = ChargeStates.none;
                 SpawnClone();
                 ChangeChargeState(nextState);
@@ -237,7 +241,7 @@ public class JuiceDash : MonoBehaviour
             SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
             rend.material = juiceTargetMat;
             target.GetComponentInChildren<Animator>().speed = 0;
-            target.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            target.GetComponent<NavMeshAgent>().isStopped = true;
         }
     }
 

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 929156508222087900}
   - component: {fileID: 929156508222087971}
   - component: {fileID: 929156508222087970}
-  - component: {fileID: 7585085569795654824}
   - component: {fileID: 6295204804687845032}
   - component: {fileID: 8029535818707227849}
   - component: {fileID: 6253442519248722353}
@@ -77,22 +76,6 @@ CapsuleCollider:
   m_Height: 1.9016125
   m_Direction: 1
   m_Center: {x: 0, y: 1.0608655, z: 0}
---- !u!54 &7585085569795654824
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929156508222087969}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 3
 --- !u!114 &6295204804687845032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,13 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d370a619de7b34294701701301f5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blood: {fileID: 0}
   bloodSplatter:
   - {fileID: 4356880714912019893}
   - {fileID: 4356880715321940222}
   life: 3
   death: 0
-  endScreenTrigger: {fileID: 0}
+  endScreen: {fileID: 0}
 --- !u!114 &5270754157507353267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7833,6 +7815,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52c93d2b17405964ead44c4de0e4ee24, type: 3}
+--- !u!4 &4521831727870747298 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 708674005644573142, guid: 52c93d2b17405964ead44c4de0e4ee24,
+    type: 3}
+  m_PrefabInstance: {fileID: 3969204813109713780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &627600590346582362 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4584908331960902190, guid: 52c93d2b17405964ead44c4de0e4ee24,
@@ -7845,9 +7833,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6eea96391b2fb749b1a1c6643dc2d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &4521831727870747298 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 708674005644573142, guid: 52c93d2b17405964ead44c4de0e4ee24,
-    type: 3}
-  m_PrefabInstance: {fileID: 3969204813109713780}
-  m_PrefabAsset: {fileID: 0}

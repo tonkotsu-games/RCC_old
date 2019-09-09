@@ -23,6 +23,7 @@ public class CutSceneStart : MonoBehaviour
             tutorialText.SetActive(false);
             tutorialStep.Testing();
             introCam.SetActive(false);
+            GameObject.Find("UI_Manager").GetComponent<Tutorial>().enabled = true;
         }
     }
 

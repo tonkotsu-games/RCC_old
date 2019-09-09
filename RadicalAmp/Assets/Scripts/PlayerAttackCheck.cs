@@ -49,7 +49,7 @@ public class PlayerAttackCheck : MonoBehaviour
             {
                 Vector3 direction = other.transform.position - transform.position;
                 direction.y = 0;
-                other.gameObject.GetComponent<Rigidbody>().transform.position += direction.normalized * knockbackRange;
+                other.gameObject.GetComponent<Transform>().transform.position += direction.normalized * knockbackRange;
             }
         }
         else

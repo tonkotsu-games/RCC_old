@@ -24,9 +24,12 @@ public class JuiceDashClone : MonoBehaviour
     int targetCounter = 0;
     public GameObject dashParticlesPrefab;
 
+    private Tutorial tutotial;
+
     // Start is called before the first frame update
     void Start()
     {
+        tutotial = GameObject.FindWithTag("Canvas").GetComponent<Tutorial>();
         startPos = transform.position;
         anim = gameObject.GetComponent<Animator>();
         holograms = new List<GameObject>();
@@ -126,19 +129,36 @@ public class JuiceDashClone : MonoBehaviour
         }
 
         int counter = 0;
-        while (counter < targets.Count)
+        if(tutotial.currentStep == Tutorial.TutorialSteps.JuiceDashTest)
         {
-            yield return new WaitForSeconds(0.1f);
-            holograms[counter].GetComponent<Animator>().speed = 5;
-            holograms[counter].GetComponent<TutorialClone>().PlayAttack(true);
-            targets[counter].GetComponent<EnemyHP>().BloodSplat();
-            targets[counter].GetComponent<EnemyHP>().BloodSplat();
-            targets[counter].GetComponent<EnemyHP>().BloodSplat();
-            targets[counter].GetComponent<EnemyHP>().life = 0;
-            targets[counter].GetComponentInChildren<Animator>().speed = 1;
-            yield return new WaitForSeconds(attackClip.length*0.2f);
-            Destroy(holograms[counter]);
-            counter++;
+            while (counter < targets.Count)
+            {
+                yield return new WaitForSeconds(0.1f);
+                holograms[counter].GetComponent<Animator>().speed = 5;
+                holograms[counter].GetComponent<TutorialClone>().PlayAttack(true);
+                targets[counter].GetComponent<TutorialAttacks>().Death();
+                targets[counter].GetComponentInChildren<Animator>().speed = 1;
+                yield return new WaitForSeconds(attackClip.length * 0.2f);
+                Destroy(holograms[counter]);
+                counter++;
+            }
+        }
+        else
+        {
+            while (counter < targets.Count)
+            {
+                yield return new WaitForSeconds(0.1f);
+                holograms[counter].GetComponent<Animator>().speed = 5;
+                holograms[counter].GetComponent<TutorialClone>().PlayAttack(true);
+                targets[counter].GetComponent<EnemyHP>().BloodSplat();
+                targets[counter].GetComponent<EnemyHP>().BloodSplat();
+                targets[counter].GetComponent<EnemyHP>().BloodSplat();
+                targets[counter].GetComponent<EnemyHP>().life = 0;
+                targets[counter].GetComponentInChildren<Animator>().speed = 1;
+                yield return new WaitForSeconds(attackClip.length * 0.2f);
+                Destroy(holograms[counter]);
+                counter++;
+            }
         }
         Destroy(gameObject);
     }

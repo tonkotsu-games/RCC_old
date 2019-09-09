@@ -32,7 +32,7 @@ public class EnhanceHitProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && other.gameObject.GetComponent<EnemyHP>() != null)
         {
             EnemyHP enemyLife = other.GetComponent<EnemyHP>();
             Debug.Log("EnemyLifeAtStart: " + enemyLife);

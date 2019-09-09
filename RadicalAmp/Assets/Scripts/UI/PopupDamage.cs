@@ -30,14 +30,17 @@ public class PopupDamage : MonoBehaviour
     {
         if(damage<= 400)
         {
+            popupText.fontSize = 30f;
             popupText.color = popUpColors[0];
         }
         else if (damage <= 750)
         {
+            popupText.fontSize = 60f;
             popupText.color = popUpColors[1];
         }
         else if(damage > 750)
         {
+            popupText.fontSize = 150f;
             popupText.color = popUpColors[2];
         }
     }

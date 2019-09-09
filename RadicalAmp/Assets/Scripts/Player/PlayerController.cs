@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     [MinMaxSlider(-3f, 3f)]
     public Vector2 soundPitchRange = new Vector2(1f,1f);
 
+    private float move;
     [SerializeField]
     ParticleSystem[] bloodSplatter;
 
@@ -128,6 +129,9 @@ public class PlayerController : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
+
+
+        Debug.Log("MOVE: " + move);
 
         anim.SetFloat("PosX", moveHorizontal);
         anim.SetFloat("PosY", moveVertical);
@@ -274,9 +278,14 @@ public class PlayerController : MonoBehaviour
 
     void MovementCalculation()
     {
+        move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).magnitude;
+        if(move > 1)
+        {
+            move = 1;
+        }
         moveVector = new Vector3(moveHorizontal, 0f, moveVertical);
 
-        moveVector = moveVector.normalized * movementSpeed;
+        moveVector = moveVector.normalized * move * movementSpeed;
     }
 
     /// <summary>

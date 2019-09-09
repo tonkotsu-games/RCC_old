@@ -38,8 +38,10 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
-        gateMaterial = gate.GetComponent<Renderer>().material;
-
+        if (gate != null)
+        {
+            gateMaterial = gate.GetComponent<Renderer>().material;
+        }
         if (clone != null)
         {
             cloneAnim = clone.GetComponent<TutorialClone>();
@@ -205,13 +207,16 @@ public class Tutorial : MonoBehaviour
         }
         if(currentStep == TutorialSteps.TutorialPreFinish)
         {
-            gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
-
-            if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
+            if (gate != null)
             {
-                clone.SetActive(false);
-                gate.SetActive(false);
-                currentStep += 1;
+                gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
+
+                if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
+                {
+                    clone.SetActive(false);
+                    gate.SetActive(false);
+                    currentStep += 1;
+                }
             }
         }
         if (currentStep == TutorialSteps.TutorialFinish)

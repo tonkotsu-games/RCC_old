@@ -284,7 +284,7 @@ public class JuiceDash : MonoBehaviour
     void SpawnClone()
     {
         //nikCam.gameObject.GetComponent<CameraShake>().enabled = true;
-        nikCam.zoomSpeedFour = new Vector3(zoomSpeedFourBase.x, zoomSpeedFourBase.y + zoomSpeedYIncrease * 10, zoomSpeedFourBase.z);
+        nikCam.zoomSpeedFour = new Vector3(zoomSpeedFourBase.x, zoomSpeedFourBase.y + zoomSpeedYIncrease * 2, zoomSpeedFourBase.z);
         CameraFollow.ChangeCameraState(4);
         GameObject clone = Instantiate(playerClone, transform.position, Quaternion.identity);
         clone.GetComponent<JuiceDashClone>().juiceDashScript = this;

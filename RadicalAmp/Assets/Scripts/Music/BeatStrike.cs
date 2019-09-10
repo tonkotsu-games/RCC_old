@@ -114,7 +114,6 @@ public class BeatStrike : MonoBehaviour
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
-                    Debug.LogError("EnhancedSlash");
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
                 }
 

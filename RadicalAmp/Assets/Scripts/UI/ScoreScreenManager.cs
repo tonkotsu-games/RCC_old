@@ -119,24 +119,57 @@ public class ScoreScreenManager : MonoBehaviour
         valueText.gameObject.SetActive(true);
         float tempScore = 0;
         float tempValue = 0;
-        while (tempScore <= score && tempValue <= value)
+
+        int multiplicatorValue = 1;
+        int multiplicatorScore = 1;
+
+        if(score < 0)
+        {
+            multiplicatorScore = -1;
+        }
+        if(value <0)
+        {
+            multiplicatorValue = -1;
+        }
+   
+        while (tempScore != score && tempValue != value)
         {
             yield return new WaitForSeconds(scrollSpeed);
-            tempScore += score * 0.1f;
-            tempValue += value * 0.1f;
 
-            tempScore = Mathf.RoundToInt(tempScore);
-            // DISPLAY SCORE WHEN ITS AN INT
-            if (Mathf.Approximately(tempScore, Mathf.RoundToInt(tempScore)))
+            tempScore += score * 0.1f * multiplicatorScore;
+            tempValue += value * 0.1f * multiplicatorValue;
+
+            if(score-tempScore*multiplicatorScore <= 0.4f)
             {
-                scoreText.text = Mathf.RoundToInt(tempScore).ToString();
+                Debug.LogError("Finished");
+                tempScore = score;
+                tempValue = value;
             }
 
-            // DISPLAY VALUE WHEN ITS AN INT
-            if (Mathf.Approximately(tempValue, Mathf.RoundToInt(tempValue)))
+            if(scoreTracker == 1)
+            {
+                valueText.text = Mathf.RoundToInt(tempValue).ToString() + " %";
+            }
+            else if(scoreTracker == 2)
+            {
+                valueText.text = Mathf.RoundToInt(tempValue).ToString() + " s";
+            }
+            else
             {
                 valueText.text = Mathf.RoundToInt(tempValue).ToString();
-            }         
+            }
+            scoreText.text = Mathf.RoundToInt(tempScore).ToString();
+           // // DISPLAY SCORE WHEN ITS AN INT
+           // if (Mathf.Approximately(tempScore, Mathf.RoundToInt(tempScore)))
+           // {
+           //     scoreText.text = Mathf.RoundToInt(tempScore).ToString();
+           // }
+           //
+           // // DISPLAY VALUE WHEN ITS AN INT
+           // if (Mathf.Approximately(tempValue, Mathf.RoundToInt(tempValue)))
+           // {
+           //     valueText.text = Mathf.RoundToInt(tempValue).ToString();
+           // }         
         }
 
         scoreText.gameObject.GetComponent<Animator>().SetTrigger("scoreSet");
@@ -177,15 +210,25 @@ public class ScoreScreenManager : MonoBehaviour
 
         inBetweenScore = Mathf.RoundToInt(inBetweenScore);
         float tempBetweenScore = 0;
-
+        Debug.Log("score to set: " + inBetweenScore);
         inBetweenScoreText.gameObject.SetActive(true);
+
         while(tempBetweenScore != inBetweenScore)
         {
             yield return new WaitForSeconds(scrollSpeed);
-            tempBetweenScore += inBetweenScore * 0.05f;
-            if (Mathf.Approximately(tempBetweenScore, Mathf.RoundToInt(tempBetweenScore))){
-                inBetweenScoreText.text = tempBetweenScore.ToString();
+
+            tempBetweenScore += inBetweenScore * 0.1f;
+      
+
+            if(inBetweenScore - tempBetweenScore <= 0.4f)
+            {
+                tempBetweenScore = inBetweenScore;
             }
+            //tempBetweenScore = Mathf.RoundToInt(tempBetweenScore);
+            inBetweenScoreText.text = Mathf.RoundToInt(tempBetweenScore).ToString();
+            //if (Mathf.Approximately(tempBetweenScore, Mathf.RoundToInt(tempBetweenScore))){
+            //    inBetweenScoreText.text = tempBetweenScore.ToString();
+            //}
 
         }
 

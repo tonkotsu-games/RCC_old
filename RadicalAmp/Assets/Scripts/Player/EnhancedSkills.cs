@@ -77,10 +77,10 @@ public class EnhancedSkills : MonoBehaviour
 
                     currentEnhancedState = EnhancedState.Inactive;
                     spotlights.GetComponent<SpotlightGroup>().DisableAllActiveLights();
-                    Debug.Log("Enhanced State now " + currentEnhancedState);
+                    //Debug.Log("Enhanced State now " + currentEnhancedState);
                     break;
             }
-            Debug.Log(requestedState);
+            //Debug.Log(requestedState);
         }
     }
 

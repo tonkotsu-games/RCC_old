@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     public static bool dancing = false;
     public static bool attack1DONE;
 
+    public bool chargedDash = false;
+
     private PlayerController DeadDisable;
     private Respawn respawn;
     private Slider juiceMeter;
@@ -129,9 +131,6 @@ public class PlayerController : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
-
-
-        Debug.Log("MOVE: " + move);
 
         anim.SetFloat("PosX", moveHorizontal);
         anim.SetFloat("PosY", moveVertical);
@@ -237,7 +236,7 @@ public class PlayerController : MonoBehaviour
         {
             Gravity();
         }
-        if (!dashing && !dancing && IsGrounded.isGrounded)
+        if (!dashing && !dancing && IsGrounded.isGrounded && !chargedDash)
         {
             Move();
         }
@@ -564,7 +563,7 @@ public class PlayerController : MonoBehaviour
         clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         if(clipInfo.Length == 0)
         {
-            Debug.Log("No Clip found in Layer 0");
+            //Debug.Log("No Clip found in Layer 0");
             return "attack";
         }
         return clipInfo[0].clip.name;

@@ -11,7 +11,8 @@ public class EnhanceHitProjectile : MonoBehaviour
     [SerializeField] float maxRange;
     [SerializeField] int projectileDamage;
     Slider juiceMeter;
-    // Start is called before the first frame update
+    
+    
     void Start()
     {
         spawnPoint = gameObject.transform.position;
@@ -27,14 +28,13 @@ public class EnhanceHitProjectile : MonoBehaviour
         }
         else
         { 
-            Debug.Log("Destroying Projectile");
             Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && other.gameObject.GetComponent<EnemyHP>() != null)
+        if (other.tag == "Enemy" || other.tag == "Boss" && other.gameObject.GetComponent<EnemyHP>() != null)
         {
             EnemyHP enemyLife = other.GetComponent<EnemyHP>();
             Debug.Log("EnemyLifeAtStart: " + enemyLife);

@@ -8,8 +8,9 @@ public class CameraFollow : MonoBehaviour
     [Header("Camera State")]
     [Tooltip("Camera state integer, dependent on the number of enemies near the player.")]
     private static int cameraState = 0;
-  //[Range(0,4)]
-  // public int cameraState = 0;
+    public bool usingEnemyDetection = true;
+    //[Range(0,4)]
+    // public int cameraState = 0;
 
     [Required]
     [Header("Camera Target")]
@@ -28,7 +29,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 offsetThree = new Vector3(0f,10f,-10.5f);
     [Tooltip("The offset for CameraState 4 (currently the maximum, even if there are more enemies).")]
     [SerializeField] Vector3 offsetFour = new Vector3(0f,12f,-12f);
-    
+    [Tooltip("The offset for Tunnel.")]
+    [SerializeField] Vector3 offsetTunnel = new Vector3(0f, 12f, -12f);
+
     [Header("Angles")]
     [InfoBox("The angles the camera should adopt, dependent on the CameraState.")]
     [Tooltip("The angle for CameraState 0.")]
@@ -41,7 +44,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 angleThree = new Vector3(35.5f,0f,0f);
     [Tooltip("The angle for CameraState 4.")]
     [SerializeField] Vector3 angleFour = new Vector3(37.8f,0f,0f);
-    
+    [Tooltip("The angle for Tunnel.")]
+    [SerializeField] Vector3 angleTunnel = new Vector3(37.8f, 0f, 0f);
+
     [Header("Follow Speed")]
     [InfoBox("The speed at which the camera should follow the Player, dependent on the CameraState.")]
     [Tooltip("The follow speed for CameraState 0.")]
@@ -54,7 +59,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 followSpeedThree = new Vector3(20f,15f,40f);
     [Tooltip("The follow speed for CameraState 4.")]
     [SerializeField] Vector3 followSpeedFour = new Vector3(20f,15f,40f);
-    
+    [Tooltip("The follow speed for Tunnel.")]
+    [SerializeField] Vector3 followSpeedTunnel = new Vector3(20f, 15f, 40f);
+
     [Header("Zoom Speed")]
     [InfoBox("The speed at which the camera should move to the state dependent offset, also dependent on the CameraState.")]
     [Tooltip("The zoom speed for CameraState 0.")]
@@ -67,7 +74,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] Vector3 zoomSpeedThree = new Vector3(10f,10f,10f);
     [Tooltip("The zoom speed for CameraState 4.")]
     [SerializeField] public Vector3 zoomSpeedFour = new Vector3(10f,10f,10f);
-    
+    [Tooltip("The zoom speed for Tunnel.")]
+    [SerializeField] public Vector3 zoomSpeedTunnel = new Vector3(10f, 10f, 10f);
+
     [Header("Camera X Rotation Speed")]
     [InfoBox("The speed at which the camera should to the state dependent angle, currently only around X-Axis.")]
     [Tooltip("Maximum turn rate in degrees per second for State 0.")]
@@ -80,6 +89,10 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] float turningRateThree = 30f;
     [Tooltip("Maximum turn rate in degrees per second for State 4.")]
     [SerializeField] float turningRateFour = 30f;
+    [Tooltip("Maximum turn rate in degrees per second for Tunnel.")]
+    [SerializeField] float turningRateTunnel = 30f;
+
+    static public bool usingEnemyRange = true;
 
     private float turningRate = 30f;
     private Vector3 offsetCurrent;
@@ -113,6 +126,8 @@ public class CameraFollow : MonoBehaviour
             inTrailer = !inTrailer;
         }
 
+        Debug.Log("JuiceDashActive " + juiceDashActive);
+
 
         SetVariables();
         CalculateSmoothFollow();
@@ -126,26 +141,29 @@ public class CameraFollow : MonoBehaviour
         {
             if (!juiceDashActive)
             {
-                switch (enemyCount)
+                if(usingEnemyRange)
                 {
-                    case 0:
-                        cameraState = 0;
-                        break;
-                    case 1:
-                        cameraState = 1;
-                        break;
-                    case 2:
-                        cameraState = 2;
-                        break;
-                    case 3:
-                        cameraState = 3;
-                        break;
-                    case 4:
-                        cameraState = 4;
-                        break;
-                    default:
-                        cameraState = 4;
-                        break;
+                    switch (enemyCount)
+                    {
+                        case 0:
+                            cameraState = 0;
+                            break;
+                        case 1:
+                            cameraState = 1;
+                            break;
+                        case 2:
+                            cameraState = 2;
+                            break;
+                        case 3:
+                            cameraState = 3;
+                            break;
+                        case 4:
+                            cameraState = 4;
+                            break;
+                        default:
+                            cameraState = 4;
+                            break;
+                    }
                 }
             }
         }
@@ -210,6 +228,12 @@ public class CameraFollow : MonoBehaviour
                 followSpeed = followSpeedFour;
                 turningRate = turningRateFour;
                 break;
+            case 10:
+                offsetCurrent = CalculateSmoothMovementFromTo(offsetCurrent, offsetTunnel, zoomSpeedTunnel.x, zoomSpeedTunnel.y, zoomSpeedTunnel.z);
+                SetBlendedEulerAngles(angleTunnel);
+                followSpeed = followSpeedTunnel;
+                turningRate = turningRateTunnel;
+                break;
             default:
                 Debug.LogError("This State doesn't exist yet");
                 cameraState = 4;
@@ -249,6 +273,7 @@ public class CameraFollow : MonoBehaviour
     public static void ChangeCameraState(int newCameraState)
     {
         cameraState = newCameraState;
+        Debug.Log("Camera State Changed To: " + cameraState);
     }
     #endregion
 }

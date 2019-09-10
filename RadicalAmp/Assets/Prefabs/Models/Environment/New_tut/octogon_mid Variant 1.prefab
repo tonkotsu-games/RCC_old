@@ -10,8 +10,13 @@ PrefabInstance:
     - target: {fileID: 9016587348198501887, guid: eb10a9772839345abad1450186f7457e,
         type: 3}
       propertyPath: m_Name
-      value: octogon_mid
+      value: octogon_mid Variant 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9016587348196307775, guid: eb10a9772839345abad1450186f7457e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0510fa6aac332430188ae603613dea77, type: 2}
     - target: {fileID: 9016587348198076895, guid: eb10a9772839345abad1450186f7457e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -67,10 +72,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9016587348196307775, guid: eb10a9772839345abad1450186f7457e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 0510fa6aac332430188ae603613dea77, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb10a9772839345abad1450186f7457e, type: 3}

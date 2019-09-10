@@ -42,7 +42,7 @@ public class JuiceDashClone : MonoBehaviour
     {
         if (!dashEnabled && startAction)
         {
-            Debug.Log("Clone Calculating Position");
+            //Debug.Log("Clone Calculating Position");
             CalculateNextPos(targetCounter);
             targetCounter++;
         }
@@ -51,7 +51,7 @@ public class JuiceDashClone : MonoBehaviour
             if (!dashing)
             {
                 dashing = true;
-                Debug.Log("enablingDashing");
+                //Debug.Log("enablingDashing");
                 SpawnDashParticles();
                 Physics.IgnoreLayerCollision(9, 13, true);
             }
@@ -113,7 +113,7 @@ public class JuiceDashClone : MonoBehaviour
 
     IEnumerator DelayBetweenDashes()
     {
-        Debug.Log("starting waittime");
+        //Debug.Log("starting waittime");
         yield return new WaitForSeconds(delay);
         delayActive = false;
         dashEnabled = false;

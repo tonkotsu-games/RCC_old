@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     public static bool dancing = false;
     public static bool attack1DONE;
 
+    public bool chargedDash = false;
+
     private PlayerController DeadDisable;
     private Respawn respawn;
     private Slider juiceMeter;
@@ -234,7 +236,7 @@ public class PlayerController : MonoBehaviour
         {
             Gravity();
         }
-        if (!dashing && !dancing && IsGrounded.isGrounded)
+        if (!dashing && !dancing && IsGrounded.isGrounded && !chargedDash)
         {
             Move();
         }

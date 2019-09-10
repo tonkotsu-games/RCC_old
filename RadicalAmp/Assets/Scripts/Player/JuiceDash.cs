@@ -14,6 +14,7 @@ public class JuiceDash : MonoBehaviour
     [SerializeField] float abilityRange = 20;
     public float markerOffset = 5;
     Animator playerAnim;
+    private PlayerController player;
 
     public GameObject playerClone;
     //public int enemiesTargetedPerCharge = 3;
@@ -67,6 +68,7 @@ public class JuiceDash : MonoBehaviour
         zoomSpeedTwoBase = nikCam.zoomSpeedTwo;
         zoomSpeedFourBase = nikCam.zoomSpeedFour;
         //shakeTimer = shakeDuration;
+        player = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -97,6 +99,7 @@ public class JuiceDash : MonoBehaviour
         if (Input.GetButton("Dash") &&
             triggerLeft)
         {
+            player.chargedDash = true;
             if (beatAnalyse.IsOnBeat(1000) && beat == false)
             {                
                 beat = true;
@@ -124,6 +127,7 @@ public class JuiceDash : MonoBehaviour
 
             if (requestedState == ChargeStates.none)
             {
+                player.chargedDash = false;
                 markedTargets.Clear();
                 abilityReady = false;
                 DisableAllMarkers();

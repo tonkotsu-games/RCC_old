@@ -362,12 +362,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactionTime: 4000
   windowTrigger: 6000
-  dashReward: 5
-  attackReward: 3
-  danceReward: 1
-  dashPunish: 10
-  attackPunish: 6
-  dancePunish: 2
+  dashReward: 4
+  attackReward: 4
+  danceReward: 6
+  dashPunish: 8
+  attackPunish: 7
+  dancePunish: 6
   idlePunish: 1
   bodyMat: {fileID: 2100000, guid: 912b2c9240c23c64d947b5519a8e5ddf, type: 2}
   capeMat: {fileID: 2100000, guid: bd14c92d6aab2c54cbb857aab120a78b, type: 2}
@@ -569,6 +569,8 @@ MonoBehaviour:
   soundPitchRange: {x: 1, y: 1}
   knockbackRange: 2.5
   damage: 2
+  baseDamage: 0
+  damageOnBeat: 0
 --- !u!65 &7115225058092246107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -910,8 +912,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: -0.00000047683716, y: -0.060911655, z: 0.0006723404}
-    m_Extent: {x: 0.8871153, y: 0.42805073, z: 0.27870438}
+    m_Center: {x: 0.0000009536743, y: 0.9900894, z: 0.0006723851}
+    m_Extent: {x: 0.49480224, y: 0.88781726, z: 0.30694872}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041
 Cloth:

@@ -103,7 +103,6 @@ public class TiffanyController : MonoBehaviour
     {
         if(requestedState == currentTiffState)
         {
-            Debug.Log("already in state " + requestedState);
             return;
         }
         else

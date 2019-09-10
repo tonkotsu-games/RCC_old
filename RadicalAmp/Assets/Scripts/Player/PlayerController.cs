@@ -557,7 +557,7 @@ public class PlayerController : MonoBehaviour
         clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         if(clipInfo.Length == 0)
         {
-            Debug.Log("No Clip found in Layer 0");
+            //Debug.Log("No Clip found in Layer 0");
             return "attack";
         }
         return clipInfo[0].clip.name;

@@ -67,7 +67,7 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayRunning(true);
             tutorialContainer.SetActive(true);
             tmproText.text = "Use joystick for movement";
-            anim.Play("AnimMovement");
+            anim.Play("AnimMove");
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }

@@ -126,6 +126,7 @@ MonoBehaviour:
   actor: {fileID: 0}
   playerHitSound: {fileID: 8300000, guid: 2129790a5f831d64b8117e6f4a6a8447, type: 3}
   enemySoundSource: {fileID: 9050517461555910808}
+  soundPitchRange: {x: 1, y: 1}
   damage: 1
 --- !u!82 &9050517461555910808
 AudioSource:
@@ -139,7 +140,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

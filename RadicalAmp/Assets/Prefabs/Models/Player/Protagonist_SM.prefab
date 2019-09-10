@@ -912,8 +912,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 2960425245246119779}
   m_AABB:
-    m_Center: {x: 0.16162658, y: -0.054928303, z: -0.008732915}
-    m_Extent: {x: 0.88563055, y: 0.42134857, z: 0.27857706}
+    m_Center: {x: -0.00000011920929, y: 0.9900961, z: 0.0006722212}
+    m_Extent: {x: 0.49480197, y: 0.8878147, z: 0.30694878}
   m_DirtyAABB: 0
 --- !u!183 &6166789785342384041
 Cloth:
@@ -6321,6 +6321,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.2869873
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167808972966179888, guid: 111fe1801ab084b4eae3b3f123742c76,
+        type: 3}
+      propertyPath: soundPitchRange.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167808972966179888, guid: 111fe1801ab084b4eae3b3f123742c76,
+        type: 3}
+      propertyPath: soundPitchRange.y
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 111fe1801ab084b4eae3b3f123742c76, type: 3}

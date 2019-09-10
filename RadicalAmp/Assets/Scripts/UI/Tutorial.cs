@@ -19,6 +19,7 @@ public class Tutorial : MonoBehaviour
 
     private TutorialClone cloneAnim;
     private Material gateMaterial;
+    //private Material gateGoldMaterial;
 
     public TutorialSteps currentStep;
 
@@ -41,6 +42,7 @@ public class Tutorial : MonoBehaviour
         if (gate != null)
         {
             gateMaterial = gate.GetComponent<Renderer>().material;
+            //gateGoldMaterial = gate.GetComponent<Renderer>().material;
         }
         if (clone != null)
         {
@@ -210,6 +212,7 @@ public class Tutorial : MonoBehaviour
             if (gate != null)
             {
                 gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
+                //gateGoldMaterial.SetFloat("")
 
                 if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
                 {

@@ -477,7 +477,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -1530,7 +1530,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -2178,7 +2178,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -2778,7 +2778,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Time:'
+  m_text: 'Time difference:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e9dfdc77348a30943b5c3ddd44476e43, type: 2}
   m_sharedMaterial: {fileID: 21311154028814888, guid: e9dfdc77348a30943b5c3ddd44476e43,
@@ -2848,10 +2848,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 92.770454, w: 0}
   m_textInfo:
     textComponent: {fileID: 2119505091458245332}
-    characterCount: 5
+    characterCount: 16
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -3341,7 +3341,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -4109,7 +4109,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -4987,7 +4987,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -5881,7 +5881,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -6043,7 +6043,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -8679,7 +8679,7 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
@@ -8837,29 +8837,12 @@ MonoBehaviour:
   - {fileID: 2119505091979462717}
   - {fileID: 2119505091750173022}
   - {fileID: 2119505092097318189}
-  bonusScores:
-  - 1000
-  - 1000
-  - 1000
   inBetweenScoreText: {fileID: 2119505091105379693}
   modifierMultiplicator: 8.3
   modifierMultiplicatorText: {fileID: 2119505092040241115}
   finalScoreDisplay: {fileID: 2119505092636171511}
-  valueCollector:
-  - 15
-  - 100
-  - 10
-  - 30
-  - 50
-  - 5
-  scoreCollector:
-  - 1500
-  - 256
-  - 548
-  - 450
-  - -150
-  - -500
-  timeBase: 150
+  valueCollector: 0f000000640000000a0000001e0000003200000005000000
+  scoreCollector: dc0500000001000024020000c20100006affffff0cfeffff
   scorePerEnemyKilled: 5
   scorePerBeatPercentage: 10
   scorePerSpecialUsed: 2
@@ -8868,3 +8851,4 @@ MonoBehaviour:
   scorePerDeath: -50
   juiceSlider: {fileID: 2119505092087149300}
   finalRankSplash: {fileID: 2119505091168485066}
+  scoreDone: 0

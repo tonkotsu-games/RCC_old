@@ -11,6 +11,7 @@ public class BeatAnalyse : MonoBehaviour
     [SerializeField] float limit, waitSamples;
     [SerializeField] AudioClip wave;
     [SerializeField] AudioSource sourceWave;
+    bool beat;
 
     private float timeSample;
 
@@ -39,7 +40,18 @@ public class BeatAnalyse : MonoBehaviour
             }
         }
     }
-
+    private void Update()
+    {
+        if (IsOnBeat(1000) && beat == false)
+        {
+            beat = true;
+            ScoreTracker.instance.totalBeats++;
+        }
+        else if (!IsOnBeat(1000))
+        {
+            beat = false;
+        }
+    }
     public bool IsOnBeat(int preStart)
     {
         timeSample = sourceWave.timeSamples - preStart;

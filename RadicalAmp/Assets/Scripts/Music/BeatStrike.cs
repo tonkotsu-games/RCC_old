@@ -73,7 +73,7 @@ public class BeatStrike : MonoBehaviour
 
         pulseBeat = false;
 
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetButtonDown("Dash") && !player.triggerLeft)
         {
             //Reenable collision through Animation Event after Dash
             if (IsOnBeat())

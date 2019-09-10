@@ -149,6 +149,7 @@ public class JuiceDash : MonoBehaviour
                     if (enemiesInRange.Length != 0)
                     {
                         markedTargets.Add(enemiesInRange[0].gameObject);
+                        gameObject.transform.LookAt(markedTargets[0].transform);
                         DisplayMarkerOnTarget(markedTargets[0]);
                         if (markedTargets[0].GetComponent<NavMeshAgent>() != null)
                         {

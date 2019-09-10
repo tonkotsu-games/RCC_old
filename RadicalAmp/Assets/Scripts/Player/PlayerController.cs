@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
             {
                 attacking();
             }
-            else
+            if (GetCurrentClipName() == "Main_Running_Animv1")
             {
                 runattacking();
             }
@@ -528,7 +528,6 @@ public class PlayerController : MonoBehaviour
 
     public void runattacking()
     {
-
         if (attack1DONE == false || runattack1DONE == false)
         {           
             anim.SetTrigger("runattack1");

@@ -34,7 +34,7 @@ public class AttackingCheck : MonoBehaviour
         {
             live = other.gameObject.GetComponent<EnemyLife>();
             live.life -= damage;
-            popupController.CreatePopupText(damage.ToString(), other.gameObject.GetComponent<Transform>().transform);
+            popupController.CreatePopupText(damage, other.gameObject.GetComponent<Transform>().transform);
 
             my_audioSource.clip = enemyHitSound[Random.Range(0, enemyHitSound.Length)];
             my_audioSource.Play();

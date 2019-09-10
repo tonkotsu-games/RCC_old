@@ -9,9 +9,7 @@ public class BeatStrike : MonoBehaviour
     private AudioSource wave;
     private PlayerController player;
 
-    [SerializeField] VisualEffect particleLeft;
-    [SerializeField] VisualEffect particleRight;
-
+    [Header("Reaction time for Beat hitting")]
     [SerializeField] int reactionTime;
     [Header("Time in Samples (10.000 = 0,25sec)")]
     [SerializeField] int windowTrigger;
@@ -19,6 +17,7 @@ public class BeatStrike : MonoBehaviour
 
     bool action = false;
     bool punish = false;
+    public static bool pulseBeat = false;
     public static bool beatAttack = false;
 
     [Header("Juice Reward in int")]
@@ -31,6 +30,15 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] int attackPunish;
     [SerializeField] int dancePunish;
     [SerializeField] int idlePunish;
+
+    [Header("On Beat Vertex Displacemet")]
+    [SerializeField] Material bodyMat;
+    [SerializeField] Material capeMat;
+    [SerializeField] float lerpSpeed = 1f;
+    private float displFloat = 0f;
+
+    Animator anim;
+
 
     private void Awake()
     {
@@ -46,22 +54,35 @@ public class BeatStrike : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = gameObject.GetComponentInChildren<Animator>();
         wave = GameObject.FindWithTag("Beat").GetComponent<AudioSource>();
-        juiceMeter = GameObject.FindWithTag("JuiceMeter").GetComponent<Slider>();
-        particleLeft.Stop();
-        particleRight.Stop();
+        juiceMeter = Locator.instance.GetJuiceMeter();
         player = GetComponent<PlayerController>();
     }
 
     void Update()
     {
+        //lerp the Displacement switch back to 0
+        if(bodyMat.GetFloat("_displSwitch") > 0f)
+        {
+            bodyMat.SetFloat("_displSwitch", Mathf.Lerp(bodyMat.GetFloat("_displSwitch"), 0f, lerpSpeed));
+            capeMat.SetFloat("_displSwitch", Mathf.Lerp(capeMat.GetFloat("_displSwitch"), 0f, lerpSpeed));
+
+        }
+
+
+        pulseBeat = false;
 
         if (Input.GetButtonDown("Dash"))
         {
             //Reenable collision through Animation Event after Dash
-            Physics.IgnoreLayerCollision(9, 13, true);
             if (IsOnBeat())
             {
+
+                bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
+
+                pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Dash);
@@ -70,8 +91,6 @@ public class BeatStrike : MonoBehaviour
                 else
                 {
                     juiceMeter.value += dashReward;
-                    particleLeft.Play();
-                    particleRight.Play();
                     action = true;
                 }
             }
@@ -79,15 +98,23 @@ public class BeatStrike : MonoBehaviour
             else
             {
                 juiceMeter.value -= dashPunish;
-                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                if (EnhancedSkills.instance.currentEnhancedState != EnhancedSkills.EnhancedState.Inactive)
+                {
+                    EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                }
             }
         }
         else if (Input.GetButtonDown("Attack"))
         {
             if(IsOnBeat())
             {
+                bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
+
+                pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
+                    Debug.LogError("EnhancedSlash");
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
                 }
 
@@ -101,13 +128,20 @@ public class BeatStrike : MonoBehaviour
             else
             {
                 juiceMeter.value -= attackPunish;
-                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                if (EnhancedSkills.instance.currentEnhancedState != EnhancedSkills.EnhancedState.Inactive)
+                {
+                    EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                }
             }
         }
         else if(Input.GetButtonDown("Dance"))
         {
             if (IsOnBeat())
             {
+                bodyMat.SetFloat("_displSwitch", 1f);
+                capeMat.SetFloat("_displSwitch", 1f);
+
+                pulseBeat = true;
                 juiceMeter.value += danceReward;
                 action = true;
 
@@ -128,7 +162,10 @@ public class BeatStrike : MonoBehaviour
             else
             {
                 juiceMeter.value -= dancePunish;
-                EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                if (EnhancedSkills.instance.currentEnhancedState != EnhancedSkills.EnhancedState.Inactive)
+                {
+                    EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
+                }
             }
         }
         Punishing();
@@ -148,13 +185,6 @@ public class BeatStrike : MonoBehaviour
         {
             punish = false;
         }
-
-        if (player.dashTimer.timeCurrent <= 0)
-        {
-            particleLeft.Stop();
-            particleRight.Stop();
-        }
-
     }
 
     public bool IsOnBeat()
@@ -224,13 +254,6 @@ public class BeatStrike : MonoBehaviour
         }
 
 
-
-    }
-
-    //Reenable Player collision with enemies - called through animation event at the end of dash
-    public void EnableColliders()
-    {
-        Physics.IgnoreLayerCollision(9, 13, false);
 
     }
 

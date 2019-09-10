@@ -6,12 +6,13 @@ using UnityEngine.Experimental.VFX;
 
 public class EnemyHP : MonoBehaviour
 {
-    [SerializeField] VisualEffect blood;
+    [SerializeField] ParticleSystem[] bloodSplatter;
 
     [Header("Enemy Health")]
     public int life;
 
     private Animator EnemyAnim;
+    private Renderer enemyDissolve;
 
     private float NavmeshSpeed;
 
@@ -19,21 +20,35 @@ public class EnemyHP : MonoBehaviour
 
     public bool death = false;
 
+    [SerializeField] private EndScreenTrigger endScreen;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         EnemyAnim = gameObject.GetComponentInChildren<Animator>();
         EnemyAnim.SetBool("dead", false);
         EnemyNav = gameObject.GetComponent<NavMeshAgent>();
-        blood.SetFloat("Velocity Multiplier", 6f);
-        blood.Stop();
+        enemyDissolve = gameObject.transform.GetChild(0).GetChild(1).GetComponent<Renderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(life <= 0 && !death)
+
+
+        if (life <= 0 && !death)
         {
+            // Adding to the score for enemies killed
+            // ScoreTracker.instance.statContainer[0] += 1;
+
+            if(LevelManager.instance != null)
+            {
+                Debug.Log("Removing " + gameObject.name + " from list");
+                LevelManager.instance.DeleteFromEnemyCount(this.gameObject);
+            }
             EnemyDeath();
             death = true;
         }
@@ -41,14 +56,23 @@ public class EnemyHP : MonoBehaviour
 
     public void BloodSplat()
     {
-        blood.Play();
         //Debug.Log("BLOOD!");
+        ParticleSystem particles = bloodSplatter[Random.Range(0, bloodSplatter.Length)];
+        particles.Play();
     }
 
     private void EnemyDeath()
     {
+       if(gameObject.GetComponent<Beathoven>() != null)
+       {
+           endScreen.TriggerEndEvent();
+       }
         EnemyAnim.SetBool("dead", true);
-        Debug.LogError("Beathoven death!");
+        Debug.Log(EnemyNav.gameObject.name + " died!");
+        EnemyNav.gameObject.GetComponent<Actor>().Death();
+
+
+        EnemyNav.gameObject.transform.LookAt(Locator.instance.GetPlayerPosition());
         //Debug.Log("Deregister Boss from list");
 
 

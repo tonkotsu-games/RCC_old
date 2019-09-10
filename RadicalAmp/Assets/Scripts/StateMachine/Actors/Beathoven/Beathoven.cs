@@ -16,6 +16,9 @@ public class Beathoven : Actor
     [SerializeField] BeatAnalyse beatanalyse;
     [SerializeField] int preStartAttack = 1000;
 
+    public string specialAttackState;
+    [SerializeField] int preStartSpecialAttack = 1000;
+
     
 
     private void Awake()
@@ -40,9 +43,9 @@ public class Beathoven : Actor
         this.StateMachine.ChangeState(new Idle(this));
     }
 
-    private void Update()
+    protected override void Update()
     {
-        StateMachine.StateExecuteTick();
+        base.Update();
 
         if(StateMachine.StateCurrent is Idle && player != null)
         {
@@ -64,31 +67,25 @@ public class Beathoven : Actor
     public void ChooseBehaviourAfterIdle(SearchResult searchResult)
     {
         var foundPlayers = searchResult.allHitObjectsWithRequiredTag;
-        
-        //Search Results
-        //Debug.Log("Choosing After Idle");
-        if(foundPlayers.Count > 0)
-        {
-            //Debug.Log("not empty " + foundPlayers.Count);
-            player = foundPlayers[0].gameObject.transform;
-            //Debug.Log(player.gameObject.name);
-        }
-        //else Debug.Log("Empty");
-
 
         //Choose what to do by using info provided by the Search
         if(foundPlayers.Count > 0)
         {
-            Debug.Log("player " + player.position + " beathoven " + this.gameObject.transform.position );
+            player = foundPlayers[0].gameObject.transform;
+
             //Attack Player in Melee AttackRange
             if (Vector3.Distance(player.position, this.gameObject.transform.position) < bossData.meleeAttackRange)
             {
-                StateMachine.ChangeState(new Attack(this, player));
+              ChooseAttack();
             }
             //Walk to Player in AggroRange
-            else if(Vector3.Distance(player.position, this.gameObject.transform.position) < bossData.aggroRange)
+            else if(Vector3.Distance(player.position, this.gameObject.transform.position) < (bossData.aggroRange + 0.5f))
             {
                 StateMachine.ChangeState(new WalkTo(this, player, navMeshAgent, bossData.aggroRange, ActorData.meleeAttackRange));
+            }
+            else
+            {
+                StateMachine.ReturnToPreviousState();
             }
         }
         else
@@ -101,12 +98,36 @@ public class Beathoven : Actor
     {
         if(StateMachine.StateCurrent is Idle)
         {
-            //Debug.Log("Choosing to Search");
             StateMachine.ChangeState(new SearchFor(gameObject, bossData.aggroRange, "Player", ChooseBehaviourAfterIdle));
         }
         else if(StateMachine.StateCurrent is WalkTo)
         {
+            ChooseAttack();
+        }
+    }
+
+    private void ChooseAttack()
+    {
+        int randomNumber = Random.Range(0, 5);
+        Debug.Log("RandomNumber " + randomNumber);
+
+        if (randomNumber < 4)
+        {
             StateMachine.ChangeState(new Attack(this, player));
+        }
+        else
+        {
+            Debug.Log("SpecialAttack!");
+
+            if (specialAttackState == "waveAttack")
+            {
+                Debug.LogError("Now in WaveAttack");
+                StateMachine.ChangeState(new WaveAttack(this, player));
+            }
+            else if(specialAttackState == "")
+            {
+                StateMachine.ChangeState(new Attack(this, player));
+            }
         }
     }
 
@@ -122,6 +143,13 @@ public class Beathoven : Actor
         if(state is Attack)
         {
             if(beatanalyse.IsOnBeat(preStartAttack))
+            {
+                return true;
+            }
+        }
+        else if(state is WaveAttack)
+        {
+            if(beatanalyse.IsOnBeat(preStartSpecialAttack))
             {
                 return true;
             }

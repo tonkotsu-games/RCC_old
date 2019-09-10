@@ -7,26 +7,28 @@ public class JuiceDMGControl : MonoBehaviour
 {
     private Slider Juicemeter;
     private PlayerAttackCheck damage;
+    public int juiceDamage;
 
     void Start()
     {
         Juicemeter = gameObject.GetComponent<Slider>();
-        damage = GameObject.FindWithTag("PlayerWeapon").GetComponent<PlayerAttackCheck>();
+        damage = GameObject.FindWithTag("Player").GetComponent<PlayerAttackCheck>();
     }
 
     void Update()
     {
-        if(Juicemeter.value >= 0 && Juicemeter.value <= 25 )
-        {
-            damage.damage = 1;
-        }
-        else if(Juicemeter.value >= 26 && Juicemeter.value <= 50)
-        {
-            damage.damage = 2;
-        }
-        else if (Juicemeter.value >= 51 && Juicemeter.value <= 100)
-        {
-            damage.damage = 3;
-        }
+       // juiceDamage = damage.damage + Mathf.RoundToInt(Juicemeter.value)*10;
+       // if(Juicemeter.value >= 0 && Juicemeter.value <= 25 )
+       // {
+       //     damage.damage = 1;
+       // }
+       // else if(Juicemeter.value >= 26 && Juicemeter.value <= 50)
+       // {
+       //     damage.damage = 2;
+       // }
+       // else if (Juicemeter.value >= 51 && Juicemeter.value <= 100)
+       // {
+       //     damage.damage = 3;
+       // }
     }
 }

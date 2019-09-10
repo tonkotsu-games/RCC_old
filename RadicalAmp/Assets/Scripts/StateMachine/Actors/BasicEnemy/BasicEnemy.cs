@@ -17,8 +17,10 @@ public class BasicEnemy : Actor
 
     [SerializeField] BeatAnalyse beatanalyse;
     [SerializeField] int preStartAttack = 1000;
+    [SerializeField] int preStartSpecialAttack = 1000;
+    [SerializeField] SplashScreenTrigger cutSceneFreeze;
 
-    
+    public string specialAttackState;
 
     private void Awake()
     {
@@ -32,7 +34,7 @@ public class BasicEnemy : Actor
 
         if(beatanalyse == null)
         {
-            Debug.LogError("MusicBox in Beathoven not set up!");
+            Debug.LogError("MusicBox in " + gameObject.name + " not set up!");
         }
 
         navMeshAgent = this.GetComponent<NavMeshAgent>();
@@ -40,10 +42,23 @@ public class BasicEnemy : Actor
     void Start()
     {
         this.StateMachine.ChangeState(new Idle(this));
+        if(LevelManager.instance != null)
+        {
+            Debug.Log("Adding " + gameObject.name + " to list");
+            LevelManager.instance.AddToEnemyCount(this.gameObject);
+        }
     }
 
     private void Update()
     {
+        if (cutSceneFreeze != null)
+        {
+            if (cutSceneFreeze.movementLock)
+            {
+                StateMachine.ChangeState(new Idle(this));
+            }
+        }
+
         StateMachine.StateExecuteTick();
 
         if(StateMachine.StateCurrent is Idle && player != null)
@@ -66,27 +81,19 @@ public class BasicEnemy : Actor
     public void ChooseBehaviourAfterIdle(SearchResult searchResult)
     {
         var foundPlayers = searchResult.allHitObjectsWithRequiredTag;
-        
-        //Search Results
-        //Debug.Log("Choosing After Idle");
+
+        //Choose what to do by using info provided by the Search
         if(foundPlayers.Count > 0)
         {
             //Debug.Log("not empty " + foundPlayers.Count);
             player = foundPlayers[0].gameObject.transform;
             //Debug.Log(player.gameObject.name);
-        }
-        //else Debug.Log("Empty");
-
-
-        //Choose what to do by using info provided by the Search
-        if(foundPlayers.Count > 0)
-        {
             //Debug.Log("player " + player.position + " BasicEnemy " + this.gameObject.transform.position );
+
             //Attack Player in Melee AttackRange
             if (Vector3.Distance(player.position, this.gameObject.transform.position) < basicEnemyData.meleeAttackRange)
             {
-                //Debug.Log("Went to Attack");
-                StateMachine.ChangeState(new Attack(this, player));
+              ChooseAttack();
             }
             //Walk to Player in AggroRange
             else if(Vector3.Distance(player.position, this.gameObject.transform.position) < (basicEnemyData.aggroRange + 0.5f))
@@ -102,6 +109,7 @@ public class BasicEnemy : Actor
         }
         else
         {
+            //else Debug.Log("No Player found");
             //Debug.Log("returned to previous");
             StateMachine.ReturnToPreviousState();
         }
@@ -116,7 +124,30 @@ public class BasicEnemy : Actor
         }
         else if(StateMachine.StateCurrent is WalkTo)
         {
+            ChooseAttack();
+        }
+    }
+
+    private void ChooseAttack()
+    {
+        int randomNumber = Random.Range(0, 5);
+
+
+        if (randomNumber < 4)
+        {
             StateMachine.ChangeState(new Attack(this, player));
+        }
+        else
+        {
+
+            if (specialAttackState == "specialAttack")
+            {
+                StateMachine.ChangeState(new SpecialAttack(this, player));
+            }
+            else if(specialAttackState == "")
+            {
+                StateMachine.ChangeState(new Attack(this, player));
+            }
         }
     }
 
@@ -134,6 +165,15 @@ public class BasicEnemy : Actor
         {
             //Debug.Log("IsAttack");
             if(beatanalyse.IsOnBeat(preStartAttack))
+            {
+                //Debug.Log("HitBeat");
+                return true;
+            }
+        }
+        else if(state is SpecialAttack)
+        {
+            //Debug.Log("IsAttack");
+            if(beatanalyse.IsOnBeat(preStartSpecialAttack))
             {
                 //Debug.Log("HitBeat");
                 return true;

@@ -14,8 +14,8 @@ public class GameState : MonoBehaviour
             Exit
         }
 
-    [SerializeField] bool testing;
-    public State stateTest;
+    Camera introCam;
+    public bool testing;
 
     public static GameState instance;
 
@@ -95,9 +95,9 @@ public class GameState : MonoBehaviour
 
     void Start()
     {
-        if (testing)
+        if (testing && SceneManager.GetActiveScene().name != "Arena")
         {
-            stateCurrent = stateTest;
+            stateCurrent = State.Test;
         }
     }
 }

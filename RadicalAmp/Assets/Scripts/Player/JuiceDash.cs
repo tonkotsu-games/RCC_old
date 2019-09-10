@@ -258,12 +258,13 @@ public class JuiceDash : MonoBehaviour
     {
         if (markedTargets.Count != 0)
         {
-            if (target.GetComponentInChildren<Beathoven>() != null)
+            if (target.GetComponent<Beathoven>() != null)
             {
                 Debug.Log("Its a wild beathoven");
             }
             else
             {
+                Debug.Log("target: " + target.name);
                 SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
                 rend.material = juiceTargetMat;
                 target.GetComponentInChildren<Animator>().speed = 0;

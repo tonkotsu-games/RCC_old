@@ -140,11 +140,25 @@ public class ScoreScreenManager : MonoBehaviour
             tempScore += score * 0.1f * multiplicatorScore * scrollMultiplicator;
             tempValue += value * 0.1f * multiplicatorValue * scrollMultiplicator;
 
-            if(score - tempScore * multiplicatorScore <= 0.4f)
+            if(score > 0)
             {
-                tempScore = score;
-                tempValue = value;
+                if (score - tempScore * multiplicatorScore <= 0.4f)
+                {
+                    Debug.LogError("multiplicator " + multiplicatorScore);
+                    tempScore = score;
+                    tempValue = value;
+                }
             }
+            else
+            {
+                if (score - tempScore * multiplicatorScore >= -0.4f)
+                {
+                    Debug.LogError("multiplicator " + multiplicatorScore);
+                    tempScore = Mathf.Abs(score);
+                    tempValue = value;
+                }
+            }
+            
 
             if(scoreTracker == 1)
             {
@@ -158,7 +172,17 @@ public class ScoreScreenManager : MonoBehaviour
             {
                 valueText.text = Mathf.RoundToInt(tempValue).ToString();
             }
-            scoreText.text = Mathf.RoundToInt(tempScore).ToString();
+
+            if (multiplicatorScore > 0)
+            {
+                scoreText.text = Mathf.RoundToInt(tempScore).ToString();
+            }
+            else
+            {
+                scoreText.text = "-" + Mathf.RoundToInt(tempScore).ToString();
+            }
+
+            
            // // DISPLAY SCORE WHEN ITS AN INT
            // if (Mathf.Approximately(tempScore, Mathf.RoundToInt(tempScore)))
            // {

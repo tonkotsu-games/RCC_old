@@ -164,8 +164,9 @@ public class JuiceDashClone : MonoBehaviour
                 }
                 else
                 {
-                    targets[counter].GetComponent<EnemyHP>().life = 0;
                     PopupDamageController.instance.CreatePopupText(targets[counter].GetComponent<EnemyHP>().life + Random.Range(10, 500), targets[counter].transform);
+
+                    targets[counter].GetComponent<EnemyHP>().life = 0;
                 }
                 targets[counter].GetComponentInChildren<Animator>().speed = 1;
                 yield return new WaitForSeconds(attackClip.length * 0.2f);

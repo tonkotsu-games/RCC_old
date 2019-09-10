@@ -26,12 +26,12 @@ public class JuiceDashClone : MonoBehaviour
     [SerializeField] int damageVSBeathoven = 3500;
     public GameObject dashParticlesPrefab;
 
-    private Tutorial tutotial;
+    private Tutorial tutorial;
 
     // Start is called before the first frame update
     void Start()
     {
-        tutotial = GameObject.FindWithTag("Canvas").GetComponent<Tutorial>();
+        tutorial = GameObject.FindWithTag("Canvas").GetComponent<Tutorial>();
         startPos = transform.position;
         anim = gameObject.GetComponent<Animator>();
         holograms = new List<GameObject>();
@@ -131,7 +131,7 @@ public class JuiceDashClone : MonoBehaviour
         }
 
         int counter = 0;
-        if(tutotial.currentStep == Tutorial.TutorialSteps.JuiceDashTest)
+        if(tutorial.currentStep == Tutorial.TutorialSteps.JuiceDashTest)
         {
             while (counter < targets.Count)
             {

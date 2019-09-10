@@ -190,9 +190,9 @@ public class JuiceDash : MonoBehaviour
                 }
                 foreach (GameObject target in markedTargets)
                 {
+                    DisplayMarkerOnTarget(target);
                     if (target.GetComponent<NavMeshAgent>() != null)
                     {
-                        DisplayMarkerOnTarget(target);
                         target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                     }
                 }
@@ -218,9 +218,9 @@ public class JuiceDash : MonoBehaviour
                 }
                 foreach (GameObject target in markedTargets)
                 {
+                    DisplayMarkerOnTarget(target);
                     if (target.GetComponent<NavMeshAgent>() != null)
                     {
-                        DisplayMarkerOnTarget(target);
                         target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                     }
                 }

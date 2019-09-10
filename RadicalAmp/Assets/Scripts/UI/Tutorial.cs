@@ -38,12 +38,10 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
-        gateMaterial = gate.GetComponent<Renderer>().material;
-        if(gateMaterial == null)
+        if (gate != null)
         {
-            Debug.Log("ARSCHLOCH ARSCHLOCH");
+            gateMaterial = gate.GetComponent<Renderer>().material;
         }
-
         if (clone != null)
         {
             cloneAnim = clone.GetComponent<TutorialClone>();
@@ -92,7 +90,6 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayRunning(false);
             cloneAnim.PlayDash(true);
             tmproText.text = "Press A to dash, dash three times.";
-            tutorialContainer.SetActive(true);
             anim.Play("AnimDash");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -114,7 +111,6 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayDash(false);
             cloneAnim.PlayAttack(true);
             tmproText.text = "Press RB to slash, slash three times.";
-            tutorialContainer.SetActive(true);
             anim.Play("AnimAttack");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -136,7 +132,6 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayAttack(false);
             cloneAnim.PlayDance(true);
             tmproText.text = "Press B to dance, dance three times.";
-            tutorialContainer.SetActive(true);
             anim.Play("AnimDance");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -156,7 +151,6 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.JuiceInfo && !tutorialPlay)
         {
-            tutorialContainer.SetActive(true);
             tmproText.text = "Hit the beat three times, use your dash, shlash or dance.";
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -171,8 +165,7 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.EmpowerSlashInfo && !tutorialPlay)
         {
-            tmproText.text = "Press A to dash, dash three times.";
-            tutorialContainer.SetActive(true);
+            tmproText.text = "Hit the beat with the dance three times \n and then slash on beat to perform an Empowered Slash.\n Defeat the holograms with the Empowered Slash";
             anim.Play("AnimDash");
             foreach(GameObject clone in EmpowerClone)
             {
@@ -191,8 +184,7 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.JuiceDashInfo && !tutorialPlay)
         {
-            tmproText.text = "Press A to dash, dash three times.";
-            tutorialContainer.SetActive(true);
+            tmproText.text = "If you reach max juice, you are capable of performing the Juice Dash,\n holy dash Q. The longer you charge the more enemies will be hit.\n Defeat the holograms with the Juice Dash";
             anim.Play("AnimDash");
             foreach (GameObject clone in JuiceDashClone)
             {
@@ -210,18 +202,21 @@ public class Tutorial : MonoBehaviour
                 currentStep += 1;
                 juiceMeter.minValue = 0;
                 juiceMeter.value = 0;
-
+                tutorialContainer.SetActive(false);
             }
         }
         if(currentStep == TutorialSteps.TutorialPreFinish)
         {
-            gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
-
-            if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
+            if (gate != null)
             {
-                clone.SetActive(false);
-                gate.SetActive(false);
-                currentStep += 1;
+                gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
+
+                if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
+                {
+                    clone.SetActive(false);
+                    gate.SetActive(false);
+                    currentStep += 1;
+                }
             }
         }
         if (currentStep == TutorialSteps.TutorialFinish)
@@ -239,7 +234,6 @@ public class Tutorial : MonoBehaviour
             tutorialPlay = false;
             currentStep += 1;
             tutorialTimer = 1;
-            tutorialContainer.SetActive(false);
         }
     }
 

@@ -14,7 +14,6 @@ public class TutorialClone : MonoBehaviour
 
     private void Awake()
     {
-
         cloneAnim = gameObject.GetComponent<Animator>();
     }
 

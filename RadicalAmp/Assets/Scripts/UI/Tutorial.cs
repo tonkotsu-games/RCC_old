@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Experimental.VFX;
 using TMPro;
 
 public class Tutorial : MonoBehaviour
@@ -68,7 +67,7 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayRunning(true);
             tutorialContainer.SetActive(true);
             tmproText.text = "Use joystick for movement";
-            anim.Play("AnimMovement");
+            anim.Play("AnimMove");
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
@@ -163,7 +162,7 @@ public class Tutorial : MonoBehaviour
         if (currentStep == TutorialSteps.EmpowerSlashInfo && !tutorialPlay)
         {
             tmproText.text = "Hit the beat with the dance three times \n and then slash on beat to perform an Empowered Slash.\n Defeat the holograms with the Empowered Slash";
-            anim.Play("AnimDash");
+            anim.Play("Enchancedslash");
             foreach(GameObject clone in EmpowerClone)
             {
                 clone.SetActive(true);
@@ -182,12 +181,12 @@ public class Tutorial : MonoBehaviour
         if (currentStep == TutorialSteps.JuiceDashInfo && !tutorialPlay)
         {
             tmproText.text = "If you reach max juice, you are capable of performing the Juice Dash,\n holy dash Q. The longer you charge the more enemies will be hit.\n Defeat the holograms with the Juice Dash";
-            anim.Play("AnimDash");
+            anim.Play("Juicedash");
             foreach (GameObject clone in JuiceDashClone)
             {
                 clone.SetActive(true);
             }
-            juiceMeter.minValue = 100;
+            juiceMeter.value = 100;
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
@@ -197,7 +196,6 @@ public class Tutorial : MonoBehaviour
             if (JuiceDashClone.Count == 0)
             {
                 currentStep += 1;
-                juiceMeter.minValue = 0;
                 juiceMeter.value = 0;
                 tutorialContainer.SetActive(false);
             }

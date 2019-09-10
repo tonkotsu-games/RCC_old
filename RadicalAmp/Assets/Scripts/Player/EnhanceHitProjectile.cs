@@ -28,7 +28,6 @@ public class EnhanceHitProjectile : MonoBehaviour
         }
         else
         { 
-            Debug.Log("Destroying Projectile");
             Destroy(gameObject);
         }
     }

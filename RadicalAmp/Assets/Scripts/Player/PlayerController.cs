@@ -130,9 +130,6 @@ public class PlayerController : MonoBehaviour
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveVertical = Input.GetAxisRaw("Vertical");
 
-
-        Debug.Log("MOVE: " + move);
-
         anim.SetFloat("PosX", moveHorizontal);
         anim.SetFloat("PosY", moveVertical);
 

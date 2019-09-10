@@ -8,7 +8,7 @@ public class TutorialAttacks : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Projectile")
+        if(other.gameObject.tag == "Projectile" && tutorial.currentStep == Tutorial.TutorialSteps.EmpowerSlashTest)
         {
             Death();
         }

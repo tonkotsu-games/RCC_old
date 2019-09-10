@@ -120,14 +120,14 @@ public class JuiceDash : MonoBehaviour
         {
 
             currentState = requestedState;
-            Debug.Log("Current State: " + currentState);
+            //Debug.Log("Current State: " + currentState);
 
             if (requestedState == ChargeStates.none)
             {
                 markedTargets.Clear();
                 abilityReady = false;
                 DisableAllMarkers();
-                Debug.Log("Charge failed");
+                //Debug.Log("Charge failed");
                 nextState = ChargeStates.first;
             }
 

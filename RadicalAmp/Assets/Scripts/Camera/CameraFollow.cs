@@ -126,6 +126,8 @@ public class CameraFollow : MonoBehaviour
             inTrailer = !inTrailer;
         }
 
+        Debug.Log("JuiceDashActive " + juiceDashActive);
+
 
         SetVariables();
         CalculateSmoothFollow();

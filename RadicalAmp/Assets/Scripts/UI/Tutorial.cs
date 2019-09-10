@@ -186,12 +186,12 @@ public class Tutorial : MonoBehaviour
             {
                 clone.SetActive(true);
             }
-            juiceMeter.value = 100;
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.JuiceDashTest)
         {
+            juiceMeter.value += 1;
 
             if (JuiceDashClone.Count == 0)
             {

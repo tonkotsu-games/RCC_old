@@ -98,7 +98,8 @@ public class JuiceDash : MonoBehaviour
             triggerLeft)
         {
             if (beatAnalyse.IsOnBeat(1000) && beat == false)
-            {                
+            {
+                player.chargedDash = true;
                 beat = true;
                 Debug.Log("Changing ChargeState");
                 ChangeChargeState(nextState);
@@ -112,6 +113,7 @@ public class JuiceDash : MonoBehaviour
 
     void ChangeChargeState(ChargeStates requestedState)
     {
+
         if (requestedState == currentState)
         {
             Debug.Log("already in state " + requestedState);
@@ -120,14 +122,12 @@ public class JuiceDash : MonoBehaviour
         {
 
             currentState = requestedState;
-            //Debug.Log("Current State: " + currentState);
 
             if (requestedState == ChargeStates.none)
             {
                 markedTargets.Clear();
                 abilityReady = false;
                 DisableAllMarkers();
-                //Debug.Log("Charge failed");
                 nextState = ChargeStates.first;
             }
 

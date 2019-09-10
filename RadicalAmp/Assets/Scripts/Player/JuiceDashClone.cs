@@ -26,12 +26,17 @@ public class JuiceDashClone : MonoBehaviour
     [SerializeField] int damageVSBeathoven = 3500;
     public GameObject dashParticlesPrefab;
 
+    AudioSource source;
+    [SerializeField] AudioClip dashClip;
+    [SerializeField] AudioClip hitClip;
+ 
     private Tutorial tutotial;
 
     // Start is called before the first frame update
     void Start()
     {
         tutotial = GameObject.FindWithTag("Canvas").GetComponent<Tutorial>();
+        source = gameObject.GetComponent<AudioSource>();
         startPos = transform.position;
         anim = gameObject.GetComponent<Animator>();
         holograms = new List<GameObject>();
@@ -66,6 +71,8 @@ public class JuiceDashClone : MonoBehaviour
                 {                  
                     if (!delayActive)
                     {
+                        source.clip = dashClip;
+                        source.Play();
                         if (!returned)
                         {
                             GameObject holo = Instantiate(hologram, transform.position, Quaternion.identity);
@@ -155,6 +162,8 @@ public class JuiceDashClone : MonoBehaviour
                 targets[counter].GetComponent<EnemyHP>().BloodSplat();
                 targets[counter].GetComponent<EnemyHP>().BloodSplat();
                 targets[counter].GetComponent<EnemyHP>().BloodSplat();
+                source.clip = hitClip;
+                source.Play();
                 if(targets[counter].GetComponentInChildren<Beathoven>() != null)
                 {
                     targets[counter].GetComponent<EnemyHP>().life -= damageVSBeathoven ;

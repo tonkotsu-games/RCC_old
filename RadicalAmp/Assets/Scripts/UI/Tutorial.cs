@@ -18,7 +18,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] float setTimer;
 
     private TutorialClone cloneAnim;
-    private Material gateMaterial;
+    [SerializeField] private Material gateMaterial;
+    [SerializeField] private Material gateGoldMaterial;
 
     public TutorialSteps currentStep;
 
@@ -38,10 +39,6 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
-        if (gate != null)
-        {
-            gateMaterial = gate.GetComponent<Renderer>().material;
-        }
         if (clone != null)
         {
             cloneAnim = clone.GetComponent<TutorialClone>();
@@ -210,6 +207,7 @@ public class Tutorial : MonoBehaviour
             if (gate != null)
             {
                 gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
+                gateGoldMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateGoldMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
 
                 if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
                 {
@@ -240,6 +238,12 @@ public class Tutorial : MonoBehaviour
     public void Testing()
     {
         currentStep = TutorialSteps.TutorialPreFinish;
+    }
+
+    private void OnDisable()
+    {
+        gateMaterial.SetFloat("Vector1_36A0E93A", 0f);
+        gateGoldMaterial.SetFloat("Vector1_36A0E93A", 0f);
     }
 
     public enum TutorialSteps

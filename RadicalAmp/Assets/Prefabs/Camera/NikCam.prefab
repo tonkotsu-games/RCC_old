@@ -43,32 +43,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf7b0894cc3a4746b3d38154fda4f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  usingEnemyDetection: 1
   target: {fileID: 0}
   offsetZero: {x: 0, y: 5, z: -6}
   offsetOne: {x: 0, y: 7, z: -7.5}
   offsetTwo: {x: 0, y: 8, z: -8.5}
   offsetThree: {x: 0, y: 10, z: -10.5}
   offsetFour: {x: 0, y: 12, z: -12}
+  offsetTunnel: {x: 0, y: 12, z: -12}
   angleZero: {x: 29.3, y: 0, z: 0}
   angleOne: {x: 31.5, y: 0, z: 0}
   angleTwo: {x: 33, y: 0, z: 0}
   angleThree: {x: 35.5, y: 0, z: 0}
   angleFour: {x: 37.8, y: 0, z: 0}
+  angleTunnel: {x: 5, y: 0, z: 0}
   followSpeedZero: {x: 80, y: 100, z: 100}
   followSpeedOne: {x: 60, y: 80, z: 100}
   followSpeedTwo: {x: 40, y: 60, z: 100}
   followSpeedThree: {x: 35, y: 40, z: 100}
   followSpeedFour: {x: 35, y: 40, z: 100}
+  followSpeedTunnel: {x: 20, y: 15, z: 40}
   zoomSpeedZero: {x: 10, y: 10, z: 10}
   zoomSpeedOne: {x: 10, y: 10, z: 10}
   zoomSpeedTwo: {x: 10, y: 10, z: 10}
   zoomSpeedThree: {x: 10, y: 10, z: 10}
   zoomSpeedFour: {x: 20, y: 20, z: 20}
+  zoomSpeedTunnel: {x: 10, y: 10, z: 10}
   turningRateZero: 30
   turningRateOne: 30
   turningRateTwo: 30
   turningRateThree: 30
   turningRateFour: 80
+  turningRateTunnel: 30
 --- !u!1001 &7188839945844756922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,37 +95,37 @@ PrefabInstance:
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.3976974
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.2
+      value: 16.789043
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.8
+      value: -206.2506
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21973927
+      value: 0.3420201
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97555864
+      value: 0.9396927
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
@@ -129,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 25.387001
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 482688345598498154, guid: 7e837590a0eafe44c9a0bc8c57be0604,
         type: 3}
@@ -140,6 +146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 482688345598498153, guid: 7e837590a0eafe44c9a0bc8c57be0604,
+        type: 3}
+      propertyPath: near clip plane
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e837590a0eafe44c9a0bc8c57be0604, type: 3}

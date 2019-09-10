@@ -113,7 +113,7 @@ public class JuiceDashClone : MonoBehaviour
 
     IEnumerator DelayBetweenDashes()
     {
-        Debug.Log("starting waittime");
+        //Debug.Log("starting waittime");
         yield return new WaitForSeconds(delay);
         delayActive = false;
         dashEnabled = false;

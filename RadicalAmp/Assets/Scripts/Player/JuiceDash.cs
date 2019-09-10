@@ -229,6 +229,11 @@ public class JuiceDash : MonoBehaviour
             }
             else if (requestedState == ChargeStates.success)
             {
+                if (ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.specialsUsed++;
+                }
+
                 if (markedTargets.Count != 0)
                 {
                     transform.LookAt(markedTargets[0].transform);

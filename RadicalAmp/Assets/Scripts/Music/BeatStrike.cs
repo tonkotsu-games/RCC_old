@@ -78,7 +78,10 @@ public class BeatStrike : MonoBehaviour
             //Reenable collision through Animation Event after Dash
             if (IsOnBeat())
             {
-
+                if(ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.beatsHitTotal++;
+                }
                 bodyMat.SetFloat("_displSwitch", 1f);
                 capeMat.SetFloat("_displSwitch", 1f);
 
@@ -108,6 +111,11 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
+                if (ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.beatsHitTotal++;
+                }
+
                 bodyMat.SetFloat("_displSwitch", 1f);
                 capeMat.SetFloat("_displSwitch", 1f);
 
@@ -137,6 +145,11 @@ public class BeatStrike : MonoBehaviour
         {
             if (IsOnBeat())
             {
+                if (ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.beatsHitTotal++;
+                }
+
                 bodyMat.SetFloat("_displSwitch", 1f);
                 capeMat.SetFloat("_displSwitch", 1f);
 

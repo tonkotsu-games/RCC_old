@@ -63,8 +63,14 @@ public class EnemyHP : MonoBehaviour
 
     private void EnemyDeath()
     {
+        if (ScoreTracker.instance != null)
+        {
+            ScoreTracker.instance.enemiesKilled++;
+        }
        if(gameObject.GetComponent<Beathoven>() != null)
        {
+           ScoreTracker.instance.timePassedInSeconds = Mathf.RoundToInt(Time.timeSinceLevelLoad);
+           ScoreTracker.instance.CalclulateStats();
            endScreen.TriggerEndEvent();
        }
         EnemyAnim.SetBool("dead", true);

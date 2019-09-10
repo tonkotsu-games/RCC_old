@@ -403,6 +403,10 @@ public class PlayerController : MonoBehaviour
 
     public void afterdeath()
     {
+        if (ScoreTracker.instance != null)
+        {
+            ScoreTracker.instance.deaths++;
+        }
         attack = false;
         boxCol.enabled = false;
         dancing = false;

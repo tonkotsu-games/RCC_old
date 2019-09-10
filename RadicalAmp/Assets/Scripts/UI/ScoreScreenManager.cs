@@ -8,6 +8,7 @@ public class ScoreScreenManager : MonoBehaviour
 {
 
     public float scrollSpeed;
+    public float scrollMultiplicator;
 
     [SerializeField]
     TextMeshProUGUI[] scoreTexts;
@@ -136,12 +137,11 @@ public class ScoreScreenManager : MonoBehaviour
         {
             yield return new WaitForSeconds(scrollSpeed);
 
-            tempScore += score * 0.1f * multiplicatorScore;
-            tempValue += value * 0.1f * multiplicatorValue;
+            tempScore += score * 0.1f * multiplicatorScore * scrollMultiplicator;
+            tempValue += value * 0.1f * multiplicatorValue * scrollMultiplicator;
 
-            if(score-tempScore*multiplicatorScore <= 0.4f)
+            if(score - tempScore * multiplicatorScore <= 0.4f)
             {
-                Debug.LogError("Finished");
                 tempScore = score;
                 tempValue = value;
             }

@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
             {
                 attacking();
             }
-            if (GetCurrentClipName() == "Main_Running_Animv1")
+            if (GetCurrentClipName() == "Main_Running_Animv1" || GetCurrentClipName() == "Main_Dash_Animv1")
             {
                 runattacking();
             }

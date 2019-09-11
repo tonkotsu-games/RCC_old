@@ -395,12 +395,13 @@ MonoBehaviour:
   dashTime: 0.1
   dashParticlesPrefab: {fileID: 2415412595958308877, guid: ded5659a429549e4997118db1bbfc7a9,
     type: 3}
-  knockbackAoeRange: 15
-  knockbackRange: 15
-  knockbackDamage: 1
-  knockbackJuiceConsum: 50
+  knockbackAoeRange: 4
+  knockbackRange: 4
+  knockbackDamage: 2
+  knockbackJuiceConsum: 40
   heading: {x: 0, y: 0, z: 0}
   triggerLeft: 0
+  chargedDash: 0
   life: 10
   my_secondaudiosource: {fileID: 351051382183568035}
   dashClip: {fileID: 8300000, guid: c6af6d25316c4b2498e7fd595630f896, type: 3}
@@ -6262,11 +6263,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2960425245246119787}
     m_Modifications:
-    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
-        type: 3}
-      propertyPath: m_Name
-      value: Protagonist_Sword_SM
-      objectReference: {fileID: 0}
     - target: {fileID: 2839301101805849901, guid: 111fe1801ab084b4eae3b3f123742c76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6321,6 +6317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.2869873
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839301101805949197, guid: 111fe1801ab084b4eae3b3f123742c76,
+        type: 3}
+      propertyPath: m_Name
+      value: Protagonist_Sword_SM
       objectReference: {fileID: 0}
     - target: {fileID: 2167808972966179888, guid: 111fe1801ab084b4eae3b3f123742c76,
         type: 3}
@@ -6499,6 +6500,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4356880715370522425, guid: b618437dc82e7ce488f47bad41d7cc65,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4356880715370522427, guid: b618437dc82e7ce488f47bad41d7cc65,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -6538,11 +6544,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -12.408001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4356880715370522425, guid: b618437dc82e7ce488f47bad41d7cc65,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b618437dc82e7ce488f47bad41d7cc65, type: 3}

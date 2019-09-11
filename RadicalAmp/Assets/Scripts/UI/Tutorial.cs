@@ -13,6 +13,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject gate;
     [SerializeField] GameObject TutorialText;
     [SerializeField] Slider juiceMeter;
+    [SerializeField] GameObject doorCamera;
+    [SerializeField] GameObject followCamera;
 
     [SerializeField] float setTimer;
 
@@ -24,6 +26,8 @@ public class Tutorial : MonoBehaviour
 
     public List<GameObject> EmpowerClone;
     public List<GameObject> JuiceDashClone;
+
+    private bool inTesting = false;
 
     bool tutorialPlay = false;
 
@@ -204,6 +208,7 @@ public class Tutorial : MonoBehaviour
         {
             if (gate != null)
             {
+                StartDoorCamera();
                 gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
                 gateGoldMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateGoldMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
 
@@ -236,6 +241,7 @@ public class Tutorial : MonoBehaviour
     public void Testing()
     {
         currentStep = TutorialSteps.TutorialPreFinish;
+        inTesting = true;
     }
 
     private void OnDisable()
@@ -263,5 +269,17 @@ public class Tutorial : MonoBehaviour
         JuiceDashTest,
         TutorialPreFinish,
         TutorialFinish
+    }
+
+    private void StartDoorCamera()
+    {
+        if(inTesting)
+        {
+            Debug.LogError("Returned");
+            return;
+        }
+        Debug.LogError("StartDoorCamera");
+        followCamera.SetActive(false);
+        doorCamera.SetActive(true);
     }
 }

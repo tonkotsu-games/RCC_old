@@ -531,18 +531,18 @@ public class PlayerController : MonoBehaviour
 
     public void runattacking()
     {
-        if (attack1DONE == false || runattack1DONE == false)
-        {           
-            anim.SetTrigger("runattack1");
-            my_audioSource.clip = slashClip;
-            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
-            my_audioSource.Play();
-            attack = true;
-            attack1DONE = true;
-            runattack1DONE = true;
-        }
-        else
-        {
+      // if (attack1DONE == false || runattack1DONE == false)
+      // {           
+      //     anim.SetTrigger("runattack1");
+      //     my_audioSource.clip = slashClip;
+      //     my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+      //     my_audioSource.Play();
+      //     attack = true;
+      //     attack1DONE = true;
+      //     runattack1DONE = true;
+      // }
+      // else
+      // {
             anim.SetTrigger("runattack2");
             my_audioSource.clip = slashClip;
             my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
@@ -550,7 +550,7 @@ public class PlayerController : MonoBehaviour
             attack = true;
             attack1DONE = false;
             runattack1DONE = false;
-        }
+      //  }
     }
 
     public void Statename()

@@ -738,7 +738,11 @@ MonoBehaviour:
   TutorialText: {fileID: 7246610890031720559}
   juiceMeter: {fileID: 1780832421274329059}
   setTimer: 3
+  gateMaterial: {fileID: 0}
+  gateGoldMaterial: {fileID: 0}
   currentStep: 0
+  EmpowerClone: []
+  JuiceDashClone: []
 --- !u!114 &1780832420974048038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,6 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56be5f140a30b0a4aaf1e529396fdc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  juiceDamage: 0
 --- !u!1 &1780832421477237661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522349492468373564, guid: 474be263f76623849bd7f2f976fb175f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 474be263f76623849bd7f2f976fb175f, type: 3}

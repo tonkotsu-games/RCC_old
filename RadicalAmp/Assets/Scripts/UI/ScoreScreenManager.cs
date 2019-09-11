@@ -58,6 +58,10 @@ public class ScoreScreenManager : MonoBehaviour
     float scorePerHitTaken;
     [SerializeField]
     float scorePerDeath;
+    [SerializeField]
+    GameObject textToSkip;
+
+    
 
 
     [SerializeField]
@@ -280,6 +284,8 @@ public class ScoreScreenManager : MonoBehaviour
         yield return new WaitForSeconds(10 * scrollSpeed);
         finalRankSplash.SetActive(true);
         scoreDone = true;
+
+        textToSkip.SetActive(true);
     }
 
 

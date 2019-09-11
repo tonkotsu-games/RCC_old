@@ -13,6 +13,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject gate;
     [SerializeField] GameObject TutorialText;
     [SerializeField] Slider juiceMeter;
+    [SerializeField] GameObject doorCamera;
+    [SerializeField] GameObject followCamera;
 
     [SerializeField] float setTimer;
 
@@ -25,7 +27,10 @@ public class Tutorial : MonoBehaviour
     public List<GameObject> EmpowerClone;
     public List<GameObject> JuiceDashClone;
 
+    private bool inTesting = false;
+
     bool tutorialPlay = false;
+    private bool startedDoor = false;
 
     float tutorialTimer = 5;
     int hitCounter = 0;
@@ -204,8 +209,9 @@ public class Tutorial : MonoBehaviour
         {
             if (gate != null)
             {
-                gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
-                gateGoldMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateGoldMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
+                StartDoorCamera();
+                gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.01f));
+                gateGoldMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateGoldMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.01f));
 
                 if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
                 {
@@ -235,6 +241,7 @@ public class Tutorial : MonoBehaviour
 
     public void Testing()
     {
+        inTesting = true;
         currentStep = TutorialSteps.TutorialPreFinish;
     }
 
@@ -263,5 +270,22 @@ public class Tutorial : MonoBehaviour
         JuiceDashTest,
         TutorialPreFinish,
         TutorialFinish
+    }
+
+    private void StartDoorCamera()
+    {
+        if(startedDoor)
+        {
+            return;
+        }
+        if(inTesting)
+        {
+            Debug.LogError("Returned");
+            return;
+        }
+        Debug.LogError("StartDoorCamera");
+        followCamera.SetActive(false);
+        doorCamera.SetActive(true);
+        startedDoor = true;
     }
 }

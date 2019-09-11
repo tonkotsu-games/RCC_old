@@ -16,7 +16,7 @@ public class GameMenu : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Start") && !menuOpen)
+        if((Input.GetButtonDown("Start")||Input.GetKeyDown(KeyCode.Escape))&& !menuOpen)
         {
             for(int i = 0;i<audioSource.Length;i++)
             {
@@ -29,7 +29,7 @@ public class GameMenu : MonoBehaviour
             Time.timeScale = 0;
             GameState.TryChangeState(GameState.State.Pause);
         }
-        else if(Input.GetButtonDown("Start") && menuOpen)
+        else if((Input.GetButtonDown("Start") || Input.GetKeyDown(KeyCode.Escape)) && menuOpen)
         {
             for (int i = 0; i < audioSource.Length; i++)
             {

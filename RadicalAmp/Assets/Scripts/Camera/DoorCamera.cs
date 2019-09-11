@@ -10,9 +10,11 @@ public class DoorCamera : MonoBehaviour
     [SerializeField] float turningRate;
     [SerializeField] float speed;
     [SerializeField] GameObject followCamera;
+    [SerializeField] Transform player;
     private bool reachedDesiredPosition = false;
     private Timer holdTimer = new Timer();
     private Vector3 currentPosition;
+    private bool returning = false;
 
     private void OnEnable()
     {
@@ -36,12 +38,17 @@ public class DoorCamera : MonoBehaviour
 
         if (!reachedDesiredPosition)
         {
-            if (Vector3.Distance(desiredPosition.position, currentPosition) < 1.5f)
+            if (Vector3.Distance(desiredPosition.position, currentPosition) < 1.5f && !returning)
             {
-                gameObject.transform.position = desiredPosition.position;
                 reachedDesiredPosition = true;
                 holdTimer.Start(holdTimeInSeconds);
                 Debug.LogError("Reached");
+            }
+            else if (Vector3.Distance(desiredPosition.position, currentPosition) < 1.5f && returning)
+            {
+                followCamera.SetActive(true);
+                followCamera.transform.position = transform.position;
+                Destroy(this.gameObject);
             }
         }
         else
@@ -52,7 +59,11 @@ public class DoorCamera : MonoBehaviour
             {
                 holdTimer.TogglePause();
                 Debug.LogError("Timer Done");
-                desiredPosition = followCamera.transform;
+                desiredPosition.position = player.transform.position + new Vector3(0,5,-6);
+                desiredPosition.rotation = followCamera.transform.rotation;
+                reachedDesiredPosition = false;
+                speed = 12f;
+                returning = true;
             }
         }
     }

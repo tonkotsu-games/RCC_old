@@ -30,6 +30,7 @@ public class Tutorial : MonoBehaviour
     private bool inTesting = false;
 
     bool tutorialPlay = false;
+    private bool startedDoor = false;
 
     float tutorialTimer = 5;
     int hitCounter = 0;
@@ -209,8 +210,8 @@ public class Tutorial : MonoBehaviour
             if (gate != null)
             {
                 StartDoorCamera();
-                gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
-                gateGoldMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateGoldMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.02f));
+                gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.01f));
+                gateGoldMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateGoldMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.01f));
 
                 if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
                 {
@@ -273,6 +274,10 @@ public class Tutorial : MonoBehaviour
 
     private void StartDoorCamera()
     {
+        if(startedDoor)
+        {
+            return;
+        }
         if(inTesting)
         {
             Debug.LogError("Returned");
@@ -281,5 +286,6 @@ public class Tutorial : MonoBehaviour
         Debug.LogError("StartDoorCamera");
         followCamera.SetActive(false);
         doorCamera.SetActive(true);
+        startedDoor = true;
     }
 }

@@ -26,15 +26,19 @@ public class DoorCamera : MonoBehaviour
 
     private void Update()
     {
+        if(returning)
+        {
+            desiredPosition.position = player.transform.position + new Vector3(0, 5, -6);
+        }
+
         currentPosition.x += (desiredPosition.position.x - currentPosition.x) * Time.deltaTime * speed * 0.1f;
         currentPosition.y += (desiredPosition.position.y - currentPosition.y) * Time.deltaTime * speed * 0.1f;
         currentPosition.z += (desiredPosition.position.z - currentPosition.z) * Time.deltaTime * speed * 0.1f;
 
         gameObject.transform.position = currentPosition;
+        Debug.Log("desired rotation" + desiredPosition.rotation);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredPosition.rotation, turningRate * Time.deltaTime * 0.1f);
-        Debug.Log("current " + currentPosition);
-        Debug.Log(Vector3.Distance(desiredPosition.position, currentPosition));
 
         if (!reachedDesiredPosition)
         {

@@ -115,7 +115,7 @@ public class JuiceDash : MonoBehaviour
 
     void ChangeChargeState(ChargeStates requestedState)
     {
-
+        //Debug.Log("Requested State: " + requestedState);
         if (requestedState == currentState)
         {
             Debug.Log("already in state " + requestedState);

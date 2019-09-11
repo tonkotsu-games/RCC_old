@@ -132,9 +132,21 @@ public class JuiceDashClone : MonoBehaviour
     {
         juiceDashScript.BackToNormal();
         SkinnedMeshRenderer[] renderers = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        MeshRenderer[] renderersSword = gameObject.GetComponentsInChildren<MeshRenderer>();
+        AttackCheck[] swordsObjects = gameObject.GetComponentsInChildren<AttackCheck>();
+
         foreach (SkinnedMeshRenderer rend in renderers)
         {
             rend.enabled = false;
+        }
+        foreach (MeshRenderer rend in renderersSword)
+        {
+            rend.enabled = false;
+        }
+        foreach (AttackCheck rend in swordsObjects)
+        {
+            GameObject sword = rend.gameObject;
+            Destroy(sword);
         }
 
         int counter = 0;

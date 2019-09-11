@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Experimental.VFX;
 using TMPro;
 
 public class Tutorial : MonoBehaviour
@@ -14,18 +13,24 @@ public class Tutorial : MonoBehaviour
     [SerializeField] GameObject gate;
     [SerializeField] GameObject TutorialText;
     [SerializeField] Slider juiceMeter;
+    [SerializeField] GameObject doorCamera;
+    [SerializeField] GameObject followCamera;
 
     [SerializeField] float setTimer;
 
     private TutorialClone cloneAnim;
-    private Material gateMaterial;
+    [SerializeField] private Material gateMaterial;
+    [SerializeField] private Material gateGoldMaterial;
 
     public TutorialSteps currentStep;
 
     public List<GameObject> EmpowerClone;
     public List<GameObject> JuiceDashClone;
 
+    private bool inTesting = false;
+
     bool tutorialPlay = false;
+    private bool startedDoor = false;
 
     float tutorialTimer = 5;
     int hitCounter = 0;
@@ -38,12 +43,6 @@ public class Tutorial : MonoBehaviour
     }
     private void Awake()
     {
-        gateMaterial = gate.GetComponent<Renderer>().material;
-        if(gateMaterial == null)
-        {
-            Debug.Log("ARSCHLOCH ARSCHLOCH");
-        }
-
         if (clone != null)
         {
             cloneAnim = clone.GetComponent<TutorialClone>();
@@ -61,9 +60,9 @@ public class Tutorial : MonoBehaviour
                 TutorialText.SetActive(false);
                 clone.SetActive(true);
             }
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Jump"))
             {
-                currentStep = TutorialSteps.TutorialFinish;
+                currentStep = TutorialSteps.TutorialPreFinish;
                 TutorialText.SetActive(false);
             }
         }
@@ -73,7 +72,7 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayRunning(true);
             tutorialContainer.SetActive(true);
             tmproText.text = "Use joystick for movement";
-            anim.Play("AnimMovement");
+            anim.Play("AnimMove");
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
@@ -92,7 +91,6 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayRunning(false);
             cloneAnim.PlayDash(true);
             tmproText.text = "Press A to dash, dash three times.";
-            tutorialContainer.SetActive(true);
             anim.Play("AnimDash");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -114,7 +112,6 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayDash(false);
             cloneAnim.PlayAttack(true);
             tmproText.text = "Press RB to slash, slash three times.";
-            tutorialContainer.SetActive(true);
             anim.Play("AnimAttack");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -136,7 +133,6 @@ public class Tutorial : MonoBehaviour
             cloneAnim.PlayAttack(false);
             cloneAnim.PlayDance(true);
             tmproText.text = "Press B to dance, dance three times.";
-            tutorialContainer.SetActive(true);
             anim.Play("AnimDance");
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -156,7 +152,6 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.JuiceInfo && !tutorialPlay)
         {
-            tutorialContainer.SetActive(true);
             tmproText.text = "Hit the beat three times, use your dash, shlash or dance.";
             tutorialTimer = setTimer;
             tutorialPlay = true;
@@ -171,9 +166,8 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.EmpowerSlashInfo && !tutorialPlay)
         {
-            tmproText.text = "Press A to dash, dash three times.";
-            tutorialContainer.SetActive(true);
-            anim.Play("AnimDash");
+            tmproText.text = "Hit the beat with the dance three times and \n then slash on beat to perform an Empowered Slash. Defeat the holograms.";
+            anim.Play("Enchancedslash");
             foreach(GameObject clone in EmpowerClone)
             {
                 clone.SetActive(true);
@@ -191,37 +185,45 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.JuiceDashInfo && !tutorialPlay)
         {
-            tmproText.text = "Press A to dash, dash three times.";
-            tutorialContainer.SetActive(true);
-            anim.Play("AnimDash");
+            tmproText.text = "At max juice, you can perform the Juice Dash, hold LT and A.\n The longer you charge the more enemies will be hit. Defeat the holograms.";
+            anim.Play("Juicedash");
             foreach (GameObject clone in JuiceDashClone)
             {
                 clone.SetActive(true);
             }
-            juiceMeter.minValue = 100;
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.JuiceDashTest)
         {
+            juiceMeter.value += 1;
 
             if (JuiceDashClone.Count == 0)
             {
                 currentStep += 1;
-                juiceMeter.minValue = 0;
                 juiceMeter.value = 0;
+                tutorialContainer.SetActive(false);
+            }
+        }
+        if(currentStep == TutorialSteps.TutorialPreFinish)
+        {
+            if (gate != null)
+            {
+                StartDoorCamera();
+                gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.01f));
+                gateGoldMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateGoldMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.01f));
 
+                if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.73f)
+                {
+                    clone.SetActive(false);
+                    gate.SetActive(false);
+                    currentStep += 1;
+                }
             }
         }
         if (currentStep == TutorialSteps.TutorialFinish)
         {
-            gateMaterial.SetFloat("Vector1_36A0E93A", Mathf.Lerp(gateMaterial.GetFloat("Vector1_36A0E93A"), 1f, 0.1f));
 
-            if (gateMaterial.GetFloat("Vector1_36A0E93A") >= 0.99f)
-            {
-                clone.SetActive(false);
-                gate.SetActive(false);
-            }
         }
 
         if (tutorialPlay)
@@ -234,13 +236,19 @@ public class Tutorial : MonoBehaviour
             tutorialPlay = false;
             currentStep += 1;
             tutorialTimer = 1;
-            tutorialContainer.SetActive(false);
         }
     }
 
     public void Testing()
     {
-        currentStep = TutorialSteps.TutorialFinish;
+        inTesting = true;
+        currentStep = TutorialSteps.TutorialPreFinish;
+    }
+
+    private void OnDisable()
+    {
+        gateMaterial.SetFloat("Vector1_36A0E93A", 0f);
+        gateGoldMaterial.SetFloat("Vector1_36A0E93A", 0f);
     }
 
     public enum TutorialSteps
@@ -260,6 +268,24 @@ public class Tutorial : MonoBehaviour
         EmpowerSlashTest,
         JuiceDashInfo,
         JuiceDashTest,
+        TutorialPreFinish,
         TutorialFinish
+    }
+
+    private void StartDoorCamera()
+    {
+        if(startedDoor)
+        {
+            return;
+        }
+        if(inTesting)
+        {
+            Debug.LogError("Returned");
+            return;
+        }
+        Debug.LogError("StartDoorCamera");
+        followCamera.SetActive(false);
+        doorCamera.SetActive(true);
+        startedDoor = true;
     }
 }

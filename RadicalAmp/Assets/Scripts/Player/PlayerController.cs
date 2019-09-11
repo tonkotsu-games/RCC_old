@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private AnimatorClipInfo[] clipInfo;
     public static bool runattack1DONE;
 
+
     [Header("Speed for the Movement")]
     [SerializeField] float movementSpeed;
     [SerializeField] float acceleration;
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
     public static bool dancing = false;
     public static bool attack1DONE;
 
+    public bool chargedDash = false;
+
     private PlayerController DeadDisable;
     private Respawn respawn;
     private Slider juiceMeter;
@@ -68,7 +71,10 @@ public class PlayerController : MonoBehaviour
     [Header("Life setting")]
     public int life = 3;
 
+
+    [Header("Audiosources")]
     private AudioSource my_audioSource;
+    public AudioSource my_secondaudiosource;
     private Animator anim;
     private Rigidbody rigi;
     private BoxCollider boxCol;
@@ -76,10 +82,12 @@ public class PlayerController : MonoBehaviour
     [Header("Several Audiofiles")]
     public AudioClip dashClip;
     public AudioClip slashClip;
+    public AudioClip DanceMove;
 
     [MinMaxSlider(-3f, 3f)]
     public Vector2 soundPitchRange = new Vector2(1f,1f);
 
+    private float move;
     [SerializeField]
     ParticleSystem[] bloodSplatter;
 
@@ -116,6 +124,7 @@ public class PlayerController : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         DeadDisable = gameObject.GetComponent<PlayerController>();
         my_audioSource = GetComponent<AudioSource>();
+        
     }
 
     void Update()
@@ -148,7 +157,7 @@ public class PlayerController : MonoBehaviour
             {
                 attacking();
             }
-            else
+            if (GetCurrentClipName() == "Main_Running_Animv1" || GetCurrentClipName() == "Main_Dash_Animv1")
             {
                 runattacking();
             }
@@ -159,9 +168,9 @@ public class PlayerController : MonoBehaviour
            !triggerLeft)
         {
             anim.Play("Dashing");
-            my_audioSource.clip = dashClip;
-            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
-            my_audioSource.Play();
+            my_secondaudiosource.clip = dashClip;
+            my_secondaudiosource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+            my_secondaudiosource.Play();
             dash = true;
         }
         if (Input.GetButtonDown("Dance") &&
@@ -169,6 +178,8 @@ public class PlayerController : MonoBehaviour
            !attack &&
            !dash)
         {
+            my_audioSource.clip = DanceMove;
+            my_audioSource.Play();
             if (dancemove == 0)
             {
                 anim.SetBool("dance", true);
@@ -225,7 +236,7 @@ public class PlayerController : MonoBehaviour
         {
             Gravity();
         }
-        if (!dashing && !dancing && IsGrounded.isGrounded)
+        if (!dashing && !dancing && IsGrounded.isGrounded && !chargedDash)
         {
             Move();
         }
@@ -266,9 +277,14 @@ public class PlayerController : MonoBehaviour
 
     void MovementCalculation()
     {
+        move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).magnitude;
+        if(move > 1)
+        {
+            move = 1;
+        }
         moveVector = new Vector3(moveHorizontal, 0f, moveVertical);
 
-        moveVector = moveVector.normalized * movementSpeed;
+        moveVector = moveVector.normalized * move * movementSpeed;
     }
 
     /// <summary>
@@ -387,6 +403,10 @@ public class PlayerController : MonoBehaviour
 
     public void afterdeath()
     {
+        if (ScoreTracker.instance != null)
+        {
+            ScoreTracker.instance.deaths++;
+        }
         attack = false;
         boxCol.enabled = false;
         dancing = false;
@@ -511,21 +531,26 @@ public class PlayerController : MonoBehaviour
 
     public void runattacking()
     {
-
-        if (attack1DONE == false || runattack1DONE == false)
-        {           
-            anim.SetTrigger("runattack1");
-            attack = true;
-            attack1DONE = true;
-            runattack1DONE = true;
-        }
-        else
-        {
+      // if (attack1DONE == false || runattack1DONE == false)
+      // {           
+      //     anim.SetTrigger("runattack1");
+      //     my_audioSource.clip = slashClip;
+      //     my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+      //     my_audioSource.Play();
+      //     attack = true;
+      //     attack1DONE = true;
+      //     runattack1DONE = true;
+      // }
+      // else
+      // {
             anim.SetTrigger("runattack2");
+            my_audioSource.clip = slashClip;
+            my_audioSource.pitch = Random.Range(soundPitchRange.x, soundPitchRange.y);
+            my_audioSource.Play();
             attack = true;
             attack1DONE = false;
             runattack1DONE = false;
-        }
+      //  }
     }
 
     public void Statename()
@@ -538,7 +563,7 @@ public class PlayerController : MonoBehaviour
         clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         if(clipInfo.Length == 0)
         {
-            Debug.Log("No Clip found in Layer 0");
+            //Debug.Log("No Clip found in Layer 0");
             return "attack";
         }
         return clipInfo[0].clip.name;

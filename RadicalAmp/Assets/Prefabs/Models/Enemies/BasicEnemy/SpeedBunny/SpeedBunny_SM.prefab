@@ -1829,7 +1829,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c19a7eeda8361ca4c98e2e89e78c2cbe, type: 2}
+  - {fileID: 2100000, guid: 21980fc8b6a38d445a23042d5e27b612, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7717,11 +7717,6 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4356880715370522425, guid: 843ef5046b09f33498d1f71cd85fc81f,
-        type: 3}
-      propertyPath: CollisionModule.collidesWith.m_Bits
-      value: 7479
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 843ef5046b09f33498d1f71cd85fc81f, type: 3}
 --- !u!4 &4356880714397426883 stripped
@@ -7753,10 +7748,20 @@ PrefabInstance:
       propertyPath: actor
       value: 
       objectReference: {fileID: 8029535818707227849}
+    - target: {fileID: 4584908331960902190, guid: 52c93d2b17405964ead44c4de0e4ee24,
+        type: 3}
+      propertyPath: soundPitchRange.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584908331960902190, guid: 52c93d2b17405964ead44c4de0e4ee24,
+        type: 3}
+      propertyPath: soundPitchRange.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3837115702254154672, guid: 52c93d2b17405964ead44c4de0e4ee24,
         type: 3}
       propertyPath: m_Volume
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 708674005644573142, guid: 52c93d2b17405964ead44c4de0e4ee24,
         type: 3}

@@ -103,7 +103,6 @@ public class TiffanyController : MonoBehaviour
     {
         if(requestedState == currentTiffState)
         {
-            Debug.Log("already in state " + requestedState);
             return;
         }
         else
@@ -119,7 +118,7 @@ public class TiffanyController : MonoBehaviour
                     //Debug.Log("Changing from state: " + currentTiffState + " to state: " + requestedState);
                     currentTiffState = TiffStates.FindNewTarget;
                     target = allEnemies[Random.Range(0, allEnemies.Length)];
-                    if (target.GetComponent<Beathoven>() != null)
+                    if (target == null || target.GetComponentInChildren<Beathoven>() == null)
                     {
                         ChangeTiffState(TiffStates.FindNewTarget);
                     }

@@ -8,6 +8,7 @@ public class ScoreScreenManager : MonoBehaviour
 {
 
     public float scrollSpeed;
+    public float scrollMultiplicator;
 
     [SerializeField]
     TextMeshProUGUI[] scoreTexts;
@@ -23,8 +24,7 @@ public class ScoreScreenManager : MonoBehaviour
     [SerializeField]
     GameObject[] splashImagesBonus;
 
-    [SerializeField]
-    float[] bonusScores;
+    List<int> bonusScores;
 
 
     [SerializeField]
@@ -40,14 +40,10 @@ public class ScoreScreenManager : MonoBehaviour
     TextMeshProUGUI finalScoreDisplay;
 
     float finalScore;
-    public float[] valueCollector; // = new float[6];
-    public float[] scoreCollector; //= new float[6];
+    public List<int> valueCollector; // = new float[6];
+    public List<int> scoreCollector; //= new float[6];
 
     int scoreTracker = 0;
-
-    [SerializeField]
-    [Tooltip("Time estimated to finish the level in seconds")]
-    float timeBase;
 
     [Header("ValueToScore Converters")]
     [SerializeField]
@@ -62,6 +58,10 @@ public class ScoreScreenManager : MonoBehaviour
     float scorePerHitTaken;
     [SerializeField]
     float scorePerDeath;
+    [SerializeField]
+    GameObject textToSkip;
+
+    
 
 
     [SerializeField]
@@ -74,24 +74,27 @@ public class ScoreScreenManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {     
+    {
+
+        valueCollector = new List<int>(ScoreTracker.instance.statContainer);
+        bonusScores = new List<int>(ScoreTracker.instance.bonusScores);
        // ScoreTracker.instance.statContainer[3] = Time.timeSinceLevelLoad / 60;
-      //  Debug.Log("Time since level load: " + Time.timeSinceLevelLoad);
-      //  Debug.Log("Time in tracker: " + ScoreTracker.instance.statContainer[3].ToString());
+       //  Debug.Log("Time since level load: " + Time.timeSinceLevelLoad);
+       //  Debug.Log("Time in tracker: " + ScoreTracker.instance.statContainer[3].ToString());
         #region Calculating Values to score
 
-      // //Enemies killed
-      // scoreCollector[0] = ScoreTracker.instance.statContainer[0] * scorePerEnemyKilled;
-      // //Beats hit
-      // scoreCollector[1] = ScoreTracker.instance.statContainer[1] * scorePerBeatPercentage;
-      // //Specials
-      // scoreCollector[2] = ScoreTracker.instance.statContainer[2] * scorePerSpecialUsed;
-      // //Time
-      // scoreCollector[3] = Mathf.RoundToInt(ScoreTracker.instance.statContainer[3]) * scorePerSecondDifference;
-      // //Hits taken
-      // scoreCollector[4] = ScoreTracker.instance.statContainer[4] * scorePerHitTaken;
-      // //Deaths
-      // scoreCollector[5] = ScoreTracker.instance.statContainer[5] * scorePerDeath;
+         //Enemies killed
+         scoreCollector[0] = Mathf.RoundToInt(valueCollector[0] * scorePerEnemyKilled);
+        //Beats hit
+        scoreCollector[1] = Mathf.RoundToInt((valueCollector[1] - 70) * scorePerBeatPercentage);
+         // Specials Used
+         scoreCollector[2] = Mathf.RoundToInt(valueCollector[2] * scorePerSpecialUsed);
+        // Time
+         scoreCollector[3] = Mathf.RoundToInt(valueCollector[3] * scorePerSecondDifference);
+        //Hits taken
+         scoreCollector[4] = Mathf.RoundToInt(valueCollector[4] * scorePerHitTaken);
+         //Deaths            Mathf.RoundToInt(valueCollector
+         scoreCollector[5] = Mathf.RoundToInt(valueCollector[5] * scorePerDeath);
 
 
         #endregion
@@ -121,24 +124,80 @@ public class ScoreScreenManager : MonoBehaviour
         valueText.gameObject.SetActive(true);
         float tempScore = 0;
         float tempValue = 0;
+
+        int multiplicatorValue = 1;
+        int multiplicatorScore = 1;
+
+        if(score < 0)
+        {
+            multiplicatorScore = -1;
+        }
+        if(value <0)
+        {
+            multiplicatorValue = -1;
+        }
+   
         while (tempScore != score && tempValue != value)
         {
             yield return new WaitForSeconds(scrollSpeed);
-            tempScore += score * 0.05f;
-            tempValue += value * 0.05f;
 
-            tempScore = Mathf.RoundToInt(tempScore);
-            // DISPLAY SCORE WHEN ITS AN INT
-            if (Mathf.Approximately(tempScore, Mathf.RoundToInt(tempScore)))
+            tempScore += score * 0.1f * multiplicatorScore * scrollMultiplicator;
+            tempValue += value * 0.1f * multiplicatorValue * scrollMultiplicator;
+
+            if(score > 0)
             {
-                scoreText.text = tempScore.ToString();
+                if (score - tempScore * multiplicatorScore <= 0.4f)
+                {
+                    Debug.LogError("multiplicator " + multiplicatorScore);
+                    tempScore = score;
+                    tempValue = value;
+                }
+            }
+            else
+            {
+                if (score - tempScore * multiplicatorScore >= -0.4f)
+                {
+                    Debug.LogError("multiplicator " + multiplicatorScore);
+                    tempScore = Mathf.Abs(score);
+                    tempValue = value;
+                }
+            }
+            
+
+            if(scoreTracker == 1)
+            {
+                valueText.text = Mathf.RoundToInt(tempValue).ToString() + " %";
+            }
+            else if(scoreTracker == 3)
+            {
+                valueText.text = Mathf.RoundToInt(tempValue).ToString() + " s";
+            }
+            else
+            {
+                valueText.text = Mathf.RoundToInt(tempValue).ToString();
             }
 
-            // DISPLAY VALUE WHEN ITS AN INT
-            if (Mathf.Approximately(tempValue, Mathf.RoundToInt(tempValue)))
+            if (multiplicatorScore > 0)
             {
-                valueText.text = tempValue.ToString();
-            }         
+                scoreText.text = Mathf.RoundToInt(tempScore).ToString();
+            }
+            else
+            {
+                scoreText.text = "-" + Mathf.RoundToInt(tempScore).ToString();
+            }
+
+            
+           // // DISPLAY SCORE WHEN ITS AN INT
+           // if (Mathf.Approximately(tempScore, Mathf.RoundToInt(tempScore)))
+           // {
+           //     scoreText.text = Mathf.RoundToInt(tempScore).ToString();
+           // }
+           //
+           // // DISPLAY VALUE WHEN ITS AN INT
+           // if (Mathf.Approximately(tempValue, Mathf.RoundToInt(tempValue)))
+           // {
+           //     valueText.text = Mathf.RoundToInt(tempValue).ToString();
+           // }         
         }
 
         scoreText.gameObject.GetComponent<Animator>().SetTrigger("scoreSet");
@@ -159,7 +218,7 @@ public class ScoreScreenManager : MonoBehaviour
 
     public IEnumerator bonusMultiplierScoreSetter()
     {
-        for(int i = 0; i < bonusScores.Length; i++)
+        for(int i = 0; i < bonusScores.Count; i++)
         {
             yield return new WaitForSeconds(5 * scrollSpeed);
             bonusScoresTexts[i].gameObject.SetActive(true);
@@ -167,27 +226,37 @@ public class ScoreScreenManager : MonoBehaviour
             splashImagesBonus[i].SetActive(true);
         }
 
-        for (int i = 0; i < scoreCollector.Length; i++)
+        for (int i = 0; i < scoreCollector.Count; i++)
         {
             inBetweenScore += scoreCollector[i];
         }
 
-        for(int i = 0; i < bonusScores.Length; i++)
+        for(int i = 0; i < bonusScores.Count; i++)
         {
             inBetweenScore += bonusScores[i];
         }
 
         inBetweenScore = Mathf.RoundToInt(inBetweenScore);
         float tempBetweenScore = 0;
-
+        Debug.Log("score to set: " + inBetweenScore);
         inBetweenScoreText.gameObject.SetActive(true);
+
         while(tempBetweenScore != inBetweenScore)
         {
             yield return new WaitForSeconds(scrollSpeed);
-            tempBetweenScore += inBetweenScore * 0.05f;
-            if (Mathf.Approximately(tempBetweenScore, Mathf.RoundToInt(tempBetweenScore))){
-                inBetweenScoreText.text = tempBetweenScore.ToString();
+
+            tempBetweenScore += inBetweenScore * 0.1f;
+      
+
+            if(inBetweenScore - tempBetweenScore <= 0.4f)
+            {
+                tempBetweenScore = inBetweenScore;
             }
+            //tempBetweenScore = Mathf.RoundToInt(tempBetweenScore);
+            inBetweenScoreText.text = Mathf.RoundToInt(tempBetweenScore).ToString();
+            //if (Mathf.Approximately(tempBetweenScore, Mathf.RoundToInt(tempBetweenScore))){
+            //    inBetweenScoreText.text = tempBetweenScore.ToString();
+            //}
 
         }
 
@@ -215,6 +284,8 @@ public class ScoreScreenManager : MonoBehaviour
         yield return new WaitForSeconds(10 * scrollSpeed);
         finalRankSplash.SetActive(true);
         scoreDone = true;
+
+        textToSkip.SetActive(true);
     }
 
 

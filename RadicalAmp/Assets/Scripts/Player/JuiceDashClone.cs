@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class JuiceDashClone : MonoBehaviour
 {
@@ -22,14 +23,20 @@ public class JuiceDashClone : MonoBehaviour
     Vector3 dashDirection;
     Vector3 nextPos;
     int targetCounter = 0;
+    [SerializeField] int damageVSBeathoven = 3500;
     public GameObject dashParticlesPrefab;
 
-    private Tutorial tutotial;
+    AudioSource source;
+    [SerializeField] AudioClip dashClip;
+    [SerializeField] AudioClip hitClip;
+ 
+    private Tutorial tutorial;
 
     // Start is called before the first frame update
     void Start()
     {
-        tutotial = GameObject.FindWithTag("Canvas").GetComponent<Tutorial>();
+        tutorial = GameObject.FindWithTag("Canvas").GetComponent<Tutorial>();
+        source = gameObject.GetComponent<AudioSource>();
         startPos = transform.position;
         anim = gameObject.GetComponent<Animator>();
         holograms = new List<GameObject>();
@@ -40,7 +47,7 @@ public class JuiceDashClone : MonoBehaviour
     {
         if (!dashEnabled && startAction)
         {
-            Debug.Log("Clone Calculating Position");
+            //Debug.Log("Clone Calculating Position");
             CalculateNextPos(targetCounter);
             targetCounter++;
         }
@@ -49,7 +56,7 @@ public class JuiceDashClone : MonoBehaviour
             if (!dashing)
             {
                 dashing = true;
-                Debug.Log("enablingDashing");
+                //Debug.Log("enablingDashing");
                 SpawnDashParticles();
                 Physics.IgnoreLayerCollision(9, 13, true);
             }
@@ -64,6 +71,8 @@ public class JuiceDashClone : MonoBehaviour
                 {                  
                     if (!delayActive)
                     {
+                        source.clip = dashClip;
+                        source.Play();
                         if (!returned)
                         {
                             GameObject holo = Instantiate(hologram, transform.position, Quaternion.identity);
@@ -111,7 +120,7 @@ public class JuiceDashClone : MonoBehaviour
 
     IEnumerator DelayBetweenDashes()
     {
-        Debug.Log("starting waittime");
+        //Debug.Log("starting waittime");
         yield return new WaitForSeconds(delay);
         delayActive = false;
         dashEnabled = false;
@@ -123,13 +132,25 @@ public class JuiceDashClone : MonoBehaviour
     {
         juiceDashScript.BackToNormal();
         SkinnedMeshRenderer[] renderers = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        MeshRenderer[] renderersSword = gameObject.GetComponentsInChildren<MeshRenderer>();
+        AttackCheck[] swordsObjects = gameObject.GetComponentsInChildren<AttackCheck>();
+
         foreach (SkinnedMeshRenderer rend in renderers)
         {
             rend.enabled = false;
         }
+        foreach (MeshRenderer rend in renderersSword)
+        {
+            rend.enabled = false;
+        }
+        foreach (AttackCheck rend in swordsObjects)
+        {
+            GameObject sword = rend.gameObject;
+            Destroy(sword);
+        }
 
         int counter = 0;
-        if(tutotial.currentStep == Tutorial.TutorialSteps.JuiceDashTest)
+        if(tutorial.currentStep == Tutorial.TutorialSteps.JuiceDashTest)
         {
             while (counter < targets.Count)
             {
@@ -153,7 +174,21 @@ public class JuiceDashClone : MonoBehaviour
                 targets[counter].GetComponent<EnemyHP>().BloodSplat();
                 targets[counter].GetComponent<EnemyHP>().BloodSplat();
                 targets[counter].GetComponent<EnemyHP>().BloodSplat();
-                targets[counter].GetComponent<EnemyHP>().life = 0;
+                source.clip = hitClip;
+                source.Play();
+                if(targets[counter].GetComponentInChildren<Beathoven>() != null)
+                {
+                    targets[counter].GetComponent<EnemyHP>().life -= damageVSBeathoven ;
+                    PopupDamageController.instance.CreatePopupText(damageVSBeathoven, targets[counter].transform);
+                    targets[counter].GetComponent<NavMeshAgent>().isStopped = false;
+
+                }
+                else
+                {
+                    PopupDamageController.instance.CreatePopupText(targets[counter].GetComponent<EnemyHP>().life + Random.Range(10, 500), targets[counter].transform);
+
+                    targets[counter].GetComponent<EnemyHP>().life = 0;
+                }
                 targets[counter].GetComponentInChildren<Animator>().speed = 1;
                 yield return new WaitForSeconds(attackClip.length * 0.2f);
                 Destroy(holograms[counter]);

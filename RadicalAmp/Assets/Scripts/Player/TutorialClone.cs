@@ -14,7 +14,6 @@ public class TutorialClone : MonoBehaviour
 
     private void Awake()
     {
-
         cloneAnim = gameObject.GetComponent<Animator>();
     }
 
@@ -60,7 +59,7 @@ public class TutorialClone : MonoBehaviour
     public void PlayRunning(bool active)
     {
         cloneAnim.SetBool("Running", active);
-        Debug.Log("LET ME RUUUUUUN");
+        //Debug.Log("LET ME RUUUUUUN");
 
     }
 

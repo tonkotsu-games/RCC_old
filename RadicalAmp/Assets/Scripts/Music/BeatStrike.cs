@@ -37,6 +37,9 @@ public class BeatStrike : MonoBehaviour
     [SerializeField] float lerpSpeed = 1f;
     private float displFloat = 0f;
 
+    [Header("Dash Afterim")]
+    [SerializeField] Material afterimMat;
+
     Animator anim;
 
 
@@ -73,14 +76,18 @@ public class BeatStrike : MonoBehaviour
 
         pulseBeat = false;
 
-        if (Input.GetButtonDown("Dash"))
+        if (Input.GetButtonDown("Dash") && !player.triggerLeft)
         {
             //Reenable collision through Animation Event after Dash
             if (IsOnBeat())
             {
-
+                if(ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.beatsHitTotal++;
+                }
                 bodyMat.SetFloat("_displSwitch", 1f);
                 capeMat.SetFloat("_displSwitch", 1f);
+                afterimMat.SetFloat("_emIntensity", 20f);
 
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
@@ -98,6 +105,7 @@ public class BeatStrike : MonoBehaviour
             else
             {
                 juiceMeter.value -= dashPunish;
+                afterimMat.SetFloat("_emIntensity", 0.6f);
                 if (EnhancedSkills.instance.currentEnhancedState != EnhancedSkills.EnhancedState.Inactive)
                 {
                     EnhancedSkills.instance.ChangeEnhancedState(EnhancedSkills.EnhancedState.Inactive);
@@ -108,13 +116,17 @@ public class BeatStrike : MonoBehaviour
         {
             if(IsOnBeat())
             {
+                if (ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.beatsHitTotal++;
+                }
+
                 bodyMat.SetFloat("_displSwitch", 1f);
                 capeMat.SetFloat("_displSwitch", 1f);
 
                 pulseBeat = true;
                 if (EnhancedSkills.instance.currentEnhancedState == EnhancedSkills.EnhancedState.Active)
                 {
-                    Debug.LogError("EnhancedSlash");
                     EnhancedSkills.instance.UseEnhancedSkill(EnhancedSkills.ActionsToEnhance.Attack);
                 }
 
@@ -138,6 +150,11 @@ public class BeatStrike : MonoBehaviour
         {
             if (IsOnBeat())
             {
+                if (ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.beatsHitTotal++;
+                }
+
                 bodyMat.SetFloat("_displSwitch", 1f);
                 capeMat.SetFloat("_displSwitch", 1f);
 

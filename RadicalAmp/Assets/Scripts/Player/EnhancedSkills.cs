@@ -77,25 +77,27 @@ public class EnhancedSkills : MonoBehaviour
 
                     currentEnhancedState = EnhancedState.Inactive;
                     spotlights.GetComponent<SpotlightGroup>().DisableAllActiveLights();
-                    Debug.Log("Enhanced State now " + currentEnhancedState);
+                    //Debug.Log("Enhanced State now " + currentEnhancedState);
                     break;
             }
-            Debug.Log(requestedState);
+            //Debug.Log(requestedState);
         }
     }
 
     public void UseEnhancedSkill (ActionsToEnhance baseSkill)
     {
-        //Add to the tracker for specials used (for scoreboard)
-       //Debug.Log("Adding score");
-       //ScoreTracker.instance.statContainer[2]++;
-        if(baseSkill == ActionsToEnhance.Dash)
+        if (baseSkill == ActionsToEnhance.Dash)
         {
             EnhanceDash();
         }
 
         else if(baseSkill == ActionsToEnhance.Attack)
         {
+            //Add to the tracker for specials used (for scoreboard)
+            if (ScoreTracker.instance != null)
+            {
+                ScoreTracker.instance.specialsUsed++;
+            }
             anim.SetTrigger("enhancedSlash");
         }
         ChangeEnhancedState(EnhancedState.Inactive);

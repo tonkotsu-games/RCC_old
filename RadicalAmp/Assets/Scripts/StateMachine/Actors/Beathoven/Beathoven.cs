@@ -121,7 +121,6 @@ public class Beathoven : Actor
 
             if (specialAttackState == "waveAttack")
             {
-                Debug.LogError("Now in WaveAttack");
                 StateMachine.ChangeState(new WaveAttack(this, player));
             }
             else if(specialAttackState == "")

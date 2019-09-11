@@ -164,7 +164,7 @@ public class ScoreScreenManager : MonoBehaviour
             {
                 valueText.text = Mathf.RoundToInt(tempValue).ToString() + " %";
             }
-            else if(scoreTracker == 2)
+            else if(scoreTracker == 3)
             {
                 valueText.text = Mathf.RoundToInt(tempValue).ToString() + " s";
             }

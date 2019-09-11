@@ -66,7 +66,7 @@ public class DoorCamera : MonoBehaviour
                 desiredPosition.position = player.transform.position + new Vector3(0,5,-6);
                 desiredPosition.rotation = followCamera.transform.rotation;
                 reachedDesiredPosition = false;
-                speed = 12f;
+                speed = 25f;
                 returning = true;
             }
         }

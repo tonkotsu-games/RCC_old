@@ -9,6 +9,7 @@ public class DoorCamera : MonoBehaviour
     [SerializeField] Transform playerCamera;
     [SerializeField] float turningRate;
     [SerializeField] float speed;
+    [SerializeField] GameObject followCamera;
     private bool reachedDesiredPosition = false;
     private Timer holdTimer = new Timer();
     private Vector3 currentPosition;
@@ -23,19 +24,19 @@ public class DoorCamera : MonoBehaviour
 
     private void Update()
     {
-        if(!reachedDesiredPosition)
+        currentPosition.x += (desiredPosition.position.x - currentPosition.x) * Time.deltaTime * speed * 0.1f;
+        currentPosition.y += (desiredPosition.position.y - currentPosition.y) * Time.deltaTime * speed * 0.1f;
+        currentPosition.z += (desiredPosition.position.z - currentPosition.z) * Time.deltaTime * speed * 0.1f;
+
+        gameObject.transform.position = currentPosition;
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredPosition.rotation, turningRate * Time.deltaTime * 0.1f);
+        Debug.Log("current " + currentPosition);
+        Debug.Log(Vector3.Distance(desiredPosition.position, currentPosition));
+
+        if (!reachedDesiredPosition)
         {
-            currentPosition.x += (desiredPosition.position.x - currentPosition.x) * Time.deltaTime * speed * 0.1f;
-            currentPosition.y += (desiredPosition.position.y - currentPosition.y) * Time.deltaTime * speed * 0.1f;
-            currentPosition.z += (desiredPosition.position.z - currentPosition.z) * Time.deltaTime * speed * 0.1f;
-
-            gameObject.transform.position = currentPosition;
-
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredPosition.rotation, turningRate * Time.deltaTime * 0.1f);
-            Debug.Log("current " + currentPosition);
-            Debug.Log(Vector3.Distance(desiredPosition.position, currentPosition));
-
-            if (Vector3.Distance(desiredPosition.position, currentPosition) < 1f)
+            if (Vector3.Distance(desiredPosition.position, currentPosition) < 1.5f)
             {
                 gameObject.transform.position = desiredPosition.position;
                 reachedDesiredPosition = true;
@@ -50,7 +51,8 @@ public class DoorCamera : MonoBehaviour
             if(holdTimer.timeCurrent <= 0)
             {
                 holdTimer.TogglePause();
-                Debug.LogError("Reached");
+                Debug.LogError("Timer Done");
+                desiredPosition = followCamera.transform;
             }
         }
     }

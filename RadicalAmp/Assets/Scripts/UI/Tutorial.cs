@@ -240,8 +240,8 @@ public class Tutorial : MonoBehaviour
 
     public void Testing()
     {
-        currentStep = TutorialSteps.TutorialPreFinish;
         inTesting = true;
+        currentStep = TutorialSteps.TutorialPreFinish;
     }
 
     private void OnDisable()

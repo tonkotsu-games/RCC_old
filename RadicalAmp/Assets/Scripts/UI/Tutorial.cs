@@ -55,7 +55,7 @@ public class Tutorial : MonoBehaviour
                 TutorialText.SetActive(false);
                 clone.SetActive(true);
             }
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Jump"))
             {
                 currentStep = TutorialSteps.TutorialPreFinish;
                 TutorialText.SetActive(false);
@@ -161,7 +161,7 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.EmpowerSlashInfo && !tutorialPlay)
         {
-            tmproText.text = "Hit the beat with the dance three times \n and then slash on beat to perform an Empowered Slash.\n Defeat the holograms with the Empowered Slash";
+            tmproText.text = "Hit the beat with the dance three times and \n then slash on beat to perform an Empowered Slash. Defeat the holograms.";
             anim.Play("Enchancedslash");
             foreach(GameObject clone in EmpowerClone)
             {
@@ -180,18 +180,18 @@ public class Tutorial : MonoBehaviour
         }
         if (currentStep == TutorialSteps.JuiceDashInfo && !tutorialPlay)
         {
-            tmproText.text = "If you reach max juice, you are capable of performing the Juice Dash,\n holy dash Q. The longer you charge the more enemies will be hit.\n Defeat the holograms with the Juice Dash";
+            tmproText.text = "At max juice, you can perform the Juice Dash, hold LT and A.\n The longer you charge the more enemies will be hit. Defeat the holograms.";
             anim.Play("Juicedash");
             foreach (GameObject clone in JuiceDashClone)
             {
                 clone.SetActive(true);
             }
-            juiceMeter.value = 100;
             tutorialTimer = setTimer;
             tutorialPlay = true;
         }
         if (currentStep == TutorialSteps.JuiceDashTest)
         {
+            juiceMeter.value += 1;
 
             if (JuiceDashClone.Count == 0)
             {

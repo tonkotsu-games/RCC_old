@@ -190,9 +190,9 @@ public class JuiceDash : MonoBehaviour
                 }
                 foreach (GameObject target in markedTargets)
                 {
+                    DisplayMarkerOnTarget(target);
                     if (target.GetComponent<NavMeshAgent>() != null)
                     {
-                        DisplayMarkerOnTarget(target);
                         target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                     }
                 }
@@ -218,9 +218,9 @@ public class JuiceDash : MonoBehaviour
                 }
                 foreach (GameObject target in markedTargets)
                 {
+                    DisplayMarkerOnTarget(target);
                     if (target.GetComponent<NavMeshAgent>() != null)
                     {
-                        DisplayMarkerOnTarget(target);
                         target.gameObject.GetComponent<NavMeshAgent>().isStopped = true;
                     }
                 }
@@ -229,6 +229,11 @@ public class JuiceDash : MonoBehaviour
             }
             else if (requestedState == ChargeStates.success)
             {
+                if (ScoreTracker.instance != null)
+                {
+                    ScoreTracker.instance.specialsUsed++;
+                }
+
                 if (markedTargets.Count != 0)
                 {
                     transform.LookAt(markedTargets[0].transform);
@@ -253,12 +258,13 @@ public class JuiceDash : MonoBehaviour
     {
         if (markedTargets.Count != 0)
         {
-            if (target.GetComponentInChildren<Beathoven>() != null)
+            if (target.GetComponent<Beathoven>() != null)
             {
                 Debug.Log("Its a wild beathoven");
             }
             else
             {
+                Debug.Log("target: " + target.name);
                 SkinnedMeshRenderer rend = target.GetComponentInChildren<SkinnedMeshRenderer>();
                 rend.material = juiceTargetMat;
                 target.GetComponentInChildren<Animator>().speed = 0;
@@ -284,7 +290,7 @@ public class JuiceDash : MonoBehaviour
     void SpawnClone()
     {
         //nikCam.gameObject.GetComponent<CameraShake>().enabled = true;
-        nikCam.zoomSpeedFour = new Vector3(zoomSpeedFourBase.x, zoomSpeedFourBase.y + zoomSpeedYIncrease * 10, zoomSpeedFourBase.z);
+        nikCam.zoomSpeedFour = new Vector3(zoomSpeedFourBase.x, zoomSpeedFourBase.y + zoomSpeedYIncrease * 2, zoomSpeedFourBase.z);
         CameraFollow.ChangeCameraState(4);
         GameObject clone = Instantiate(playerClone, transform.position, Quaternion.identity);
         clone.GetComponent<JuiceDashClone>().juiceDashScript = this;

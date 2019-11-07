@@ -34,11 +34,11 @@ public class BeatAnalyse : MonoBehaviour
             {
                 if(spectrum[i] <= spectrum[i-1] && spectrum[i] >= spectrum[i+1])
                 {                    
-                    beatStarts.Add(i);
+                    beatStarts.Add(i);//4*lenght = ~ 800 bytes memory
                     i += (int)waitSamples;
                 }
             }
-        }
+        }//teta(2n)
     }
     private void Update()
     {
